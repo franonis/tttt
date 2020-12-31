@@ -1,0 +1,142 @@
+.pca {
+	margin-bottom: 5em;
+}
+
+.pca .percent_per_protein {
+	height: 400px;
+}
+
+.pca .sequence-length {
+	height: 4em;
+}
+
+.pca .molecular-weight {
+	height: 4em;
+}
+
+.pca .gravy {
+	height: 4em;
+}
+
+.pca .charge {
+	height: 4em;
+}
+
+.pca .mec {
+	height: 4em;
+}
+
+.pca .iep {
+	height: 4em;
+}
+
+.pca .ai {
+	height: 4em;
+}
+
+.pca .secondary-structure .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .coil .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .lc .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .pest .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .transmembrane .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+
+.pca .disorder .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .prosite table td,th {
+	vertical-align: middle;
+}
+
+.pca .prosite .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .pfam table td,th {
+	vertical-align: middle;
+}
+
+.pca .pfam .feature-value {
+	
+	overflow: scroll;
+}
+
+.pca .pfam_graph {
+	widows: 100%;
+	height: 100px;
+}
+
+.pca .protein-function table td,th {
+	vertical-align: middle;
+}
+
+.pca .protein-function .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .kegg table td,th {
+	vertical-align: middle;
+}
+
+.pca .kegg .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+
+.pca .signalp {
+	height: 4em;
+}
+
+.pca .location .feature-value {
+	height: 15em;
+	padding-left: 6em;
+	overflow: scroll;
+}
+
+.pca .location {
+	widows: 100%;
+	height: 400px;
+}
+
+.pca .netphos table td,th {
+	vertical-align: middle;
+}
+
+.pca .netphos .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .N-Glycosylation .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
+
+.pca .O-Glycosylation .feature-value {
+	height: 15em;
+	overflow: scroll;
+}
