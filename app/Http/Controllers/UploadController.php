@@ -62,7 +62,7 @@ class UploadController extends Controller
             #设置t值
             $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
 
-            $command = 'Rscript /home/zhangqb/program/dev/main_split/inputFileOpts.R -i "' . $path_datafile . '" -d "' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "' . $path_datafile . '" -d "' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
             #dd($command);
 
             try {
@@ -90,7 +90,7 @@ class UploadController extends Controller
             $outpath = 'uploads/' . md5($file_desc) . '/';
             is_dir($outpath) or mkdir($outpath, 0777, true);
 
-            $command = 'Rscript /home/zhangqb/program/dev/main_split/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
             #dd($command);
 
             try {
