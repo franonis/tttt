@@ -70,7 +70,7 @@ class UploadController extends Controller
             } catch (\Exception $e) {
                 return view('errors.200', ['title' => 'BLAST ERROR', 'msg' => 'BLAST ERROR']);
             }
-            if ($this->isBlastOver($outpath . 'groupsLevel.csv')) {
+            if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
                 #读取参数
                 $groupsLevel = file_get_contents(storage_path('example') . $omics . '/groupsLevel.csv');
                 $groupsLevels = explode("\n", $groupsLevel);
@@ -98,7 +98,7 @@ class UploadController extends Controller
             } catch (\Exception $e) {
                 return view('errors.200', ['title' => 'BLAST ERROR', 'msg' => 'BLAST ERROR']);
             }
-            if ($this->isBlastOver($outpath . 'groupsLevel_RNA.csv')) {
+            if ($this->isRunOver($outpath . 'groupsLevel_RNA.csv')) {
                 $groupsLevel = file_get_contents(storage_path('example') . $omics . '/groupsLevel_RNA.csv');
                 $groupsLevels = explode("\n", $groupsLevel);
                 array_shift($groupsLevels); #去掉第一行和最后一行
