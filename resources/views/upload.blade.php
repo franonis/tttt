@@ -14,7 +14,7 @@
         <hr>
         <div class="col-md-12">
             <div class="col-md-12">
-                <form class="layui-form" action="/canshu">
+                <form id="regionform" class="layui-form" action="/canshu">
                     <div style="padding: 20px; background-color: #F2F2F2;">
                         <div class="layui-form-item">
                             <label class="layui-form-label">Data Type：</label>
@@ -141,6 +141,15 @@ layui.use('upload', function(){
         layui.use('table', function(){
           var table = layui.table; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
+    });
+    $('#regionform').submit(function(e){
+        start = $('#file_datafile').val();
+        end = $('#file_descfile').val();
+
+        if(start == "no data" && start == "no data" ){
+            layer.msg('Please upload your file!');
+            return;
+        }
     });
 
 </script>
