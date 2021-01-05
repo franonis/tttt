@@ -76,7 +76,7 @@ class UploadController extends Controller
                 $groupsLevels = explode("\n", $groupsLevel);
                 array_shift($groupsLevels); #去掉第一行和最后一行
                 array_pop($groupsLevels);
-                $firstline = file_get_contents(storage_path('example') . $omics . '/firstline.csv');
+                $firstline = file_get_contents($outpath . '/firstline.csv');
                 $firstlines = explode("\n", $firstline);
                 array_shift($firstlines);
                 array_pop($firstlines);
@@ -99,7 +99,7 @@ class UploadController extends Controller
                 return view('errors.200', ['title' => 'BLAST ERROR', 'msg' => 'BLAST ERROR']);
             }
             if ($this->isRunOver($outpath . 'groupsLevel_RNA.csv')) {
-                $groupsLevel = file_get_contents(storage_path('example') . $omics . '/groupsLevel_RNA.csv');
+                $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
                 $groupsLevels = explode("\n", $groupsLevel);
                 array_shift($groupsLevels); #去掉第一行和最后一行
                 array_pop($groupsLevels);
