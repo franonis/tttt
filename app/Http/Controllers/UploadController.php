@@ -72,7 +72,7 @@ class UploadController extends Controller
             }
             if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
                 #读取参数
-                $groupsLevel = file_get_contents(storage_path('example') . $omics . '/groupsLevel.csv');
+                $groupsLevel = file_get_contents($outpath . '/groupsLevel.csv');
                 $groupsLevels = explode("\n", $groupsLevel);
                 array_shift($groupsLevels); #去掉第一行和最后一行
                 array_pop($groupsLevels);
