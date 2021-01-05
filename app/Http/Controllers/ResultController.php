@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ResultController;
+use Illuminate\Http\Request;
+
 class ResultController extends Controller
 {
-    public function getSetPage()
+    public function getSetPage(Request $request)
     {
-        return view('result', ['title' => '上传数据']);
+        $omics = $request->omics;
+        #dd($omics);
+        if ($omics == "rna") {
+            return view('resultrna', ['title' => '上传数据']);
+        } elseif ($omics == "lipidomics") {
+            return view('resultlip', ['title' => '上传数据']);
+        } else {
+            return view('resultmet', ['title' => '上传数据']);
+        }
+
     }
-    public function getcrossPage()
+    public function getcrossPage(Request $request)
     {
+
         $image = 'images/cross.png';
         $size = getimagesize($image);
         $bgwidth = $size[0] * 1.02;
