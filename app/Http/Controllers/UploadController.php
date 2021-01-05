@@ -103,7 +103,7 @@ class UploadController extends Controller
                 $groupsLevels = explode("\n", $groupsLevel);
                 array_shift($groupsLevels); #去掉第一行和最后一行
                 array_pop($groupsLevels);
-                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics]);
+                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics]);
             }
         }
 
