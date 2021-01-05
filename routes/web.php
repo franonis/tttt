@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BabaController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\UploadController;
@@ -61,3 +62,7 @@ Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
 Route::get('/crosscanshu', [UploadController::class, 'crosscanshu']);
 
 Route::post('/uploadfile', [UploadController::class, 'upload']);
+
+Route::group(['prefix' => '/download'], function () {
+    Route::get('/example/{filename}', [DownloadController::class, 'exampleFile']);
+});

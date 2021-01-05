@@ -12,6 +12,7 @@ class ResultController extends Controller
         $omics = $request->omics;
         #dd($omics);
         if ($omics == "rna") {
+
             return view('resultrna', ['title' => '上传数据']);
         } elseif ($omics == "lipidomics") {
             return view('resultlip', ['title' => '上传数据']);

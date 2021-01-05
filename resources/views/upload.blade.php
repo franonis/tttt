@@ -72,13 +72,13 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><input type="radio" name="exampleomics" value="lipidomics" title="Lipidomics" checked=""></td><td>Cos7_integ_2.csv</td><td>Cos7_integ_sampleList.csv</td>
+                    <td><input type="radio" name="exampleomics" value="lipidomics" title="Lipidomics" checked=""></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_2.csv" >Cos7_integ_2.csv</a></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_sampleList.csv" >Cos7_integ_sampleList.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="metabonomics" title="Metabonomics" checked=""></td><td>HANgene_tidy.CSV</td><td>HANsampleList.CSV</td>
+                    <td><input type="radio" name="exampleomics" value="metabonomics" title="Metabonomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy.CSV" >HANgene_tidy.CSV</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList.CSV" >HANsampleList.CSV</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="rna" title="RNA-seq/microarray" checked=""></td><td>gene_tidy.CSV</td><td>sampleList.CSV</td>
+                    <td><input type="radio" name="exampleomics" value="rna" title="RNA-seq/microarray" checked=""></td><td><a href="{{ url('download/example').'/' }}gene_tidy.CSV" >gene_tidy.CSV</a></td><td><a href="{{ url('download/example').'/' }}sampleList.CSV" >sampleList.CSV</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="proteinomics" title="Proteinomics" checked=""></td><td>lipid_tidy2.CSV</td><td>sampleList_lip.csv</td>
+                    <td><input type="radio" name="exampleomics" value="proteinomics" title="Proteinomics" checked=""></td><td><a href="{{ url('download/example').'/' }}lipid_tidy2.CSV" >lipid_tidy2.CSV</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
                   </tr>
                 </tbody>
             </table>
@@ -146,7 +146,7 @@ layui.use('upload', function(){
         start = $('#file_datafile').val();
         end = $('#file_descfile').val();
 
-        if(start == "no data" && start == "no data" ){
+        if(start == "no data" || end == "no data" ){
             layer.msg('Please upload your file!');
             return;
         }

@@ -49,16 +49,20 @@ class UploadController extends Controller
     public function canshu(Request $request)
     {
         $omics = $request->omics;
+        if ($request->file_datafile == "no data" || $request->file_descfile == "no data") {
+            return view('errors.200', ['title' => 'No Data', 'msg' => 'Please upload your file!', 'back' => 'Go back upload Page']);
+        }
+        $file_data = $request->file_datafile;
+        $file_desc = $request->file_descfile;
+        $path_datafile = 'uploads/' . md5($file_data) . '/' . $file_data;
+        $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
+
+        #输出文件位置
+        $outpath = 'uploads/' . md5($file_data . $file_desc) . '/';
+        is_dir($outpath) or mkdir($outpath, 0777, true);
 
         if ($omics != "rna") {
-            $file_data = $request->file_datafile;
-            $file_desc = $request->file_descfile;
-            $path_datafile = 'uploads/' . md5($file_data) . '/' . $file_data;
-            $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
 
-            #输出文件位置
-            $outpath = 'uploads/' . md5($file_data . $file_desc) . '/';
-            is_dir($outpath) or mkdir($outpath, 0777, true);
             #设置t值
             $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
 
@@ -83,13 +87,6 @@ class UploadController extends Controller
                 return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'firstlines' => $firstlines]);
             }
         } else {
-            $file_desc = $request->file_descfile;
-            $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
-
-            #输出文件位置
-            $outpath = 'uploads/' . md5($file_desc) . '/';
-            is_dir($outpath) or mkdir($outpath, 0777, true);
-
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
             #dd($command);
 
