@@ -28,6 +28,5 @@
          </div>
       </div>
       <div class="row"><h6 class="text-center">Copyright &copy; 2020-{{ date('Y') }} <a href="mailto:{{ env('APP_ADMIN') }}" data-toggle="tooltip" data-placement="top" title="Send e-mail to the web administrator">{{ env('APP_NAME') }}</a> All Rights Reserved.</h6></div>
-      </footer>
-      <script>$(document).ready(function(){$("#back-to-top").hide();$(function (){$(window).scroll(function(){if ($(window).scrollTop()>400){$("#back-to-top").fadeIn(500);}else{$("#back-to-top").fadeOut(1500);}});$("#back-to-top").click(function(){$('body,html').animate({scrollTop:0},1000);return false;});});});$("#narbar-search-btn").popover();$('.navbar-nav .dropdown').mouseover(function(){$(this).addClass('open');});$('.navbar-nav .dropdown').mouseout(function(){$(this).removeClass('open');});$('[data-toggle="tooltip"]').tooltip();$('nav').autoHidingNavbar();</script>
+    </footer>
       <div id="back-to-top"><a href="#top"><span class="glyphicon glyphicon-chevron-up"></span></a></div>

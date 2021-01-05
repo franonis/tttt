@@ -49,7 +49,7 @@ Route::get('/pdf/{name}', [PdfController::class, 'getpdf']);
 #});
 
 Route::group(['prefix' => '/result'], function () {
-    Route::post('/set', [ResultController::class, 'getsetPage']);
+    #Route::post('/set', [ResultController::class, 'getsetPage']);
     Route::post('/cross', [ResultController::class, 'getcrossPage']);
     Route::get('/cross', [ResultController::class, 'getcrossPage']);
     Route::get('/set', [ResultController::class, 'getsetPage']);
@@ -57,6 +57,7 @@ Route::group(['prefix' => '/result'], function () {
 
 Route::get('/upload', [UploadController::class, 'getUploadPage']);
 Route::get('/canshu', [UploadController::class, 'canshu']);
+Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
 Route::get('/crosscanshu', [UploadController::class, 'crosscanshu']);
 
-Route::post('/uploadfile', [UploadController::class, 'newtask_att_up']);
+Route::post('/uploadfile', [UploadController::class, 'upload']);

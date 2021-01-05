@@ -17,7 +17,17 @@
             {{ csrf_field() }}
             <div class="col-md-12">
                 <div class="col-md-3">
+                    <h4>omics</h4>
+                </div>
+                <div class="col-md-9" id="omics">
+                    <input  type="radio" value="{{$omics}}" name="omics" checked> <label>{{$omics}}</label><br>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
                     <h4>Groups </h4>
+
                 </div>
                 <div class="col-md-9">
                     @foreach($groupsLevels as $k=>$i )
@@ -52,8 +62,8 @@
                     <h4>normalization</h4>
                 </div>
                 <div class="col-md-9">
-                    <input id="query_dna" type="radio" value="dna" name="query_type" checked> <label> T</label><br>
-                    <input id="query_protein" type="radio" value="protein" name="query_type"> <label> F</label>
+                    <input id="query_dna" type="radio" value="T" name="normalization" checked> <label> T</label><br>
+                    <input id="query_protein" type="radio" value="F" name="normalization"> <label> F</label>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>

@@ -25,7 +25,6 @@
                             <img style="width: {{ $fgwidth }}px;height: {{ $fgheigh }}px;opacity: 80%; margin-bottom: 1%;"; src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" />
                             @endfor
                         @endfor
-
                     </div>
                   </div>
                 </div>

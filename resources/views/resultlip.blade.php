@@ -1,0 +1,317 @@
+@extends('layouts.app')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('/layui/dist/css/layui.css') }}"  media="all">
+
+@endsection
+@section('navbar')
+  @include('partials.navbar')
+@endsection
+@section('content')
+<div class="container content">
+    <div class="row">
+        @include('partials.errors')
+        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p>
+        <hr>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <a style="font-size: 180%">Lipidomics</a><!--第一部分-->
+                </div>
+                <div class="layui-tab">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">PCA</li>
+                    <li>Volcano</li>
+                    <li>Heatmap</li>
+                    <li>Lipid Class Statisitics</li>
+                    <li>Lipid Fatty acid Statisics</li>
+                    <li>LION enrichment</li>
+                  </ul>
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show"><!--第一部分 1 PCA-->
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <h4>Set m value</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>
+                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
+                                    </small>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>PCA result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="{{ asset('images/PCA_score_plot_all.png') }}" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item"><!--第一部分 2 Volcano-->
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <h4>Set m value</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <small>
+                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
+                                    </small>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Show lipid class</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="radio" name="11" value="T" title="T" checked="">T
+                                    <input type="radio" name="12" value="F" title="F">F
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Volcano result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="{{ asset('images/huoshan.png') }}" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <h4>Set m value</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <small>
+                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
+                                    </small>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Set top number</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>
+                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
+                                    </small>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Heatmap result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="{{ asset('images/heatmap_top75_all.png') }}" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item"><!--第一部分 4 Lipid Class Statisitics-->
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <h4>Set m value</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>
+                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
+                                    </small>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Lipid Class Statisitics</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="{{ asset('images/headgroup_color_all.png') }}" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid Statisics-->
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <h4>Set m value</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>
+                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
+                                    </small>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Lipid Fatty acid Statisics</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="{{ asset('images/tilePlot_Day4_FA_info.png') }}" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item"><!--第一部分 6 LION-->
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <h4>Set m value</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <small>
+                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
+                                    </small>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>LION enrichment</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="{{ asset('images/lion.png') }}" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <hr>
+    </div>
+</div>
+@endsection
+@section('footer')
+  @include('partials.footer')
+@endsection
+@section('js')
+<script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
+<script>
+
+layui.use('upload', function(){
+  var upload = layui.upload;
+
+  //执行实例
+
+});
+</script>
+<script>
+    $(document).ready(function(){
+        changetheprogram();
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        });
+        layui.use(['form', 'layedit', 'laydate'], function(){
+          var form = layui.form
+          ,layer = layui.layer
+          ,layedit = layui.layedit
+          ,laydate = layui.laydate;
+        });
+        layui.use('element', function(){
+          var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+          //监听导航点击
+          element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+          });
+        });
+        layui.use('slider', function(){
+          var $ = layui.$
+          ,slider = layui.slider;
+          //默认滑块
+          slider.render({
+            elem: '#slideTest1'
+          });
+
+          //定义初始值
+          slider.render({
+            elem: '#slideTest2'
+            ,value: 20 //初始值
+          });
+
+          //设置最大最小值
+          slider.render({
+            elem: '#slideTest3'
+            ,min: 1 //最小值
+            ,max: 8 //最大值
+          });
+        });
+
+    });
+
+    function changetheprogram() {
+        query_type = $("input[name='query_type']:checked").val();
+        subject_type = $("input[name='subject_type']:checked").val();
+        if (query_type == 'dna') {
+            if (subject_type == 'dna') {
+                $("#program").html("<option value=blastn>BLASTN</option>");
+                $("#program").append("<option value=tblastx>TBLASTX</option>");
+            }else if (subject_type == 'protein') {
+                $("#program").html("<option value=blastx>BLASTX</option>");
+            }
+        }else if (query_type == 'protein') {
+            if (subject_type == 'dna') {
+                $("#program").html("<option value=tblastn>TBLASTN</option>");
+            }else if (subject_type == 'protein') {
+                $("#program").html("<option value=blastp>BLASTP</option>");
+            }
+        }
+        $("#program").trigger("change");
+    }
+
+
+    $("input:radio").change(function (){
+            changetheprogram();
+        });
+
+
+    $('#blastform').submit(function(e) {
+        if($('#seq').val() == ''){
+            layer.msg('Sequence is empty!');
+            e.preventDefault();
+        }
+    })
+</script>
+@endsection

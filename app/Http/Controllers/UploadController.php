@@ -7,29 +7,31 @@ use Illuminate\Http\Request;
 
 class UploadController extends Controller
 {
+    private $home;
     public function getUploadPage()
     {
-        return view('upload', ['title' => '上传数据']);
+        return view('upload', ['title' => 'upload']);
     }
 
-    public function newtask_att_up(Request $request)
+    public function upload(Request $request)
     {
         #dd("vv");
         $file = $request->file('file');
+        #dd($file);
+        $allowed_extensions = ["csv", "txt", "CSV"]; //多类型
+        //判断文件是否是允许上传的文件类型
+        if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
+            $data = [
+                'status' => 0, //返回状态码，在js中用改状态判断是否上传成功。
+                'msg' => '不支持此格式',
+            ];
+            return json_encode($data);
+        }
 
-        #$allowed_extensions = ["jpg"]; //多类型
-        #//判断文件是否是允许上传的文件类型
-        #if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
-        #    $data = [
-        #        'status' => 0, //返回状态码，在js中用改状态判断是否上传成功。
-        #        'msg' => '不支持此格式',
-        #    ];
-        #    return json_encode($data);
-        #}
-        #
         //保存文件，新建路径，拷贝文件
-        $path = date('Y/m/d/', time());
-        $destinationPath = 'uploads/';
+        //路径都是public--uploads下的文件名的md5值
+        $path = md5($file->getClientOriginalName());
+        $destinationPath = 'uploads/' . $path . '/';
         is_dir($destinationPath) or mkdir($destinationPath, 0777, true);
         $extension = $file->getClientOriginalExtension();
         $fileName = $extension;
@@ -43,12 +45,95 @@ class UploadController extends Controller
         return json_encode($data);
 
     }
+    #设置参数
     public function canshu(Request $request)
     {
         $omics = $request->omics;
-        $omics = $request->omics;
-        $omics = $request->omics;
-        return view('canshu', ['title' => '设置参数']);
+
+        if ($omics != "rna") {
+            $file_data = $request->file_datafile;
+            $file_desc = $request->file_descfile;
+            $path_datafile = 'uploads/' . md5($file_data) . '/' . $file_data;
+            $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
+
+            #输出文件位置
+            $outpath = 'uploads/' . md5($file_data . $file_desc) . '/';
+            is_dir($outpath) or mkdir($outpath, 0777, true);
+            #设置t值
+            $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
+
+            $command = 'Rscript /home/zhangqb/program/dev/main_split/inputFileOpts.R -i "' . $path_datafile . '" -d "' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
+            #dd($command);
+
+            try {
+                exec($command);
+            } catch (\Exception $e) {
+                return view('errors.200', ['title' => 'BLAST ERROR', 'msg' => 'BLAST ERROR']);
+            }
+            if ($this->isBlastOver($outpath . 'groupsLevel.csv')) {
+                #读取参数
+                $groupsLevel = file_get_contents(storage_path('example') . $omics . '/groupsLevel.csv');
+                $groupsLevels = explode("\n", $groupsLevel);
+                array_shift($groupsLevels); #去掉第一行和最后一行
+                array_pop($groupsLevels);
+                $firstline = file_get_contents(storage_path('example') . $omics . '/firstline.csv');
+                $firstlines = explode("\n", $firstline);
+                array_shift($firstlines);
+                array_pop($firstlines);
+                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'firstlines' => $firstlines]);
+            }
+        } else {
+            $file_desc = $request->file_descfile;
+            $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
+
+            #输出文件位置
+            $outpath = 'uploads/' . md5($file_desc) . '/';
+            is_dir($outpath) or mkdir($outpath, 0777, true);
+
+            $command = 'Rscript /home/zhangqb/program/dev/main_split/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
+            #dd($command);
+
+            try {
+                exec($command);
+            } catch (\Exception $e) {
+                return view('errors.200', ['title' => 'BLAST ERROR', 'msg' => 'BLAST ERROR']);
+            }
+            if ($this->isBlastOver($outpath . 'groupsLevel_RNA.csv')) {
+                $groupsLevel = file_get_contents(storage_path('example') . $omics . '/groupsLevel_RNA.csv');
+                $groupsLevels = explode("\n", $groupsLevel);
+                array_shift($groupsLevels); #去掉第一行和最后一行
+                array_pop($groupsLevels);
+                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics]);
+            }
+        }
+
+    }
+    private function isRunOver($file)
+    {
+        return file_exists($file) ? true : false;
+    }
+#设置例子的参数
+    public function examplecanshu(Request $request)
+    {
+        $omics = $request->exampleomics;
+        if ($omics != "rna") {
+            $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel.csv');
+            $groupsLevels = explode("\n", $groupsLevel);
+            array_shift($groupsLevels); #去掉第一行和最后一行
+            array_pop($groupsLevels);
+            $firstline = file_get_contents(storage_path('example/') . $omics . '/firstline.csv');
+            $firstlines = explode("\n", $firstline);
+            array_shift($firstlines);
+            array_pop($firstlines);
+            return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'firstlines' => $firstlines]);
+        } else {
+            $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel_RNA.csv');
+            $groupsLevels = explode("\n", $groupsLevel);
+            array_shift($groupsLevels); #去掉第一行和最后一行
+            array_pop($groupsLevels);
+            return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics]);
+        }
+
     }
 
     public function crosscanshu(Request $request)
@@ -57,49 +142,5 @@ class UploadController extends Controller
         $omics = $request->omics;
         $omics = $request->omics;
         return view('crosscanshu', ['title' => '设置参数']);
-    }
-
-    public function uploadFiles(Request $request)
-    {
-
-        // 用户的文件名
-        #dd("vv");
-        $user_filename = $request->file->getClientOriginalName();
-        $user_ext = $request->file->getClientOriginalExtension();
-        $file_size = $request->file->getClientSize();
-        if ($user_ext != 'zip') {
-            return ['status' => 0, 'msg' => '仅支持zip文件!'];
-        }
-
-        $destinationPath = storage_path('storage/uploads/'); //public 文件夹下面建 storage/uploads 文件夹
-        $extension = $file->getClientOriginalExtension();
-        $fileName = md5(time() . rand(1, 1000)) . '.' . $extension;
-        $file->move($destinationPath, $fileName);
-        $filePath = asset($destinationPath . $fileName);
-
-        return $filepath ? ['status' => 1, 'msg' => '保存成功！'] : ['status' => 0, 'msg' => '保存错误！'];
-
-    }
-    public function uploadFile(Request $request)
-    {
-
-        if ($request->hasFile('file') && $request->file('file')->isValid()) {
-            $file = $request->file('file');
-            $allowed_extensions = ["png", "jpg", "gif"];
-            if (!in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
-                dd('只能上传png,jpg和gif格式的图片.');
-            } else {
-                #storage_path('blast')
-                #$destinationPath = 'storage/uploads/'; //public 文件夹下面建 storage/uploads 文件夹
-                $destinationPath = storage_path('storage/uploads/'); //public 文件夹下面建 storage/uploads 文件夹
-                $extension = $file->getClientOriginalExtension();
-                $fileName = md5(time() . rand(1, 1000)) . '.' . $extension;
-                $file->move($destinationPath, $fileName);
-                $filePath = asset($destinationPath . $fileName);
-                dd("文件路径：" . asset($destinationPath . $fileName));
-            }
-        } else {
-            dd('图片上传失败请重试.');
-        }
     }
 }

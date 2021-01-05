@@ -13,19 +13,25 @@
         <hr>
         @include('partials.errors')
 
-        <form id="blastform" method="post" action="{{ url('/result/set') }}">
+        <form id="blastform" action="/result/set">
             {{ csrf_field() }}
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>omics</h4>
+                </div>
+                <div class="col-md-9" id="omics">
+                    <input  type="radio" value="{{$omics}}" name="omics" checked> <label>{{$omics}}</label><br>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
                 <div class="col-md-3">
                     <h4>Control Group </h4>
                 </div>
                 <div class="col-md-9">
-                    <input id="groupsLevel1" type="radio" value="protein" name="level1"> <label>group level 1</label><br>
-                    <input id="groupsLevel2" type="radio" value="dna" name="level2" checked> <label>group level 2</label>
-                    <h4>Or, you can input group level chosen in dataSet[["groupsLevel"]:
-                        <small>
-                        <input id="hit_number" type="text" name="hit_number" value="50" style="width:8%; display:inline;" class="form-control" autocomplete="on"></input>
-                        </small>
+                    @foreach($groupsLevels as $k=>$i )
+                        <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel" checked> <label>{{$i}}</label><br>
+                    @endforeach
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -33,11 +39,11 @@
                 <div class="col-md-3">
                     <h4>dataType</h4>
                 </div>
-                <div class="col-md-9">
-                    <input id="dataType1" type="radio" value="protein" name="data_type1"> <label>LipidSearch</label><br>
-                    <input id="dataType2" type="radio" value="dna" name="data_type2" checked> <label>MS_DIAL</label><br>
-                    <input id="dataType3" type="radio" value="dna" name="data_type3"> <label>Metabolites</label><br>
-                    <input id="dataType4" type="radio" value="dna" name="data_type4"> <label>Proteins</label>
+                <div class="col-md-9" id="dataType">
+                    <input  type="radio" value="LipidSearch" name="data_type"> <label>LipidSearch</label><br>
+                    <input  type="radio" value="MS_DIAL" name="data_type" checked> <label>MS_DIAL</label><br>
+                    <input  type="radio" value="Metabolites" name="data_type"> <label>Metabolites</label><br>
+                    <input  type="radio" value="Proteins" name="data_type"> <label>Proteins</label>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -46,10 +52,9 @@
                     <h4>lip Field</h4>
                 </div>
                 <div class="col-md-9">
-                    <input id="Field1" type="radio" value="protein" name="field_type1"> <label>firstline</label><br>
-                    <input id="Field2" type="radio" value="dna" name="field_type2" checked> <label>MS_DIAL</label><br>
-                    <input id="Field3" type="radio" value="dna" name="field_type3"> <label>Metabolites</label><br>
-                    <input id="Field4" type="radio" value="dna" name="field_type4"> <label>Proteins</label>
+                    @foreach($firstlines as $k=>$j )
+                        <input id="{{$j}}" type="radio" value="{{$j}}" name="firstline" checked> <label>{{$j}}</label><br>
+                    @endforeach
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
@@ -75,25 +80,9 @@
   @include('partials.footer')
 @endsection
 @section('js')
-<script src="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
-<script src="{{ asset('/layer/layer.js') }}"></script>
-<script>
-layui.use('upload', function(){
-  var upload = layui.upload;
+<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
+<script href="{{ asset('/layer/layer.js') }}"></script>
 
-  //执行实例
-  var uploadInst = upload.render({
-    elem: '#test1' //绑定元素
-    ,url: '/upload/' //上传接口
-    ,done: function(res){
-      //上传完毕回调
-    }
-    ,error: function(){
-      //请求异常回调
-    }
-  });
-});
-</script>
 <script>
     $(document).ready(function(){
         changetheprogram();
