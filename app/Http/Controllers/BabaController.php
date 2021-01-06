@@ -19,7 +19,7 @@ class BabaController extends Controller
     {
         #$disease = GeneDisease::all()->where('gene', $name)->toArray();
         $gene_disease = file_get_contents('gene_disease.txt');
-        preg_match_all("/$name.*\n/U", $gene_disease, $diseases);
+        preg_match_all("/\t.*?$name.*?\t.*\n/U", $gene_disease, $diseases);
         #preg_match_all
         #dd($diseases);
         $count = 0;
@@ -30,8 +30,8 @@ class BabaController extends Controller
             $t = explode("\t", $disease);
             $tableJson['data'][] = [
                 'no' => $count + 1,
-                'gene' => $t[0],
-                'disease' => $t[1],
+                'gene' => $t[1],
+                'disease' => $t[2],
             ];
             $count++;
         }
