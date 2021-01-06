@@ -35,7 +35,7 @@ class ResultController extends Controller
             #Rscript  -a "Ly6ChighD4" -i "./branch/benchmark/input/HANgene_tidy_geneid_allgroups.CSV" -d "./branch/benchmark/input/HANsampleList_allgroups.CSV" -c "PMND1" -o "~/temp/results2/"  -t "RNAseq" -p "~/temp/"
 
             #dd($command);
-            showresultrna();
+            $this->showresultrna();
             try {
                 exec($command);
             } catch (\Exception $e) {
@@ -49,11 +49,11 @@ class ResultController extends Controller
             if ($omics == "lipidomics") {
                 #Rscript processing.R -a "all_together" -i "./branch/benchmark/input/HANlipid_tidy.csv" -d "./branch/benchmark/input/HANsampleList_lipid.CSV" -c "" -t "LipidSearch" -f "LipidIon" -l F -o "~/temp/" -n "" -p "~/temp/"
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $firstline . '" -f "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                showresultlip();
+                $this->showresultlip();
                 dd($command);
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $firstline . '" -f "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                showresultmet();
+                $this->showresultmet();
                 dd($command);
             }
 
