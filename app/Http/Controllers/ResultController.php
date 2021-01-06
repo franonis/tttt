@@ -37,7 +37,7 @@ class ResultController extends Controller
 
             #dd($command);
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                $this->showresultrna($outpath);
+                $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
             } else {
                 try {
                     exec($command);
@@ -45,7 +45,7 @@ class ResultController extends Controller
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                    $this->showresultrna($outpath);
+                    $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
                 }
             }
 
@@ -59,13 +59,13 @@ class ResultController extends Controller
 
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data_tidy.csv')) {
                     #dd("nidaye");
-                    $this->showresultlip($outpath);
+                    $this->showresultlip('/home/zhangqb/tttt/public/' . $outpath);
                 }
 
                 #dd($command);
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                $this->showresultmet($outpath);
+                $this->showresultmet('/home/zhangqb/tttt/public/' . $outpath);
                 #dd($command);
             }
 
@@ -78,7 +78,7 @@ class ResultController extends Controller
         $pic_path = $path . 'results/';
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -o "/home/zhangqb/tttt/public/' . $pic_path . '"';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $path . '" -o "' . $pic_path . '"';
         #dd($command);
         try {
             exec($command);
@@ -86,14 +86,14 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "/home/zhangqb/tttt/public/' . $path . '" -s "/home/zhangqb/tttt/public/' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
         try {
             exec($command);
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -w "/home/zhangqb/tttt/public/' . $pic_path . '" -v 75';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $path . '" -w "' . $pic_path . '" -v 75';
         try {
             exec($command);
         } catch (\Exception $e) {
