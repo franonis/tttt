@@ -11,30 +11,36 @@ class ResultController extends Controller
     {
         $omics = $request->omics;
         #设置参数
-        $file_data= $request->file_data;
-        $file_desc= $request->file_desc;
-        $groupsLevel= $request->groupsLevel;
-        $data_type= $request->data_type;
+        $file_data = $request->file_data;
+        $file_desc = $request->file_desc;
+        $groupsLevel = $request->groupsLevel;
+        $data_type = $request->data_type;
         #输出文件路径
         $outpath = 'uploads/' . md5($file_data . $file_desc) . '/';
-        $ouput=$outpat.'/results2/';
+        $output = $outpath . 'results2/';
+        is_dir($output) or mkdir($output, 0777, true);
         #输入文件路径
         $path_datafile = 'uploads/' . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
         #dd($omics);
         if ($omics == "rna") {
 
-            $control= $request->control;
-            $normalization= $request->normalization;
+            $control = $request->control;
+            $normalization = $request->normalization;
             #processing_RNA
-            Rscript processing_RNA.R -a "Ly6ChighD4" -i "./branch/benchmark/input/HANgene_tidy_geneid_allgroups.CSV" -d "./branch/benchmark/input/HANsampleList_allgroups.CSV" -c "PMND1" -o "~/temp/results2/" -n T -t "RNAseq" -p "~/temp/"
-            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
-            #dd($command);
+            if ($data_type == "rna") {
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "' . $path_datafile . '" -d "' . $path_descfile . '" -c "' . $control . '" -o "' . $output . '"  -t "' . $data_type . '" -p "' . $outpath . '"';
+            } else {
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "' . $path_datafile . '" -d "' . $path_descfile . '" -c "' . $control . '" -o "' . $output . '" -n ' . $normalization . ' -t "' . $data_type . '" -p "' . $outpath . '"';
+            }
+            #Rscript  -a "Ly6ChighD4" -i "./branch/benchmark/input/HANgene_tidy_geneid_allgroups.CSV" -d "./branch/benchmark/input/HANsampleList_allgroups.CSV" -c "PMND1" -o "~/temp/results2/"  -t "RNAseq" -p "~/temp/"
+
+            dd($command);
 
             try {
                 exec($command);
             } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR'.$command]);
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
             }
 
             return view('resultrna', ['title' => '上传数据']);
