@@ -26,6 +26,24 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
                 <div class="col-md-3">
+                    <h4>Data file</h4>
+                </div>
+                <div class="col-md-9" id="file_data">
+                    <input  type="radio" value="{{$file_data}}" name="file_data" checked> <label>{{$file_data}}</label><br>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>Description file</h4>
+                </div>
+                <div class="col-md-9" id="file_desc">
+                    <input  type="radio" value="{{$file_desc}}" name="file_desc" checked> <label>{{$file_desc}}</label><br>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
                     <h4>Control Group </h4>
                 </div>
                 <div class="col-md-9">

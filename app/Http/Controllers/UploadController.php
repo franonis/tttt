@@ -84,7 +84,7 @@ class UploadController extends Controller
                 $firstlines = explode("\n", $firstline);
                 array_shift($firstlines);
                 array_pop($firstlines);
-                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'firstlines' => $firstlines]);
+                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc, 'firstlines' => $firstlines]);
             }
         } else {
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
@@ -100,7 +100,7 @@ class UploadController extends Controller
                 $groupsLevels = explode("\n", $groupsLevel);
                 array_shift($groupsLevels); #去掉第一行和最后一行
                 array_pop($groupsLevels);
-                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics]);
+                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc]);
             }
         }
 

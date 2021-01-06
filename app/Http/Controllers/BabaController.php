@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\BabaController;
-use App\Models\GeneDisease;
 use Illuminate\Http\Request;
 
 class BabaController extends Controller
@@ -18,16 +17,21 @@ class BabaController extends Controller
 
     public function diseasetable($name)
     {
-        $disease = GeneDisease::all()->where('gene', $name)->toArray();
-        #dd($disease);
+        #$disease = GeneDisease::all()->where('gene', $name)->toArray();
+        $gene_disease = file_get_contents('gene_disease.txt');
+        preg_match_all("/$name.*\n/U", $gene_disease, $diseases);
+        #preg_match_all
+        #dd($diseases);
         $count = 0;
         $tableJson = [];
         $loctmp = [];
-        foreach ($disease as $t) {
+        foreach ($diseases[0] as $disease) {
+            #dd($diseases);
+            $t = explode("\t", $disease);
             $tableJson['data'][] = [
                 'no' => $count + 1,
-                'gene' => $t['gene'],
-                'disease' => $t['disease'],
+                'gene' => $t[0],
+                'disease' => $t[1],
             ];
             $count++;
         }

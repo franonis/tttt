@@ -17,10 +17,28 @@
             {{ csrf_field() }}
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <h4>omics</h4>
+                    <h4>Omics</h4>
                 </div>
                 <div class="col-md-9" id="omics">
                     <input  type="radio" value="{{$omics}}" name="omics" checked> <label>{{$omics}}</label><br>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>Data file</h4>
+                </div>
+                <div class="col-md-9" id="file_data">
+                    <input  type="radio" value="{{$file_data}}" name="file_data" checked> <label>{{$file_data}}</label><br>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>Description file</h4>
+                </div>
+                <div class="col-md-9" id="file_desc">
+                    <input  type="radio" value="{{$file_desc}}" name="file_desc" checked> <label>{{$file_desc}}</label><br>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -30,22 +48,14 @@
 
                 </div>
                 <div class="col-md-9">
+                        <input id="all_together" type="radio" value="all_together" name="groupsLevel" checked> <label>all_together</label><br>
                     @foreach($groupsLevels as $k=>$i )
                         <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel" checked> <label>{{$i}}</label><br>
                     @endforeach
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>dataType</h4>
-                </div>
-                <div class="col-md-9" id="dataType">
-                    <input  type="radio" value="rna" name="data_type"> <label>RNA-seq</label><br>
-                    <input  type="radio" value="microarray" name="data_type" checked> <label>Microarray</label>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+
             <div class="col-md-12">
                 <div class="col-md-3">
                     <h4>Control group</h4>
@@ -58,6 +68,16 @@
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>dataType</h4>
+                </div>
+                <div class="col-md-9" id="dataType">
+                    <input  type="radio" value="rna" name="data_type"> <label>RNA-seq</label><br>
+                    <input  type="radio" value="microarray" name="data_type" checked> <label>Microarray</label>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12" id="normalization">
                 <div class="col-md-3">
                     <h4>normalization</h4>
                 </div>
