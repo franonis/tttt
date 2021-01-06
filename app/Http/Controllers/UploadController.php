@@ -134,8 +134,8 @@ class UploadController extends Controller
         #move($path_datafile,$file_data[$exam_omics]);
         #move($path_descfile,$file_desc[$exam_omics]);
         #}
-        $omics = "";
-        $exam_omics = $request->exampleomics;
+        $omics = $request->exampleomics;
+        $exam_omics = $omics;
         if ($exam_omics == "lipidomics" || $exam_omics == "lipidomicscos") {
             $omics = "lipidomics";
         }
