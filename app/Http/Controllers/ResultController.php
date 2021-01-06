@@ -100,16 +100,16 @@ class ResultController extends Controller
     public function showresultlip($path)
     {
         #"MARresults","headgroup","FAchainVisual"
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $pic_path = $path . 'results/';
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
-        $mar_path = '/home/zhangqb/tttt/public/' . $path . 'results/MARresults';
+        $mar_path = $path . 'results/MARresults';
         is_dir($mar_path) or mkdir($mar_path, 0777, true);
         #head
-        $headgroup_path = '/home/zhangqb/tttt/public/' . $path . 'results/headgroup';
+        $headgroup_path = $path . 'results/headgroup';
         is_dir($headgroup_path) or mkdir($headgroup_path, 0777, true);
         #FA
-        $fa_path = '/home/zhangqb/tttt/public/' . $path . 'results/FAchainVisual';
+        $fa_path = $path . 'results/FAchainVisual';
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $path . '" -q "' . $mar_path . '"';
