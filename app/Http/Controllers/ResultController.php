@@ -113,6 +113,7 @@ class ResultController extends Controller
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $path . '" -q "' . $mar_path . '"';
+        dd($command);
 
         try {
             exec($command);
