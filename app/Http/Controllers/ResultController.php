@@ -34,7 +34,7 @@ class ResultController extends Controller
             }
             #Rscript  -a "Ly6ChighD4" -i "./branch/benchmark/input/HANgene_tidy_geneid_allgroups.CSV" -d "./branch/benchmark/input/HANsampleList_allgroups.CSV" -c "PMND1" -o "~/temp/results2/"  -t "RNAseq" -p "~/temp/"
 
-            #dd($command);
+            dd($command);
 
             try {
                 exec($command);
