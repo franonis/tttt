@@ -72,7 +72,7 @@ class UploadController extends Controller
             try {
                 exec($command);
             } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'BLAST ERROR', 'msg' => 'BLAST ERROR']);
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
             }
             if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
                 #读取参数
@@ -93,7 +93,7 @@ class UploadController extends Controller
             try {
                 exec($command);
             } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'BLAST ERROR', 'msg' => 'BLAST ERROR']);
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
             }
             if ($this->isRunOver($outpath . 'groupsLevel_RNA.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
