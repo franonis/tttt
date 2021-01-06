@@ -121,9 +121,9 @@ class UploadController extends Controller
         #    is_dir($outpath) or mkdir($outpath, 0777, true);
         #    is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
         #    is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
-            #move($path_datafile,$file_data[$omics]);
-            #move($path_descfile,$file_desc[$omics]);
-        }
+        #move($path_datafile,$file_data[$omics]);
+        #move($path_descfile,$file_desc[$omics]);
+        #}
         $omics = $request->exampleomics;
         if ($omics != "rna") {
             $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel.csv');
