@@ -80,9 +80,20 @@
                 <div class="col-md-3">
                     <h4>delOddChainOpt</h4>
                 </div>
-                <div class="col-md-9">
-                    <input id="query_dna" type="radio" value="dna" name="query_type" checked> <label> T</label><br>
-                    <input id="query_protein" type="radio" value="protein" name="query_type"> <label> F</label>
+                <div class="col-md-9"  id="normalization" style="display: block;">
+                    <input id="query_dna" type="radio" value="T" name="delodd" checked> <label> T</label><br>
+                    <input id="query_protein" type="radio" value="F" name="delodd"> <label> F</label>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>NA_string</h4>
+                </div>
+                <div class=" col-md-9">
+                    <div class="layui-input-inline">
+                      <input type="text" name="NAstring" lay-verify="required" placeholder="NULL" class="layui-input">
+                    </div>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
@@ -107,48 +118,15 @@
 
     });
 
-    function changetheprogram() {
-        query_type = $("input[name='query_type']:checked").val();
-        subject_type = $("input[name='subject_type']:checked").val();
-        if (query_type == 'dna') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=blastn>BLASTN</option>");
-                $("#program").append("<option value=tblastx>TBLASTX</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastx>BLASTX</option>");
-            }
-        }else if (query_type == 'protein') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=tblastn>TBLASTN</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastp>BLASTP</option>");
-            }
+    $("#dataType").click(function (){
+        name =$("input[name='data_type']:checked").val();
+        if (name == "Metabolites" || name == "Proteins" ) {
+            document.getElementById("normalization").style.display="none";
+        }else{
+            document.getElementById("normalization").style.display="block";
         }
-        $("#program").trigger("change");
-    }
+        console.log(name);
+   });
 
-
-    $('#example').click(function(){
-        $('#seq').html('');
-        name = $(this).val();
-        name =$("input[name='query_type']:checked").val();
-        if(name == 'protein'){
-            $('#seq').html(">A0A0A0LTV1\nMSTSELACAYAALALHDDGIAITAEKIAAVVAAAGLCVESYWPSLFAKLAEKRNIGDLLLNVGCGGGAAASVAVAAPTASAAAAPAIEEKREEPKEESDDDMGFSLFD");
-        } else if(name == 'dna'){
-            $('#seq').html(">A0A0A0LTV1\nATGTCTACCAGTGAACTCGCGTGCGCGTACGCCGCCCTGGCTCTTCACGATGATGGAATCGCAATCACTGCGGAAAAGATTGCAGCCGTTGTAGCAGCTGCGGGGCTCTGTGTGGAATCTTACTGGCCTAGCTTGTTTGCTAAATTGGCCGAGAAGAGGAACATTGGGGACCTTCTTCTTAATGTTGGCTGTGGAGGTGGCGCTGCGGCTTCTGTGGCTGTAGCTGCTCCTACCGCCAGTGCTGCTGCCGCTCCTGCCATCGAGGAAAAGAGGGAGGAGCCAAAGGAGGAGAGCGATGATGACATGGGATTCAGCTTATTCGATTAA");
-        }
-    });
-
-    $("input:radio").change(function (){
-            changetheprogram();
-        });
-
-
-    $('#blastform').submit(function(e) {
-        if($('#seq').val() == ''){
-            layer.msg('Sequence is empty!');
-            e.preventDefault();
-        }
-    })
 </script>
 @endsection
