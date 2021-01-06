@@ -63,21 +63,21 @@ class ResultController extends Controller
 
     public function showresultrna($path)
     {
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -o "/home/zhangqb/tttt/public/' . $output . '"';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -o "/home/zhangqb/tttt/public/' . $path . 'results/' . '"';
         try {
             exec($command);
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "/home/zhangqb/tttt/public/' . $path . '" -s "/home/zhangqb/tttt/public/' . $output . '" -f 2.0 -p 0.1 -u 20';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "/home/zhangqb/tttt/public/' . $path . '" -s "/home/zhangqb/tttt/public/' . $path . 'results/' . '" -f 2.0 -p 0.1 -u 20';
         try {
             exec($command);
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -w "/home/zhangqb/tttt/public/' . $output . '" -v 75';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -w "/home/zhangqb/tttt/public/' . $path . 'results/' . '" -v 75';
         try {
             exec($command);
         } catch (\Exception $e) {
