@@ -138,8 +138,8 @@ class UploadController extends Controller
         $omics = $request->exampleomics;
         $outpath = 'uploads/' . $omics . $file_data[$omics] . $file_desc[$omics] . md5($file_data[$omics] . $file_desc[$omics]) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
-        $path_datafile = 'uploads/' . $omics . $file_data[$omics] . md5($file_data[$omics]);
-        $path_descfile = 'uploads/' . $omics . $file_desc[$omics] . md5($file_desc[$omics]);
+        $path_datafile = 'uploads/' . $omics . $file_data[$omics] . md5($file_data[$omics]) . '/' . $file_data;
+        $path_descfile = 'uploads/' . $omics . $file_desc[$omics] . md5($file_desc[$omics]) . '/' . $file_desc;
 
         if ($omics != "rna") {
             $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
