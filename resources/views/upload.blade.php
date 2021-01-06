@@ -73,7 +73,9 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><input type="radio" name="exampleomics" value="lipidomics" title="Lipidomics" checked=""></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_2.csv" >Cos7_integ_2.csv</a></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_sampleList.csv" >Cos7_integ_sampleList.csv</a></td>
+                    <td><input type="radio" name="exampleomics" value="lipidomics" title="Lipidomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANlipid_tidy.csv" >HANlipid_tidy.csv</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_lipid.CSV" >HANsampleList_lipid.CSV</a></td>
+                  </tr><tr>
+                    <td><input type="radio" name="exampleomics" value="lipidomicscos" title="Lipidomicscos" checked=""></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_2.csv" >Cos7_integ_2.csv</a></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_sampleList.csv" >Cos7_integ_sampleList.csv</a></td>
                   </tr><tr>
                     <td><input type="radio" name="exampleomics" value="metabonomics" title="Metabonomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy.CSV" >HANgene_tidy.CSV</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList.CSV" >HANsampleList.CSV</a></td>
                   </tr><tr>

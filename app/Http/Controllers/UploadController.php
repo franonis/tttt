@@ -122,28 +122,37 @@ class UploadController extends Controller
 #设置例子的参数
     public function examplecanshu(Request $request)
     {
-        $file_data = ['lipidomics' => 'Cos7_integ_2.csv', 'metabonomics' => 'HANgene_tidy.CSV', 'rna' => 'gene_tidy.CSV', 'proteinomics' => 'lipid_tidy2.CSV'];
-        $file_desc = ['lipidomics' => 'Cos7_integ_sampleList.csv', 'metabonomics' => 'HANsampleList.CSV', 'rna' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
+        $file_data = ['lipidomics' => 'HANlipid_tidy.csv', 'lipidomicscos' => 'Cos7_integ_2.csv', 'metabonomics' => 'HANgene_tidy.CSV', 'rna' => 'gene_tidy.CSV', 'proteinomics' => 'lipid_tidy2.CSV'];
+        $file_desc = ['lipidomics' => 'HANsampleList_lipid.CSV', 'lipidomicscos' => 'Cos7_integ_sampleList.csv', 'metabonomics' => 'HANsampleList.CSV', 'rna' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
         #foreach ($file_data as $omics => $file) {
-        #    $path_datafile = 'uploads/' . $omics . $file_data[$omics] . md5($file_data[$omics]);
-        #    $path_descfile = 'uploads/' . $omics . $file_desc[$omics] . md5($file_desc[$omics]);
-        #    $outpath = 'uploads/' . $omics . $file_data[$omics] . $file_desc[$omics] . md5($file_data[$omics] . $file_desc[$omics]) . '/';
+        #    $path_datafile = 'uploads/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]);
+        #    $path_descfile = 'uploads/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]);
+        #    $outpath = 'uploads/' . $omics . $file_data[$exam_omics] . $file_desc[$exam_omics] . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
         #    is_dir($outpath) or mkdir($outpath, 0777, true);
         #    is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
         #    is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
-        #move($path_datafile,$file_data[$omics]);
-        #move($path_descfile,$file_desc[$omics]);
+        #move($path_datafile,$file_data[$exam_omics]);
+        #move($path_descfile,$file_desc[$exam_omics]);
         #}
-        $omics = $request->exampleomics;
-        $outpath = 'uploads/' . $omics . $file_data[$omics] . $file_desc[$omics] . md5($file_data[$omics] . $file_desc[$omics]) . '/';
+        $omics = "";
+        $exam_omics = $request->exampleomics;
+        if ($exam_omics == "lipidomics" || $exam_omics == "lipidomicscos") {
+            $omics = "lipidomics";
+        }
+        $path_datafile = 'uploads/' . $omics . $file_data["lipidomics"] . md5($file_data["lipidomics"]);
+        $path_descfile = 'uploads/' . $omics . $file_desc["lipidomics"] . md5($file_desc["lipidomics"]);
+        is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
+        is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
+
+        $outpath = 'uploads/' . $omics . $file_data[$exam_omics] . $file_desc[$exam_omics] . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
-        $path_datafile = 'uploads/' . $omics . $file_data[$omics] . md5($file_data[$omics]) . '/' . $file_data[$omics];
-        $path_descfile = 'uploads/' . $omics . $file_desc[$omics] . md5($file_desc[$omics]) . '/' . $file_desc[$omics];
+        $path_datafile = 'uploads/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
+        $path_descfile = 'uploads/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
 
         if ($omics != "rna") {
             $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
 
-            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$exam_omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
                 try {
@@ -162,7 +171,7 @@ class UploadController extends Controller
                 preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
                 array_shift($firstlines[1]); #去掉第一行
                 $firstlines = $firstlines[1];
-                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics], 'firstlines' => $firstlines]);
+                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'firstlines' => $firstlines]);
             }
         } else {
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
@@ -179,7 +188,7 @@ class UploadController extends Controller
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
-                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics]]);
+                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics]]);
             }
         }
 
