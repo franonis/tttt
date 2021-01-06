@@ -154,12 +154,12 @@ class UploadController extends Controller
                 }
             }
             if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
-                $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel.csv');
+                $groupsLevel = file_get_contents($outpath . '/groupsLevel.csv');
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
                 #dd($groupsLevels[1]);
-                $firstline = file_get_contents(storage_path('example/') . $omics . '/firstline.csv');
+                $firstline = file_get_contents($outpath . '/firstline.csv');
                 preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
                 array_shift($firstlines[1]); #去掉第一行
                 $firstlines = $firstlines[1];
@@ -176,7 +176,7 @@ class UploadController extends Controller
                 }
             }
             if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
-                $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel_RNA.csv');
+                $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
