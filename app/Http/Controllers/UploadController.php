@@ -146,14 +146,14 @@ class UploadController extends Controller
 
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
-            if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
+            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
                 try {
                     exec($command);
                 } catch (\Exception $e) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
                 }
             }
-            if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel.csv');
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
@@ -168,14 +168,14 @@ class UploadController extends Controller
         } else {
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
             #dd($command);
-            if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
+            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
                 try {
                     exec($command);
                 } catch (\Exception $e) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
                 }
             }
-            if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
