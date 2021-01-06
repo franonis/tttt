@@ -114,6 +114,16 @@ class UploadController extends Controller
     {
         $file_data = ['lipidomics' => 'Cos7_integ_2.csv', 'metabonomics' => 'HANgene_tidy.CSV', 'rna' => 'gene_tidy.CSV', 'proteinomics' => 'lipid_tidy2.CSV'];
         $file_desc = ['lipidomics' => 'Cos7_integ_sampleList.csv', 'metabonomics' => 'HANsampleList.CSV', 'rna' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
+        foreach ($file_data as $omics) {
+            $path_datafile = 'uploads/' . $omics . $file_data[$omics] . md5($file_data[$omics]);
+            $path_descfile = 'uploads/' . $omics . $file_desc[$omics] . md5($file_desc[$omics]);
+            $outpath = 'uploads/' . $omics . $file_data[$omics] . $file_desc[$omics] . md5($file_data[$omics] . $file_desc[$omics]) . '/';
+            is_dir($outpath) or mkdir($outpath, 0777, true);
+            is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
+            is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
+            #move($path_datafile,$file_data[$omics]);
+            #move($path_descfile,$file_desc[$omics]);
+        }
         $omics = $request->exampleomics;
         if ($omics != "rna") {
             $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel.csv');
