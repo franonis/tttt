@@ -27,6 +27,7 @@ class ResultController extends Controller
             $control = $request->control;
             $normalization = $request->normalization;
             #processing_RNA
+
             if ($data_type == "rna") {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             } else {
@@ -35,11 +36,17 @@ class ResultController extends Controller
             #Rscript  -a "Ly6ChighD4" -i "./branch/benchmark/input/HANgene_tidy_geneid_allgroups.CSV" -d "./branch/benchmark/input/HANsampleList_allgroups.CSV" -c "PMND1" -o "~/temp/results2/"  -t "RNAseq" -p "~/temp/"
 
             #dd($command);
-            $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
-            try {
-                exec($command);
-            } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
+            } else {
+                try {
+                    exec($command);
+                } catch (\Exception $e) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+                }
+                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                    $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
+                }
             }
 
         } else {
@@ -68,11 +75,11 @@ class ResultController extends Controller
 
     public function showresultrna($path)
     {
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $pic_path = $path . 'results/';
         is_dir($pic_path) or mkdir($outpath, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -o "/home/zhangqb/tttt/public/' . $pic_path . '"';
-        dd($command);
+        #dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
@@ -158,7 +165,7 @@ class ResultController extends Controller
     public function showresultmet($path)
     {
         #"MARresults","headgroup","FAchainVisual"
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $pic_path = $path . 'results/';
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = '/home/zhangqb/tttt/public/' . $path . 'results/MARresults';
