@@ -25,6 +25,7 @@
                               <input type="radio" name="omics" value="proteinomics" title="Proteinomics">
                             </div>
                         </div>
+                        <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p>
                         <div class="layui-form-item">
                             <label class="layui-form-label">Data File</label>
                             <div class="layui-upload-drag" id="datafile">

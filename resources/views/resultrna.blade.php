@@ -18,42 +18,12 @@
                 </div>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
-                    <li>only_show_variability</li>
-                    <li>PCA</li>
+                    <li>show_variability</li>
                     <li>Volcano</li>
                     <li class="layui-this">Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item">not finished yet</div>
-                    <div class="layui-tab-item">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
-                            <div class="col-md-12">
-                                <div class="col-md-2">
-                                    <h4>Set m value</h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>PCA result</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <img src="{{ asset('images/pca.png') }}" style="height:50%;width: 60%;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="layui-tab-item">
                         <div class="col-md-2">
                         </div>

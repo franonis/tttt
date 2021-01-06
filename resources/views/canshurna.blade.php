@@ -50,7 +50,7 @@
                 <div class="col-md-9">
                         <input id="all_together" type="radio" value="all_together" name="groupsLevel" checked> <label>all_together</label><br>
                     @foreach($groupsLevels as $k=>$i )
-                        <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel" checked> <label>{{$i}}</label><br>
+                        <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel"> <label>{{$i}}</label><br>
                     @endforeach
                 </div>
             </div>
@@ -77,11 +77,11 @@
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12" id="normalization" style="display: none;">
+            <div class="col-md-12" >
                 <div class="col-md-3">
                     <h4>normalization</h4>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9" id="normalization" style="display: none;">
                     <input id="query_dna" type="radio" value="T" name="normalization" checked> <label> T</label><br>
                     <input id="query_protein" type="radio" value="F" name="normalization"> <label> F</label>
                 </div>

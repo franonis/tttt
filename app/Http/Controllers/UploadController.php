@@ -54,11 +54,11 @@ class UploadController extends Controller
         }
         $file_data = $request->file_datafile;
         $file_desc = $request->file_descfile;
-        $path_datafile = 'uploads/' . md5($file_data) . '/' . $file_data;
-        $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
+        $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
+        $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
 
         #输出文件位置
-        $outpath = 'uploads/' . md5($file_data . $file_desc) . '/';
+        $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
         if ($omics != "rna") {
@@ -66,7 +66,7 @@ class UploadController extends Controller
             #设置t值
             $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
 
-            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "' . $path_datafile . '" -d "' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
             #dd($command);
 
             try {
