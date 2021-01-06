@@ -167,7 +167,7 @@ class UploadController extends Controller
             }
         } else {
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
-            dd($command);
+            #dd($command);
             if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
                 try {
                     exec($command);
