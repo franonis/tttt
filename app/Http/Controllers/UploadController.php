@@ -66,7 +66,7 @@ class UploadController extends Controller
             #设置t值
             $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
 
-            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
             #dd($command);
             if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
                 try {
@@ -89,7 +89,7 @@ class UploadController extends Controller
                 return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc, 'firstlines' => $firstlines]);
             }
         } else {
-            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
             #dd($command);
             if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
                 try {
@@ -144,7 +144,7 @@ class UploadController extends Controller
         if ($omics != "rna") {
             $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
 
-            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
             if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
                 try {
@@ -166,8 +166,8 @@ class UploadController extends Controller
                 return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics], 'firstlines' => $firstlines]);
             }
         } else {
-            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
-            #dd($command);
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
+            dd($command);
             if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
                 try {
                     exec($command);
