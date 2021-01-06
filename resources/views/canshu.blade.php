@@ -114,7 +114,6 @@
 
 <script>
     $(document).ready(function(){
-        changetheprogram();
 
     });
 

@@ -50,7 +50,8 @@ class ResultController extends Controller
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -f "' . $firstline . '" -f "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 dd($command);
             } else {
-
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -f "' . $firstline . '" -f "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                dd($command);
             }
 
         }
