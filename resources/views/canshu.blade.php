@@ -47,8 +47,9 @@
                     <h4>Control Group </h4>
                 </div>
                 <div class="col-md-9">
+                    <input id="all_together" type="radio" value="all_together" name="groupsLevel" checked> <label>all_together</label><br>
                     @foreach($groupsLevels as $k=>$i )
-                        <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel" checked> <label>{{$i}}</label><br>
+                        <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel"> <label>{{$i}}</label><br>
                     @endforeach
                 </div>
             </div>

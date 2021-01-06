@@ -68,38 +68,49 @@ class UploadController extends Controller
 
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
             #dd($command);
-
-            try {
-                exec($command);
-            } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
+            if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
+                try {
+                    exec($command);
+                } catch (\Exception $e) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
+                }
             }
+
             if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
                 #读取参数
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel.csv');
-                $groupsLevels = explode("\n", $groupsLevel);
-                array_shift($groupsLevels); #去掉第一行和最后一行
-                array_pop($groupsLevels);
-                $firstline = file_get_contents($outpath . '/firstline.csv');
-                $firstlines = explode("\n", $firstline);
-                array_shift($firstlines);
-                array_pop($firstlines);
+                preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
+                array_shift($groupsLevels[1]); #去掉第一行
+                $groupsLevels = $groupsLevels[1];
+                $firstlines = file_get_contents($outpath . '/firstline.csv');
+                preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
+                array_shift($firstlines[1]); #去掉第一行
+                $firstline = $firstlines[1];
                 return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc, 'firstlines' => $firstlines]);
             }
         } else {
             $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
             #dd($command);
+            if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
+                try {
+                    exec($command);
+                } catch (\Exception $e) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
+                }
+            }
 
-            try {
-                exec($command);
-            } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
+            if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
+                try {
+                    exec($command);
+                } catch (\Exception $e) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
+                }
             }
             if ($this->isRunOver($outpath . 'groupsLevel_RNA.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
-                $groupsLevels = explode("\n", $groupsLevel);
-                array_shift($groupsLevels); #去掉第一行和最后一行
-                array_pop($groupsLevels);
+                preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
+                array_shift($groupsLevels[1]); #去掉第一行
+                $groupsLevels = $groupsLevels[1];
                 return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc]);
             }
         }
@@ -125,22 +136,52 @@ class UploadController extends Controller
         #move($path_descfile,$file_desc[$omics]);
         #}
         $omics = $request->exampleomics;
+        $outpath = 'uploads/' . $omics . $file_data[$omics] . $file_desc[$omics] . md5($file_data[$omics] . $file_desc[$omics]) . '/';
+        is_dir($outpath) or mkdir($outpath, 0777, true);
+        $path_datafile = 'uploads/' . $omics . $file_data[$omics] . md5($file_data[$omics]);
+        $path_descfile = 'uploads/' . $omics . $file_desc[$omics] . md5($file_desc[$omics]);
+
         if ($omics != "rna") {
-            $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel.csv');
-            $groupsLevels = explode("\n", $groupsLevel);
-            array_shift($groupsLevels); #去掉第一行和最后一行
-            array_pop($groupsLevels);
-            $firstline = file_get_contents(storage_path('example/') . $omics . '/firstline.csv');
-            $firstlines = explode("\n", $firstline);
-            array_shift($firstlines);
-            array_pop($firstlines);
-            return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics], 'firstlines' => $firstlines]);
+            $t = ['lipidomics' => 'LipidSearch', 'metabonomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
+
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_datafile . '" -t "' . $t[$omics] . '" -l F -n "" -p "' . $outpath . '" ';
+
+            if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
+                try {
+                    exec($command);
+                } catch (\Exception $e) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
+                }
+            }
+            if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
+                $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel.csv');
+                preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
+                array_shift($groupsLevels[1]); #去掉第一行
+                $groupsLevels = $groupsLevels[1];
+                #dd($groupsLevels[1]);
+                $firstline = file_get_contents(storage_path('example/') . $omics . '/firstline.csv');
+                preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
+                array_shift($firstlines[1]); #去掉第一行
+                $firstlines = $firstlines[1];
+                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics], 'firstlines' => $firstlines]);
+            }
         } else {
-            $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel_RNA.csv');
-            $groupsLevels = explode("\n", $groupsLevel);
-            array_shift($groupsLevels); #去掉第一行和最后一行
-            array_pop($groupsLevels);
-            return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics]]);
+            $command = 'Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "' . $path_descfile . '" -p "' . $outpath . '" ';
+            #dd($command);
+            if (!$this->isRunOver($outpath . 'groupsLevel.csv')) {
+                try {
+                    exec($command);
+                } catch (\Exception $e) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
+                }
+            }
+            if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
+                $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel_RNA.csv');
+                preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
+                array_shift($groupsLevels[1]); #去掉第一行
+                $groupsLevels = $groupsLevels[1];
+                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics]]);
+            }
         }
 
     }
