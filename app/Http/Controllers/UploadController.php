@@ -114,7 +114,7 @@ class UploadController extends Controller
     {
         $file_data = ['lipidomics' => 'Cos7_integ_2.csv', 'metabonomics' => 'HANgene_tidy.CSV', 'rna' => 'gene_tidy.CSV', 'proteinomics' => 'lipid_tidy2.CSV'];
         $file_desc = ['lipidomics' => 'Cos7_integ_sampleList.csv', 'metabonomics' => 'HANsampleList.CSV', 'rna' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
-        foreach ($file_data as $k=$omics) {
+        foreach ($file_data as $k->$omics) {
             $path_datafile = 'uploads/' . $omics . $file_data[$omics] . md5($file_data[$omics]);
             $path_descfile = 'uploads/' . $omics . $file_desc[$omics] . md5($file_desc[$omics]);
             $outpath = 'uploads/' . $omics . $file_data[$omics] . $file_desc[$omics] . md5($file_data[$omics] . $file_desc[$omics]) . '/';
