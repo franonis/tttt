@@ -112,6 +112,8 @@ class UploadController extends Controller
 #设置例子的参数
     public function examplecanshu(Request $request)
     {
+        $file_data = ['lipidomics' => 'Cos7_integ_2.csv', 'metabonomics' => 'HANgene_tidy.CSV', 'rna' => 'gene_tidy.CSV', 'proteinomics' => 'lipid_tidy2.CSV'];
+        $file_desc = ['lipidomics' => 'Cos7_integ_sampleList.csv', 'metabonomics' => 'HANsampleList.CSV', 'rna' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
         $omics = $request->exampleomics;
         if ($omics != "rna") {
             $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel.csv');
@@ -122,13 +124,13 @@ class UploadController extends Controller
             $firstlines = explode("\n", $firstline);
             array_shift($firstlines);
             array_pop($firstlines);
-            return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'firstlines' => $firstlines]);
+            return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics], 'firstlines' => $firstlines]);
         } else {
             $groupsLevel = file_get_contents(storage_path('example/') . $omics . '/groupsLevel_RNA.csv');
             $groupsLevels = explode("\n", $groupsLevel);
             array_shift($groupsLevels); #去掉第一行和最后一行
             array_pop($groupsLevels);
-            return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics]);
+            return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$omics], 'file_desc' => $file_desc[$omics]]);
         }
 
     }

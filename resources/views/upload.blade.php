@@ -56,7 +56,7 @@
         <br>
         <h3>Try example data</h3>
         <hr>
-        <form class="layui-form" action="/examplecanshu">
+        <form class="layui-form" action="/examplecanshu" id="example">
             <table class="layui-table">
                 <colgroup>
                   <col width="33%">
@@ -151,6 +151,7 @@ layui.use('upload', function(){
             return;
         }
     });
+
 
 </script>
 @endsection
