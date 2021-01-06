@@ -81,6 +81,8 @@
                   </tr><tr>
                     <td><input type="radio" name="exampleomics" value="rna" title="RNA-seq/microarray" checked=""></td><td><a href="{{ url('download/example').'/' }}gene_tidy.CSV" >gene_tidy.CSV</a></td><td><a href="{{ url('download/example').'/' }}sampleList.CSV" >sampleList.CSV</a></td>
                   </tr><tr>
+                    <td><input type="radio" name="exampleomics" value="rnahan" title="RNA-seq/microarray" checked=""></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy_geneid_allgroups.CSV" >HANgene_tidy_geneid_allgroups.CSV</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_allgroups.CSV" >HANsampleList_allgroups.CSV</a></td>
+                  </tr><tr>
                     <td><input type="radio" name="exampleomics" value="proteinomics" title="Proteinomics" checked=""></td><td><a href="{{ url('download/example').'/' }}lipid_tidy2.CSV" >lipid_tidy2.CSV</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
                   </tr>
                 </tbody>

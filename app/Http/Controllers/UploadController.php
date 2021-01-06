@@ -139,8 +139,11 @@ class UploadController extends Controller
         if ($exam_omics == "lipidomics" || $exam_omics == "lipidomicscos") {
             $omics = "lipidomics";
         }
-        $path_datafile = 'uploads/' . $omics . $file_data["lipidomics"] . md5($file_data["lipidomics"]);
-        $path_descfile = 'uploads/' . $omics . $file_desc["lipidomics"] . md5($file_desc["lipidomics"]);
+        if ($exam_omics == "rna" || $exam_omics == "rnahan") {
+            $omics = "rna";
+        }
+        $path_datafile = 'uploads/' . $omics . $file_data["rnahan"] . md5($file_data["rnahan"]);
+        $path_descfile = 'uploads/' . $omics . $file_desc["rnahan"] . md5($file_desc["rnahan"]);
         is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
         is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
 
