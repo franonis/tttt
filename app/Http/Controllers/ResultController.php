@@ -76,7 +76,7 @@ class ResultController extends Controller
     public function showresultrna($path)
     {
         $pic_path = $path . 'results/';
-        is_dir($pic_path) or mkdir($outpath, 0777, true);
+        is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "/home/zhangqb/tttt/public/' . $path . '" -o "/home/zhangqb/tttt/public/' . $pic_path . '"';
         #dd($command);
