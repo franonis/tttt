@@ -26,6 +26,7 @@ class ResultController extends Controller
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             }
+	    dd($command);
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
                 return view('resultrna', ['title' => '上传数据']);
@@ -45,7 +46,7 @@ class ResultController extends Controller
             $delodd = $request->delodd;
             if ($omics == "lipidomics") {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-
+		#dd($command);
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     $this->showresultlip('/home/zhangqb/tttt/public/' . $outpath);
                     return view('resultlip', ['title' => '上传数据']);
@@ -62,6 +63,7 @@ class ResultController extends Controller
                 }
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+		#dd($command);
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     $this->showresultmet('/home/zhangqb/tttt/public/' . $outpath);
                     return view('resultmet', ['title' => '上传数据']);
@@ -86,7 +88,7 @@ class ResultController extends Controller
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $path . '" -o "' . $pic_path . '"';
-        #dd($command);
+        dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
@@ -127,7 +129,7 @@ class ResultController extends Controller
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $path . '" -q "' . $mar_path . '"';
-        #dd($command);
+        dd($command);
 
         try {
             exec($command);
@@ -194,6 +196,7 @@ class ResultController extends Controller
         }
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $path . '" -s F -p "' . $mar_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
+        dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
