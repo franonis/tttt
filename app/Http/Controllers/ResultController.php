@@ -49,7 +49,7 @@ class ResultController extends Controller
                     $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
                     return view('resultrna', ['title' => '上传数据']);
                 }
-
+            }
 
         } else {
             #参数
