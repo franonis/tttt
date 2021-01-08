@@ -69,6 +69,8 @@ class ResultController extends Controller
                 }
 
                 return view('resultrna', ['title' => '上传数据']);
+            }else {
+                return view('resultrna', ['title' => '上传数据']);
             }
 
         } else {
@@ -213,8 +215,9 @@ class ResultController extends Controller
             }
 
         }
-
     }
+
+
 
     public function getcrossPage(Request $request)
     {
