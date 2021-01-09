@@ -126,13 +126,13 @@ class ResultController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
-        $mar_path = $pic_path . 'results/MARresults';
+        $mar_path = $pic_path . 'MARresults';
         is_dir($mar_path) or mkdir($mar_path, 0777, true);
         #head
-        $headgroup_path = $pic_path . 'results/headgroup';
+        $headgroup_path = $pic_path . 'headgroup';
         is_dir($headgroup_path) or mkdir($headgroup_path, 0777, true);
         #FA
-        $fa_path = $pic_path . 'results/FAchainVisual';
+        $fa_path = $pic_path . 'FAchainVisual';
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
         #PCA
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $r_path . '" -q "' . $pic_path . '"';
@@ -145,6 +145,7 @@ class ResultController extends Controller
         }
         #火山图
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s F -p "' . $pic_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
+        #dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
@@ -152,7 +153,7 @@ class ResultController extends Controller
         }
         #热图
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e 75';
-
+        #dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
@@ -160,7 +161,7 @@ class ResultController extends Controller
         }
         #head group
         $command = 'Rscript /home/zhangqb/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w T';
-
+        #dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
