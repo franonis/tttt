@@ -26,10 +26,10 @@ class ResultController extends Controller
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             }
-	    dd($command);
+            #dd($command);
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
-                return view('resultrna', ['title' => '上传数据']);
+                $this->showresultrna($outpath);
+                return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
             } else {
                 try {
                     exec($command);
@@ -37,8 +37,8 @@ class ResultController extends Controller
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                    $this->showresultrna('/home/zhangqb/tttt/public/' . $outpath);
-                    return view('resultrna', ['title' => '上传数据']);
+                    $this->showresultrna($outpath);
+                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                 }
             }
         } else {
@@ -46,7 +46,7 @@ class ResultController extends Controller
             $delodd = $request->delodd;
             if ($omics == "lipidomics") {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-		#dd($command);
+                #dd($command);
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     $this->showresultlip('/home/zhangqb/tttt/public/' . $outpath);
                     return view('resultlip', ['title' => '上传数据']);
@@ -63,7 +63,7 @@ class ResultController extends Controller
                 }
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-		#dd($command);
+                #dd($command);
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     $this->showresultmet('/home/zhangqb/tttt/public/' . $outpath);
                     return view('resultmet', ['title' => '上传数据']);
@@ -84,18 +84,31 @@ class ResultController extends Controller
 
     public function showresultrna($path)
     {
-        $pic_path = $path . 'results/';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $path . '" -o "' . $pic_path . '"';
-        dd($command);
+        #dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'PCA_*.pdf PCA_show.png';
+        try {
+            exec($command);
+        } catch (\Exception $e) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+        }
+
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
         $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
+        try {
+            exec($command);
+        } catch (\Exception $e) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf volcano_show.png';
         try {
             exec($command);
         } catch (\Exception $e) {
@@ -108,8 +121,16 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_allgroups.pdf heatmap_allgroups.png';
+        $command1 = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf heatmap_top.png';
+        try {
+            exec($command);
+            exec($command1);
+        } catch (\Exception $e) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+        }
 
-        return view('resultrna', ['title' => '上传数据']);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
 
     }
 
@@ -129,7 +150,7 @@ class ResultController extends Controller
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
 
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $path . '" -q "' . $mar_path . '"';
-        dd($command);
+        #dd($command);
 
         try {
             exec($command);
@@ -167,7 +188,7 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultlip', ['title' => '上传数据']);
+        return view('resultlip', ['title' => '上传数据', 'path' => $path]);
 
     }
 
@@ -195,8 +216,8 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
 
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $path . '" -s F -p "' . $mar_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
-        dd($command);
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $path . '" -s F -p "' . $pic_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
+        #dd($command);
         try {
             exec($command);
         } catch (\Exception $e) {
@@ -226,7 +247,7 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultmet', ['title' => '上传数据']);
+        return view('resultmet', ['title' => '上传数据', 'path' => $path]);
     }
 
     public function getcrossPage(Request $request)
