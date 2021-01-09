@@ -122,8 +122,8 @@ class ResultController extends Controller
     public function showresultlip($path)
     {
         #"MARresults","headgroup","FAchainVisual"
-        $pic_path = '/home/zhangqb/tttt/public/' . $path;
-        is_dir($pic_path . 'results/') or mkdir($pic_path . 'results/', 0777, true);
+        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'results/MARresults';
         is_dir($mar_path) or mkdir($mar_path, 0777, true);
@@ -134,7 +134,7 @@ class ResultController extends Controller
         $fa_path = $pic_path . 'results/FAchainVisual';
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
         #PCA
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $pic_path . '" -q "' . $mar_path . '"';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $path . '" -q "' . $pic_path . '"';
         #dd($command);
 
         try {
@@ -143,14 +143,14 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #火山图
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $pic_path . '" -s F -p "' . $mar_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $path . '" -s F -p "' . $pic_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
         try {
             exec($command);
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #热图
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $pic_path . '" -y "' . $mar_path . '" -e 75';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $path . '" -y "' . $pic_path . '" -e 75';
 
         try {
             exec($command);
@@ -158,7 +158,7 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #head group
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/headgroupStat.R -r "' . $pic_path . '" -u "' . $headgroup_path . '" -w T';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/headgroupStat.R -r "' . $path . '" -u "' . $pic_path . '" -w T';
 
         try {
             exec($command);
@@ -166,7 +166,7 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #FAchain
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/FAchainStat.R -r "' . $pic_path . '" -v "' . $fa_path . '" -g "FA_info" -w T';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/FAchainStat.R -r "' . $path . '" -v "' . $pic_path . '" -g "FA_info" -w T';
 
         try {
             exec($command);
