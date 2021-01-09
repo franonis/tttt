@@ -46,7 +46,7 @@
                                     <h4>PCA result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="{{ asset('path/PCA_show.png') }}" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="{{ asset('path/heatmap_top.png') }}" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}/heatmap_top.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
