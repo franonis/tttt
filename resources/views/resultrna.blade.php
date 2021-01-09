@@ -27,27 +27,29 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <div class="col-md-2">
-                                    <h4>Set m value</h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
+                                <form  id="pca" class="layui-form" action="/update/updatePCA">
+                                    <div class="col-md-2">
+                                        <h4>Set m value</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small>
+                                        <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></ input>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="submitright" class="layui-btn" type="submit">Update</button>
 
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>PCA result</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}/PCA_show.png" style="height:50%;width: 60%;">
-                                </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>PCA result</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <img src="http://www.lintwebomics.info/{{ $path }}/PCA_show.png" style="height:50%;width: 60%;">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -56,28 +58,38 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <div class="col-md-2">
-                                    <h4>Set m value</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Show lipid class</h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="radio" name="31" value="T" title="T" checked="">T
-                                    <input type="radio" name="32" value="F" title="F">F
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
-                                </div>
+                                <form  id="Volcano" class="layui-form" action="/update/updateVolcano">
+                                    <div class="col-md-2">
+                                        <h4>Set fc_thresh</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="f" type="text" name="f" value="2.0" style="width:50px; display:inline;" class="form-control" ></ input>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set p_thresh</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="p" type="text" name="p" value="0.1" style="width:50px; display:inline;" class="form-control" ></ input>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set top number</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small>
+                                        <input id="top" type="text" name="top" value="20" style="width:50px; display:inline;" class="form-control" ></ input>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="downloadright" class="layui-btn">Download</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                    </div>
+                                </form>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
                                 </div>
@@ -92,29 +104,38 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <div class="col-md-2">
-                                    <h4>Set m value</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Set top number</h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
-                                </div>
+                                <form  id="Heatmap" class="layui-form" action="/update/updateHeatmap">
+                                    <div class="col-md-2">
+                                        <h4>Set fc_thresh</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="f" type="text" name="f" value="2.0" style="width:50px; display:inline;" class="form-control" ></ input>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set p_thresh</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="p" type="text" name="p" value="0.1" style="width:50px; display:inline;" class="form-control" ></ input>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set top number</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small>
+                                        <input id="top" type="text" name="top" value="20" style="width:50px; display:inline;" class="form-control" ></ input>
+                                        </small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="downloadright" class="layui-btn">Download</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                    </div>
+                                </form>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>

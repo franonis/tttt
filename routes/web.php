@@ -4,6 +4,7 @@ use App\Http\Controllers\BabaController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,7 +48,13 @@ Route::get('/diseasetable/f{name}', [BabaController::class, 'diseasetable']);
 Route::get('/pdf/{name}', [PdfController::class, 'getpdf']);
 #Route::post('/disease', function () {
 #    return view('disease');
-#});
+#});Update
+Route::group(['prefix' => '/update'], function () {
+    #Route::post('/set', [ResultController::class, 'getsetPage']);
+    Route::post('/cross', [UpdateController::class, 'getcrossPage']);
+    Route::get('/cross', [UpdateController::class, 'getcrossPage']);
+    Route::get('/updateVolcano', [UpdateController::class, 'updateVolcano']);
+});
 
 Route::group(['prefix' => '/result'], function () {
     #Route::post('/set', [ResultController::class, 'getsetPage']);
