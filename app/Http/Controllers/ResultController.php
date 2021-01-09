@@ -34,7 +34,7 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $this->showresultrna($outpath);
-                return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                #return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
             }
         } else {
             $firstline = $request->firstline;
@@ -49,7 +49,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     $this->showresultlip($outpath);
-                    return view('resultlip', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                    #return view('resultlip', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                 }
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
@@ -61,7 +61,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     $this->showresultmet($outpath);
-                    return view('resultmet', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                    #return view('resultmet', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                 }
             }
         }

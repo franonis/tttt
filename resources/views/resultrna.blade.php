@@ -28,6 +28,7 @@
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="pca" class="layui-form" action="/update/updatePCA">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Set m value</h4>
                                     </div>
@@ -59,6 +60,7 @@
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updateVolcano">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Set fc_thresh</h4>
                                     </div>
@@ -105,6 +107,7 @@
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateHeatmap">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Set fc_thresh</h4>
                                     </div>

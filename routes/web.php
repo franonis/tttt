@@ -53,6 +53,8 @@ Route::group(['prefix' => '/update'], function () {
     #Route::post('/set', [ResultController::class, 'getsetPage']);
     Route::post('/cross', [UpdateController::class, 'getcrossPage']);
     Route::get('/cross', [UpdateController::class, 'getcrossPage']);
+    Route::get('/updatePCA', [UpdateController::class, 'updatePCA']);
+    Route::get('/updateHeatmap', [UpdateController::class, 'updateHeatmap']);
     Route::get('/updateVolcano', [UpdateController::class, 'updateVolcano']);
 });
 
