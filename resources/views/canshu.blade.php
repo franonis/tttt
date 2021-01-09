@@ -58,8 +58,8 @@
                     <h4>dataType</h4>
                 </div>
                 <div class="col-md-9" id="dataType">
-                    <input  type="radio" value="LipidSearch" name="data_type"> <label>LipidSearch</label><br>
-                    <input  type="radio" value="MS_DIAL" name="data_type" checked> <label>MS_DIAL</label><br>
+                    <input  type="radio" value="LipidSearch" name="data_type" checked> <label>LipidSearch</label><br>
+                    <input  type="radio" value="MS_DIAL" name="data_type"> <label>MS_DIAL</label><br>
                     <input  type="radio" value="Metabolites" name="data_type"> <label>Metabolites</label><br>
                     <input  type="radio" value="Proteins" name="data_type"> <label>Proteins</label>
                 </div>

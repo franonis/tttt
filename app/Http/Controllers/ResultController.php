@@ -60,7 +60,7 @@ class ResultController extends Controller
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                    $this->showresultmet($outpath);
+                    $this->showresultmet($2);
                     return view('resultmet', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                 }
             }
@@ -210,7 +210,7 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-
+        #dd($command);
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $path . '" -y "' . $mar_path . '" -e 75';
 
         try {
