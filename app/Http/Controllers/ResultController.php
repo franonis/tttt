@@ -125,13 +125,13 @@ class ResultController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
         is_dir($pic_path . 'results/') or mkdir($pic_path . 'results/', 0777, true);
         #MAR
-        $mar_path = $path . 'results/MARresults';
+        $mar_path = $pic_path . 'results/MARresults';
         is_dir($mar_path) or mkdir($mar_path, 0777, true);
         #head
-        $headgroup_path = $path . 'results/headgroup';
+        $headgroup_path = $pic_path . 'results/headgroup';
         is_dir($headgroup_path) or mkdir($headgroup_path, 0777, true);
         #FA
-        $fa_path = $path . 'results/FAchainVisual';
+        $fa_path = $pic_path . 'results/FAchainVisual';
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
         #PCA
         $command = 'Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $pic_path . '" -q "' . $mar_path . '"';
