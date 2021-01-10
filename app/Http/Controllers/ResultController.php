@@ -84,7 +84,7 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'PCA_score_plot_all.pdf')) {
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $pic_path . 'PCA_score_plot_all.pdf')) {
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'PCA_*.pdf ' . $pic_path . '  PCA_show.png';
             try {
                 exec($command);
@@ -99,7 +99,7 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'volcano_*.pdf')) {
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $pic_path . 'volcano_*.pdf')) {
             dd("baba");
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . ' volcano_show.png';
             try {
@@ -115,7 +115,7 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'volcano_*.pdf')) {
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $pic_path . 'volcano_*.pdf')) {
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_allgroups.pdf ' . $pic_path . 'heatmap_allgroups.png';
             $command1 = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_top.png';
             try {
