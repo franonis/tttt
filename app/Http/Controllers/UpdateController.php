@@ -25,6 +25,7 @@ class UpdateController extends Controller
     }
     public function updateHeatmap(Request $request)
     {
+    	dd($request);
     	$path = = $request->path;
     	$f = = $request->f;
     	$p = = $request->p;
