@@ -45,7 +45,7 @@ class ResultController extends Controller
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($omics == "lipidomics") {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                #dd($command);
+                dd($command);
                 try {
                     exec($command);
                 } catch (\Exception $e) {
