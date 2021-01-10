@@ -39,7 +39,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     #$this->showresultrna($outpath);
-                    return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                    return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath]);
                 }
             }
         } else {
