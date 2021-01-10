@@ -15,16 +15,18 @@ class ResultController extends Controller
         $groupsLevel = $request->groupsLevel;
         $data_type = $request->data_type;
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
-        is_dir($outpath . 'results2') or mkdir($outpath . 'results2', 0777, true);
+        is_dir($outpath) or mkdir($outpath, 0777, true);
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
         if ($omics == "rna") {
             $control = $request->control;
             $normalization = $request->normalization;
+            $outpath = $outpath . $groupsLevel . $control . '/'; #输出文件放一个对比组名命名的文件
+            is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($data_type == "rna") {
-                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             } else {
-                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             }
             #dd($command);
             try {
@@ -39,8 +41,10 @@ class ResultController extends Controller
         } else {
             $firstline = $request->firstline;
             $delodd = $request->delodd;
+            $outpath = $outpath . $groupsLevel . $firstline . '/'; #输出文件放一个对比组名命名的文件
+            is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($omics == "lipidomics") {
-                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 #dd($command);
                 try {
                     exec($command);
@@ -52,7 +56,7 @@ class ResultController extends Controller
                     #return view('resultlip', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                 }
             } else {
-                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . 'results2/"  -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 #dd($command);
                 try {
                     exec($command);
@@ -69,10 +73,11 @@ class ResultController extends Controller
 
     public function showresultrna($path)
     {
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $r_path = '/home/zhangqb/tttt/public/' . $path;
+        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/'; #$path是上一个处理数据程序的输出目录 $pic_path是本程序的输出目录
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $path . '" -o "' . $pic_path . '"';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $r_path . '" -o "' . $pic_path . '"';
         #dd($command);
         try {
             exec($command);
@@ -87,7 +92,7 @@ class ResultController extends Controller
         }
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
         try {
             exec($command);
         } catch (\Exception $e) {
@@ -100,7 +105,7 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
-        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $path . '" -w "' . $pic_path . '" -v 75';
+        $command = 'Rscript /home/zhangqb/program/dev/main_split/show_variability.R -r "' . $r_path . '" -w "' . $pic_path . '" -v 75';
         try {
             exec($command);
         } catch (\Exception $e) {
