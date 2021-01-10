@@ -29,14 +29,18 @@ class ResultController extends Controller
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             }
             #dd($command);
-            try {
-                exec($command);
-            } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-            }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                #$this->showresultrna($outpath);
                 return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+            } else {
+                try {
+                    exec($command);
+                } catch (\Exception $e) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+                }
+                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                    #$this->showresultrna($outpath);
+                    return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                }
             }
         } else {
             $firstline = $request->firstline;
