@@ -45,7 +45,7 @@ class ResultController extends Controller
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($omics == "lipidomics") {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                dd($command);
+                #dd($command);
                 try {
                     exec($command);
                 } catch (\Exception $e) {
@@ -84,14 +84,13 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $pic_path . 'PCA_score_plot_all.pdf')) {
-            $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'PCA_*.pdf ' . $pic_path . '  PCA_show.png';
-            try {
-                exec($command);
-            } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-            }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'PCA_*.pdf ' . $pic_path . 'PCA_show.png';
+        try {
+            exec($command);
+        } catch (\Exception $e) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
+
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
         $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
         try {
@@ -99,14 +98,11 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $pic_path . 'volcano_*.pdf')) {
-            dd("baba");
-            $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . ' volcano_show.png';
-            try {
-                exec($command);
-            } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-            }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_show.png';
+        try {
+            exec($command);
+        } catch (\Exception $e) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = 'Rscript /home/zhangqb/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v 75';
@@ -115,15 +111,13 @@ class ResultController extends Controller
         } catch (\Exception $e) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $pic_path . 'volcano_*.pdf')) {
-            $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_allgroups.pdf ' . $pic_path . 'heatmap_allgroups.png';
-            $command1 = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_top.png';
-            try {
-                exec($command);
-                exec($command1);
-            } catch (\Exception $e) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-            }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_allgroups.pdf ' . $pic_path . 'heatmap_allgroups.png';
+        $command1 = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_top.png';
+        try {
+            exec($command);
+            exec($command1);
+        } catch (\Exception $e) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
 
         return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
