@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\UpdateController;
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\UpdateController;
 use Illuminate\Http\Request;
 
 class UpdateController extends Controller
