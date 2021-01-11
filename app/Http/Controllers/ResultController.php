@@ -28,7 +28,11 @@ class ResultController extends Controller
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             }
-            #dd($command);
+            exec("ls", $result, $set);
+            dd($result);
+
+            dd($command);
+
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $this->showresultrna($outpath);
                 #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
@@ -51,7 +55,7 @@ class ResultController extends Controller
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($omics == "lipidomics") {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                #dd($command);
+                dd($command);
                 try {
                     exec($command);
                 } catch (\Exception $e) {
@@ -63,7 +67,7 @@ class ResultController extends Controller
                 }
             } else {
                 $command = 'Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                #dd($command);
+                dd($command);
                 try {
                     exec($command);
                 } catch (\Exception $e) {
