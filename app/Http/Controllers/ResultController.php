@@ -28,8 +28,8 @@ class ResultController extends Controller
             } else {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             }
-            exec($command, $result, $set);
-            dd($result);
+            #exec($command, $result, $set);
+            #dd($result);
 
             #dd($command);
 
