@@ -31,14 +31,14 @@ class ResultController extends Controller
             #exec("ls", $result, $set);
             #dd($result);
 
-            dd($command);
+            #dd($command);
 
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $this->showresultrna($outpath);
                 #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
             } else {
                 exec($command, $ooout, $flag);
-                dd($flag);
+                dd($ooout);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
                 }
@@ -120,6 +120,7 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
         exec($command1, $ooout, $flag);
+        dd($ooout);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
