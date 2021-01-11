@@ -24,13 +24,14 @@ class ResultController extends Controller
             $outpath = $outpath . $groupsLevel . $control . '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($data_type == "rna") {
-                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '" &';
             } else {
-                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = 'Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '" &';
             }
             #dd($command);
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                $this->showresultrna($outpath);
+                #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
             } else {
                 try {
                     exec($command);
