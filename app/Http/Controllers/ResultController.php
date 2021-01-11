@@ -38,6 +38,7 @@ class ResultController extends Controller
                 #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
             } else {
                 exec($command,$ooout,$flag);
+                dd($flag);
                 if ($flag == 1){
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
                 }
