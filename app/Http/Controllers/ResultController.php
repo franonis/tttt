@@ -124,7 +124,7 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-
+        dd($path . 'results/');
         return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
 
     }
