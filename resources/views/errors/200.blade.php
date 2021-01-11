@@ -38,7 +38,8 @@
         <div class="container">
             <div class="content">
                 <div class="title">{!! $msg !!}</div>
-                <a href="{{ url()->previous() }}"><i class="fa fa-arrow-circle-left">{!! $back !!}</i></a>
+                <a href="{{ url('/') }}">
+                        <button class="button button-primary button-circle button-giant button-longshadow"><i class="fa fa-home"></i></button></a>
             </div>
         </div>
     </body>
