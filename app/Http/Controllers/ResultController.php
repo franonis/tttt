@@ -35,7 +35,7 @@ class ResultController extends Controller
 
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
-                    return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
+                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                 }
                 #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
             } else {
@@ -46,7 +46,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
-                        return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
+                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                     }
                     #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath]);
                 }
