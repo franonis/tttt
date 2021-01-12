@@ -164,7 +164,7 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'PCA_*.pdf ' . $pic_path . 'PCA_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/PCA_*.pdf ' . $pic_path . 'MARresults/PCA_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -176,9 +176,19 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_*.pdf ' . $pic_path . 'MARresults/volcano_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
         #热图
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e 75';
         #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/heatmap*.pdf ' . $pic_path . 'MARresults/heatmap_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -190,9 +200,19 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup*.pdf ' . $pic_path . 'headgroup/headgroup_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
         #FAchain
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "FA_info" -w T';
 
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
