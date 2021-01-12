@@ -37,9 +37,10 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">{!! $msg !!}</div>
+                <div class="title">错了</div>
                 <a href="{{ url('/') }}">
                         <button class="button button-primary button-circle button-giant button-longshadow"><i class="fa fa-home"></i></button></a>
+                <p>{!! $msg !!}</p>
             </div>
         </div>
     </body>
