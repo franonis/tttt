@@ -12,10 +12,6 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="{{ Request::path()=='/' ? 'active':'' }}">
-          <a href="{{ url('/') }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Home</a>
-        </li>
-
         <li class="dropdown{{ (preg_match('/upload/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('upload') }}">Upload </a>
         </li>
@@ -24,12 +20,6 @@
         </li>
         <li id="disease" class="dropdown {{ ( preg_match('/disease/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('disease') }}">Search Disease </a>
-        </li>
-        <li id="statistics" class="dropdown {{ ( preg_match('/statistics/', Request::path()) ) ? ' active':'' }}">
-          <a href="{{ url('statistics') }}">Statistics </a>
-        </li>
-        <li id="help" class="dropdown {{ ( preg_match('/help/', Request::path()) ) ? ' active':'' }}">
-          <a href="{{ url('help') }}">Help </a>
         </li>
         <li id="about" class="dropdown{{ ( preg_match('/about/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('about') }}">About</a>

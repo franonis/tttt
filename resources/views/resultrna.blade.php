@@ -23,7 +23,7 @@
                     <li class="layui-this">Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">
-                    <div class="layui-tab-item"><div class="col-md-2">
+                    <div class="layui-tab-item layui-show"><div class="col-md-2">
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="layui-tab-item layui-show">
+                    <div class="layui-tab-item">
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10">
@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <small>
-                                        <input id="v" type="text" name="v" value="{{$v}}" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="v" type="text" name="v" value="{{ $v }}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-3">
