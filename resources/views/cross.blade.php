@@ -21,7 +21,7 @@
                                 <label class="layui-form-label">Data Type：</label>
                                 <div class="layui-input-block">
                                   <input type="radio" name="omics" value="lipidomics" title="Lipidomics" checked="">
-                                  <input type="radio" name="omics" value="metabonomics" title="Metabonomics">
+                                  <input type="radio" name="omics" value="metabonomics" title="Metabolomics">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -51,8 +51,8 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data Type：</label>
                                 <div class="layui-input-block">
-                                  <input type="radio" name="omics" value="microarray" title="RNA-seq/microarray" checked="">
-                                  <input type="radio" name="omics" value="proteinomics" title="Proteinomics">
+                                  <input type="radio" name="omics" value="rna" title="Transcriptomics" checked="">
+                                  <input type="radio" name="omics" value="proteinomics" title="Proteomics">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -91,7 +91,7 @@
                     <label class="layui-form-label">Data Type：</label>
                     <div class="layui-input-block">
                         <input type="radio" name="omicsl" value="lipidomics" title="Lipidomics" checked="">
-                        <input type="radio" name="omicsl" value="metabonomics" title="Metabonomics">
+                        <input type="radio" name="omicsl" value="metabonomics" title="Metabolomics">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -113,8 +113,8 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">Data Type：</label>
                     <div class="layui-input-block">
-                        <input type="radio" name="omicsr" value="microarray" title="RNA-seq/microarray" checked="">
-                        <input type="radio" name="omicsr" value="proteinomics" title="Proteinomics">
+                        <input type="radio" name="omicsr" value="microarray" title="Transcriptomics " checked="">
+                        <input type="radio" name="omicsr" value="proteinomics" title="Proteomics">
                     </div>
                 </div>
                 <div class="layui-form-item">
