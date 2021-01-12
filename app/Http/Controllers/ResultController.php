@@ -28,16 +28,10 @@ class ResultController extends Controller
             } else {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n ' . $normalization . ' -t MiAr -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             }
-            #exec($command, $result, $set);
-            #dd($result);
-
-            #dd($command);
-
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
                     return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                 }
-                #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath . 'results/']);
             } else {
                 exec($command, $ooout, $flag);
                 #dd($ooout);
@@ -48,7 +42,6 @@ class ResultController extends Controller
                     if ($this->showresultrna($outpath)) {
                         return view('resultrna', ['title' => '上传数据', 'path' => $outpath . 'results/']);
                     }
-                    #return view('resultrna_mid', ['title' => '上传数据', 'path' => $outpath]);
                 }
             }
         } else {
@@ -58,25 +51,40 @@ class ResultController extends Controller
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($omics == "lipidomics") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                dd($command);
-                exec($command, $ooout, $flag);
-                if ($flag == 1) {
-                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-                }
+
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                    $this->showresultlip($outpath);
-                    #return view('resultlip', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                    if ($this->showresultlip($outpath)) {
+                        return view('resultlip', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                    }
+                } else {
+                    exec($command, $ooout, $flag);
+                    #dd($ooout);
+                    if ($flag == 1) {
+                        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+                    }
+                    if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                        if ($this->showresultlip($outpath)) {
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                        }
+                    }
                 }
             } else {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                dd($command);
-                exec($command, $ooout, $flag);
-                if ($flag == 1) {
-                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-                }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                    $this->showresultmet($outpath);
-                    #return view('resultmet', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                    if ($this->showresultmet($outpath)) {
+                        return view('resultmet', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                    }
+                } else {
+                    exec($command, $ooout, $flag);
+                    #dd($ooout);
+                    if ($flag == 1) {
+                        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+                    }
+                    if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                        if ($this->showresultmet($outpath)) {
+                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath . 'results/']);
+                        }
+                    }
                 }
             }
         }
@@ -184,7 +192,7 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultlip', ['title' => '上传数据', 'path' => $path]);
+        return 1;
 
     }
 
@@ -225,7 +233,7 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultmet', ['title' => '上传数据', 'path' => $path]);
+        return 1;
     }
 
     public function getcrossPage(Request $request)
