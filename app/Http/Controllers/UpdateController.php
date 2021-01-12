@@ -34,7 +34,7 @@ class UpdateController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p 0.1 -u 20';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
