@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 #Route::get('/', [TestController]'TestController@showwelcome');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('upload');
 });
 Route::get('/cross', function () {
     return view('cross');
