@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <small>
-                                        <input id="f" type="text" name="f" value="2.0" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="f" type="text" name="f" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-2">
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <small>
-                                        <input id="p" type="text" name="p" value="0.1" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-2">
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <small>
-                                        <input id="top" type="text" name="top" value="20" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="u" type="text" name="u" value="{{$u}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-3">
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <small>
-                                        <input id="top" type="text" name="top" value="75" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="v" type="text" name="v" value="{{$v}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-3">

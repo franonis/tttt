@@ -21,7 +21,7 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
 
-        return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path]);
     }
 
     public function updateVolcano(Request $request)
@@ -29,12 +29,12 @@ class UpdateController extends Controller
         $path = $request->path;
         $f = $request->f;
         $p = $request->p;
-        $u = $request->top;
+        $u = $request->u;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p 0.1 -u 20';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u . '';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
@@ -44,13 +44,13 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'f' => $f, 'p' => $p, 'u' => $u]);
     }
     public function updateHeatmap(Request $request)
     {
         #dd($request);
         $path = $request->path;
-        $v = $request->top;
+        $v = $request->v;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
@@ -64,7 +64,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultrna', ['title' => '上传数据', 'path' => $path . 'results/']);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'v' => $v]);
     }
 
 }
