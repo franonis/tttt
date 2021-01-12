@@ -36,7 +36,7 @@ class ResultController extends Controller
                 exec($command, $ooout, $flag);
                 #dd($ooout);
                 if ($flag == 1) {
-                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
@@ -60,7 +60,7 @@ class ResultController extends Controller
                     exec($command, $ooout, $flag);
                     #dd($ooout);
                     if ($flag == 1) {
-                        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+                        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                     }
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                         if ($this->showresultlip($outpath)) {
@@ -69,7 +69,7 @@ class ResultController extends Controller
                     }
                 }
             } else {
-                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultmet($outpath)) {
                         return view('resultmet', ['title' => '上传数据', 'path' => $outpath . 'results/']);
@@ -78,7 +78,7 @@ class ResultController extends Controller
                     exec($command, $ooout, $flag);
                     #dd($ooout);
                     if ($flag == 1) {
-                        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+                        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                     }
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                         if ($this->showresultmet($outpath)) {
@@ -100,41 +100,41 @@ class ResultController extends Controller
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'PCA_*.pdf ' . $pic_path . 'PCA_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v 75';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_allgroups.pdf ' . $pic_path . 'heatmap_allgroups.png';
         $command1 = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_top.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         exec($command1, $ooout, $flag);
         #dd($ooout);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #dd($path . 'results/');
         return 1;
@@ -162,35 +162,35 @@ class ResultController extends Controller
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #火山图
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s F -p "' . $pic_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #热图
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e 75';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #head group
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w T';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #FAchain
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "FA_info" -w T';
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         return 1;
 
@@ -217,21 +217,21 @@ class ResultController extends Controller
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #火山图
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s F -p "' . $pic_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #热图
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e 75';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         return 1;
     }
