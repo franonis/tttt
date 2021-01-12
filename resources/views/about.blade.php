@@ -10,6 +10,7 @@
 @section('navbar')
   @include('partials.navbar')
 @endsection
+@section('content')
 <div class="container content" style="margin-top: 40px;">
     <div class="row" style="width: 100%">
         <div class="panel panel-info regionbox" style="width: 100%">
