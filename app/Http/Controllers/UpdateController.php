@@ -30,6 +30,7 @@ class UpdateController extends Controller
         $f = $request->f;
         $p = $request->p;
         $u = $request->u;
+        $v = $request->v;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
 
@@ -50,6 +51,9 @@ class UpdateController extends Controller
     {
         #dd($request);
         $path = $request->path;
+        $f = $request->f;
+        $p = $request->p;
+        $u = $request->u;
         $v = $request->v;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';

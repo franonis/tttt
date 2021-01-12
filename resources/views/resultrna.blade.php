@@ -48,6 +48,7 @@
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updateVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="v" value="{{ $v }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Set fc_thresh</h4>
                                     </div>
@@ -95,6 +96,9 @@
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="f" value="{{ $f }}" style="display: none;">
+                                    <input name="p" value="{{ $p }}" style="display: none;">
+                                    <input name="u" value="{{ $u }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Set top number</h4>
                                     </div>
