@@ -50,7 +50,7 @@ class ResultController extends Controller
             $outpath = $outpath . $groupsLevel . $firstline . '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($omics == "lipidomics") {
-                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . ' -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
 
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultlip($outpath)) {
