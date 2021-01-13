@@ -122,8 +122,8 @@ class UploadController extends Controller
 #设置例子的参数
     public function examplecanshu(Request $request)
     {
-        $file_data = ['lipidomics' => 'HANlipid_tidy.csv', 'lipidomicscos' => 'Cos7_integ_2.csv', 'metabonomics' => 'HANgene_tidy.CSV', 'rnahan' => 'HANgene_tidy_geneid_allgroups.CSV', 'rna' => 'gene_tidy.CSV', 'proteinomics' => 'lipid_tidy2.CSV'];
-        $file_desc = ['lipidomics' => 'HANsampleList_lipid.CSV', 'lipidomicscos' => 'Cos7_integ_sampleList.csv', 'metabonomics' => 'HANsampleList.CSV', 'rnahan' => 'HANsampleList_allgroups.CSV', 'rna' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
+        $file_data = ['lipidomics' => 'HANlipid_tidy.csv', 'lipidomicscos' => 'Cos7_integ_2.csv', 'metabonomics' => 'metabolites_tidy2.csv', 'rnahan' => 'HANgene_tidy_geneid_allgroups.CSV', 'rna' => 'gene_tidy.CSV', 'proteinomics' => 'lipid_tidy2.CSV'];
+        $file_desc = ['lipidomics' => 'HANsampleList_lipid.CSV', 'lipidomicscos' => 'Cos7_integ_sampleList.csv', 'metabonomics' => 'sampleList_lip.csv', 'rnahan' => 'HANsampleList_allgroups.CSV', 'rna' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
         #foreach ($file_data as $omics => $file) {
         #    $path_datafile = 'uploads/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]);
         #    $path_descfile = 'uploads/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]);
