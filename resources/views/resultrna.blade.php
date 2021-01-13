@@ -23,7 +23,8 @@
                     <li class="layui-this">Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show"><div class="col-md-2">
+                    <div class="layui-tab-item layui-show">
+                        <div class="col-md-2">
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">

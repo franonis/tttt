@@ -7,23 +7,6 @@ use Illuminate\Http\Request;
 
 class UpdateController extends Controller
 {
-    public function updatePCA(Request $request)
-    {
-        $path = $request->path;
-        $f = $request->f;
-        $p = $request->p;
-        $u = $request->u;
-
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
-        try {
-            exec($command);
-        } catch (\Exception $e) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-        }
-
-        return view('resultrna', ['title' => '上传数据', 'path' => $path]);
-    }
-
     public function updaternaVolcano(Request $request)
     {
         $path = $request->path;
@@ -128,5 +111,22 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         return view('resultrna', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e]);
+    }
+
+    public function updatelipfa(Request $request)
+    {
+        $path = $request->path;
+        $f = $request->f;
+        $p = $request->p;
+        $u = $request->u;
+
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/rnaVolcanoPlot.R -r "' . $path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
+        try {
+            exec($command);
+        } catch (\Exception $e) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+        }
+
+        return view('resultrna', ['title' => '上传数据', 'path' => $path]);
     }
 }
