@@ -54,7 +54,7 @@ class UpdateController extends Controller
         return view('resultrna', ['title' => '上传数据', 'path' => $path, 'f' => $f, 'p' => $p, 'u' => $u, 'v' => $v]);
     }
 #, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $
-    public function updatemetVolcano(Request $request)
+    public function updatelipVolcano(Request $request)
     {
         $path = $request->path;
         $s = $request->s;
@@ -83,7 +83,7 @@ class UpdateController extends Controller
         }
         return view('resultrna', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e]);
     }
-    public function updatemetHeatmap(Request $request)
+    public function updatelipHeatmap(Request $request)
     {
         #dd($request);
         $path = $request->path;
