@@ -54,8 +54,10 @@ Route::group(['prefix' => '/update'], function () {
     Route::post('/cross', [UpdateController::class, 'getcrossPage']);
     Route::get('/huatu', [UpdateController::class, 'huatu']);
     Route::get('/updatePCA', [UpdateController::class, 'updatePCA']);
-    Route::get('/updateHeatmap', [UpdateController::class, 'updateHeatmap']);
-    Route::get('/updateVolcano', [UpdateController::class, 'updateVolcano']);
+    Route::get('/updaternaHeatmap', [UpdateController::class, 'updaternaHeatmap']);
+    Route::get('/updaternaVolcano', [UpdateController::class, 'updaternaVolcano']);
+    Route::get('/updatemetHeatmap', [UpdateController::class, 'updatemetHeatmap']);
+    Route::get('/updatemetVolcano', [UpdateController::class, 'updatemetVolcano']);
 });
 
 Route::group(['prefix' => '/result'], function () {

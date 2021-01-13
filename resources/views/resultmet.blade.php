@@ -24,67 +24,20 @@
                     <li>Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">
-                    <div class="layui-tab-item">
-                        <div class="col-md-2">
+                    <div class="layui-tab-item layui-show"><div class="col-md-2">
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <div class="col-md-2">
-                                    <h4>Set m value</h4>
+                                <div class="col-md-6">
                                 </div>
-                                <div class="col-md-4">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="{{ asset('images/pca.png') }}" style="height:50%;width: 60%;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="layui-tab-item layui-show">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
-                            <div class="col-md-12">
-                                <div class="col-md-2">
-                                    <h4>Set m value</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Show lipid class</h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="radio" name="21" value="T" title="T" checked="">T
-                                    <input type="radio" name="22" value="F" title="F">F
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Volcano result</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <img src="{{ asset('images/huoshan.png') }}" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
@@ -94,34 +47,115 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
+                                <form  id="Volcano" class="layui-form" action="/update/metupdateVolcano">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="e" value="{{ $e }}" style="display: none;">
+                                    <div class="col-md-2">
+                                        <h4>if show lipid class</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="s" type="text" name="s" value="{{$s}}" style="width:50px; display:inline;" class="form-control" >only for "T" or "F"
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>if ignore subclass</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="w" type="text" name="w" value="{{$w}}" style="width:50px; display:inline;" class="form-control" >only for "T" or "F"
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>if paired</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="b" type="text" name="b" value="{{$b}}" style="width:50px; display:inline;" class="form-control" >only for "T" or "F"
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set p type</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="x" type="text" name="x" value="{{$x}}" style="width:50px; display:inline;" class="form-control" >only for "raw" or "fdr"
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set FC thresh</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set p thresh</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <small>
+                                        <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                        </small>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Set top number</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small>
+                                        <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                                        </small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="downloadright" class="layui-btn">Download</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                    </div>
+                                </form>
                                 <div class="col-md-2">
-                                    <h4>Set m value</h4>
+                                    <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
                                 </div>
-                                <div class="col-md-2">
-                                    <h4>Set top number</h4>
-                                </div>
-                                <div class="col-md-4">
-                                    <small>
-                                    <input id="hit_number" type="text" name="hit_number" value="5" style="width:50px; display:inline;" class="form-control" ></input>
-                                    </small>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="col-md-12">
+                                <form  id="Heatmap" class="layui-form" action="/update/metupdateHeatmap">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="s" value="{{ $s }}" style="display: none;">
+                                    <input name="b" value="{{ $b }}" style="display: none;">
+                                    <input name="x" value="{{ $x }}" style="display: none;">
+                                    <input name="j" value="{{ $j }}" style="display: none;">
+                                    <input name="k" value="{{ $k }}" style="display: none;">
+                                    <input name="m" value="{{ $m }}" style="display: none;">
+                                    <input name="w" value="{{ $w }}" style="display: none;">
+                                    <div class="col-md-2">
+                                        <h4>Set e number</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <small>
+                                        <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
+                                        </small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="downloadright" class="layui-btn">Download</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                    </div>
+                                </form>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
-                                <div class="col-md-10">
-                                    <img src="{{ asset('images/heatmap_top75_all.png') }}" style="height:50%;width: 60%;">
+                                <div class="col-md-5">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_top.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>

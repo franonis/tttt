@@ -117,8 +117,11 @@
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-5">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_top.png" style="height:50%;width: 60%;">
+                                </div>
+                                <div class="col-md-5">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_allgroups.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
