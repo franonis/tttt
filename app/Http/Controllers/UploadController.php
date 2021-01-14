@@ -142,8 +142,8 @@ class UploadController extends Controller
         if ($exam_omics == "rna" || $exam_omics == "rnahan") {
             $omics = "rna";
         }
-        $path_datafile = 'uploads/' . $file_data["metabonomics"];
-        $path_descfile = 'uploads/' . $file_desc["metabonomics"];
+        $path_datafile = 'uploads/' . $omics . $file_data["metabonomics"] . md5($file_data["metabonomics"]);
+        $path_descfile = 'uploads/' . $omics . $file_desc["metabonomics"] . md5($file_desc["metabonomics"]);
         is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
         is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
 
