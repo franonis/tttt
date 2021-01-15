@@ -65,10 +65,15 @@
                     <h4>Control Group </h4>
                 </div>
                 <div class="col-md-9">
-                    <input id="kong" type="radio" value="" name="control" > <label> </label><br>
-                    @foreach($groupsLevels as $k=>$i )
-                        <input id="{{$i}}" type="radio" value="{{$i}}" name="control" checked> <label>{{$i}}</label><br>
-                    @endforeach
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                          <select name="control">
+                            @foreach($groupsLevels as $k=>$i )
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -89,9 +94,11 @@
                     <h4>lip Field</h4>
                 </div>
                 <div class="col-md-9">
-                    @foreach($firstlines as $k=>$j )
-                        <input id="{{$j}}" type="radio" value="{{$j}}" name="firstline" checked> <label>{{$j}}</label><br>
-                    @endforeach
+                    <select name="firstline">
+                        @foreach($firstlines as $k=>$i )
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
