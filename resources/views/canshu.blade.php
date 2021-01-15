@@ -48,6 +48,15 @@
                 </div>
                 <div class="col-md-9">
                     <input id="all_together" type="radio" value="all_together" name="analopt" checked> <label>all_together</label><br>
+                      <div class="layui-form-item">
+                        <div class="layui-input-block">
+                          <select name="analopt" lay-filter="aihao">
+                            @foreach($groupsLevels as $k=>$i )
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                      </div>
                     @foreach($groupsLevels as $k=>$i )
                         <input id="{{$i}}" type="radio" value="{{$i}}" name="analopt"> <label>{{$i}}</label><br>
                     @endforeach

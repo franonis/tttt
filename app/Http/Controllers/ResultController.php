@@ -22,7 +22,7 @@ class ResultController extends Controller
         if ($omics == "Transcriptomics") {
             
             $normalization = $request->normalization;
-            $outpath = $outpath . $control . $control . '/'; #输出文件放一个对比组名命名的文件
+            $outpath = $outpath . $analopt . $control . '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($data_type == "rna") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $analopt . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
@@ -48,7 +48,7 @@ class ResultController extends Controller
         } else {
             $firstline = $request->firstline;
             $delodd = $request->delodd;
-            $outpath = $outpath . $control . $firstline . '/'; #输出文件放一个对比组名命名的文件
+            $outpath = $outpath . $analopt . $control . '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
             if ($omics == "Lipidomics") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $analopt . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
