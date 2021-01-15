@@ -210,7 +210,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <small>
-                                        <input id="g" type="text" name="g" value="{{$g}}" style="width:50px; display:inline;" class="form-control" >only for "FA_info" or "all_info"
+                                        <select name="g">
+                                            <option value="FA_info">FA_info</option>
+                                            <option value="all_info">all_info</option>
+                                        </select>
                                         </small>
                                     </div>
                                     <div class="col-md-2">
@@ -218,7 +221,10 @@
                                     </div>
                                     <div class="col-md-4">
                                         <small>
-                                        <input id="w" type="text" name="w" value="{{$w}}" style="width:50px; display:inline;" class="form-control" >only for "T" or "F"
+                                        <select name="w">
+                                            <option value="T">T</option>
+                                            <option value="F">F</option>
+                                        </select>
                                         </small>
                                     </div>
                                     <div class="col-md-3">
@@ -230,7 +236,8 @@
                                 </form>
                                 @foreach($fapng as $k=>$i )
                                     <div class="col-md-2">
-                                        <h4>Lipid Fatty acid Statisics</h4>
+                                        <h4>Lipid Fatty acid Statisics{{ $i }}</h4>
+                                        {{$k}}
                                     </div>
                                     <div class="col-md-10">
                                         <img src="http://www.lintwebomics.info/../../../..{{ $i }}" style="height:50%;width: 60%;">
