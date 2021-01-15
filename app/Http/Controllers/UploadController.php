@@ -143,12 +143,9 @@ class UploadController extends Controller
 
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$exam_omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
-            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
-                try {
-                    exec($command);
-                } catch (\Exception $e) {
-                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
-                }
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel.csv');
@@ -165,12 +162,9 @@ class UploadController extends Controller
         } else {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
             #dd($command);
-            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel_RNA.csv')) {
-                try {
-                    exec($command);
-                } catch (\Exception $e) {
-                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR']);
-                }
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel_RNA.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
