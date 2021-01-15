@@ -240,6 +240,10 @@ class ResultController extends Controller
         $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/$file ' . $pic_path . 'FAchainVisual/${file%%.*}.png; done';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
+            dd($command);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }else{
+            dd($command);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
