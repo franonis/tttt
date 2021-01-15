@@ -48,9 +48,11 @@
 
                 </div>
                 <div class="col-md-9">
-                    @foreach($groupsLevels as $k=>$i )
-                        <input id="{{$i}}" type="radio" value="{{$i}}" name="analopt" checked> <label>{{$i}}</label><br>
-                    @endforeach
+                    <select name="analopt">
+                        @foreach($groupsLevels as $k=>$i )
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -60,9 +62,11 @@
                     <h4>Control group</h4>
                 </div>
                 <div class="col-md-9">
-                    @foreach($groupsLevels as $k=>$j )
-                        <input id="{{$j}}" type="radio" value="{{$j}}" name="control" checked> <label>{{$j}}</label><br>
-                    @endforeach
+                    <select name="control">
+                        @foreach($groupsLevels as $k=>$i )
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
