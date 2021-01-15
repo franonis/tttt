@@ -190,6 +190,7 @@ class ResultController extends Controller
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/heatmap*.pdf ' . $pic_path . 'MARresults/heatmap_show.png';
         exec($command, $ooout, $flag);
+        dd($ooout);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
