@@ -83,7 +83,7 @@
                   </tr><tr>
                     <td><input type="radio" name="exampleomics" value="rnahan" title="Transcriptomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy_geneid_allgroups.CSV" >HANgene_tidy_geneid_allgroups.CSV</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_allgroups.CSV" >HANsampleList_allgroups.CSV</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="proteinomics" title="Proteomics" checked=""></td><td><a href="{{ url('download/example').'/' }}/proteins_Depletion_tidy.csv" >/proteins_Depletion_tidy.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
+                    <td><input type="radio" name="exampleomics" value="proteinomics" title="Proteomics" checked=""></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv" >proteins_Depletion_tidy.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
                   </tr>
                 </tbody>
             </table>
