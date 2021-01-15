@@ -31,7 +31,7 @@
                                 <div class="col-md-6">
                                 </div>
                                 <div class="col-md-6">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                    <button id="downloadright" href="{{ url('download/png/')}}{{ $path }}results/PCA_show.png" class="layui-btn" type="submit">Download</button>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
