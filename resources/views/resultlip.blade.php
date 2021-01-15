@@ -160,7 +160,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-5">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_top.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
