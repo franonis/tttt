@@ -44,11 +44,24 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
                 <div class="col-md-3">
+                    <h4>analysis Option</h4>
+                </div>
+                <div class="col-md-9">
+                    <input id="all_together" type="radio" value="all_together" name="analopt" checked> <label>{{$i}}</label><br>
+                    @foreach($groupsLevels as $k=>$i )
+                        <input id="{{$i}}" type="radio" value="{{$i}}" name="analopt"> <label>{{$i}}</label><br>
+                    @endforeach
+                </div>
+            </div>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
                     <h4>Control Group </h4>
                 </div>
                 <div class="col-md-9">
+                    <input id="kong" type="radio" value="" name="control" > <label> </label><br>
                     @foreach($groupsLevels as $k=>$i )
-                        <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel" checked> <label>{{$i}}</label><br>
+                        <input id="{{$i}}" type="radio" value="{{$i}}" name="control" checked> <label>{{$i}}</label><br>
                     @endforeach
                 </div>
             </div>

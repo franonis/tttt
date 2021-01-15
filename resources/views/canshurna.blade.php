@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-9">
                     @foreach($groupsLevels as $k=>$i )
-                        <input id="{{$i}}" type="radio" value="{{$i}}" name="groupsLevel" checked> <label>{{$i}}</label><br>
+                        <input id="{{$i}}" type="radio" value="{{$i}}" name="analopt" checked> <label>{{$i}}</label><br>
                     @endforeach
                 </div>
             </div>
