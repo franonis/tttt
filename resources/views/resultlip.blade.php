@@ -236,8 +236,7 @@
                                 </form>
                                 @foreach($fapng as $k=>$i )
                                     <div class="col-md-2">
-                                        <h4>Lipid Fatty acid Statisics{{ $i }}</h4>
-                                        {{$k}}
+                                        <h4>Lipid Fatty acid Statisics</h4>
                                     </div>
                                     <div class="col-md-10">
                                         <img src="../../../..{{ $i }}" style="height:50%;width: 60%;">
