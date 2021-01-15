@@ -56,7 +56,7 @@ class ResultController extends Controller
 
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultlip($outpath)) {
-                        $command='ls /home/zhangqb/tttt/public/'.$outpath.'result/FAchainVisual/*.png';
+                        $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/*.png';
                         exec($command,$ooout,$flag);
                         dd($ooout);
                         return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info"]);
