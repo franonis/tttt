@@ -47,19 +47,16 @@
                     <h4>analysis Option</h4>
                 </div>
                 <div class="col-md-9">
-                    <input id="all_together" type="radio" value="all_together" name="analopt" checked> <label>all_together</label><br>
-                      <div class="layui-form-item">
+                    <div class="layui-form-item">
                         <div class="layui-input-block">
-                          <select name="analopt" lay-filter="aihao">
+                          <select name="analopt">
+                                <option value="all_together" selected="">all_together</option>
                             @foreach($groupsLevels as $k=>$i )
                                 <option value="{{$i}}">{{$i}}</option>
                             @endforeach
                           </select>
                         </div>
-                      </div>
-                    @foreach($groupsLevels as $k=>$i )
-                        <input id="{{$i}}" type="radio" value="{{$i}}" name="analopt"> <label>{{$i}}</label><br>
-                    @endforeach
+                    </div>
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
