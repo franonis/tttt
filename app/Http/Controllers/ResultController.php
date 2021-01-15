@@ -239,6 +239,7 @@ class ResultController extends Controller
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
         $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/$file ' . $pic_path . 'FAchainVisual/${file%%.*}.png; done';
         exec($command, $ooout, $flag);
+        dd($command);
         if ($flag == 1) {
             dd($command);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
