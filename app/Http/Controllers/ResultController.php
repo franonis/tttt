@@ -231,14 +231,11 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
-        $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.*}.png; done';
+        $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
         #exec($command, $ooout, $flag);
-        dd($command);
+        #dd($command);
         if ($flag == 1) {
-            dd($command);
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }else{
-            dd($command);
+            #dd($command);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
