@@ -67,7 +67,7 @@ class UpdateController extends Controller
         $e = $request->e;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        $mar_path = $pic_path . 'MARresults';
+        $mar_path = $pic_path . 'MARresults/';
 
         #火山图Rscript lipVolcanoPlot.R -r "~/temp/" -s F -p "~/temp/results/" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b ' . $b . ' -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
@@ -97,7 +97,7 @@ class UpdateController extends Controller
         $e = $request->e;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        $mar_path = $pic_path . 'MARresults';
+        $mar_path = $pic_path . 'MARresults/';
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -e 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e ' . $e;
         #dd($command);
