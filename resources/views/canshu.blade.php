@@ -47,8 +47,8 @@
                     <h4>analysis Option</h4>
                 </div>
                 <div class="col-md-9">
-                    <input  type="radio" value="all_together" name="analopt"> <label>all_together</label><br>
                     <select name="analopt">
+                            <option value="all_together" selected="">all_together</option>
                         @foreach($groupsLevels as $k=>$i )
                             <option value="{{$i}}">{{$i}}</option>
                         @endforeach
