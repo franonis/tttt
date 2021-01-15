@@ -114,7 +114,7 @@ class UploadController extends Controller
         foreach ($omicsss as $num => $omics) {
             $path_datafile = 'uploads/' . $omics . $file_data[$num] . md5($file_data[$num]);
             $path_descfile = 'uploads/' . $omics . $file_desc[$num] . md5($file_desc[$num]);
-            $outpath = 'uploads/' . $omics . $file_data[$num] . $file_desc[$num] . md5($file_data[$num] . file_desc[$num]) . '/';
+            $outpath = 'uploads/' . $omics . $file_data[$num] . $file_desc[$num] . md5($file_data[$num] . $file_desc[$num]) . '/';
             is_dir($outpath) or mkdir($outpath, 0777, true);
             is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
             is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
