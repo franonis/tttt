@@ -47,16 +47,12 @@
                     <h4>analysis Option</h4>
                 </div>
                 <div class="col-md-9">
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                          <select name="analopt">
-                                <option value="all_together" selected="">all_together</option>
-                            @foreach($groupsLevels as $k=>$i )
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                    </div>
+                    <select name="analopt">
+                            <option value="all_together" selected="">all_together</option>
+                        @foreach($groupsLevels as $k=>$i )
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -65,15 +61,11 @@
                     <h4>Control Group </h4>
                 </div>
                 <div class="col-md-9">
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                          <select name="control">
-                            @foreach($groupsLevels as $k=>$i )
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                    </div>
+                    <select name="control">
+                      @foreach($groupsLevels as $k=>$i )
+                          <option value="{{$i}}">{{$i}}</option>
+                      @endforeach
+                    </select>
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
