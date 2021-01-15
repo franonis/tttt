@@ -132,7 +132,12 @@
 
 <script>
     $(document).ready(function(){
-
+        name =$("input[name='data_type']:checked").val();
+        if (name == "Metabolites" || name == "Proteins" ) {
+            document.getElementById("normalization").style.display="none";
+        }else{
+            document.getElementById("normalization").style.display="block";
+        }
     });
 
     $("#dataType").click(function (){
