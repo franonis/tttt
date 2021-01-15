@@ -220,9 +220,6 @@ class ResultController extends Controller
         if ($flag == 1) {
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }else{
-            #dd($ooout);
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #FAchain
         #for file in *.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.*}.png; done
@@ -230,9 +227,6 @@ class ResultController extends Controller
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            #dd($ooout);
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }else{
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
