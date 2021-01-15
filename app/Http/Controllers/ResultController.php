@@ -238,7 +238,7 @@ class ResultController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
-        $mar_path = $pic_path . 'MARresults';
+        $mar_path = $pic_path . 'MARresults/';
         is_dir($mar_path) or mkdir($mar_path, 0777, true);
         #head
         $headgroup_path = $pic_path . 'headgroup';
