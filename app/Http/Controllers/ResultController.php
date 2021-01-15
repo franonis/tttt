@@ -225,7 +225,7 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return 1;
+        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
 
     }
 
