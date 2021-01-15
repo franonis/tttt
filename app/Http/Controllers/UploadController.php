@@ -109,7 +109,7 @@ class UploadController extends Controller
     public function examplecanshu(Request $request)
     {
         $omicsss = ['a' => 'lipidomics', 'b' => 'lipidomicscos', 'c' => 'Metabolomics', 'd' => 'rnahan', 'e' => 'rna', 'f' => 'proteinomics'];
-        $file_data = ['a' => 'HANlipid_tidy.csv', 'b' => 'Cos7_integ_2.csv', 'c' => 'metabolites_tidy2.csv', 'd' => 'HANgene_tidy_geneid_allgroups.CSV', 'e' => 'gene_tidy.CSV', 'f' => 'lipid_tidy2.CSV'];
+        $file_data = ['a' => 'HANlipid_tidy.csv', 'b' => 'Cos7_integ_2.csv', 'c' => 'metabolites_tidy2.csv', 'd' => 'HANgene_tidy_geneid_allgroups.CSV', 'e' => 'gene_tidy.CSV', 'f' => 'proteins_Depletion_tidy.csv'];
         $file_desc = ['a' => 'HANsampleList_lipid.CSV', 'b' => 'Cos7_integ_sampleList.csv', 'c' => 'sampleList_lip.csv', 'd' => 'HANsampleList_allgroups.CSV', 'e' => 'sampleList.CSV', 'f' => 'sampleList_lip.csv'];
         foreach ($omicsss as $num => $omics) {
             $path_datafile = 'uploads/' . $omics . $file_data[$num] . md5($file_data[$num]);

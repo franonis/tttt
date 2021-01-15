@@ -221,7 +221,7 @@
             <hr>
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <a style="font-size: 180%">Metabonomics/</a>
+                    <a style="font-size: 180%">Metabolomics/</a>
                     <a style="font-size: 180%">proteinomics</a>
                 </div><br>
                 <div class="layui-tab">

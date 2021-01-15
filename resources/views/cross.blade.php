@@ -21,7 +21,7 @@
                                 <label class="layui-form-label">Data Type：</label>
                                 <div class="layui-input-block">
                                   <input type="radio" name="omics" value="lipidomics" title="Lipidomics" checked="">
-                                  <input type="radio" name="omics" value="metabonomics" title="Metabolomics">
+                                  <input type="radio" name="omics" value="Metabolomics" title="Metabolomics">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -91,7 +91,7 @@
                     <label class="layui-form-label">Data Type：</label>
                     <div class="layui-input-block">
                         <input type="radio" name="omicsl" value="lipidomics" title="Lipidomics" checked="">
-                        <input type="radio" name="omicsl" value="metabonomics" title="Metabolomics">
+                        <input type="radio" name="omicsl" value="Metabolomics" title="Metabolomics">
                     </div>
                 </div>
                 <div class="layui-form-item">
