@@ -233,9 +233,8 @@
                                         <h4>Lipid Fatty acid Statisics</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <img src="http://www.lintwebomics.info/../../../..{{ $t }}" style="height:50%;width: 60%;">
+                                        <img src="http://www.lintwebomics.info/../../../..{{ $i }}" style="height:50%;width: 60%;">
                                     </div>
-                                    <option value="{{$i}}">{{$i}}</option>
                                 @endforeach
                             </div>
                         </div>
