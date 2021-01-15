@@ -228,13 +228,15 @@
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
                                     </div>
                                 </form>
-
-                                <div class="col-md-2">
-                                    <h4>Lipid Fatty acid Statisics</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/headgroupcum_show.png" style="height:50%;width: 60%;">
-                                </div>
+                                @foreach($fapng as $k=>$i )
+                                    <div class="col-md-2">
+                                        <h4>Lipid Fatty acid Statisics</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <img src="http://www.lintwebomics.info/../../../..{{ $t }}" style="height:50%;width: 60%;">
+                                    </div>
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -257,7 +259,7 @@
                                     <h4>LION enrichment</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="{{ asset('images/lion.png') }}" style="height:50%;width: 60%;">
+                                    <p>not finished</p>
                                 </div>
                             </div>
                         </div>
