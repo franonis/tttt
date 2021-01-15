@@ -218,6 +218,10 @@ class ResultController extends Controller
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_cum_*.pdf ' . $pic_path . 'headgroup/headgroupcum_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
+            dd($ooout);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }else{
+            dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #FAchain
@@ -234,7 +238,8 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return 1;
+        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command])
+        #return 1;
 
     }
 
