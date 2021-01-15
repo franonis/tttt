@@ -240,7 +240,7 @@
                                         {{$k}}
                                     </div>
                                     <div class="col-md-10">
-                                        <img src="http://www.lintwebomics.info/../../../..{{ $i }}" style="height:50%;width: 60%;">
+                                        <img src="../../../..{{ $i }}" style="height:50%;width: 60%;">
                                     </div>
                                 @endforeach
                             </div>
