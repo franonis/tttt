@@ -58,7 +58,7 @@ class ResultController extends Controller
                     if ($this->showresultlip($outpath)) {
                         $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/*.png';
                         exec($command,$ooout,$flag);
-                        #dd($ooout);
+                        dd($ooout);
 #                        $fapng=explode(" ", $ooout);
                         return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $ooout]);
                     }
