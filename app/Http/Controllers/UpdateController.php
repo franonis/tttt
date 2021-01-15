@@ -81,7 +81,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('resultrna', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e]);
+        return view('result', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e]);
     }
     public function updatelipHeatmap(Request $request)
     {
@@ -110,7 +110,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('resultrna', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e]);
+        return view('result', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e]);
     }
 
     public function updatelipfa(Request $request)
@@ -127,6 +127,6 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
 
-        return view('resultrna', ['title' => '上传数据', 'path' => $path]);
+        return view('result', ['title' => '上传数据', 'path' => $path]);
     }
 }
