@@ -18,7 +18,7 @@ class ResultController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
-        if ($omics == "rna") {
+        if ($omics == "Transcriptomics") {
             $control = $request->control;
             $normalization = $request->normalization;
             $outpath = $outpath . $groupsLevel . $control . '/'; #输出文件放一个对比组名命名的文件
@@ -49,7 +49,7 @@ class ResultController extends Controller
             $delodd = $request->delodd;
             $outpath = $outpath . $groupsLevel . $firstline . '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
-            if ($omics == "lipidomics") {
+            if ($omics == "Lipidomics") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $groupsLevel . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $groupsLevel . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
 
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
