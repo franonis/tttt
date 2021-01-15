@@ -57,10 +57,10 @@ class ResultController extends Controller
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultlip($outpath)) {
                         $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/*.png';
-                        exec($command,$ooout,$flag);
-                        dd($command);
+                        exec($command,$png,$flag);
+                        dd($png);
 #                        $fapng=explode(" ", $ooout);
-                        return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $ooout]);
+                        return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                     }
                 } else {
                     exec($command, $ooout, $flag);
@@ -70,10 +70,10 @@ class ResultController extends Controller
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                         if ($this->showresultlip($outpath)) {
                             $command='ls /home/zhangqb/tttt/public'.$outpath.'result/FAchainVisual/*.png';
-                            exec($command,$ooout,$flag);
+                            exec($command,$png,$flag);
                             #dd($ooout);
 #                            $fapng=explode(" ", $ooout);
-                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $ooout]);
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }
                     }
                 }
