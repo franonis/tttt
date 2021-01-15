@@ -108,9 +108,9 @@ class UploadController extends Controller
 #设置例子的参数
     public function examplecanshu(Request $request)
     {
-        #$omicsss = ['a' => 'Lipidomics', 'b' => 'Lipidomicscos', 'c' => 'Metabolomics', 'd' => 'Transcriptomicshan', 'e' => 'Transcriptomics', 'f' => 'proteinomics'];
-        $file_data = ['Lipidomics' => 'HANlipid_tidy.csv', 'Lipidomicscos' => 'Cos7_integ_2.csv', 'Metabolomics' => 'metabolites_tidy2.csv', 'Transcriptomicshan' => 'HANgene_tidy_geneid_allgroups.CSV', 'Transcriptomics' => 'gene_tidy.CSV', 'proteinomics' => 'proteins_Depletion_tidy.csv'];
-        $file_desc = ['Lipidomics' => 'HANsampleList_lipid.CSV', 'Lipidomicscos' => 'Cos7_integ_sampleList.csv', 'Metabolomics' => 'sampleList_lip.csv', 'Transcriptomicshan' => 'HANsampleList_allgroups.CSV', 'Transcriptomics' => 'sampleList.CSV', 'proteinomics' => 'sampleList_lip.csv'];
+        #$omicsss = ['a' => 'Lipidomics', 'b' => 'Lipidomicscos', 'c' => 'Metabolomics', 'd' => 'Transcriptomicshan', 'e' => 'Transcriptomics', 'f' => 'Proteomics'];
+        $file_data = ['Lipidomics' => 'HANlipid_tidy.csv', 'Lipidomicscos' => 'Cos7_integ_2.csv', 'Metabolomics' => 'metabolites_tidy2.csv', 'Transcriptomicshan' => 'HANgene_tidy_geneid_allgroups.CSV', 'Transcriptomics' => 'gene_tidy.CSV', 'Proteomics' => 'proteins_Depletion_tidy.csv'];
+        $file_desc = ['Lipidomics' => 'HANsampleList_lipid.CSV', 'Lipidomicscos' => 'Cos7_integ_sampleList.csv', 'Metabolomics' => 'sampleList_lip.csv', 'Transcriptomicshan' => 'HANsampleList_allgroups.CSV', 'Transcriptomics' => 'sampleList.CSV', 'Proteomics' => 'sampleList_lip.csv'];
         #foreach ($omicsss as $num => $omics) {
         #    $path_datafile = 'uploads/' . $omics . $file_data[$num] . md5($file_data[$num]);
         #    $path_descfile = 'uploads/' . $omics . $file_desc[$num] . md5($file_desc[$num]);
