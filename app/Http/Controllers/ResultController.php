@@ -205,7 +205,7 @@ class ResultController extends Controller
         #head group
         #for file in *.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.*}.png; done
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w T';
-        dd($command);
+        #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -238,7 +238,7 @@ class ResultController extends Controller
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
         $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/$file ' . $pic_path . 'FAchainVisual/${file%%.*}.png; done';
-        exec($command, $ooout, $flag);
+        #exec($command, $ooout, $flag);
         dd($command);
         if ($flag == 1) {
             dd($command);
