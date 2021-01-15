@@ -111,17 +111,14 @@ class UploadController extends Controller
         $omicsss = ['a' => 'lipidomics', 'b' => 'lipidomicscos', 'c' => 'Metabolomics', 'd' => 'rnahan', 'e' => 'rna', 'f' => 'proteinomics'];
         $file_data = ['a' => 'HANlipid_tidy.csv', 'b' => 'Cos7_integ_2.csv', 'c' => 'metabolites_tidy2.csv', 'd' => 'HANgene_tidy_geneid_allgroups.CSV', 'e' => 'gene_tidy.CSV', 'f' => 'proteins_Depletion_tidy.csv'];
         $file_desc = ['a' => 'HANsampleList_lipid.CSV', 'b' => 'Cos7_integ_sampleList.csv', 'c' => 'sampleList_lip.csv', 'd' => 'HANsampleList_allgroups.CSV', 'e' => 'sampleList.CSV', 'f' => 'sampleList_lip.csv'];
-        foreach ($omicsss as $num => $omics) {
-            $path_datafile = 'uploads/' . $omics . $file_data[$num] . md5($file_data[$num]);
-            $path_descfile = 'uploads/' . $omics . $file_desc[$num] . md5($file_desc[$num]);
-            $outpath = 'uploads/' . $omics . $file_data[$num] . $file_desc[$num] . md5($file_data[$num] . $file_desc[$num]) . '/';
-            is_dir($outpath) or mkdir($outpath, 0777, true);
-            is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
-            is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
-        #move($path_datafile,$file_data[$exam_omics]);
-        #move($path_descfile,$file_desc[$exam_omics]);
+        #foreach ($omicsss as $num => $omics) {
+        #    $path_datafile = 'uploads/' . $omics . $file_data[$num] . md5($file_data[$num]);
+        #    $path_descfile = 'uploads/' . $omics . $file_desc[$num] . md5($file_desc[$num]);
+        #    $outpath = 'uploads/' . $omics . $file_data[$num] . $file_desc[$num] . md5($file_data[$num] . $file_desc[$num]) . '/';
+        #    is_dir($outpath) or mkdir($outpath, 0777, true);
+        #    is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
+        #    is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
         #}
-        }
         $omics = $request->exampleomics;
         $exam_omics = $omics;
         if ($exam_omics == "lipidomics" || $exam_omics == "lipidomicscos") {
