@@ -78,7 +78,7 @@
                                         <button id="downloadright" class="layui-btn">Download</button>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        <button id="submitupdateVolcano" href="{{ url('download/png/')}}{{ $path }}results/volcano_show.png" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
@@ -112,14 +112,17 @@
                                         <button id="downloadright" class="layui-btn">Download</button>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        <button id="submitupdateVolcano" href="{{ url('download/png/')}}{{ $path }}results/heatmap_top.png" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_top.png" style="height:50%;width: 60%;">
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Heatmap allgroup result</h4>
                                 </div>
                                 <div class="col-md-5">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_allgroups.png" style="height:50%;width: 60%;">

@@ -15,6 +15,6 @@ class DownloadController extends Controller
     public function png($file)
     {
         #Event::fire(new FileDownload($file));
-        return response()->download(storage_path('../public/' . $file));
+        return response()->download(storage_path('public/' . $file));
     }
 }
