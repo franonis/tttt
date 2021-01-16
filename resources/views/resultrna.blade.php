@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="Volcano" class="layui-form" action="/update/updateVolcano">
+                                <form  id="Volcano" class="layui-form" action="/update/updaternaVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="v" value="{{ $v }}" style="display: none;">
                                     <div class="col-md-2">
@@ -95,7 +95,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updateHeatmap">
+                                <form  id="Heatmap" class="layui-form" action="/update/updaternaHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="f" value="{{ $f }}" style="display: none;">
                                     <input name="p" value="{{ $p }}" style="display: none;">

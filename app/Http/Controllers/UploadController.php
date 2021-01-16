@@ -61,28 +61,26 @@ class UploadController extends Controller
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
-        if ($omics != "rna") {
+        if ($omics != "Transcriptomics") {
+            $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Proteomics' => 'Proteins'];
 
-            #设置t值
-            $t = ['Lipidomics' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'proteinomics' => 'Proteins'];
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$exam_omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-
-            if ($this->isRunOver($outpath . 'groupsLevel.csv')) {
-                #读取参数
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel.csv');
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
-                $firstlines = file_get_contents($outpath . '/firstline.csv');
+                #dd($groupsLevels[1]);
+                $firstline = file_get_contents($outpath . '/firstline.csv');
                 preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
                 array_shift($firstlines[1]); #去掉第一行
-                $firstline = $firstlines[1];
-                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc, 'firstlines' => $firstlines]);
+                $firstlines = $firstlines[1];
+                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'firstlines' => $firstlines]);
             }
         } else {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
@@ -91,12 +89,12 @@ class UploadController extends Controller
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-            if ($this->isRunOver($outpath . 'groupsLevel_RNA.csv')) {
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel_RNA.csv')) {
                 $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
-                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc]);
+                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics]]);
             }
         }
 
@@ -136,7 +134,7 @@ class UploadController extends Controller
         if ($omics != "Transcriptomics") {
             $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Proteomics' => 'Proteins'];
 
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$exam_omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
             exec($command, $ooout, $flag);
             if ($flag == 1) {
