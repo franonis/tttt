@@ -154,7 +154,7 @@
                                     <input name="w" value="{{ $w }}" style="display: none;">
                                     <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
-                                        <h4>Set e number</h4>
+                                        <h4>Set top number</h4>
                                     </div>
                                     <div class="col-md-4">
                                         <small>
