@@ -21,7 +21,7 @@ class ResultController extends Controller
         $data_type = $request->data_type;
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
-        $pngpath = preg_replace('/\//', "+", $outpath);
+        
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
         if ($omics == "Transcriptomics") {
@@ -29,6 +29,7 @@ class ResultController extends Controller
             $normalization = $request->normalization;
             $outpath = $outpath . $analopt . $control . '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
+            $pngpath = preg_replace('/\//', "+", $outpath);
             if ($data_type == "rna") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $analopt . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             } else {
@@ -55,6 +56,7 @@ class ResultController extends Controller
             $delodd = $request->delodd;
             $outpath = $outpath . $analopt . $control . '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
+            $pngpath = preg_replace('/\//', "+", $outpath);
             if ($omics == "Lipidomics") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $analopt . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
 
