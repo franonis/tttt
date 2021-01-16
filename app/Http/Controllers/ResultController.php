@@ -13,7 +13,10 @@ class ResultController extends Controller
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
         $analopt = $request->analopt;
-        $analopt = $request->analopt1;#
+        $analopt1 = $request->analopt1;#
+        if ($analopt1 == "all_together") {
+            $analopt = $analopt1;
+        }
         $control = $request->control;
         $data_type = $request->data_type;
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
