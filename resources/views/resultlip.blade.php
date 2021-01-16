@@ -59,7 +59,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <small>
-                                        <input id="s" type="text" name="s" value="{{$s}}" style="width:50px; display:inline;" class="form-control" >only for "T" or "F"
+                                        <select name="s">
+                                            <option value="T">T</option>
+                                            <option value="F">F</option>
+                                        </select>
                                         </small>
                                     </div>
                                     <div class="col-md-2">
@@ -67,7 +70,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <small>
-                                        <input id="w" type="text" name="w" value="{{$w}}" style="width:50px; display:inline;" class="form-control" >only for "T" or "F"
+                                        <select name="w">
+                                            <option value="T">T</option>
+                                            <option value="F">F</option>
+                                        </select>
                                         </small>
                                     </div>
                                     <div class="col-md-2">
@@ -75,7 +81,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <small>
-                                        <input id="b" type="text" name="b" value="{{$b}}" style="width:50px; display:inline;" class="form-control" >only for "T" or "F"
+                                        <select name="b">
+                                            <option value="T">T</option>
+                                            <option value="F">F</option>
+                                        </select>
                                         </small>
                                     </div>
                                     <div class="col-md-2">
@@ -83,7 +92,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <small>
-                                        <input id="x" type="text" name="x" value="{{$x}}" style="width:50px; display:inline;" class="form-control" >only for "raw" or "fdr"
+                                        <select name="x">
+                                            <option value="raw">raw</option>
+                                            <option value="fdr">fdr</option>
+                                        </select>
                                         </small>
                                     </div>
                                     <div class="col-md-2">
