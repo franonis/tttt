@@ -182,23 +182,36 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <div class="col-md-6">
-                                </div>
-                                <div class="col-md-6">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Lipid Class Statisitics</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Lipid Class Cum Statisitics</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
-                                </div>
+                                <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
+                                    <div class="col-md-2">
+                                            <h4>if ignore subclass</h4>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <small>
+                                            <select name="w">
+                                                <option value="T">T</option>
+                                                <option value="F">F</option>
+                                            </select>
+                                            </small>
+                                        </div>
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Lipid Class Statisitics</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4>Lipid Class Cum Statisitics</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

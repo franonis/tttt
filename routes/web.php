@@ -61,6 +61,7 @@ Route::group(['prefix' => '/update'], function () {
     Route::get('/updatelipHeatmap', [UpdateController::class, 'updatelipHeatmap']);
     Route::get('/updatelipVolcano', [UpdateController::class, 'updatelipVolcano']);
     Route::get('/updatelipfa', [UpdateController::class, 'updatelipfa']);
+    Route::get('/updateliphead', [UpdateController::class, 'updateliphead']);
 });
 
 Route::group(['prefix' => '/result'], function () {
