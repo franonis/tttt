@@ -16,7 +16,7 @@ class DownloadController extends Controller
     {
         #Event::fire(new FileDownload($file));
         #dd($file);
-        $file=preg_replace('/\+/', "\/", $file);
+        $file=preg_replace('/\+/', "/", $file);
         #return view('202');
         return response()->download(storage_path('public/' . $file));
     }
