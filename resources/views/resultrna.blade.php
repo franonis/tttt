@@ -31,7 +31,7 @@
                                 <div class="col-md-6">
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ url('download/png/')}}{{ $pngpath }}results/PCA_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                    <a href="{{ url('download/png/')}}/{{ $pngpath }}results+PCA_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
