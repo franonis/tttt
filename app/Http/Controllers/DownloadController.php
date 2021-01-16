@@ -18,6 +18,6 @@ class DownloadController extends Controller
         #dd($file);
         $file=preg_replace('/\+/', "/", $file);
         #return view('202');
-        return response()->download(storage_path('public/' . $file));
+        return response()->download(storage_path($file));
     }
 }
