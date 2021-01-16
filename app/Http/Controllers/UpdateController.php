@@ -10,6 +10,7 @@ class UpdateController extends Controller
     public function updaternaVolcano(Request $request)
     {
         $path = $request->path;
+        $pngpath = $request->pngpath;
         $f = $request->f;
         $p = $request->p;
         $u = $request->u;
@@ -28,12 +29,13 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'f' => $f, 'p' => $p, 'u' => $u, 'v' => $v]);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'pngpath' => $pngpath, 'f' => $f, 'p' => $p, 'u' => $u, 'v' => $v]);
     }
     public function updaternaHeatmap(Request $request)
     {
         #dd($request);
         $path = $request->path;
+        $pngpath = $request->pngpath;
         $f = $request->f;
         $p = $request->p;
         $u = $request->u;
@@ -51,12 +53,13 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'f' => $f, 'p' => $p, 'u' => $u, 'v' => $v]);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'pngpath' => $pngpath, 'f' => $f, 'p' => $p, 'u' => $u, 'v' => $v]);
     }
 #, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $
     public function updatelipVolcano(Request $request)
     {
         $path = $request->path;
+        $pngpath = $request->pngpath;
         $s = $request->s;
         $b = $request->b;
         $x = $request->x;
@@ -82,12 +85,13 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('resultlip', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
+        return view('resultlip', ['title' => '上传数据', 'path' => $path, 'pngpath' => $pngpath, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
     }
     public function updatelipHeatmap(Request $request)
     {
         #dd($request);
         $path = $request->path;
+        $pngpath = $request->pngpath;
         $s = $request->s;
         $b = $request->b;
         $x = $request->x;
@@ -112,12 +116,13 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('resultlip', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
+        return view('resultlip', ['title' => '上传数据', 'path' => $path, 'pngpath' => $pngpath, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
     }
 
     public function updatelipfa(Request $request)
     {
         $path = $request->path;
+        $pngpath = $request->pngpath;
         $s = $request->s;
         $b = $request->b;
         $x = $request->x;
@@ -144,12 +149,13 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        return view('resultlip', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
+        return view('resultlip', ['title' => '上传数据', 'path' => $path, 'pngpath' => $pngpath, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
     }
 
     public function updateliphead(Request $request)
     {
         $path = $request->path;
+        $pngpath = $request->pngpath;
         $s = $request->s;
         $b = $request->b;
         $x = $request->x;
@@ -181,6 +187,6 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        return view('resultlip', ['title' => '上传数据', 'path' => $path, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
+        return view('resultlip', ['title' => '上传数据', 'path' => $path, 'pngpath' => $pngpath, "s" => $s, "b" => $b, "x" => $x, "j" => $j, "k" => $k, "m" => $m, "w" => $w, "e" => $e, "g" => $g]);
     }
 }

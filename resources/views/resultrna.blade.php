@@ -18,9 +18,9 @@
                 </div>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
-                    <li>show_variability</li>
+                    <li  class="layui-this">show_variability</li>
                     <li>Volcano</li>
-                    <li class="layui-this">Heatmap</li>
+                    <li>Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
@@ -31,7 +31,7 @@
                                 <div class="col-md-6">
                                 </div>
                                 <div class="col-md-6">
-                                    <button id="downloadright" href="{{ url('download/png/')}}-PCA_show.png-{{ $path }}results" class="layui-btn" type="submit">Download</button>
+                                    <button id="downloadright" href="{{ url('download/png/')}}{{ $pngpath }}results/PCA_show.png" class="layui-btn" type="submit">Download</button>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
@@ -78,7 +78,7 @@
                                         <button id="downloadright" class="layui-btn">Download</button>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="submitupdateVolcano" href="{{ url('download/png/')}}{{ $path }}results/volcano_show.png" class="layui-btn" type="submit" >Update</button>
+                                        <button id="submitupdateVolcano" href="{{ url('download/png/')}}{{ $pngpath }}results/volcano_show.png" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
@@ -109,7 +109,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="downloadright" class="layui-btn">Download</button>
+                                        <button id="downloadright" href="{{ url('download/png/')}}{{ $pngpath }}results/heatmap_top.png" class="layui-btn">Download</button>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" href="{{ url('download/png/')}}{{ $path }}results/heatmap_top.png" class="layui-btn" type="submit" >Update</button>

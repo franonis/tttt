@@ -21,6 +21,7 @@ class ResultController extends Controller
         $data_type = $request->data_type;
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
+        $pngpath = preg_replace('/\//', "+", $outpath);
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
         if ($omics == "Transcriptomics") {
@@ -35,7 +36,7 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
-                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
+                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
                 }
             } else {
                 exec($command, $ooout, $flag);
@@ -45,7 +46,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
-                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
+                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
                     }
                 }
             }
@@ -63,7 +64,7 @@ class ResultController extends Controller
                         exec($command,$png,$flag);
                         #dd($png);
 #                        $fapng=explode(" ", $ooout);
-                        return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                        return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                     }
                 } else {
                     exec($command, $ooout, $flag);
@@ -76,7 +77,7 @@ class ResultController extends Controller
                             exec($command,$png,$flag);
                             #dd($ooout);
 #                            $fapng=explode(" ", $ooout);
-                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }
                     }
                 }
@@ -84,7 +85,7 @@ class ResultController extends Controller
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $analopt . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultmet($outpath)) {
-                        return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                        return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                     }
                 } else {
                     exec($command, $ooout, $flag);
@@ -94,7 +95,7 @@ class ResultController extends Controller
                     }
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                         if ($this->showresultmet($outpath)) {
-                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }
                     }
                 }

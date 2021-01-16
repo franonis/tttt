@@ -45,7 +45,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">{{ $msg }}</div>
+                <div class="title">Not Found</div>
                 <div class="footer-button">
                     <a href="{{ url('/') }}">
                         <button class="button button-primary button-circle button-giant button-longshadow"><i class="fa fa-home"></i></button></a>
