@@ -196,8 +196,11 @@
                                         </div>
                                     <div class="col-md-6">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                     <div class="col-md-2">
                                         <h4>Lipid Class Statisitics</h4>
