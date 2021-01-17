@@ -34,7 +34,7 @@
                                 <div class="col-md-6">
                                 </div>
                                 <div class="col-md-6">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                    <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
@@ -123,7 +123,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="downloadright" class="layui-btn">Download</button>
+                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+volcano_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
@@ -162,7 +162,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="downloadright" class="layui-btn">Download</button>
+                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+heatmap_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
@@ -197,7 +197,8 @@
                                     <div class="col-md-6">
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download first pic</a>
+                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download second pic</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
@@ -256,7 +257,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
@@ -282,7 +283,7 @@
                                     <h4>Not finished yet</h4>
                                 </div>
                                 <div class="col-md-3">
-                                    <button id="downloadright" class="layui-btn" type="submit">Download</button>
+                                    <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+lion.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                 </div>
                                 <div class="col-md-3">
                                     <button id="submitright" class="layui-btn" type="submit">Update</button>

@@ -75,7 +75,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button class="layui-btn" href="{{ url('download/png/')}}{{ $pngpath }}results/volcano_show.png">Download</button>
+                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+volcano_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano"  class="layui-btn" type="submit" >Update</button>
@@ -109,7 +109,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button href="{{ url('download/png/')}}{{ $pngpath }}results/heatmap_top.png" class="layui-btn">Download</button>
+                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
