@@ -152,13 +152,13 @@
             e.preventDefault();
         }
     })
-    $.ajax({
-        beforeSend: function(){       //ajax发送请求时的操作，得到请求结果前有效
-            $('#myModal').modal({
-                backdrop:'static'      //<span style="color:#FF6666;">设置模态框之外点击无效</span>
-            });
-            $('#myModal').modal('show');   //弹出模态框
-        },
-    });
+    //$.ajax({
+    //    beforeSend: function(){       //ajax发送请求时的操作，得到请求结果前有效
+    //        $('#myModal').modal({
+    //            backdrop:'static'      //<span style="color:#FF6666;">设置模态框之外点击无效</span>
+    //        });
+    //        $('#myModal').modal('show');   //弹出模态框
+    //    },
+    //});
 </script>
 @endsection
