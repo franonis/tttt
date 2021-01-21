@@ -19,7 +19,7 @@
                 </div><br>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
-                    <li class="layui-this">PCA</li>
+                    <li class="layui-this">Dimensionality Reduction Analyses</li>
                     <li>Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">

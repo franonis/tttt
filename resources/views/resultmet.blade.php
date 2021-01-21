@@ -19,8 +19,8 @@
                 </div><br>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
-                    <li>PCA</li>
-                    <li class="layui-this">Volcano</li>
+                    <li class="layui-this">Dimensionality Reduction Analyses</li>
+                    <li >Volcano</li>
                     <li>Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">

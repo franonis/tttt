@@ -18,7 +18,7 @@
                 </div>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
-                    <li class="layui-this">PCA</li>
+                    <li class="layui-this">Dimensionality Reduction Analyses</li>
                     <li>Volcano</li>
                     <li>Heatmap</li>
                     <li>Lipid Class Statisitics</li>
@@ -178,27 +178,22 @@
                         </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class Statisitics-->
+                        
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
                                     <div class="col-md-2">
-                                            <h4>if ignore subclass</h4>
-                                        </div>
-                                        <div class="col-md-10">
-                                            <small>
-                                            <select name="w">
-                                                <option value="T">T</option>
-                                                <option value="F">F</option>
-                                            </select>
-                                            </small>
-                                        </div>
-                                    <div class="col-md-6">
+                                        <h4>if ignore subclass</h4>
                                     </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download first pic</a>
-                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download second pic</a>
+                                    <div class="col-md-7">
+                                        <small>
+                                        <select name="w">
+                                            <option value="T">T</option>
+                                            <option value="F">F</option>
+                                        </select>
+                                        </small>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
@@ -207,13 +202,22 @@
                                         <h4>Lipid Class Statisitics</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <h4>Lipid Class Cum Statisitics</h4>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                        <div class="layui-collapse">
+                                          <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Box plot</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                            </div>
+                                          </div>
+                                          <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Cumulation plot</h2>
+                                            <div class="layui-colla-content">
+                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                            </div>
+                                          </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
