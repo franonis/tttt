@@ -92,9 +92,33 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
                 <br>
-                <button id="submit" class="layui-btn" type="submit">RUN</button>
+                <button id="submit" class="layui-btn" type="submit" data-toggle="modal" data-target="#myModal">RUN</button>
             </div>
         </form>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            模态框（Modal）标题
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        在这里添加一些文本
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            提交更改
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
     </div>
 </div>
 @endsection
@@ -128,5 +152,13 @@
             e.preventDefault();
         }
     })
+    $.ajax({
+        beforeSend: function(){       //ajax发送请求时的操作，得到请求结果前有效
+            $('#myModal').modal({
+                backdrop:'static'      //<span style="color:#FF6666;">设置模态框之外点击无效</span>
+            });
+            $('#myModal').modal('show');   //弹出模态框
+        },
+    });
 </script>
 @endsection

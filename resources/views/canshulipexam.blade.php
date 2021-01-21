@@ -94,8 +94,27 @@
                     </select>
                 </div>
             </div><br>
-                <input type="radio" value={{$delodd}} name="delodd" style="display: none;">
-                <input type="radio" value={{$NAstring}} name="NAstring" style="display: none;">
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>delOddChainOpt</h4>
+                </div>
+                <div class="col-md-9"  id="normalization" style="display: block;">
+                    <input id="query_dna" type="radio" value="T" name="delodd" checked> <label> T</label><br>
+                    <input id="query_protein" type="radio" value="F" name="delodd"> <label> F</label>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>NA_string</h4>
+                </div>
+                <div class=" col-md-9">
+                    <div class="layui-input-inline">
+                      <input type="text" name="NAstring" lay-verify="required" placeholder="NULL" class="layui-input">
+                    </div>
+                </div>
+            </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
                 <br>

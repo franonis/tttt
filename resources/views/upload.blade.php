@@ -18,11 +18,24 @@
                     <div style="padding: 20px; background-color: #F2F2F2;">
                         <div class="layui-form-item">
                             <label class="layui-form-label">Data Type：</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-block" id="dataType">
                               <input type="radio" name="omics" value="Lipidomics" title="Lipidomics" checked="">
                               <input type="radio" name="omics" value="Metabolomics" title="Metabolomics">
-                              <input type="radio" name="omics" value="Transcriptomics" title="Transcriptomics" checked="">
-                              <input type="radio" name="omics" value="proteinomics" title="Proteomics">
+                              <input type="radio" name="omics" value="Transcriptomics" title="Transcriptomics">
+                              <input type="radio" name="omics" value="Proteinomics" title="Proteomics">
+                            </div>
+                        </div>
+                        <div class="layui-form-item" id="delodd" style="display: block;">
+                            <label class="layui-form-label">delOddChainOpt：</label>
+                            <div class="layui-input-block">
+                              <input type="radio" value="T" name="delodd" checked> <label> T</label><br>
+                              <input type="radio" value="F" name="delodd"> <label> F</label>
+                            </div>
+                        </div>
+                        <div class="layui-form-item" id="nastring" style="display: block;">
+                            <label class="layui-form-label">NA_string：</label>
+                            <div class="layui-input-block" >
+                              <input type="text" name="NAstring" lay-verify="required" placeholder="NULL" class="layui-input">
                             </div>
                         </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p>
@@ -156,6 +169,22 @@ layui.use('upload', function(){
             return;
         }
     });
+    $("#dataType").click(function (){
+        name =$("input[name='omics']:checked").val();
+        if (name == "Lipidomics") {
+          document.getElementById("delodd").style.display="block";
+          document.getElementById("nastring").style.display="block";
+        }
+        if (name == "Metabolomics" || name == "Proteinomics" ) {
+          document.getElementById("nastring").style.display="block";
+          document.getElementById("delodd").style.display="none";
+        }
+        if (name == "Transcriptomics") {
+          document.getElementById("nastring").style.display="none";
+          document.getElementById("delodd").style.display="none";
+        }
+        console.log(name);
+   });
 
 
 </script>
