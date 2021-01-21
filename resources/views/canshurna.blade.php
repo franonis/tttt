@@ -92,7 +92,7 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
                 <br>
-                <button id="submit" class="layui-btn" type="submit" data-toggle="modal" data-target="#myModal">RUN</button>
+                <button id="submit" class="layui-btn btn btn-primary btn-lg" type="submit" data-toggle="modal" data-target="#myModal">RUN</button>
             </div>
         </form>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
