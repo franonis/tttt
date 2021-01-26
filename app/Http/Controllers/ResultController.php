@@ -213,6 +213,19 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        #OPLS-DA
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipOPLSDAPlot.R -r "' . $r_path . '" -q "' . $pic_path . '"';
+        #dd($command);
+
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/PCA_*.pdf ' . $pic_path . 'MARresults/PCA_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
         #火山图
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s F -p "' . $pic_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
         #dd($command);
@@ -268,7 +281,7 @@ class ResultController extends Controller
         }
         #$command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
         $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
-        #exec($command, $ooout, $flag);
+        exec($command, $ooout, $flag);
         #dd($command);
         if ($flag == 1) {
             #dd($command);
