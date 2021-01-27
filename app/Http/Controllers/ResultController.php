@@ -1,7 +1,7 @@
 <?php
-set_time_limit(0);
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
+set_time_limit(0);
 use App\Http\Controllers\ResultController;
 use Illuminate\Http\Request;
 
