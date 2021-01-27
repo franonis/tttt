@@ -1,5 +1,5 @@
 <?php
-
+set_time_limit(0);
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\ResultController;
