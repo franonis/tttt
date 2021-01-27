@@ -84,13 +84,13 @@
                     </div>
                 </div>
             </div><br>
-            <div class="col-md-12" id="setprecent" style="display: none;">
+            <div id="setprecent" style="display: none;">
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-12">
                     <div class="col-md-3">
                         <h4>Set the precent to delete the missing column</h4>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-3">
                         <input type="text" name="naperent" lay-verify="required" placeholder="80%" class="layui-input">
                     </div>
                 </div><br>
