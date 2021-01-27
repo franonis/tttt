@@ -15,9 +15,9 @@
 
         <form id="blastform" action="/result/set">
             {{ csrf_field() }}
-            <input  type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
-            <input  type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
-            <input  type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
+            <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
+            <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
+            <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
             <div class="col-md-12">
                 <div class="col-md-3">
                     <h4>analysis Option</h4>
@@ -27,7 +27,9 @@
                     <input  type="radio" value="all_together" name="mode" checked> <label>take all groups together into account</label><br>
                     <input  type="radio" value="onetoone" name="mode"> <label>one vs one</label><br>
                     <input  type="radio" value="subgroup" name="mode"> <label>take some groups together into account</label><br>
-
+                </div>
+            </div>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                     <div class="col-md-12" id="onetoone" style="display: none;">
                         <div class="col-md-6"> 
                             <p>please choose the experiment group</p>
@@ -50,70 +52,41 @@
                     <div class="layui-form-item" id="subgroup" style="display: none;">
                         <label class="layui-form-label">复选框</label>
                         <div class="layui-input-block">
-                          <input type="checkbox" name="like[write]" title="写作">
-                          <input type="checkbox" name="like[read]" title="阅读" checked="">
-                          <input type="checkbox" name="like[game]" title="游戏">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input type="checkbox" name="like[{{$i}}]" title="{{$i}}">{{$i}}
+                            @endforeach
                         </div>
                     </div>
-                </div>
-            </div>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Control Group </h4>
-                </div>
-                <div class="col-md-9">
-                    <select name="control">
-                      @foreach($groupsLevels as $k=>$i )
-                          <option value="{{$i}}">{{$i}}</option>
-                      @endforeach
-                    </select>
-                </div>
-            </div>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>dataType</h4>
-                </div>
-                <div class="col-md-9" id="dataType">
-                    <input  type="radio" value="LipidSearch" name="data_type" checked> <label>LipidSearch</label><br>
-                    <input  type="radio" value="MS_DIAL" name="data_type"> <label>MS_DIAL</label><br>
-                    <input  type="radio" value="Metabolites" name="data_type"> <label>Metabolites</label><br>
-                    <input  type="radio" value="Proteins" name="data_type"> <label>Proteins</label>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>lip Field</h4>
-                </div>
-                <div class="col-md-9">
-                    <select name="firstline">
-                        @foreach($firstlines as $k=>$i )
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div><br>
+
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <h4>delOddChainOpt</h4>
+                    <h4>Do you want delete the odd chain</h4>
                 </div>
                 <div class="col-md-9"  id="normalization" style="display: block;">
-                    <input id="query_dna" type="radio" value="T" name="delodd" checked> <label> T</label><br>
-                    <input id="query_protein" type="radio" value="F" name="delodd"> <label> F</label>
+                    <input type="radio" value="T" name="delodd" checked> <label>Yes,delete it</label><br>
+                    <input type="radio" value="F" name="delodd"> <label>No,keep it</label>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <h4>NA_string</h4>
+                    <h4>How to deal with the missing value</h4>
                 </div>
-                <div class=" col-md-9">
+                <div class=" col-md-9" id="missing">
                     <div class="layui-input-inline">
-                      <input type="text" name="NAstring" lay-verify="required" placeholder="NULL" class="layui-input">
+                        <input type="radio" value="T" name="missing" checked> <label>Imputation</label><br>
+                        <input type="radio" value="F" name="missing"> <label>Delete</label>
                     </div>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>set the precent to delete the missing column</h4>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" name="naperent" lay-verify="required" placeholder="80" class="layui-input">%
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
