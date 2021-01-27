@@ -55,10 +55,9 @@
                     </div>
                     
                     <div class="layui-form-item" id="subgroup" style="display: none;">
-                        <label class="layui-form-label">复选框</label>
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
-                                <input type="checkbox" name="like[{{$i}}]" title="{{$i}}">{{$i}}
+                                <input type="checkbox" name="like[{{$i}}]" title="{{$i}}">{{$i}}&nbsp;&nbsp;
                             @endforeach
                         </div>
                     </div>
@@ -81,20 +80,22 @@
                 </div>
                 <div class=" col-md-9" id="missing">
                     <div class="layui-input-inline">
-                        <input type="radio" value="T" name="missing" checked> <label>Imputation</label><br>
-                        <input type="radio" value="F" name="missing"> <label>Delete</label>
+                        <input type="radio" value="imputation" name="missing" checked> <label>Imputation</label><br>
+                        <input type="radio" value="delete" name="missing"> <label>Delete</label>
                     </div>
                 </div>
             </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>set the precent to delete the missing column</h4>
-                </div>
-                <div class="col-md-9">
-                    <input type="text" name="naperent" lay-verify="required" placeholder="80%" class="layui-input">
-                </div>
-            </div><br>
+            <div class="col-md-12" id="setprecent" style="display: none;">
+                <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                <div class="col-md-12">
+                    <div class="col-md-3">
+                        <h4>Set the precent to delete the missing column</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" name="naperent" lay-verify="required" placeholder="80%" class="layui-input">
+                    </div>
+                </div><br>
+            </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
                 <br>
@@ -141,12 +142,12 @@
         console.log(name);
    });
 
-    $("#dataType").click(function (){
-        name =$("input[name='data_type']:checked").val();
-        if (name == "Metabolites" || name == "Proteins" ) {
-            document.getElementById("normalization").style.display="none";
+    $("#missing").click(function (){
+        name =$("input[name='missing']:checked").val();
+        if (name != "delete" ) {
+            document.getElementById("setprecent").style.display="none";
         }else{
-            document.getElementById("normalization").style.display="block";
+            document.getElementById("setprecent").style.display="block";
         }
         console.log(name);
    });
