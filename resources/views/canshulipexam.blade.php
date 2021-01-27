@@ -20,10 +20,9 @@
             <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <h4>analysis Option</h4>
+                    <h4>there are three analysis mode,please choose one</h4>
                 </div>
                 <div class="col-md-9" id="mode">
-                    <p>there are three analysis mode,please choose one</p>
                     <input  type="radio" value="all_together" name="mode" checked> <label>take all groups together into account</label><br>
                     <input  type="radio" value="onetoone" name="mode"> <label>one vs one</label><br>
                     <input  type="radio" value="subgroup" name="mode"> <label>take some groups together into account</label><br>
