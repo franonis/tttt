@@ -9,13 +9,14 @@ class ResultController extends Controller
 {
     public function getSetPage(Request $request)
     {
+        dd($request);
         $omics = $request->omics;
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
         $analopt = $request->analopt;
-        $analopt1 = $request->analopt1;#
-        if ($analopt1 == "all_together") {
-            $analopt = $analopt1;
+        $mode = $request->mode;#
+        if ($mode == "all_together") {
+            $analopt = $mode;
         }
         $control = $request->control;
         $data_type = $request->data_type;
@@ -37,7 +38,7 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
-                    if ($analopt1 == "all_together") {
+                    if ($mode == "all_together") {
                         return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                        
                     }else{
                         return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
@@ -51,7 +52,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
-                        if ($analopt1 == "all_together") {
+                        if ($mode == "all_together") {
                             return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
                         }else{
                            return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
@@ -75,7 +76,7 @@ class ResultController extends Controller
                         exec($command,$png,$flag);
                         #dd($png);
 #                        $fapng=explode(" ", $ooout);
-                        if ($analopt1 == "all_together") {
+                        if ($mode == "all_together") {
                             return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }else{
                             return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
@@ -93,7 +94,7 @@ class ResultController extends Controller
                             exec($command,$png,$flag);
                             #dd($ooout);
 #                            $fapng=explode(" ", $ooout);
-                            if ($analopt1 == "all_together") {
+                            if ($mode == "all_together") {
                                 return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                             }else{
                                 return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
@@ -106,7 +107,7 @@ class ResultController extends Controller
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $analopt . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultmet($outpath)) {
-                        if ($analopt1 == "all_together") {
+                        if ($mode == "all_together") {
                             return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
                             return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
@@ -121,7 +122,7 @@ class ResultController extends Controller
                     }
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                         if ($this->showresultmet($outpath)) {
-                            if ($analopt1 == "all_together") {
+                            if ($mode == "all_together") {
                                 return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                             }else{
                                 return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);

@@ -15,45 +15,46 @@
 
         <form id="blastform" action="/result/set">
             {{ csrf_field() }}
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>omics</h4>
-                </div>
-                <div class="col-md-9" id="omics">
-                    <input  type="radio" value="{{$omics}}" name="omics" checked> <label>{{$omics}}</label><br>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Data file</h4>
-                </div>
-                <div class="col-md-9" id="file_data">
-                    <input  type="radio" value="{{$file_data}}" name="file_data" checked> <label>{{$file_data}}</label><br>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Description file</h4>
-                </div>
-                <div class="col-md-9" id="file_desc">
-                    <input  type="radio" value="{{$file_desc}}" name="file_desc" checked> <label>{{$file_desc}}</label><br>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <input  type="radio" value="{{$omics}}" name="omics" checked style="display: none;"> <label>{{$omics}}</label><br>
+            <input  type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;"> <label>{{$file_data}}</label><br>
+            <input  type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;"> <label>{{$file_desc}}</label><br>
             <div class="col-md-12">
                 <div class="col-md-3">
                     <h4>analysis Option</h4>
                 </div>
-                <div class="col-md-9" id="analopt1">
-                    <input  type="radio" value="all_together" name="analopt1" checked> <label>all_together</label><br>
-                    <input  type="radio" value="other" name="analopt1"> <label>or choose a group</label><br>
-                    <select name="analopt" id="groups" style="display: none;">
-                        @foreach($groupsLevels as $k=>$i )
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endforeach
-                    </select>
+                <div class="col-md-9" id="mode">
+                    <p>there are three analysis mode,please choose one</p>
+                    <input  type="radio" value="all_together" name="mode" checked> <label>take all groups together into account</label><br>
+                    <input  type="radio" value="onetoone" name="mode"> <label>one vs one</label><br>
+                    <input  type="radio" value="subgroup" name="mode"> <label>take some groups together into account</label><br>
+
+                    <div class="col-md-12" id="onetoone" style="display: none;">
+                        <div class="col-md-6"> 
+                            <p>please choose the experiment group</p>
+                            <select name="analopt">
+                                @foreach($groupsLevels as $k=>$i )
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6"> 
+                            <p>please choose the control group</p>
+                            <select name="control">
+                                @foreach($groupsLevels as $k=>$i )
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="layui-form-item" id="subgroup" style="display: none;">
+                        <label class="layui-form-label">复选框</label>
+                        <div class="layui-input-block">
+                          <input type="checkbox" name="like[write]" title="写作">
+                          <input type="checkbox" name="like[read]" title="阅读" checked="">
+                          <input type="checkbox" name="like[game]" title="游戏">
+                        </div>
+                    </div>
                 </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -141,12 +142,19 @@
         }
     });
 
-    $("#analopt1").click(function (){
-        name =$("input[name='analopt1']:checked").val();
-        if (name == "other" ) {
-            document.getElementById("groups").style.display="block";
-        }else{
-            document.getElementById("groups").style.display="none";
+    $("#mode").click(function (){
+        name =$("input[name='mode']:checked").val();
+        if (name == "subgroup" ) {
+            document.getElementById("onetoone").style.display="none";
+            document.getElementById("subgroup").style.display="block";
+        }
+        if (name == "onetoone" ) {
+            document.getElementById("onetoone").style.display="block";
+            document.getElementById("subgroup").style.display="none";
+        }
+        if (name == "all_together" ) {
+            document.getElementById("onetoone").style.display="none";
+            document.getElementById("subgroup").style.display="none";
         }
         console.log(name);
    });
