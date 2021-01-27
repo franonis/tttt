@@ -42,6 +42,12 @@
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
+                                <div class="col-md-2">
+                                    <h4>OPLSDA result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
+                                </div>
                             </div>
                         </div>
                     </div>

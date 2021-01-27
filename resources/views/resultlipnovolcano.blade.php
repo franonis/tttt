@@ -42,6 +42,12 @@
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
+                                <div class="col-md-2">
+                                    <h4>OPLSDA result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -180,14 +186,37 @@
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
                                     </div>
                                 </form>
-                                @foreach($fapng as $k=>$i )
-                                    <div class="col-md-2">
-                                        <h4>Lipid Fatty acid Statisics</h4>
+                                <div class="col-md-2">
+                                    <h4>Lipid Fatty acid Statisics</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="layui-collapse">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Grid plot</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Heatmap</h2>
+                                            <div class="layui-colla-content">
+                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Box plot</h2>
+                                            <div class="layui-colla-content">
+                                                @foreach($fapng as $k=>$i )
+                                                    <div class="col-md-10">
+                                                        <img src="../../../..{{ $i }}" style="height:50%;width: 60%;">
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-10">
-                                        <img src="../../../..{{ $i }}" style="height:50%;width: 60%;">
-                                    </div>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

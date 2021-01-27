@@ -9,7 +9,7 @@ class ResultController extends Controller
 {
     public function getSetPage(Request $request)
     {
-        dd($request);
+        #dd($request);
         $omics = $request->omics;
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
@@ -17,19 +17,20 @@ class ResultController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $mode = $request->mode;#
         if ($mode == "all_together") {
-            $experiment = $request->experiment;
+            $experiment = $request->mode;
+            $control = $request->control;
         }
         if ($mode == "onetoone") {
             $experiment = $request->experiment;
             $control = $request->control;
         }
-        if ($mode == "all_together") {
+        if ($mode == "subgroup") {
+            $subgroup = $request->subgroup;
             $experiment = $request->experiment;
+            $control = $request->control;
         }
         $control = $request->control;
         $data_type = $request->data_type;
-        
-        
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
         if ($omics == "Transcriptomics") {
@@ -229,7 +230,7 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/PCA_*.pdf ' . $pic_path . 'MARresults/PCA_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/OPLSDA_*.pdf ' . $pic_path . 'MARresults/OPLSDA_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
