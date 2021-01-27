@@ -19,6 +19,7 @@
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
+                    <li>Volcano</li>
                     <li>Heatmap</li>
                     <li>Lipid Class Statisitics</li>
                     <li>Lipid Fatty acid Statisics</li>
@@ -42,6 +43,13 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <p>Only the "one vs one" mode could give the Volcano result</p>
                         </div>
                     </div>
                     <div class="layui-tab-item">
@@ -187,24 +195,7 @@
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10">
-                            <div class="col-md-12">
-                                <div class="col-md-6">
-                                    <h4>Not finished yet</h4>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+lion.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>LION enrichment</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <p>not finished</p>
-                                </div>
-                            </div>
+                            <p>Only the "one vs one" mode could give the LION enrichment result</p>
                         </div>
                     </div>
                   </div>

@@ -20,6 +20,7 @@
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
+                    <li>Volcano</li>
                     <li>Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">
@@ -40,6 +41,13 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <p>Only the "one vs one" mode could give the Volcano result</p>
                         </div>
                     </div>
                     <div class="layui-tab-item">

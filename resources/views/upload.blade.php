@@ -26,10 +26,10 @@
                             </div>
                         </div>
                         <div class="layui-form-item" id="delodd" style="display: block;">
-                            <label class="layui-form-label">delOddChainOpt：</label>
+                            <label class="layui-form-label">是否删除奇数碳信号:</label>
                             <div class="layui-input-block">
-                              <input type="radio" value="T" name="delodd" checked> <label> T</label><br>
-                              <input type="radio" value="F" name="delodd"> <label> F</label>
+                              <input type="radio" value="T" name="delodd" checked> <label>Yes,delete it</label><br>
+                              <input type="radio" value="F" name="delodd"> <label>No,keep it</label>
                             </div>
                         </div>
                         <div class="layui-form-item" id="nastring" style="display: block;">

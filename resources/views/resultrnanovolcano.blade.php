@@ -19,6 +19,7 @@
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li  class="layui-this">show_variability</li>
+                    <li>Volcano</li>
                     <li>Heatmap</li>
                   </ul>
                   <div class="layui-tab-content">
@@ -38,7 +39,20 @@
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
+                                <div class="col-md-2">
+                                    <h4>Heatmap allgroup result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_allgroups.png" style="height:50%;width: 60%;">
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <p>Only the "one vs one" mode could give the Volcano result</p>
                         </div>
                     </div>
                     <div class="layui-tab-item">
@@ -71,12 +85,6 @@
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_top.png" style="height:50%;width: 60%;">
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>Heatmap allgroup result</h4>
-                                </div>
-                                <div class="col-md-5">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_allgroups.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>

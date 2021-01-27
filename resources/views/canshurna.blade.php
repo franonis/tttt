@@ -15,58 +15,51 @@
 
         <form id="blastform" action="/result/set">
             {{ csrf_field() }}
+            <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
+            <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
+            <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <h4>Omics</h4>
+                    <h4>There are three analysis mode,please choose one</h4>
                 </div>
-                <div class="col-md-9" id="omics">
-                    <input  type="radio" value="{{$omics}}" name="omics" checked> <label>{{$omics}}</label><br>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Data file</h4>
-                </div>
-                <div class="col-md-9" id="file_data">
-                    <input  type="radio" value="{{$file_data}}" name="file_data" checked> <label>{{$file_data}}</label><br>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Description file</h4>
-                </div>
-                <div class="col-md-9" id="file_desc">
-                    <input  type="radio" value="{{$file_desc}}" name="file_desc" checked> <label>{{$file_desc}}</label><br>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Groups </h4>
-
-                </div>
-                <div class="col-md-9">
-                    <select name="analopt">
-                        @foreach($groupsLevels as $k=>$i )
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endforeach
-                    </select>
+                <div class="col-md-9" id="mode">
+                    <input  type="radio" value="all_together" name="mode" checked> <label>take all groups together into account</label><br>
+                    <input  type="radio" value="onetoone" name="mode"> <label>one vs one</label><br>
+                    <input  type="radio" value="subgroup" name="mode"> <label>take some groups together into account</label><br>
                 </div>
             </div>
+            <div class="col-md-12" id="choosegroup" style="display: none;">
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-
-            <div class="col-md-12">
                 <div class="col-md-3">
-                    <h4>Control group</h4>
+                    <h4>Choose the groups</h4>
                 </div>
                 <div class="col-md-9">
-                    <select name="control">
-                        @foreach($groupsLevels as $k=>$i )
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endforeach
-                    </select>
+                    <div class="col-md-12" id="onetoone" style="display: none;">
+                        <div class="col-md-6"> 
+                            <p>please choose the experiment group</p><br>
+                            <select name="experiment">
+                                @foreach($groupsLevels as $k=>$i )
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6"> 
+                            <p>please choose the control group</p><br>
+                            <select name="control">
+                                @foreach($groupsLevels as $k=>$i )
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="layui-form-item" id="subgroup" style="display: none;">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input type="checkbox" name="like[{{$i}}]" title="{{$i}}">{{$i}}&nbsp;&nbsp;
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>

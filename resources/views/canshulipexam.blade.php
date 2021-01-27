@@ -18,6 +18,7 @@
             <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
             <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
             <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
+            <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
             <div class="col-md-12">
                 <div class="col-md-3">
                     <h4>There are three analysis mode,please choose one</h4>
@@ -37,7 +38,7 @@
                     <div class="col-md-12" id="onetoone" style="display: none;">
                         <div class="col-md-6"> 
                             <p>please choose the experiment group</p><br>
-                            <select name="analopt">
+                            <select name="experiment">
                                 @foreach($groupsLevels as $k=>$i )
                                     <option value="{{$i}}">{{$i}}</option>
                                 @endforeach
@@ -62,14 +63,23 @@
                     </div>
                 </div>
             </div><br>
+            <div class="col-md-12" id="normalization">
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
-            <div class="col-md-12">
                 <div class="col-md-3">
                     <h4>Do you want delete the odd chain</h4>
                 </div>
-                <div class="col-md-9"  id="normalization" style="display: block;">
+                <div class="col-md-9"  style="display: block;">
                     <input type="radio" value="T" name="delodd" checked> <label>Yes,delete it</label><br>
                     <input type="radio" value="F" name="delodd"> <label>No,keep it</label>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>Input the string for missing velue</h4>
+                </div>
+                <div class=" col-md-9">
+                    <input type="text" name="NAstring" lay-verify="required" placeholder="NULL" class="layui-input">
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>

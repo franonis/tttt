@@ -99,7 +99,6 @@ class UploadController extends Controller
                 return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc]);
             }
         }
-
     }
     private function isRunOver($file)
     {
@@ -152,7 +151,7 @@ class UploadController extends Controller
                 preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
                 array_shift($firstlines[1]); #去掉第一行
                 $firstlines = $firstlines[1];
-                return view('canshulipexam', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'firstlines' => $firstlines]);
+                return view('canshulipexam', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'firstlines' => $firstlines]);
             }
         } else {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
