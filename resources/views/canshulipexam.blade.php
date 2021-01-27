@@ -29,8 +29,8 @@
                     <input  type="radio" value="subgroup" name="mode"> <label>take some groups together into account</label><br>
                 </div>
             </div>
+            <div class="col-md-12" id="choosegroup" style="display: none;">
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
                 <div class="col-md-3">
                     <h4>choose the groups</h4>
                 </div>
@@ -92,7 +92,7 @@
                     <h4>set the precent to delete the missing column</h4>
                 </div>
                 <div class="col-md-9">
-                    <input type="text" name="naperent" lay-verify="required" placeholder="80" class="layui-input">%
+                    <input type="text" name="naperent" lay-verify="required" placeholder="80%" class="layui-input">
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
@@ -126,14 +126,17 @@
         if (name == "subgroup" ) {
             document.getElementById("onetoone").style.display="none";
             document.getElementById("subgroup").style.display="block";
+            document.getElementById("choosegroup").style.display="block";
         }
         if (name == "onetoone" ) {
             document.getElementById("onetoone").style.display="block";
             document.getElementById("subgroup").style.display="none";
+            document.getElementById("choosegroup").style.display="block";
         }
         if (name == "all_together" ) {
             document.getElementById("onetoone").style.display="none";
             document.getElementById("subgroup").style.display="none";
+            document.getElementById("choosegroup").style.display="none";
         }
         console.log(name);
    });
