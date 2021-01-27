@@ -34,7 +34,7 @@
                         </div>
                         <div class="layui-form-item" id="nastring" style="display: block;">
                             <label class="layui-form-label">Input the string for missing velue：</label>
-                            <div class="col-md-8">
+                            <div class="col-md-10">
                               <div class="layui-input-block" >
                                 <input type="text" name="NAstring" lay-verify="required" placeholder="NULL" class="layui-input">
                               </div>
