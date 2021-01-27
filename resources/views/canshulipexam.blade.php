@@ -20,7 +20,7 @@
             <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <h4>there are three analysis mode,please choose one</h4>
+                    <h4>There are three analysis mode,please choose one</h4>
                 </div>
                 <div class="col-md-9" id="mode">
                     <input  type="radio" value="all_together" name="mode" checked> <label>take all groups together into account</label><br>
@@ -31,12 +31,12 @@
             <div class="col-md-12" id="choosegroup" style="display: none;">
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-3">
-                    <h4>choose the groups</h4>
+                    <h4>Choose the groups</h4>
                 </div>
                 <div class="col-md-9">
                     <div class="col-md-12" id="onetoone" style="display: none;">
                         <div class="col-md-6"> 
-                            <p>please choose the experiment group</p>
+                            <p>please choose the experiment group</p><br>
                             <select name="analopt">
                                 @foreach($groupsLevels as $k=>$i )
                                     <option value="{{$i}}">{{$i}}</option>
@@ -44,7 +44,7 @@
                             </select>
                         </div>
                         <div class="col-md-6"> 
-                            <p>please choose the control group</p>
+                            <p>please choose the control group</p><br>
                             <select name="control">
                                 @foreach($groupsLevels as $k=>$i )
                                     <option value="{{$i}}">{{$i}}</option>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12">
                 <div class="col-md-3">
