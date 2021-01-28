@@ -47,8 +47,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1">
-                </div>
                 <div class="col-md-5" style="padding: 20px; margin-left: 10%; background-color: #FFFFFF;"> 
                     <p>please choose the control group</p><br>
                     <div class="layui-form-item" id="subgroup">
