@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
-                <div class="col-md-5" style="padding: 20px; margin-right: 10px; background-color: #F0F8FF;"> 
+                <div class="col-md-5" style="padding: 20px; margin-right: 10px; background-color: #FFFFFF;"> 
                     <p>please choose the experiment group</p><br>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
@@ -47,12 +47,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5" style="padding: 20px; margin-left: 10px; background-color: #F0F8FF;"> 
+                <div class="col-md-5" style="padding: 20px; margin-left: 10px; background-color: #FFFFFF;"> 
                     <p>please choose the control group</p><br>
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
-                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}">{{$i}}<br><br>
+                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}">{{$i}}<br>
                             @endforeach
                         </div>
                     </div>
