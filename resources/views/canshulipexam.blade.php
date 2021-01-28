@@ -52,7 +52,7 @@
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
-                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}" style="margin-top: 1px;">{{$i}}<br>
+                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}" style="margin-top: 3%;">{{$i}}<br>
                             @endforeach
                         </div>
                     </div>
