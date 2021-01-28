@@ -36,16 +36,18 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-12" id="choosegroup">
-                <div class="col-md-6"> 
+            <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
+                <div class="col-md-6" style="padding: 20px; background-color: #F0F8FF;"> 
                     <p>please choose the experiment group</p><br>
-                    <select name="experiment">
-                        @foreach($groupsLevels as $k=>$i )
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endforeach
-                    </select>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input  type="radio" value="{{$i}}" name="experiment"> <label>{{$i}}</label><br>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6"> 
+                <div class="col-md-6" style="padding: 20px; background-color: #F0F8FF;"> 
                     <p>please choose the control group</p><br>
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
