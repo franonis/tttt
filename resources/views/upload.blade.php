@@ -32,14 +32,6 @@
                               <input type="radio" value="F" name="delodd"> <label>No,keep it</label>
                             </div>
                         </div>
-                        <div class="layui-form-item" id="nastring" style="display: block;">
-                            <label class="layui-form-label">Input the string for missing velue：</label>
-                            <div class="col-md-10">
-                              <div class="layui-input-block" >
-                                <input type="text" name="NAstring" lay-verify="required" placeholder="NULL" class="layui-input">
-                              </div>
-                            </div>
-                        </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p>
                         <div class="layui-form-item">
                             <label class="layui-form-label">Data File</label>
@@ -175,14 +167,8 @@ layui.use('upload', function(){
         name =$("input[name='omics']:checked").val();
         if (name == "Lipidomics") {
           document.getElementById("delodd").style.display="block";
-          document.getElementById("nastring").style.display="block";
         }
-        if (name == "Metabolomics" || name == "Proteinomics" ) {
-          document.getElementById("nastring").style.display="block";
-          document.getElementById("delodd").style.display="none";
-        }
-        if (name == "Transcriptomics") {
-          document.getElementById("nastring").style.display="none";
+        if (name == "Metabolomics" || name == "Proteinomics" || name == "Transcriptomics") {
           document.getElementById("delodd").style.display="none";
         }
         console.log(name);

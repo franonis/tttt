@@ -19,9 +19,8 @@
             <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
             <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
             <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
-            <input type="radio" value="{{$NAstring}}" name="NAstring" checked style="display: none;">
             <input type="radio" value="{{$delodd}}" name="delodd" checked style="display: none;">
-            <div class="col-md-12">
+            <div class="col-md-12" style="display: none;"> 
                 <div class="col-md-3">
                     <h4>There are three analysis mode,please choose one</h4>
                 </div>
@@ -31,63 +30,34 @@
                     <input  type="radio" value="subgroup" name="mode"> <label>take some groups together into account</label><br>
                 </div>
             </div>
-            <div class="col-md-12" id="choosegroup" style="display: none;">
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                <div class="col-md-3">
-                    <h4>Choose the groups</h4>
+            <div class="col-md-6" style="display: none;"> 
+                <select name="control">
+                    @foreach($groupsLevels as $k=>$i )
+                        <option value="{{$i}}">{{$i}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-12" id="choosegroup">
+                <div class="col-md-6"> 
+                    <p>please choose the experiment group</p><br>
+                    <select name="experiment">
+                        @foreach($groupsLevels as $k=>$i )
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="col-md-9">
-                    <div class="col-md-12" id="onetoone" style="display: none;">
-                        <div class="col-md-6"> 
-                            <p>please choose the experiment group</p><br>
-                            <select name="experiment">
-                                @foreach($groupsLevels as $k=>$i )
-                                    <option value="{{$i}}">{{$i}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6"> 
-                            <p>please choose the control group</p><br>
-                            <select name="control">
-                                @foreach($groupsLevels as $k=>$i )
-                                    <option value="{{$i}}">{{$i}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="layui-form-item" id="subgroup" style="display: none;">
+                <div class="col-md-6"> 
+                    <p>please choose the control group</p><br>
+                    <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
-                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}">{{$i}}&nbsp;&nbsp;
+                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}">{{$i}}<br>
                             @endforeach
                         </div>
                     </div>
                 </div>
             </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Do you want delete the odd chain</h4>
-                </div>
-                <div class="col-md-9"  id="normalization" style="display: block;">
-                    <input type="radio" value="T" name="delodd" checked> <label>Yes,delete it</label><br>
-                    <input type="radio" value="F" name="delodd"> <label>No,keep it</label>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>How to deal with the missing value</h4>
-                </div>
-                <div class=" col-md-9" id="missing">
-                    <div class="layui-input-inline">
-                        <input type="radio" value="imputation" name="missing" checked> <label>Imputation</label><br>
-                        <input type="radio" value="delete" name="missing"> <label>Delete</label>
-                    </div>
-                </div>
-            </div><br>
-            <div id="setprecent" style="display: none;">
+            <div id="setprecent">
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-12">
                     <div class="col-md-3">
