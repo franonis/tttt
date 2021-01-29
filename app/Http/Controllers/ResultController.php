@@ -47,9 +47,9 @@ class ResultController extends Controller
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
                     if ($mode == "all_together") {
-                        return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                        
+                        return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                        
                     }else{
-                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
+                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
                     }
                 }
             } else {
@@ -61,9 +61,9 @@ class ResultController extends Controller
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
                         if ($mode == "all_together") {
-                            return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
+                            return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
                         }else{
-                           return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
+                           return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
                         }
                         
                     }
@@ -85,9 +85,9 @@ class ResultController extends Controller
                         #dd($png);
 #                        $fapng=explode(" ", $ooout);
                         if ($mode == "all_together") {
-                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }else{
-                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }
                         
                     }
@@ -103,9 +103,9 @@ class ResultController extends Controller
                             #dd($ooout);
 #                            $fapng=explode(" ", $ooout);
                             if ($mode == "all_together") {
-                                return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                                return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                             }else{
-                                return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                                return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                             }
                             
                         }
@@ -116,9 +116,9 @@ class ResultController extends Controller
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultmet($outpath)) {
                         if ($mode == "all_together") {
-                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
-                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }
                         
                     }
@@ -131,9 +131,9 @@ class ResultController extends Controller
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                         if ($this->showresultmet($outpath)) {
                             if ($mode == "all_together") {
-                                return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                                return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                             }else{
-                                return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                                return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                             }
                             
                         }
