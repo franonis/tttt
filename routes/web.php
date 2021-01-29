@@ -36,6 +36,9 @@ Route::get('/statistics', function () {
 Route::get('/faq', function () {
     return view('about');
 });
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('/about', function () {
     return view('about');
 });
