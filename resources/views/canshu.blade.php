@@ -37,37 +37,37 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-12" id="choosegroup">
-                <div class="col-md-6"> 
+            <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
+                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%; background-color: #FFFFFF;"> 
                     <p>please choose the experiment group</p><br>
-                    <select name="experiment">
-                        @foreach($groupsLevels as $k=>$i )
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endforeach
-                    </select>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input  type="radio" value="{{$i}}" name="experiment"> <label>{{$i}}</label><br>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6"> 
+                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
                     <p>please choose the control group</p><br>
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
-                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}">{{$i}}<br>
+                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}" style="margin-top: 3%;">{{$i}}<br>
                             @endforeach
                         </div>
                     </div>
                 </div>
             </div><br>
-            <div id="setprecent">
-                <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                <div class="col-md-12">
-                    <div class="col-md-3">
-                        <h4>Set the precent to delete the missing column</h4>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" name="naperent" lay-verify="required" placeholder="80%" class="layui-input">
-                    </div>
-                </div><br>
-            </div>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4>Set the precent to delete the missing column</h4>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="naperent" lay-verify="required" placeholder="80%" class="layui-input">
+                </div>
+            </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
                 <br>

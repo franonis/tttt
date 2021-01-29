@@ -10,13 +10,9 @@
 <div class="container content">
     <div class="row">
         @include('partials.errors')
-        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p>
+        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Metabolomics/Proteinomics</a>
         <hr>
             <div class="col-md-12">
-                <div class="col-md-3">
-                    <a style="font-size: 180%">Metabolomics/</a>
-                    <a style="font-size: 180%">proteinomics</a>
-                </div><br>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>

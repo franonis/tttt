@@ -10,12 +10,9 @@
 <div class="container content">
     <div class="row">
         @include('partials.errors')
-        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p>
+        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Lipidomics</a>
         <hr>
             <div class="col-md-12">
-                <div class="col-md-3">
-                    <a style="font-size: 180%">Lipidomics</a><!--第一部分-->
-                </div>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
