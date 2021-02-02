@@ -28,7 +28,7 @@
                         <div class="layui-form-item" id="delodd" style="display: block;">
                           <label class="layui-form-label"></label>
                           <div class="layui-input-block">
-                            <input type="checkbox" checked="" name="delodd" lay-skin="switch" lay-filter="switchTest" lay-text="Yes|No"><a>I want delete the odd chain</a>
+                            <input type="checkbox" checked="" name="delodd" lay-skin="switch" lay-filter="switchTest" lay-text="Yes|No"><a style="margin-top: 8px;">I want delete the odd chain</a style="margin-top: 8px;">
                           </div>
                         </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p><br>
