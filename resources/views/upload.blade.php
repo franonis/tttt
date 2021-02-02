@@ -31,11 +31,11 @@
                             <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="I want to delete the odd chain" checked="">
                           </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="dataType" style="display: block;">
                             <div class="col-md-3">
                                 <h4>dataType</h4>
                             </div>
-                            <div class="col-md-9" id="dataType">
+                            <div class="col-md-9" >
                                 <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label><br>
                                 <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
                             </div>
