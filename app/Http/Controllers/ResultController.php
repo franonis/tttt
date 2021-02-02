@@ -15,7 +15,7 @@ class ResultController extends Controller
         $file_desc = $request->file_desc;
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
-        $subgroupfile = fopen("/home/zhangqb/tttt/public/$outpath subgroup.txt", "w");
+        $subgroupfile = fopen("/home/zhangqb/tttt/public/$outpathsubgroup.txt", "w");
 
         if (!$request->subgroup) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => "You nend at least choose one group"]);
@@ -37,9 +37,9 @@ class ResultController extends Controller
         if ($omics == "Transcriptomics") {
             
             $normalization = $request->normalization;
-            $outpath = $outpath . $experiment . $control . '/'; #输出文件放一个对比组名命名的文件
+            $outpath = $outpath . $control .$subgroup[0]. '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
-            $pngpath = preg_replace('/\//', "+", $outpath);
+            $downloadpath = preg_replace('/\//', "+", $outpath);
             if ($data_type == "rna") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             } else {
@@ -48,9 +48,9 @@ class ResultController extends Controller
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
                     if ($notshowvol) {
-                        return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                        
+                        return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                        
                     }else{
-                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
+                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
                     }
                 }
             } else {
@@ -62,20 +62,19 @@ class ResultController extends Controller
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
                         if ($notshowvol) {
-                            return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
+                            return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
                         }else{
-                           return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
+                           return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
                         }
                         
                     }
                 }
             }
         } else {
-            $firstline = $request->firstline;
             $delodd = $request->delodd;
-            $outpath = $outpath . $experiment . $control . '/'; #输出文件放一个对比组名命名的文件
+            $outpath = $outpath . $control .$subgroup[0]. '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
-            $pngpath = preg_replace('/\//', "+", $outpath);
+            $downloadpath = preg_replace('/\//', "+", $outpath);
             if ($omics == "Lipidomics") {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
 
@@ -86,9 +85,9 @@ class ResultController extends Controller
                         #dd($png);
 #                        $fapng=explode(" ", $ooout);
                         if ($notshowvol) {
-                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }else{
-                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }
                         
                     }
@@ -104,9 +103,9 @@ class ResultController extends Controller
                             #dd($ooout);
 #                            $fapng=explode(" ", $ooout);
                             if ($notshowvol) {
-                                return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                                return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                             }else{
-                                return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+                                return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                             }
                             
                         }
@@ -117,9 +116,9 @@ class ResultController extends Controller
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultmet($outpath)) {
                         if ($notshowvol) {
-                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
-                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }
                         
                     }
@@ -132,9 +131,9 @@ class ResultController extends Controller
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                         if ($this->showresultmet($outpath)) {
                             if ($mode == "all_together") {
-                                return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                                return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                             }else{
-                                return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                                return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                             }
                             
                         }
