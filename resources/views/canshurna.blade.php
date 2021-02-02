@@ -17,6 +17,7 @@
             {{ csrf_field() }}
             <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
             <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
+            <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
             <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
             <div class="col-md-12">
                 <div class="col-md-3">

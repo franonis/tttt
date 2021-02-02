@@ -106,7 +106,6 @@ class UploadController extends Controller
 #设置例子的参数
     public function examplecanshu(Request $request)
     {
-        dd($request);
         #$omicsss = ['a' => 'Lipidomics', 'b' => 'Lipidomicscos', 'c' => 'Metabolomics', 'd' => 'Transcriptomicshan', 'e' => 'Transcriptomics', 'f' => 'Proteomics'];
         $file_data = ['Lipidomics' => 'HANlipid_tidy.csv', 'Lipidomicscos' => 'Cos7_integ_2.csv', 'Metabolomics' => 'metabolites_tidy2.csv', 'Transcriptomicshan' => 'HANgene_tidy_geneid_allgroups.CSV', 'Transcriptomics' => 'gene_tidy.CSV', 'Proteomics' => 'proteins_Depletion_tidy.csv'];
         $file_desc = ['Lipidomics' => 'HANsampleList_lipid.CSV', 'Lipidomicscos' => 'Cos7_integ_sampleList.csv', 'Metabolomics' => 'sampleList_lip.csv', 'Transcriptomicshan' => 'HANsampleList_allgroups.CSV', 'Transcriptomics' => 'sampleList.CSV', 'Proteomics' => 'sampleList_lip.csv'];
@@ -131,10 +130,8 @@ class UploadController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $path_datafile = 'uploads/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
         $path_descfile = 'uploads/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
-
+        $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Transcriptomicshan' => 'rna', 'Transcriptomics' => 'Proteins', 'Proteomics' => 'Proteins'];
         if ($omics != "Transcriptomics") {
-            $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Proteomics' => 'Proteins'];
-
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
             exec($command, $ooout, $flag);
@@ -165,7 +162,7 @@ class UploadController extends Controller
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
-                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics]]);
+                return view('canshurna', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics]]);
             }
         }
 

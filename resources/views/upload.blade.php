@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-12" id="dataType" style="display: none;">
                             <div class="col-md-2">
-                                <h4>dataType</h4>
+                                <h4>Which Type</h4>
                             </div>
                             <div class="col-md-10" >
                                 <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
@@ -102,11 +102,6 @@
                   </tr>
                 </tbody>
             </table>
-            <div class="layui-form-item" style="display: none;">
-              <div class="layui-input-block">
-                <input  type="radio" value="rna" name="data_type">
-              </div>
-            </div>
             <div class="col-md-12 text-center">
                 <br>
                 <button id="submitexample" class="layui-btn" type="submit">Continue</button>
@@ -183,18 +178,5 @@ layui.use('upload', function(){
         }
         console.log(name);
    });
-    $("#exampleomics").click(function (){
-        name =$("input[name='exampleomics']:checked").val();
-        if (name == "Transcriptomicshan") {
-          $("input[name='data_type']").val("rna");
-        }
-        else if (name == "Transcriptomics") {
-          $("input[name='data_type']").val("microarray");
-        }else{
-          $("input[name='data_type']").val("notrna");
-        }
-        console.log($("input[name='data_type']").val());
-   });exampleomics
-
 </script>
 @endsection
