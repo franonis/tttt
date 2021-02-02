@@ -15,7 +15,7 @@ class ResultController extends Controller
         $file_desc = $request->file_desc;
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
-        $subgroupfile = fopen("'/home/zhangqb/tttt/public/' . $outpath .'subgroup.txt'", "w");
+        $subgroupfile = fopen("/home/zhangqb/tttt/public/$outpath subgroup.txt", "w");
 
         if (!$request->subgroup) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => "You nend at least choose one group"]);
