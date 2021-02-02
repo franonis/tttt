@@ -25,15 +25,15 @@
                               <input type="radio" name="omics" value="Proteinomics" title="Proteomics">
                             </div>
                         </div>
-                        <div class="layui-form-item" id="delodd" style="display: block;">
-                          <label class="layui-form-label"></label>
+                        <div class="layui-form-item" pane="" id="delodd" style="display: block;">
+                          <label class="layui-form-label">analysis option：</label>
                           <div class="layui-input-block">
-                            <input type="checkbox" checked="" name="delodd" lay-skin="switch" lay-filter="switchTest" lay-text="Yes|No"><label style="margin-top: 8px;">I want delete the odd chain</label>
+                            <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="I want to delete the odd chain" checked="">
                           </div>
                         </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p><br>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">Data File</label>
+                            <label class="layui-form-label">Data File：</label>
                             <div class="layui-upload-drag" id="datafile">
                               <i class="layui-icon"></i>
                               <p>Click to upload, or drag the file here</p>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">Desc File</label>
+                            <label class="layui-form-label">Desc File：</label>
                             <div class="layui-upload-drag" id="descfile">
                               <i class="layui-icon"></i>
                               <p>Click to upload, or drag the file here</p>
