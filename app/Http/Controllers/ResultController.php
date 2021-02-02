@@ -15,21 +15,22 @@ class ResultController extends Controller
         $file_desc = $request->file_desc;
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
-        $mode = $request->mode;#
-        if ($mode == "all_together") {
-            $experiment = $request->mode;
-            $control = $request->control;
-        }
-        if ($mode == "onetoone") {
-            $experiment = $request->experiment;
-            $control = $request->control;
-        }
-        if ($mode == "subgroup") {
+        $subgroupfile = fopen("'/home/zhangqb/tttt/public/' . $outpath .'subgroup.txt'", "w")
+
+        if (!$request->subgroup) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => "You nend at least choose one group"]);
+        }else{
             $subgroup = $request->subgroup;
-            $experiment = $request->experiment;
-            $control = $request->control;
+            foreach ($subgroup as $key => $value) {
+                fwrite($subgroupfile, $key . "\n");
+            }
         }
+
         $control = $request->control;
+        if (!array_key_exists($control, $subgroup) ) {
+            fwrite($subgroupfile, $control . "\n");
+        }
+        fclose($subgroupfile);
         $data_type = $request->data_type;
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
@@ -46,7 +47,7 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
-                    if ($mode == "all_together") {
+                    if ($notshowvol) {
                         return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                        
                     }else{
                         return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
@@ -60,7 +61,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
-                        if ($mode == "all_together") {
+                        if ($notshowvol) {
                             return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
                         }else{
                            return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
@@ -84,7 +85,7 @@ class ResultController extends Controller
                         exec($command,$png,$flag);
                         #dd($png);
 #                        $fapng=explode(" ", $ooout);
-                        if ($mode == "all_together") {
+                        if ($notshowvol) {
                             return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }else{
                             return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
@@ -102,7 +103,7 @@ class ResultController extends Controller
                             exec($command,$png,$flag);
                             #dd($ooout);
 #                            $fapng=explode(" ", $ooout);
-                            if ($mode == "all_together") {
+                            if ($notshowvol) {
                                 return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                             }else{
                                 return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
@@ -115,7 +116,7 @@ class ResultController extends Controller
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultmet($outpath)) {
-                        if ($mode == "all_together") {
+                        if ($notshowvol) {
                             return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
                             return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'pngpath' => $pngpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
