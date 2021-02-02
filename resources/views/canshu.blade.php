@@ -45,7 +45,7 @@
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <h4>Set the precent to delete the missing column</h4>
                 </div>
                 <div class="col-md-1">
