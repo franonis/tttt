@@ -32,11 +32,11 @@
                           </div>
                         </div>
                         <div class="col-md-12" id="dataType" style="display: none;">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <h4>dataType</h4>
                             </div>
-                            <div class="col-md-9" >
-                                <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label><br>
+                            <div class="col-md-10" >
+                                <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
                                 <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
                             </div>
                         </div>
@@ -86,22 +86,28 @@
                     <th>Descriptional file</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="exampleomics">
                   <tr>
                     <td><input type="radio" name="exampleomics" value="Lipidomics" title="Lipidomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANlipid_tidy.csv" >HANlipid_tidy.csv</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_lipid.CSV" >HANsampleList_lipid.CSV</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Lipidomicscos" title="Lipidomics" checked=""></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_2.csv" >Cos7_integ_2.csv</a></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_sampleList.csv" >Cos7_integ_sampleList.csv</a></td>
+                    <td><input type="radio" name="exampleomics" value="Lipidomicscos" title="Lipidomics"></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_2.csv" >Cos7_integ_2.csv</a></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_sampleList.csv" >Cos7_integ_sampleList.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Metabolomics" title="Metabolomics" checked=""></td><td><a href="{{ url('download/example').'/' }}metabolites_tidy2.csv" >metabolites_tidy2.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
+                    <td><input type="radio" name="exampleomics" value="Metabolomics" title="Metabolomics"></td><td><a href="{{ url('download/example').'/' }}metabolites_tidy2.csv" >metabolites_tidy2.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Transcriptomics" title="Transcriptomics" checked=""></td><td><a href="{{ url('download/example').'/' }}gene_tidy.CSV" >gene_tidy.CSV</a></td><td><a href="{{ url('download/example').'/' }}sampleList.CSV" >sampleList.CSV</a></td>
+                    <td><input type="radio" name="exampleomics" value="Transcriptomics" title="Transcriptomics"></td><td><a href="{{ url('download/example').'/' }}gene_tidy.CSV" >gene_tidy.CSV</a></td><td><a href="{{ url('download/example').'/' }}sampleList.CSV" >sampleList.CSV</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Transcriptomicshan" title="Transcriptomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy_geneid_allgroups.CSV" >HANgene_tidy_geneid_allgroups.CSV</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_allgroups.CSV" >HANsampleList_allgroups.CSV</a></td>
+                    <td><input type="radio" name="exampleomics" value="Transcriptomicshan" title="Transcriptomics"></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy_geneid_allgroups.CSV" >HANgene_tidy_geneid_allgroups.CSV</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_allgroups.CSV" >HANsampleList_allgroups.CSV</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Proteomics" title="Proteomics" checked=""></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv" >proteins_Depletion_tidy.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
+                    <td><input type="radio" name="exampleomics" value="Proteomics" title="Proteomics"></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv" >proteins_Depletion_tidy.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
                   </tr>
                 </tbody>
             </table>
+            <div class="layui-form-item" style="display: none;">
+              <div class="layui-input-block">
+                <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
+                <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
+              </div>
+            </div>
             <div class="col-md-12 text-center">
                 <br>
                 <button id="submitexample" class="layui-btn" type="submit">Continue</button>
@@ -178,7 +184,16 @@ layui.use('upload', function(){
         }
         console.log(name);
    });
-
+    $("#exampleomics").click(function (){
+        name =$("input[name='exampleomics']:checked").val();
+        if (name == "rna") {
+          $("input[name='data_type']").val("rna");
+        }
+        if (name == "microarray") {
+          $("input[name='data_type']").val("microarray");
+        }
+        console.log(name);
+   });exampleomics
 
 </script>
 @endsection
