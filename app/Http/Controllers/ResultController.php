@@ -14,7 +14,7 @@ class ResultController extends Controller
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
         $naperent = $request->naperent;
-        $temp = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
+        $tmpout = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
         is_dir($tmpout) or mkdir($tmpout, 0777, true);
         $subgroupfile = fopen("/home/zhangqb/tttt/public/$tmpout"."subgroup.txt", "w");
 
