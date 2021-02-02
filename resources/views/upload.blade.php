@@ -26,13 +26,12 @@
                             </div>
                         </div>
                         <div class="layui-form-item" id="delodd" style="display: block;">
-                            <label class="layui-form-label">是否删除奇数碳信号:</label>
-                            <div class="layui-input-block">
-                              <input type="radio" value="T" name="delodd" checked> <label>Yes,delete it</label><br>
-                              <input type="radio" value="F" name="delodd"> <label>No,keep it</label>
-                            </div>
+                          <label class="layui-form-label"></label>
+                          <div class="layui-input-block">
+                            <input type="checkbox" checked="" name="delodd" lay-skin="switch" lay-filter="switchTest" lay-text="Yes|No"><p>I want delete the odd chain</p>
+                          </div>
                         </div>
-                        <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p>
+                        <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p><br>
                         <div class="layui-form-item">
                             <label class="layui-form-label">Data File</label>
                             <div class="layui-upload-drag" id="datafile">
