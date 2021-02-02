@@ -37,7 +37,7 @@
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
-                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}" style="margin-top: 3%;" checked="">{{$i}}<br>
+                                <input type="checkbox" name="subgroup[{{$i}}]" title="{{$i}}" style="margin-top: 3%;" checked=""><label>{{$i}}</label><br>
                             @endforeach
                         </div>
                     </div>
@@ -46,7 +46,7 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
                 <div class="col-md-4">
-                    <h4>Set the precent to delete the missing column</h4>
+                    <h4 style="margin-top: 2%;">Set the precent to delete the missing column</h4>
                 </div>
                 <div class="col-md-1">
                     <input type="text" name="naperent" lay-verify="required" placeholder="80" class="layui-input">
