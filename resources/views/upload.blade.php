@@ -31,7 +31,7 @@
                             <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="I want to delete the odd chain" checked="">
                           </div>
                         </div>
-                        <div class="col-md-12" id="dataType" style="display: block;">
+                        <div class="col-md-12" id="dataType" style="display: none;">
                             <div class="col-md-3">
                                 <h4>dataType</h4>
                             </div>
