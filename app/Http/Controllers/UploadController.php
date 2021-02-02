@@ -55,7 +55,7 @@ class UploadController extends Controller
         }
         $file_data = $request->file_datafile;
         $file_desc = $request->file_descfile;
-        if (array_key_exists("delodd", $request)) {
+        if ($request->delodd) {
             $delodd = "T";
         }else{
             $delodd = "F";
