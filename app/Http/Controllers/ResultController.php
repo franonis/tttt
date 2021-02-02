@@ -21,6 +21,7 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => "You nend at least choose one group"]);
         }else{
             $subgroup = $request->subgroup;
+            dd($subgroup);
             foreach ($subgroup as $key => $value) {
                 fwrite($subgroupfile, $key . "\n");
             }
