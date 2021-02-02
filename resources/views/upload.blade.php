@@ -193,7 +193,7 @@ layui.use('upload', function(){
         }else{
           $("input[name='data_type']").val("notrna");
         }
-        console.log(name);
+        console.log($("input[name='data_type']").val());
    });exampleomics
 
 </script>
