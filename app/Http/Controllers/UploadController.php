@@ -48,14 +48,19 @@ class UploadController extends Controller
     #设置参数
     public function canshu(Request $request)
     {
-        dd($request);
+        
         $omics = $request->omics;
         if ($request->file_datafile == "no data" || $request->file_descfile == "no data") {
             return view('errors.200', ['title' => 'No Data', 'msg' => 'Please upload your file!', 'back' => 'Go back upload Page']);
         }
         $file_data = $request->file_datafile;
         $file_desc = $request->file_descfile;
-        $delodd = $request->delodd;
+        if (array_key_exists("delodd", $request)) {
+            $delodd = "T";
+        }else{
+            $delodd = "F";
+        }
+        dd($delodd);
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
 
