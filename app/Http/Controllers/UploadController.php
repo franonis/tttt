@@ -48,7 +48,6 @@ class UploadController extends Controller
     #设置参数
     public function canshu(Request $request)
     {
-        
         $omics = $request->omics;
         if ($request->file_datafile == "no data" || $request->file_descfile == "no data") {
             return view('errors.200', ['title' => 'No Data', 'msg' => 'Please upload your file!', 'back' => 'Go back upload Page']);
@@ -60,7 +59,6 @@ class UploadController extends Controller
         }else{
             $delodd = "F";
         }
-        dd($delodd);
         $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
 
@@ -150,7 +148,7 @@ class UploadController extends Controller
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
                 #dd($groupsLevels[1]);
-                return view('canshulipexam', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'delodd' => "F"]);
+                return view('canshu', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'delodd' => "F"]);
             }
         } else {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
