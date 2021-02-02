@@ -18,7 +18,7 @@
                     <div style="padding: 20px; background-color: #F2F2F2;">
                         <div class="layui-form-item">
                             <label class="layui-form-label">Data Type：</label>
-                            <div class="layui-input-block" id="dataType">
+                            <div class="layui-input-block" id="omics">
                               <input type="radio" name="omics" value="Lipidomics" title="Lipidomics" checked="">
                               <input type="radio" name="omics" value="Metabolomics" title="Metabolomics">
                               <input type="radio" name="omics" value="Transcriptomics" title="Transcriptomics">
@@ -30,6 +30,15 @@
                           <div class="layui-input-block">
                             <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="I want to delete the odd chain" checked="">
                           </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <h4>dataType</h4>
+                            </div>
+                            <div class="col-md-9" id="dataType">
+                                <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label><br>
+                                <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
+                            </div>
                         </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p><br>
                         <div class="layui-form-item">
@@ -153,21 +162,18 @@ layui.use('upload', function(){
           var table = layui.table; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
     });
-    $('#regionform').submit(function(e){
-        start = $('#file_datafile').val();
-        end = $('#file_descfile').val();
-
-        if(start == "no data" || end == "no data" ){
-            layer.msg('Please upload your file!');
-            return;
-        }
-    });
-    $("#dataType").click(function (){
+    $("#omics").click(function (){
         name =$("input[name='omics']:checked").val();
         if (name == "Lipidomics") {
           document.getElementById("delodd").style.display="block";
+          document.getElementById("dataType").style.display="none";
         }
-        if (name == "Metabolomics" || name == "Proteinomics" || name == "Transcriptomics") {
+        if (name == "Metabolomics" || name == "Proteinomics") {
+          document.getElementById("delodd").style.display="none";
+          document.getElementById("dataType").style.display="none";
+        }
+        if (name == "Transcriptomics") {
+          document.getElementById("dataType").style.display="block";
           document.getElementById("delodd").style.display="none";
         }
         console.log(name);
