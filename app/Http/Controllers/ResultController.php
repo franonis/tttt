@@ -21,9 +21,9 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => "You nend at least choose one group"]);
         }else{
             $subgroup = $request->subgroup;
-            dd($subgroup);
             foreach ($subgroup as $key => $value) {
                 fwrite($subgroupfile, $key . "\n");
+                $lastgroup=$key;
             }
         }
 
@@ -38,7 +38,7 @@ class ResultController extends Controller
         if ($omics == "Transcriptomics") {
             
             $normalization = $request->normalization;
-            $outpath = $outpath . $control .$subgroup[0]. '/'; #输出文件放一个对比组名命名的文件
+            $outpath = $outpath . $control .$lastgroup. '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
             $downloadpath = preg_replace('/\//', "+", $outpath);
             if ($data_type == "rna") {
@@ -73,7 +73,7 @@ class ResultController extends Controller
             }
         } else {
             $delodd = $request->delodd;
-            $outpath = $outpath . $control .$subgroup[0]. '/'; #输出文件放一个对比组名命名的文件
+            $outpath = $outpath . $control .$lastgroup. '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
             $downloadpath = preg_replace('/\//', "+", $outpath);
             if ($omics == "Lipidomics") {
