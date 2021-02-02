@@ -48,6 +48,7 @@ class UploadController extends Controller
     #设置参数
     public function canshu(Request $request)
     {
+        dd($request);
         $omics = $request->omics;
         if ($request->file_datafile == "no data" || $request->file_descfile == "no data") {
             return view('errors.200', ['title' => 'No Data', 'msg' => 'Please upload your file!', 'back' => 'Go back upload Page']);
@@ -130,7 +131,7 @@ class UploadController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $path_datafile = 'uploads/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
         $path_descfile = 'uploads/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
-        $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Transcriptomicshan' => 'rna', 'Transcriptomics' => 'Proteins', 'Proteomics' => 'Proteins'];
+        $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Transcriptomicshan' => 'rna', 'Transcriptomics' => 'microarray', 'Proteomics' => 'Proteins'];
         if ($omics != "Transcriptomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
@@ -144,11 +145,7 @@ class UploadController extends Controller
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
                 #dd($groupsLevels[1]);
-                $firstline = file_get_contents($outpath . '/firstline.csv');
-                preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
-                array_shift($firstlines[1]); #去掉第一行
-                $firstlines = $firstlines[1];
-                return view('canshulipexam', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'firstlines' => $firstlines]);
+                return view('canshulipexam', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics]);
             }
         } else {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
