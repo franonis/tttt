@@ -13,9 +13,10 @@ class ResultController extends Controller
         $omics = $request->omics;
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
-        $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
-        is_dir($outpath) or mkdir($outpath, 0777, true);
-        $subgroupfile = fopen("/home/zhangqb/tttt/public/$outpath"."subgroup.txt", "w");
+        $naperent = $request->naperent;
+        $temp = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
+        is_dir($tmpout) or mkdir($tmpout, 0777, true);
+        $subgroupfile = fopen("/home/zhangqb/tttt/public/$tmpout"."subgroup.txt", "w");
 
         if (!$request->subgroup) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => "You nend at least choose one group"]);
@@ -73,18 +74,36 @@ class ResultController extends Controller
             }
         } else {
             $delodd = $request->delodd;
-            $outpath = $outpath . $control .$lastgroup. '/'; #输出文件放一个对比组名命名的文件
+            $outpath = $tmpout . $control .$lastgroup. '/'; #输出文件放一个对比组名命名的文件
             is_dir($outpath) or mkdir($outpath, 0777, true);
             $downloadpath = preg_replace('/\//', "+", $outpath);
+            $command = '/home/new/R-3.6.3/bin/Rscript subgroupsSel.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -s "' . $tmpout . '" -p "' . $outpath . '"';
+            exec($command, $ooout, $flag);
+            #dd($ooout);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+            } else {
+                exec($command, $ooout, $flag);
+                if ($flag == 1) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                }
+                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                    
+                }
+            
+
+
             if ($omics == "Lipidomics") {
-                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
 
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultlip($outpath)) {
                         $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/*.png';
                         exec($command,$png,$flag);
                         #dd($png);
-#                        $fapng=explode(" ", $ooout);
                         if ($notshowvol) {
                             return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                         }else{
@@ -102,7 +121,6 @@ class ResultController extends Controller
                             $command='ls /home/zhangqb/tttt/public'.$outpath.'result/FAchainVisual/*.png';
                             exec($command,$png,$flag);
                             #dd($ooout);
-#                            $fapng=explode(" ", $ooout);
                             if ($notshowvol) {
                                 return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
                             }else{
