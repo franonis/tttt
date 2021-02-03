@@ -87,7 +87,7 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($omics == "Lipidomics") {
-                    $downloadpath = getdownload('/home/zhangqb/tttt/public/'.$outpath.'results/');
+                    $downloadpath = $this->getdownload('/home/zhangqb/tttt/public/'.$outpath.'results/');
                     dd($downloadpath);
                     if ($this->showresultlip($outpath)) {
                         if (count($subgroup) == 1) {
