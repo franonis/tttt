@@ -395,28 +395,28 @@ class ResultController extends Controller
         $command='ls '.$downloadpath.'MARresults/volcano*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "+", $value);
+            $filename = preg_replace('/\//', "++", $value);
             $download["volcano"][$filename]=1;
         }
         #heatmap
         $command='ls '.$downloadpath.'MARresults/heatmap*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "+", $value);
+            $filename = preg_replace('/\//', "++", $value);
             $download["heatmap"][$filename]=1;
         }
         #headgroup
         $command='ls '.$downloadpath.'MARresults/headgroup*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "+", $value);
+            $filename = preg_replace('/\//', "++", $value);
             $download["headgroup"][$filename]=1;
         }
         #FAchainVisual
         $command='ls '.$downloadpath.'MARresults/FAchainVisual*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "+", $value);
+            $filename = preg_replace('/\//', "++", $value);
             $download["FAchainVisual"][$filename]=1;
         }
         return $download;
