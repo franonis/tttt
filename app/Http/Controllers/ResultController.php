@@ -33,9 +33,6 @@ class ResultController extends Controller
 
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $outpath =$outpath."/";
-        $downloadpath = preg_replace('/\//', "+", $outpath);
-
-
         if (!array_key_exists($control, $subgroup) ) {
             fwrite($subgroupfile, $control . "\n");
         }
@@ -90,8 +87,8 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($omics == "Lipidomics") {
-                    $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/*.png';
-                    exec($command,$fapng,$flag);
+                    $downloadpath = getdownload('/home/zhangqb/tttt/public/'.$outpath.'results/');
+                    dd($downloadpath);
                     if ($this->showresultlip($outpath)) {
                         if (count($subgroup) == 1) {
                             return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng]);
@@ -391,6 +388,39 @@ class ResultController extends Controller
         #return 1;
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }
+
+    public function getdownload($downloadpath)
+    {
+        #volcano
+        $command='ls '.$downloadpath.'MARresults/volcano*';
+        exec($command,$tmp,$flag);
+        foreach ($tmp as $key => $value) {
+            $filename = preg_replace('/\//', "+", $key);
+            $download["volcano"][$filename]=1;
+        }
+        #heatmap
+        $command='ls '.$downloadpath.'MARresults/heatmap*';
+        exec($command,$tmp,$flag);
+        foreach ($tmp as $key => $value) {
+            $filename = preg_replace('/\//', "+", $key);
+            $download["heatmap"][$filename]=1;
+        }
+        #headgroup
+        $command='ls '.$downloadpath.'MARresults/headgroup*';
+        exec($command,$tmp,$flag);
+        foreach ($tmp as $key => $value) {
+            $filename = preg_replace('/\//', "+", $key);
+            $download["headgroup"][$filename]=1;
+        }
+        #FAchainVisual
+        $command='ls '.$downloadpath.'MARresults/FAchainVisual*';
+        exec($command,$tmp,$flag);
+        foreach ($tmp as $key => $value) {
+            $filename = preg_replace('/\//', "+", $key);
+            $download["FAchainVisual"][$filename]=1;
+        }
+        return $download;
+    }    
 
     public function getcrossPage(Request $request)
     {
