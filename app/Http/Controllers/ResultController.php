@@ -9,7 +9,7 @@ class ResultController extends Controller
 {
     public function getSetPage(Request $request)
     {
-        dd($request);
+        #dd($request);
         $omics = $request->omics;
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
