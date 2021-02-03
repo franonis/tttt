@@ -25,16 +25,28 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+PCA_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                <div class="col-md-10">
+                                    <div class="col-md-5">
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    </div>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>OPLSDA result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
@@ -44,84 +56,67 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="Volcano" class="layui-form" action="/update/metupdateVolcano">
+                                <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="e" value="{{ $e }}" style="display: none;">
+                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
-                                        <h4>if show lipid class</h4>
+                                        <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <small>
-                                        <select name="s">
-                                            <option value="T">T</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                        </small>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <h4>if ignore subclass</h4>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <small>
-                                        <select name="w">
-                                            <option value="T">T</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                        </small>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <h4>if paired</h4>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <small>
-                                        <select name="b">
-                                            <option value="T">T</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                        </small>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <h4>Set p type</h4>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <small>
-                                        <select name="x">
-                                            <option value="raw">raw</option>
-                                            <option value="fdr">fdr</option>
-                                        </select>
-                                        </small>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <h4>Set FC thresh</h4>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <small>
-                                        <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
-                                        </small>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <h4>Set p thresh</h4>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <small>
-                                        <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
-                                        </small>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <h4>Set top number</h4>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <small>
-                                        <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
-                                        </small>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+volcano_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                        <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
+                                        <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
+                                        <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
+                                        <div class="col-md-2">
+                                            <h4>Set p type</h4>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <small>
+                                            <select name="x">
+                                                <option value="raw">raw</option>
+                                                <option value="fdr">fdr</option>
+                                            </select>
+                                            </small>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <h4>Set FC thresh</h4>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <small>
+                                            <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <h4>Set p thresh</h4>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <small>
+                                            <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <h4>Set top number</h4>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <small>
+                                            <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    @foreach($downloadfilename["volcano"] as $k=>$i )
+                                        <div class="col-md-3">
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
                                 </div>
@@ -136,7 +131,7 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/metupdateHeatmap">
+                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="s" value="{{ $s }}" style="display: none;">
                                     <input name="b" value="{{ $b }}" style="display: none;">
@@ -145,31 +140,42 @@
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
                                     <input name="w" value="{{ $w }}" style="display: none;">
+                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
-                                        <h4>Set e number</h4>
+                                        <h4>Update with new parameters</h4>
                                     </div>
-                                    <div class="col-md-4">
-                                        <small>
-                                        <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
-                                        </small>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
-                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="col-md-2">
+                                            <h4>Set top number</h4>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <small>
+                                            <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    @foreach($downloadfilename["heatmap"] as $k=>$i )
+                                        <div class="col-md-3">
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
-                                <div class="col-md-5">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_top.png" style="height:50%;width: 60%;">
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
                     </div>
-                  </div>
                 </div>
             </div>
             <hr>

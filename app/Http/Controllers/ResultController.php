@@ -90,7 +90,7 @@ class ResultController extends Controller
                     if ($this->showresultlip($outpath)) {
                         $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                         $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
-                        dd($downloadfilename);
+                        #dd($downloadfilename);
                         if (count($subgroup) == 1) {
                             return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info"]);
                         }else{
@@ -102,11 +102,11 @@ class ResultController extends Controller
                     if ($this->showresultmet($outpath)) {
                         $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                         $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
-                        dd($downloadfilename);
+                        #dd($downloadfilename);
                         if (count($subgroup) == 1) {
-                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
-                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }  
                     }
                 }
@@ -114,11 +114,11 @@ class ResultController extends Controller
                     if ($this->showresultpro($outpath)) {
                         $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                         $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
-                        dd($downloadfilename);
+                        #dd($downloadfilename);
                         if (count($subgroup) == 1) {
-                            return view('resultproZnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultproZnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
-                            return view('resultproZ', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultproZ', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }  
                     }
                 }

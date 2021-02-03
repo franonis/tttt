@@ -28,10 +28,16 @@
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                <div class="col-md-10">
+                                    <div class="col-md-5">
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    </div>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
@@ -71,20 +77,31 @@
                                     <input name="w" value="{{ $w }}" style="display: none;">
                                     <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
-                                        <h4>Set top number</h4>
+                                        <h4>Update with new parameters</h4>
                                     </div>
-                                    <div class="col-md-4">
-                                        <small>
-                                        <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
-                                        </small>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+heatmap_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
-                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="col-md-2">
+                                            <h4>Set top number</h4>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <small>
+                                            <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    @foreach($downloadfilename["heatmap"] as $k=>$i )
+                                        <div class="col-md-3">
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
