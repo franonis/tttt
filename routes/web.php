@@ -83,5 +83,5 @@ Route::post('/uploadfile', [UploadController::class, 'upload']);
 
 Route::group(['prefix' => '/download'], function () {
     Route::get('/example/{filename}', [DownloadController::class, 'exampleFile']);
-    Route::get('/png/{filename}', [DownloadController::class, 'png']);
+    Route::get('/file/{filename}', [DownloadController::class, 'file']);
 });

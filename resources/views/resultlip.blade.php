@@ -1,4 +1,4 @@
-                                                                    @extends('layouts.app')
+@extends('layouts.app')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('/layui/dist/css/layui.css') }}"  media="all">
 
@@ -33,10 +33,10 @@
                                 </div>
                                 <div class="col-md-10">
                                     <div class="col-md-5">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                     <div class="col-md-5">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -107,12 +107,19 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}MARresults+volcano_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
-                                    </div>
-                                    <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    @foreach($downloadfilename["volcano"] as $k=>$i )
+                                        <div class="col-md-3">
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
                                 </div>
@@ -138,20 +145,31 @@
                                     <input name="w" value="{{ $w }}" style="display: none;">
                                     <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
-                                        <h4>Set top number</h4>
+                                        <h4>Update with new parameters</h4>
                                     </div>
-                                    <div class="col-md-4">
-                                        <small>
-                                        <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
-                                        </small>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}MARresults+heatmap_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
-                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="col-md-2">
+                                            <h4>Set top number</h4>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <small>
+                                            <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    @foreach($downloadfilename["heatmap"] as $k=>$i )
+                                        <div class="col-md-3">
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
@@ -169,18 +187,26 @@
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
                                     <div class="col-md-2">
-                                        <h4>if ignore subclass</h4>
+                                        <h4>Update with new parameters</h4>
                                     </div>
-                                    <div class="col-md-7">
-                                        <small>
-                                        <select name="w">
-                                            <option value="T">T</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                        </small>
+                                    <div class="col-md-10">
+                                        <div class="col-md-12">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                </form>
+                                    <div class="col-md-2">
+                                        <h4>Download</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        @foreach($downloadfilename["headgroup"] as $k=>$i )
+                                            <div class="col-md-3">
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="col-md-2">
                                         <h4>Lipid Class Statisitics</h4>
@@ -190,20 +216,19 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Box plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Cumulation plot</h2>
                                             <div class="layui-colla-content">
-                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -245,7 +270,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
@@ -271,7 +296,7 @@
                                     <h4>Not finished yet</h4>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href="{{ url('download/png/')}}/{{ $downloadpath }}MARresults+lion.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+lion.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                 </div>
                                 <div class="col-md-3">
                                     <button id="submitright" class="layui-btn" type="submit">Update</button>

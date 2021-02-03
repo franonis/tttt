@@ -12,7 +12,7 @@ class DownloadController extends Controller
         return response()->download(storage_path('example/sourcefile/' . $file));
     }
 
-    public function png($file)
+    public function file($file)
     {
         #Event::fire(new FileDownload($file));
         #dd($file);
