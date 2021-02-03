@@ -123,11 +123,13 @@
 <script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
 <script href="{{ asset('/layer/layer.js') }}"></script>
 
+
 <script>
     $(document).ready(function(){
-
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        });
     });
-
 
     $("#dataType").click(function (){
         name =$("input[name='data_type']:checked").val();
@@ -139,13 +141,6 @@
         console.log(name);
    });
 
-
-    $('#blastform').submit(function(e) {
-        if($('#seq').val() == ''){
-            layer.msg('Sequence is empty!');
-            e.preventDefault();
-        }
-    })
     //$.ajax({
     //    beforeSend: function(){       //ajax发送请求时的操作，得到请求结果前有效
     //        $('#myModal').modal({

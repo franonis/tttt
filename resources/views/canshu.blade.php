@@ -27,7 +27,7 @@
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
-                                <input  type="radio" value="{{$i}}" name="experiment"> <label>{{$i}}</label><br>
+                                <input  type="radio" value="{{$i}}" name="control" checked> <label>{{$i}}</label><br>
                             @endforeach
                         </div>
                     </div>
@@ -71,23 +71,10 @@
 
 <script>
     $(document).ready(function(){
-        name =$("input[name='data_type']:checked").val();
-        if (name == "Metabolites" || name == "Proteins" ) {
-            document.getElementById("normalization").style.display="none";
-        }else{
-            document.getElementById("normalization").style.display="block";
-        }
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        });
     });
-
-    $("#analopt1").click(function (){
-        name =$("input[name='analopt1']:checked").val();
-        if (name == "other" ) {
-            document.getElementById("groups").style.display="block";
-        }else{
-            document.getElementById("groups").style.display="none";
-        }
-        console.log(name);
-   });
 
 </script>
 @endsection
