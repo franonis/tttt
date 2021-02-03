@@ -18,17 +18,23 @@ class ResultController extends Controller
         is_dir($tmpout) or mkdir($tmpout, 0777, true);
         $subgroupfile = fopen("/home/zhangqb/tttt/public/$tmpout"."subgroup.txt", "w");
 
+        $control = $request->control;
+        $outpath = $tmpout . $control;
+
         if (!$request->subgroup) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => "You nend at least choose one group"]);
         }else{
             $subgroup = $request->subgroup;
             foreach ($subgroup as $key => $value) {
                 fwrite($subgroupfile, $key . "\n");
-                $lastgroup=$key;
+                $outpath=$outpath.$key;
             }
         }
 
-        $control = $request->control;
+        is_dir($outpath) or mkdir($outpath, 0777, true);
+        $downloadpath = preg_replace('/\//', "+", $outpath);
+
+
         if (!array_key_exists($control, $subgroup) ) {
             fwrite($subgroupfile, $control . "\n");
         }
@@ -43,7 +49,7 @@ class ResultController extends Controller
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '"  -t RNAseq -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
-                    if ($notshowvol) {
+                    if (count($subgroup) == 1) {
                         return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                        
                     }else{
                         return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);
@@ -57,7 +63,7 @@ class ResultController extends Controller
                 }
                 if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                     if ($this->showresultrna($outpath)) {
-                        if ($notshowvol) {
+                        if (count($subgroup) == 1) {
                             return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
                         }else{
                            return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
@@ -68,46 +74,47 @@ class ResultController extends Controller
             }
         } else {
             $delodd = $request->delodd;
-            $outpath = $tmpout . $control .$lastgroup. '/'; #输出文件放一个对比组名命名的文件
-            is_dir($outpath) or mkdir($outpath, 0777, true);
-            $downloadpath = preg_replace('/\//', "+", $outpath);
             $command = '/home/new/R-3.6.3/bin/Rscript subgroupsSel.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -s "' . $tmpout . '" -p "' . $outpath . '"';
             exec($command, $ooout, $flag);
             #dd($ooout);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-            } else {
+            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
-                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-
-                }
             }
-            if ($omics == "Lipidomics") {
-                if ($this->showresultlip($outpath)) {
-                    $command='ls /home/zhangqb/tttt/public'.$outpath.'result/FAchainVisual/*.png';
-                    if ($notshowvol) {
-                        return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
-                    }else{
-                        return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $png]);
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                if ($omics == "Lipidomics") {
+                    $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/*.png';
+                    exec($command,$fapng,$flag);
+                    if ($this->showresultlip($outpath)) {
+                        if (count($subgroup) == 1) {
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng]);
+                        }else{
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng]);
+                        }
                     }
-                            
                 }
-            } else {
-                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $data_type . '" -c "' . $control . '" -f "' . $firstline . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+                if ($omics == "Metabolomics") {
                     if ($this->showresultmet($outpath)) {
-                        if ($notshowvol) {
+                        if (count($subgroup) == 1) {
                             return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
                             return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
-                        }
-                        
+                        }  
+                    }
+                }
+                if ($omics == "Proteinomics") {
+                    if ($this->showresultpro($outpath)) {
+                        if (count($subgroup) == 1) {
+                            return view('resultproZnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                        }else{
+                            return view('resultproZ', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                        }  
                     }
                 }
             }
@@ -273,6 +280,62 @@ class ResultController extends Controller
     }
 
     public function showresultmet($path)
+    {
+        #"MARresults","headgroup","FAchainVisual"
+        $r_path = '/home/zhangqb/tttt/public/' . $path;
+        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        is_dir($pic_path) or mkdir($pic_path, 0777, true);
+        #MAR
+        $mar_path = $pic_path . 'MARresults/';
+        is_dir($mar_path) or mkdir($mar_path, 0777, true);
+        #head
+        $headgroup_path = $pic_path . 'headgroup';
+        is_dir($headgroup_path) or mkdir($headgroup_path, 0777, true);
+        #FA
+        $fa_path = $pic_path . 'FAchainVisual';
+        is_dir($fa_path) or mkdir($fa_path, 0777, true);
+        #PCA
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $r_path . '" -q "' . $pic_path . '"';
+        #dd($command);
+
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $mar_path . 'PCA_score_plot_*.pdf ' . $mar_path . 'PCA_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        #火山图
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s F -p "' . $pic_path . '" -b F -x "raw" -j 2 -k 0.1 -m 10 -w T ';
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $mar_path . 'volcano_reg_*.pdf ' . $mar_path . 'volcano_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        #热图
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e 75';
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $mar_path . 'heatmap_top*.pdf ' . $mar_path . 'heatmap_top.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        #return 1;
+        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+    }
+
+    public function showresultpro($path)
     {
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
