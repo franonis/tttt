@@ -393,20 +393,20 @@ class ResultController extends Controller
     {
         #volcano
         $command='cd '.$downloadpath.'MARresults/ && ls volcano*';
-        exec($command,$tmp,$flag);
-        $download["volcano"]=$tmp;
+        exec($command,$volcano,$flag);
+        $download["volcano"]=$volcano;
         #heatmap
         $command='cd '.$downloadpath.'MARresults/ && ls heatmap*';
-        exec($command,$tmp,$flag);
-        $download["heatmap"]=$tmp;
+        exec($command,$heatmap,$flag);
+        $download["heatmap"]=$heatmap;
         #headgroup
-        $command='cd '.$downloadpath.'headgroup/ && ls headgroup*';
-        exec($command,$tmp,$flag);
-        $download["headgroup"]=$tmp;
+        $command='cd '.$downloadpath.'headgroup/ && ls';
+        exec($command,$headgroup,$flag);
+        $download["headgroup"]=$headgroup;
         #FAchainVisual
-        $command='cd '.$downloadpath.'FAchainVisual/ && ls FAchainVisual*';
-        exec($command,$tmp,$flag);
-        $download["FAchainVisual"]=$tmp;
+        $command='cd '.$downloadpath.'FAchainVisual/ && ls';
+        exec($command,$FAchainVisual,$flag);
+        $download["FAchainVisual"]=$FAchainVisual;
         return $download;
     }    
 
