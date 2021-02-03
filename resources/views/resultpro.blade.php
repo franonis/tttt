@@ -10,7 +10,7 @@
 <div class="container content">
     <div class="row">
         @include('partials.errors')
-        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Metabolomics/Proteinomics</a>
+        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Proteinomics</a>
         <hr>
             <div class="col-md-12">
                 <div class="layui-tab">
@@ -59,7 +59,6 @@
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="e" value="{{ $e }}" style="display: none;">
-                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -140,7 +139,6 @@
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
                                     <input name="w" value="{{ $w }}" style="display: none;">
-                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>

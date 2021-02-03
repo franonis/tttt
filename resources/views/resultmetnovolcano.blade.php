@@ -10,13 +10,9 @@
 <div class="container content">
     <div class="row">
         @include('partials.errors')
-        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p>
+        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Metabolomics</a>
         <hr>
             <div class="col-md-12">
-                <div class="col-md-3">
-                    <a style="font-size: 180%">Metabolomics/</a>
-                    <a style="font-size: 180%">proteinomics</a>
-                </div><br>
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
@@ -76,7 +72,6 @@
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
                                     <input name="w" value="{{ $w }}" style="display: none;">
-                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
