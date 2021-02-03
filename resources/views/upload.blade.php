@@ -102,12 +102,6 @@
                   </tr>
                 </tbody>
             </table>
-              <div class="layui-form-item">
-                <label class="layui-form-label">开关-默认开</label>
-                <div class="layui-input-block">
-                  <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-                </div>
-              </div>
             <div class="col-md-12 text-center">
                 <br>
                 <button id="submitexample" class="layui-btn" type="submit">Continue</button>
