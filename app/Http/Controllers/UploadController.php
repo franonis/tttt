@@ -48,6 +48,7 @@ class UploadController extends Controller
     #设置参数
     public function canshu(Request $request)
     {
+        dd($request);
         $omics = $request->omics;
         if ($request->file_datafile == "no data" || $request->file_descfile == "no data") {
             return view('errors.200', ['title' => 'No Data', 'msg' => 'Please upload your file!', 'back' => 'Go back upload Page']);
