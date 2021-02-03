@@ -32,6 +32,7 @@ class ResultController extends Controller
         }
 
         is_dir($outpath) or mkdir($outpath, 0777, true);
+        $outpath =$outpath."/";
         $downloadpath = preg_replace('/\//', "+", $outpath);
 
 

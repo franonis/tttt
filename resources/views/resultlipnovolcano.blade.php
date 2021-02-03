@@ -31,7 +31,7 @@
                                 <div class="col-md-6">
                                 </div>
                                 <div class="col-md-6">
-                                    <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                    <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
@@ -79,7 +79,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+heatmap_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+heatmap_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
@@ -122,14 +122,14 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Box plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Cumulation plot</h2>
                                             <div class="layui-colla-content">
-                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
@@ -177,7 +177,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $pngpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
@@ -191,14 +191,14 @@
                                         <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Grid plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
                                             </div>
                                         </div>
                                         <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
-                                                <a href="{{ url('download/png/')}}/{{ $pngpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
                                             </div>
                                         </div>
