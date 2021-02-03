@@ -394,31 +394,19 @@ class ResultController extends Controller
         #volcano
         $command='cd '.$downloadpath.'MARresults/ && ls volcano*';
         exec($command,$tmp,$flag);
-        foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "++", $value);
-            $download["volcano"][$filename]=1;
-        }
+        $download["volcano"]=$tmp;
         #heatmap
         $command='cd '.$downloadpath.'MARresults/ && ls heatmap*';
         exec($command,$tmp,$flag);
-        foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "++", $value);
-            $download["heatmap"][$filename]=1;
-        }
+        $download["heatmap"]=$tmp;
         #headgroup
-        $command='cd '.$downloadpath.'MARresults/ && ls headgroup*';
+        $command='cd '.$downloadpath.'headgroup/ && ls headgroup*';
         exec($command,$tmp,$flag);
-        foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "++", $value);
-            $download["headgroup"][$filename]=1;
-        }
+        $download["headgroup"]=$tmp;
         #FAchainVisual
-        $command='cd '.$downloadpath.'MARresults/ && ls FAchainVisual*';
+        $command='cd '.$downloadpath.'FAchainVisual/ && ls FAchainVisual*';
         exec($command,$tmp,$flag);
-        foreach ($tmp as $key => $value) {
-            $filename = preg_replace('/\//', "++", $value);
-            $download["FAchainVisual"][$filename]=1;
-        }
+        $download["FAchainVisual"]=$tmp;
         return $download;
     }    
 
