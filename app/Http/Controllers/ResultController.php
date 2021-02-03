@@ -87,18 +87,22 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($omics == "Lipidomics") {
-                    $downloadpath = $this->getdownload('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                    dd($downloadpath);
                     if ($this->showresultlip($outpath)) {
+                        $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
+                        $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
+                        dd($downloadfilename);
                         if (count($subgroup) == 1) {
-                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng]);
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info"]);
                         }else{
-                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng]);
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info"]);
                         }
                     }
                 }
                 if ($omics == "Metabolomics") {
                     if ($this->showresultmet($outpath)) {
+                        $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
+                        $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
+                        dd($downloadfilename);
                         if (count($subgroup) == 1) {
                             return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
@@ -108,6 +112,9 @@ class ResultController extends Controller
                 }
                 if ($omics == "Proteinomics") {
                     if ($this->showresultpro($outpath)) {
+                        $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
+                        $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
+                        dd($downloadfilename);
                         if (count($subgroup) == 1) {
                             return view('resultproZnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }else{
@@ -389,7 +396,7 @@ class ResultController extends Controller
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }
 
-    public function getdownload($downloadpath)
+    public function getdownloadfilename($downloadpath)
     {
         #volcano
         $command='cd '.$downloadpath.'MARresults/ && ls volcano*';
