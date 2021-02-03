@@ -87,7 +87,7 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($omics == "Lipidomics") {
-                    $downloadpath = $this->getdownload('/home/zhangqb/tttt/public/'.$outpath.'results/');
+                    $downloadpath = $this->getdownload('/home/zhangqb/tttt/public/' . $outpath.'results/');
                     dd($downloadpath);
                     if ($this->showresultlip($outpath)) {
                         if (count($subgroup) == 1) {
@@ -392,28 +392,28 @@ class ResultController extends Controller
     public function getdownload($downloadpath)
     {
         #volcano
-        $command='ls '.$downloadpath.'MARresults/volcano*';
+        $command='cd '.$downloadpath.'MARresults/ && ls volcano*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
             $filename = preg_replace('/\//', "++", $value);
             $download["volcano"][$filename]=1;
         }
         #heatmap
-        $command='ls '.$downloadpath.'MARresults/heatmap*';
+        $command='cd '.$downloadpath.'MARresults/ && ls heatmap*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
             $filename = preg_replace('/\//', "++", $value);
             $download["heatmap"][$filename]=1;
         }
         #headgroup
-        $command='ls '.$downloadpath.'MARresults/headgroup*';
+        $command='cd '.$downloadpath.'MARresults/ && ls headgroup*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
             $filename = preg_replace('/\//', "++", $value);
             $download["headgroup"][$filename]=1;
         }
         #FAchainVisual
-        $command='ls '.$downloadpath.'MARresults/FAchainVisual*';
+        $command='cd '.$downloadpath.'MARresults/ && ls FAchainVisual*';
         exec($command,$tmp,$flag);
         foreach ($tmp as $key => $value) {
             $filename = preg_replace('/\//', "++", $value);
