@@ -112,12 +112,12 @@ class ResultController extends Controller
                         #dd($downloadfilename);
                         if ($this->showresultpro($outpath)) {
                             $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            return view('resultpro', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultpro', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'c' => "Biological_Process", 't' => "mmu"]);
                         }
                     }else{
                         if ($this->showresultpro2($outpath)) {
                             $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            return view('resultpronovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultpronovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'c' => "Biological_Process", 't' => "mmu"]);
                         }
                     }
                 }
