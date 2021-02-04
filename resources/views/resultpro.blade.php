@@ -23,9 +23,6 @@
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <div class="col-md-2">
                                     <h4>Download</h4>
@@ -52,12 +49,8 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -128,12 +121,8 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -181,7 +170,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <hr>
