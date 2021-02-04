@@ -115,7 +115,7 @@
                         <div class="col-md-10">
                             <p>Only the "one vs one" mode could give the GO enrichment result</p>
                         </div>
-                    </div>
+                </div>
             </div>
             <hr>
     </div>
