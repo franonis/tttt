@@ -59,7 +59,7 @@
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-2">
+                                        <div class="col-md-12">
                                             <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
                                             <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
                                             <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
