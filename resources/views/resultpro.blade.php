@@ -241,13 +241,13 @@
                                     <h4>Up</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/heatmap_top.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up.png" style="height:50%;width: 60%;">
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Down</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/heatmap_top.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
