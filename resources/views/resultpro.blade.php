@@ -20,6 +20,7 @@
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
                     <li >Volcano</li>
                     <li>Heatmap</li>
+                    <li>GO enrichment</li>
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
@@ -55,6 +56,7 @@
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="e" value="{{ $e }}" style="display: none;">
+                                    <input name="c" value="{{ $c }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -137,6 +139,7 @@
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
                                     <input name="w" value="{{ $w }}" style="display: none;">
+                                    <input name="c" value="{{ $c }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -171,6 +174,81 @@
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_top.png" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="layui-tab-item">
+                            <div class="col-md-12">
+                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="s" value="{{ $s }}" style="display: none;">
+                                    <input name="b" value="{{ $b }}" style="display: none;">
+                                    <input name="x" value="{{ $x }}" style="display: none;">
+                                    <input name="j" value="{{ $j }}" style="display: none;">
+                                    <input name="k" value="{{ $k }}" style="display: none;">
+                                    <input name="m" value="{{ $m }}" style="display: none;">
+                                    <input name="w" value="{{ $w }}" style="display: none;">
+                                    <input name="c" value="{{ $c }}" style="display: none;">
+                                    <div class="col-md-2">
+                                        <h4>Update with new parameters</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Choose species：</label>
+                                                <div class="layui-input-block" id="t">
+                                                  <input type="radio" name="t" value="mmu" title="mmu" checked="">
+                                                  <input type="radio" name="t" value="has" title="has">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Data Type：</label>
+                                                <div class="layui-input-block" id="c">
+                                                  <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
+                                                  <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
+                                                  <input type="radio" name="c" value="Molecular_Function" title="Molecular Function">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <h4>Set top number</h4>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <small>
+                                            <input id="c" type="text" name="c" value="{{ $c }}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="col-md-12">
+                                        @foreach($downloadfilename["enrich"] as $k=>$i )
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++enrich++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
+                                        @endforeach
+                                    </div>
+                                </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                                <div class="col-md-2">
+                                    <h4>Up</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/heatmap_top.png" style="height:50%;width: 60%;">
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Down</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/heatmap_top.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                         </div>
