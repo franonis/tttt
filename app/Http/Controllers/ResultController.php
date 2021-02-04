@@ -89,8 +89,6 @@ class ResultController extends Controller
                         if ($this->showresultlip2($outpath)) {
                             return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info"]);
                         }
-                            
-                        }
                     }
                 }
                 if ($omics == "Metabolomics") {
@@ -105,8 +103,6 @@ class ResultController extends Controller
                         if ($this->showresultmet2($outpath)) {
                             return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }
-                            
-                        }
                     }
                 }
                 if ($omics == "Proteomics") {
@@ -120,8 +116,6 @@ class ResultController extends Controller
                     }else{
                         if ($this->showresultpro2($outpath)) {
                             return view('resultpronovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
-                        }
-                            
                         }
                     }
                 }
