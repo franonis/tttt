@@ -204,7 +204,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label">Data Type：</label>
+                                                <label class="layui-form-label">GO term：</label>
                                                 <div class="layui-input-block" id="c">
                                                   <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
                                                   <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
@@ -212,13 +212,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set top number</h4>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <small>
-                                            <input id="c" type="text" name="c" value="{{ $c }}" style="width:50px; display:inline;" class="form-control" >
-                                            </small>
+
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Set top number：</label>
+                                                <div class="layui-input-block" id="s">
+                                                  <input id="s" type="text" name="s" value="{{ $s }}" style="width:50px; display:inline;" class="form-control" >
+                                            </div>
                                         </div>
                                         <div class="col-md-3">
                                             <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
