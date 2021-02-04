@@ -51,7 +51,7 @@
                 <div class="col-md-1">
                     <input type="text" name="naperent" lay-verify="required" placeholder="80" value="80" class="layui-input">
                 </div>
-                <div class="layui-form-mid layui-word-aux">%</div>
+                <div class="layui-form-mid layui-word-aux">%</div><br>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">

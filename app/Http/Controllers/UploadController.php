@@ -67,7 +67,7 @@ class UploadController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
         if ($omics != "Transcriptomics") {
-            $t = ['Lipidomics' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Proteinomics' => 'Proteins'];
+            $t = ['Lipidomics' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Proteomics' => 'Proteins'];
 
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 

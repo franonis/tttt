@@ -22,7 +22,7 @@
                               <input type="radio" name="omics" value="Lipidomics" title="Lipidomics" checked="">
                               <input type="radio" name="omics" value="Metabolomics" title="Metabolomics">
                               <input type="radio" name="omics" value="Transcriptomics" title="Transcriptomics">
-                              <input type="radio" name="omics" value="Proteinomics" title="Proteomics">
+                              <input type="radio" name="omics" value="Proteomics" title="Proteomics">
                             </div>
                         </div>
                         <div class="layui-form-item" pane="" id="delodd" style="display: block;">

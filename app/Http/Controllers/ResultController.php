@@ -110,7 +110,7 @@ class ResultController extends Controller
                         }  
                     }
                 }
-                if ($omics == "Proteinomics") {
+                if ($omics == "Proteomics") {
                     if ($this->showresultpro($outpath)) {
                         $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                         $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
