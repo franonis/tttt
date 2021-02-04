@@ -28,7 +28,7 @@
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="border:1px dashed #000;">
                                     <div class="col-md-5">
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
@@ -112,7 +112,7 @@
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="border:1px dashed #000;">
                                     <div class="col-md-12">
                                         @foreach($downloadfilename["volcano"] as $k=>$i )
                                                 <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
@@ -161,7 +161,7 @@
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="border:1px dashed #000;">
                                     <div class="col-md-12">
                                         @foreach($downloadfilename["heatmap"] as $k=>$i )
                                             <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
@@ -230,7 +230,7 @@
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="border:1px dashed #000;">
                                     <div class="col-md-12">
                                         @foreach($downloadfilename["enrich"] as $k=>$i )
                                             <a href="{{ url('download/file/')}}/{{ $downloadpath }}++enrich++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
