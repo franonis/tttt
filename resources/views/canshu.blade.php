@@ -48,9 +48,11 @@
                 <div class="col-md-4">
                     <h4 style="margin-top: 2%;">Set the precent to delete the missing column</h4>
                 </div>
+                <div class="col-md-1">
                     <small>
                         <input type="text" name="naperent" lay-verify="required" placeholder="80" value="80" class="layui-input">
                     </small>
+                </div>
                 <div class="layui-form-mid layui-word-aux">%</div><br>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
