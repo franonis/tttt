@@ -177,8 +177,7 @@
                                 </div>
                             </div>
                         </div>
-                </div>
-                <div class="layui-tab-item">
+                    <div class="layui-tab-item">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -252,6 +251,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
             <hr>

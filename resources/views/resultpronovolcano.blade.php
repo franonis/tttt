@@ -108,13 +108,14 @@
                                 </div>
                             </div>
                         </div>
-                </div>
-                <div class="layui-tab-item">
+                
+                    <div class="layui-tab-item">
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10">
                             <p>Only the "one vs one" mode could give the GO enrichment result</p>
                         </div>
+                    </div>
                 </div>
             </div>
             <hr>
