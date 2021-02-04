@@ -36,6 +36,7 @@
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
                                 </div>
@@ -106,16 +107,20 @@
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    @foreach($downloadfilename["volcano"] as $k=>$i )
-                                        <div class="col-md-3">
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                        </div>
-                                    @endforeach
+                                    <div class="col-md-12">
+                                        @foreach($downloadfilename["volcano"] as $k=>$i )
+                                            <div class="col-md-3">
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
                                 </div>
@@ -155,16 +160,20 @@
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </form>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    @foreach($downloadfilename["heatmap"] as $k=>$i )
-                                        <div class="col-md-3">
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                        </div>
-                                    @endforeach
+                                    <div class="col-md-12">
+                                        @foreach($downloadfilename["heatmap"] as $k=>$i )
+                                            <div class="col-md-3">
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
