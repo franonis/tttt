@@ -362,12 +362,9 @@ class ResultController extends Controller
         #MAR
         $mar_path = $pic_path . 'MARresults/';
         is_dir($mar_path) or mkdir($mar_path, 0777, true);
-        #head
-        $headgroup_path = $pic_path . 'headgroup';
-        is_dir($headgroup_path) or mkdir($headgroup_path, 0777, true);
-        #FA
-        $fa_path = $pic_path . 'FAchainVisual';
-        is_dir($fa_path) or mkdir($fa_path, 0777, true);
+        #enrich
+        $enrich_path = $pic_path . 'enrich';
+        is_dir($enrich_path) or mkdir($enrich_path, 0777, true);
         #PCA
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $r_path . '" -q "' . $pic_path . '"';
         #dd($command);
@@ -418,6 +415,17 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        #富集分析
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j 2.0 -k 0.1 -p "' . $enrich_path . '"';
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/proteinRegEnrich.R -i "' . $enrich_path . '" -t "hsa" -s 20 -c "Biological_Process" -o "' . $enrich_path . '"';
+        #dd($command);
+        exec($command, $ooout, $flag);
+
         #return 1;
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }

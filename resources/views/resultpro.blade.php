@@ -59,9 +59,11 @@
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
-                                        <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
-                                        <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
+                                        <div class="col-md-2">
+                                            <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
+                                            <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
+                                        </div>
                                         <div class="col-md-2">
                                             <h4>Set p type</h4>
                                         </div>
@@ -92,10 +94,12 @@
                                         <div class="col-md-2">
                                             <h4>Set top number</h4>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-10">
                                             <small>
                                             <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
+                                        </div>
+                                        <div class="col-md-2">
                                         </div>
                                         <div class="col-md-3">
                                             <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
