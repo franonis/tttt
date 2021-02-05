@@ -98,9 +98,10 @@
             <div class="col-md-12">
                 <table class="layui-table">
                 <colgroup>
-                  <col width="33%">
-                  <col width="33%">
-                  <col>
+                  <col width="10%">
+                  <col width="30%">
+                  <col width="30%">
+                  <col width="30%">
                 </colgroup>
                 <thead>
                   <tr>
