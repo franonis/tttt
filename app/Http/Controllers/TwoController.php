@@ -15,9 +15,6 @@ class TwoController extends Controller
 
     public function upload(Request $request)
     {
-        #dd("vv");
-        $file = $request->file('file');
-        #dd($file);
         $allowed_extensions = ["csv", "txt", "CSV"]; //多类型
         //判断文件是否是允许上传的文件类型
         if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
