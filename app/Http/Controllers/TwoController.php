@@ -13,6 +13,51 @@ class TwoController extends Controller
         return view('uploadtwo', ['title' => 'upload']);
     }
 
+    public function getreaultPage(Request $request)
+    {
+        $command = $request->command;
+        $outpath = $request->outpath;
+        $m = $request->m;#missing
+        $n = $request->n;#是否70%gk
+        $s = $request->s;#自己设的值
+        $g = $request->g;#列
+        $k = $request->k;#行
+        exec($command, $ooout, $flag);
+        #dd($ooout);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+
+        $pic_path =  'home/zhangqb/tttt/public/'.$outpath;
+
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        #图片切割
+        $command = 'python3 /home/zhangqb/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -k ' . $k . ' -g ' . $g . ' -o "' . $pic_path . '"';
+        #exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+
+        $image = $pic_path.'correlationPlot.png';
+        $size = getimagesize($image);
+        $bgwidth = $size[0] * 1.02;
+        $bgheigh = $size[1] * 1.02;
+        $k1 = $g;
+        $k2 = $k;
+        $fgwidth = floor($size[0] / $k1);
+        $fgheigh = floor($size[1] / $k2);
+
+        #dd($fgwidth);
+        return view('crossresult', ['image' => $image, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2]);
+
+
+        return view('crossresult', ['title' => 'upload']);
+    }
+
     public function upload(Request $request)
     {
         $allowed_extensions = ["csv", "txt", "CSV"]; //多类型
