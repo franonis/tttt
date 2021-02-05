@@ -28,20 +28,11 @@ Route::get('/', function () {
 Route::get('/cross', function () {
     return view('cross');
 });
-Route::get('/help', function () {
-    return view('about');
-});
-Route::get('/statistics', function () {
-    return view('statistics');
-});
-Route::get('/faq', function () {
-    return view('about');
-});
 Route::get('/home', function () {
-    return view('home');
+    return view('cross');
 });
 Route::get('/about', function () {
-    return view('about');
+    return view('cross');
 });
 Route::get('/disease', function () {
     return view('disease');
