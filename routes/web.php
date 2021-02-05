@@ -6,6 +6,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\TwoController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -54,8 +55,9 @@ Route::group(['prefix' => '/update'], function () {
 Route::group(['prefix' => '/result'], function () {
     Route::get('/set', [ResultController::class, 'getsetPage']);
 });
-
+TwoController
 Route::get('/upload', [UploadController::class, 'getUploadPage']);
+Route::get('/mutil', [TwoController::class, 'getTwoPage']);
 Route::get('/cross', [CrossController::class, 'getcrossPage']);
 Route::get('/canshu', [UploadController::class, 'canshu']);
 Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
