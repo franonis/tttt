@@ -25,7 +25,7 @@
                                   <input type="radio" name="omics_left" value="Metabolomics" title="Metabolomics">
                                 </div>
                             </div>
-                            <div class="layui-form-item" pane="" id="delodd" style="display: none;">
+                            <div class="layui-form-item" pane="" id="delodd" style="display: block;">
                               <label class="layui-form-label">analysis option：</label>
                               <div class="layui-input-block">
                                 <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="I want to delete the odd chain" checked="">
@@ -62,7 +62,7 @@
                                   <input type="radio" name="omics_right" value="Proteomics" title="Proteomics">
                                 </div>
                             </div>
-                            <div class="layui-form-item" id="dataType" style="display: none;">
+                            <div class="layui-form-item" id="dataType" style="display: block;">
                                 <label class="layui-form-label">Which Type：</label>
                                 <div class="layui-input-block">
                                   <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
