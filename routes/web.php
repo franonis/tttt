@@ -25,9 +25,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('upload');
 });
-Route::get('/cross', function () {
-    return view('cross');
-});
 Route::get('/home', function () {
     return view('cross');
 });
@@ -41,13 +38,8 @@ Route::get('/searchdisease', [BabaController::class, 'searchdisease']);
 Route::get('/diseasetable/f{name}', [BabaController::class, 'diseasetable']);
 
 Route::get('/pdf/{name}', [PdfController::class, 'getpdf']);
-#Route::post('/disease', function () {
-#    return view('disease');
-#});Update
+
 Route::group(['prefix' => '/update'], function () {
-    #Route::post('/set', [ResultController::class, 'getsetPage']);
-    Route::post('/cross', [UpdateController::class, 'getcrossPage']);
-    Route::get('/huatu', [UpdateController::class, 'huatu']);
     Route::get('/updatePCA', [UpdateController::class, 'updatePCA']);
     Route::get('/updaternaHeatmap', [UpdateController::class, 'updaternaHeatmap']);
     Route::get('/updaternaVolcano', [UpdateController::class, 'updaternaVolcano']);
@@ -60,13 +52,11 @@ Route::group(['prefix' => '/update'], function () {
 });
 
 Route::group(['prefix' => '/result'], function () {
-    #Route::post('/set', [ResultController::class, 'getsetPage']);
-    Route::post('/cross', [ResultController::class, 'getcrossPage']);
-    Route::get('/cross', [ResultController::class, 'getcrossPage']);
     Route::get('/set', [ResultController::class, 'getsetPage']);
 });
 
 Route::get('/upload', [UploadController::class, 'getUploadPage']);
+Route::get('/cross', [CrossController::class, 'getcrossPage']);
 Route::get('/canshu', [UploadController::class, 'canshu']);
 Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
 Route::get('/crosscanshu', [CrossController::class, 'crosscanshu']);

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\CrossController;
+use Illuminate\Http\Request;
 
 class CrossController extends Controller
 {
-    
-#设置例子的参数
+    public function getcrossPage()
+    {
+        return view('cross', ['title' => 'upload']);
+    }
     public function crosscanshu(Request $request)
     {
         $example = $request->exampleomics;
