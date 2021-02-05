@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('/layui/dist/css/layui.css') }}"  media="all">
+<link rel="stylesheet" type="text/css" href="{{ asset('/layui/dist/css/layui.css') }}"  media="all">
 
 @endsection
 @section('navbar')
@@ -132,7 +132,8 @@
   @include('partials.footer')
 @endsection
 @section('js')
-<script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
+<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
+<script href="{{ asset('/layer/layer.js') }}"></script>
 <script>
 
 layui.use('upload', function(){
