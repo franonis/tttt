@@ -14,7 +14,7 @@
         <hr>
         <div class="col-md-12">
             <div class="col-md-12">
-                <form class="layui-form" action="/crosscanshu">
+                <form class="layui-form" action="/mutilcanshu">
                 <div class="col-md-6">
                     <div class="col-md-12">
                         <div style="padding: 20px; background-color: #F2F2F2;">
@@ -101,7 +101,7 @@
         <br>
         <h3>Try example data</h3>
         <hr>
-        <form class="layui-form" action="/examplecanshu" id="example">
+        <form class="layui-form" action="/mutilexamplecanshu" id="example">
             <div class="col-md-12">
                 <table class="layui-table">
                 <colgroup>

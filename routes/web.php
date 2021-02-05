@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\BabaController;
-use App\Http\Controllers\CrossController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ResultController;
@@ -55,14 +54,14 @@ Route::group(['prefix' => '/update'], function () {
 Route::group(['prefix' => '/result'], function () {
     Route::get('/set', [ResultController::class, 'getsetPage']);
 });
-
+#单组学
 Route::get('/upload', [UploadController::class, 'getUploadPage']);
-Route::get('/mutil', [TwoController::class, 'getTwoPage']);
-Route::get('/cross', [CrossController::class, 'getcrossPage']);
 Route::get('/canshu', [UploadController::class, 'canshu']);
 Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
-Route::get('/crosscanshu', [CrossController::class, 'crosscanshu']);
-Route::get('/examplecrosscanshu', [CrossController::class, 'examplecrosscanshu']);
+#多组学
+Route::get('/mutil', [TwoController::class, 'getTwoPage']);
+Route::get('/mutilcanshu', [TwoController::class, 'canshu']);
+Route::get('/mutilexamplecanshu', [TwoController::class, 'examplecanshu']);
 
 Route::post('/uploadfile', [UploadController::class, 'upload']);
 

@@ -92,7 +92,7 @@
         <h3>Try example data</h3>
         <hr>
         <form class="layui-form" action="/crosscanshu">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <table class="layui-table">
                 <colgroup>
                   <col width="33%">
@@ -115,7 +115,7 @@
                   </tr><tr>
                     <td><input type="radio" name="exampleomics" value="Example3" title="Example3"></td><td><a href="{{ url('download/example').'/' }}metabolites.csv" >metabolites.csv</a></td><td><a href="{{ url('download/example').'/' }}RNAseq_genesymbol.csv" >RNAseq_genesymbol.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList.csv" >sampleList.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Example3" title="Example3"></td><td><a href="{{ url('download/example').'/' }}metabolites_tidy2.csv" >metabolites_tidy2.csv</a></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv " >proteins_Depletion_tidy.csv </a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
+                    <td><input type="radio" name="exampleomics" value="Example4" title="Example4"></td><td><a href="{{ url('download/example').'/' }}metabolites_tidy2.csv" >metabolites_tidy2.csv</a></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv " >proteins_Depletion_tidy.csv </a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
                   </tr>
                 </tbody>
             </table>
