@@ -62,12 +62,10 @@
                                   <input type="radio" name="omics_right" value="Proteomics" title="Proteomics">
                                 </div>
                             </div>
-                            <div class="col-md-12" id="dataType" style="display: block;">
-                                <div class="col-md-2">
-                                    <h4>Which Type</h4>
-                                </div>
-                                <div class="col-md-10" >
-                                    <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
+                            <div class="layui-form-item" id="dataType" style="display: block;">
+                                <label class="layui-form-label">Which Type：</label>
+                                <div class="layui-input-block">
+                                  <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
                                     <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
                                 </div>
                             </div>
