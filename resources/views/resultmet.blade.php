@@ -184,7 +184,6 @@
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
                                     <input name="w" value="{{ $w }}" style="display: none;">
-                                    <input name="c" value="{{ $c }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
