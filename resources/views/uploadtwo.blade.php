@@ -62,6 +62,15 @@
                                   <input type="radio" name="omics_right" value="Proteomics" title="Proteomics">
                                 </div>
                             </div>
+                            <div class="col-md-12" id="dataType" style="display: block;">
+                                <div class="col-md-2">
+                                    <h4>Which Type</h4>
+                                </div>
+                                <div class="col-md-10" >
+                                    <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
+                                    <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
+                                </div>
+                            </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data File</label>
                                 <div class="layui-upload-drag" id="right1">
@@ -145,7 +154,7 @@ layui.use('upload', function(){
 
   //执行实例
   var uploadInst = upload.render({
-    elem: '#datafile'
+    elem: '#right1'
     ,accept:'file'
     ,method: 'POST'
     ,data:{
@@ -154,12 +163,12 @@ layui.use('upload', function(){
     ,url: '/uploadfile' //改成您自己的上传接口
     ,done: function(res){
       layer.msg('upload succeed');
-      $("#file_datafile").val(res.originalname);
+      $("#file_right1").val(res.originalname);
       console.log(res)
     }
   });
   var uploadInst = upload.render({
-    elem: '#descfile'
+    elem: '#right2'
     ,accept:'file'
     ,method: 'POST'
     ,data:{
@@ -168,7 +177,35 @@ layui.use('upload', function(){
     ,url: '/uploadfile' //改成您自己的上传接口
     ,done: function(res){
       layer.msg('upload succeed');
-      $("#file_descfile").val(res.originalname);
+      $("#file_right2").val(res.originalname);
+      console.log(res)
+    }
+  });
+  var uploadInst = upload.render({
+    elem: '#left1'
+    ,accept:'file'
+    ,method: 'POST'
+    ,data:{
+        '_token':'{{csrf_token()}}'
+    }
+    ,url: '/uploadfile' //改成您自己的上传接口
+    ,done: function(res){
+      layer.msg('upload succeed');
+      $("#file_left1").val(res.originalname);
+      console.log(res)
+    }
+  });
+  var uploadInst = upload.render({
+    elem: '#left2'
+    ,accept:'file'
+    ,method: 'POST'
+    ,data:{
+        '_token':'{{csrf_token()}}'
+    }
+    ,url: '/uploadfile' //改成您自己的上传接口
+    ,done: function(res){
+      layer.msg('upload succeed');
+      $("#file_left2").val(res.originalname);
       console.log(res)
     }
   });
@@ -184,21 +221,24 @@ layui.use('upload', function(){
           var table = layui.table; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
     });
-    $("#omics").click(function (){
-        name =$("input[name='omics']:checked").val();
+    $("#omics_left").click(function (){
+        name =$("input[name='omics_left']:checked").val();
         if (name == "Lipidomics") {
           document.getElementById("delodd").style.display="block";
-          document.getElementById("dataType").style.display="none";
         }
-        if (name == "Metabolomics" || name == "Proteomics") {
+        if (name == "Metabolomics") {
           document.getElementById("delodd").style.display="none";
+        }
+    });
+    $("#omics_right").click(function (){
+        name =$("input[name='omics_right']:checked").val();
+        if (name == "Proteinomics") {
           document.getElementById("dataType").style.display="none";
         }
         if (name == "Transcriptomics") {
           document.getElementById("dataType").style.display="block";
-          document.getElementById("delodd").style.display="none";
         }
         console.log(name);
-   });
+    });
 </script>
 @endsection
