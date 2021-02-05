@@ -20,7 +20,7 @@
                         <div style="padding: 20px; background-color: #F2F2F2;">
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data Type：</label>
-                                <div class="layui-input-block">
+                                <div class="layui-input-block" id="omics_left">
                                   <input type="radio" name="omics_left" value="Lipidomics" title="Lipidomics" checked="">
                                   <input type="radio" name="omics_left" value="Metabolomics" title="Metabolomics">
                                 </div>
@@ -57,7 +57,7 @@
                         <div style="padding: 20px; background-color: #F2F2F2;">
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data Type：</label>
-                                <div class="layui-input-block">
+                                <div class="layui-input-block" id="omics_right">
                                   <input type="radio" name="omics_right" value="Transcriptomics" title="Transcriptomics" checked="">
                                   <input type="radio" name="omics_right" value="Proteomics" title="Proteomics">
                                 </div>
@@ -227,6 +227,7 @@ layui.use('upload', function(){
         if (name == "Metabolomics") {
           document.getElementById("delodd").style.display="none";
         }
+        console.log(name);
     });
     $("#omics_right").click(function (){
         name =$("input[name='omics_right']:checked").val();
