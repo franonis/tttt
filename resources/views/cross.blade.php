@@ -20,9 +20,15 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data Type：</label>
                                 <div class="layui-input-block">
-                                  <input type="radio" name="omics" value="lipidomics" title="Lipidomics" checked="">
-                                  <input type="radio" name="omics" value="Metabolomics" title="Metabolomics">
+                                  <input type="radio" name="omics_left" value="Lipidomics" title="Lipidomics" checked="">
+                                  <input type="radio" name="omics_left" value="Metabolomics" title="Metabolomics">
                                 </div>
+                            </div>
+                            <div class="layui-form-item" pane="" id="delodd" style="display: block;">
+                              <label class="layui-form-label">analysis option：</label>
+                              <div class="layui-input-block">
+                                <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="I want to delete the odd chain" checked="">
+                              </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data File</label>
@@ -30,7 +36,7 @@
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
                                     <hr>
-                                    <input id="file_left1" name='file_left1' value="no data" />
+                                    <input id="file_datafile_left" name='file_datafile_left' value="no data" />
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -39,7 +45,7 @@
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
                                     <hr>
-                                    <input id="file_left2" name='file_left2' value="no data" />
+                                    <input id="file_descfile_left" name='file_descfile_left' value="no data" />
                                 </div>
                             </div>
                         </div>
@@ -51,8 +57,8 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data Type：</label>
                                 <div class="layui-input-block">
-                                  <input type="radio" name="omics" value="rna" title="Transcriptomics" checked="">
-                                  <input type="radio" name="omics" value="proteinomics" title="Proteomics">
+                                  <input type="radio" name="omics_right" value="Transcriptomics" title="Transcriptomics" checked="">
+                                  <input type="radio" name="omics_right" value="Proteomics" title="Proteomics">
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -61,7 +67,7 @@
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
                                     <hr>
-                                    <input id="file_right1" name='file_right1' value="no data" />
+                                    <input id="datafile_right" name='datafile_right' value="no data" />
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -70,7 +76,7 @@
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
                                     <hr>
-                                    <input id="file_right2" name='file_right2' value="no data" />
+                                    <input id="file_descfile_right" name='file_descfile_right' value="no data" />
                                 </div>
                             </div>
                         </div>
@@ -87,50 +93,32 @@
         <hr>
         <form class="layui-form" action="/crosscanshu">
             <div class="col-md-6">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">Data Type：</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="omicsl" value="lipidomics" title="Lipidomics" checked="">
-                        <input type="radio" name="omicsl" value="Metabolomics" title="Metabolomics">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">Data file：</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="asl" value="lipidomics" title="Cos7_integ_2.csv" checked="">
-                        <input type="radio" name="asl" value="lipidomics" title="HANgene_tidy.CSV" checked="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">Desc file：</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="afl" value="lipidomics" title="Cos7_integ_sampleList.csv" checked="">
-                        <input type="radio" name="afl" value="lipidomics" title="HANsampleList.CSV" checked="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">Data Type：</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="omicsr" value="microarray" title="Transcriptomics " checked="">
-                        <input type="radio" name="omicsr" value="proteinomics" title="Proteomics">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">Data file：</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="asr" value="lipidomics" title="gene_tidy.CSV" checked="">
-                        <input type="radio" name="asr" value="lipidomics" title="lipid_tidy2.CSV" checked="">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label">Desc file：</label>
-                    <div class="layui-input-block">
-                        <input type="radio" name="afr" value="lipidomics" title="sampleList.CSV" checked="">
-                        <input type="radio" name="afr" value="lipidomics" title="sampleList_lip.csv" checked="">
-                    </div>
-                </div>
+                <table class="layui-table">
+                <colgroup>
+                  <col width="33%">
+                  <col width="33%">
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Example</th>
+                    <th>Omics1 file</th>
+                    <th>Omics2 file</th>
+                    <th>Descriptional file</th>
+                  </tr>
+                </thead>
+                <tbody id="exampleomics">
+                  <tr>
+                    <td><input type="radio" name="exampleomics" value="Example1" title="Example1" checked=""></td><td><a href="{{ url('download/example').'/' }}HANLipidMediator_imm_forcor.CSV " >HANLipidMediator_imm_forcor.CSV </a></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy.CSV" >HANgene_tidy.CSV</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_lipmid.csv" >HANsampleList_lipmid.csv</a><br><a href="{{ url('download/example').'/' }}HANsampleList.CSV" >HANsampleList.CSV</a></td>
+                  </tr><tr>
+                    <td><input type="radio" name="exampleomics" value="Example2" title="Example2"></td><td><a href="{{ url('download/example').'/' }}lipids.csv" >lipids.csv</a></td><td><a href="{{ url('download/example').'/' }}RNAseq_genesymbol.csv" >RNAseq_genesymbol.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList.csv" >sampleList.csv</a></td>
+                  </tr><tr>
+                    <td><input type="radio" name="exampleomics" value="Example3" title="Example3"></td><td><a href="{{ url('download/example').'/' }}metabolites.csv" >metabolites.csv</a></td><td><a href="{{ url('download/example').'/' }}RNAseq_genesymbol.csv" >RNAseq_genesymbol.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList.csv" >sampleList.csv</a></td>
+                  </tr><tr>
+                    <td><input type="radio" name="exampleomics" value="Example3" title="Example3"></td><td><a href="{{ url('download/example').'/' }}metabolites_tidy2.csv" >metabolites_tidy2.csv</a></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv " >proteins_Depletion_tidy.csv </a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >sampleList_lip.csv</a></td>
+                  </tr>
+                </tbody>
+            </table>
             </div>
             <div class="col-md-12 text-center">
                 <br>
@@ -218,37 +206,24 @@ layui.use('upload', function(){
 
     });
 
-    function changetheprogram() {
-        query_type = $("input[name='query_type']:checked").val();
-        subject_type = $("input[name='subject_type']:checked").val();
-        if (query_type == 'dna') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=blastn>BLASTN</option>");
-                $("#program").append("<option value=tblastx>TBLASTX</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastx>BLASTX</option>");
-            }
-        }else if (query_type == 'protein') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=tblastn>TBLASTN</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastp>BLASTP</option>");
-            }
+    $("#omics_left").click(function (){
+        name =$("input[name='omics_left']:checked").val();
+        if (name == "Lipidomics") {
+          document.getElementById("delodd").style.display="block";
         }
-        $("#program").trigger("change");
-    }
-
-
-    $("input:radio").change(function (){
-            changetheprogram();
-        });
-
-
-    $('#blastform').submit(function(e) {
-        if($('#seq').val() == ''){
-            layer.msg('Sequence is empty!');
-            e.preventDefault();
+        if (name == "Metabolomics") {
+          document.getElementById("delodd").style.display="none";
         }
-    })
+    });
+    $("#omics_right").click(function (){
+        name =$("input[name='omics_right']:checked").val();
+        if (name == "Proteinomics") {
+          document.getElementById("dataType").style.display="none";
+        }
+        if (name == "Transcriptomics") {
+          document.getElementById("dataType").style.display="block";
+        }
+        console.log(name);
+    });
 </script>
 @endsection

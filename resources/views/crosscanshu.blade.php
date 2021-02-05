@@ -13,54 +13,47 @@
         <hr>
         @include('partials.errors')
 
-        <form id="blastform" method="post" action="{{ url('/result/cross') }}">
+        <form id="blastform" action="/result/set">
             {{ csrf_field() }}
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>Control Group </h4>
+            <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
+            <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
+            <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
+            <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
+            <input type="radio" value="{{$delodd}}" name="delodd" checked style="display: none;">
+            
+            <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
+                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%; background-color: #FFFFFF;"> 
+                    <p>please choose one control group</p><br>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input  type="radio" value="{{$i}}" name="control" checked> <label>{{$i}}</label><br>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <input id="groupsLevel1" type="radio" value="protein" name="level1"> <label>group level 1</label><br>
-                    <input id="groupsLevel2" type="radio" value="dna" name="level2" checked> <label>group level 2</label>
-                    <h4>Or, you can input group level chosen in dataSet[["groupsLevel"]:
-                        <small>
-                        <input id="hit_number" type="text" name="hit_number" value="50" style="width:8%; display:inline;" class="form-control" autocomplete="on"></input>
-                        </small>
-                </div>
-            </div>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>dataType</h4>
-                </div>
-                <div class="col-md-9">
-                    <input id="dataType1" type="radio" value="protein" name="data_type1"> <label>LipidSearch</label><br>
-                    <input id="dataType2" type="radio" value="dna" name="data_type2" checked> <label>MS_DIAL</label><br>
-                    <input id="dataType3" type="radio" value="dna" name="data_type3"> <label>Metabolites</label><br>
-                    <input id="dataType4" type="radio" value="dna" name="data_type4"> <label>Proteins</label>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>lip Field</h4>
-                </div>
-                <div class="col-md-9">
-                    <input id="Field1" type="radio" value="protein" name="field_type1"> <label>firstline</label><br>
-                    <input id="Field2" type="radio" value="dna" name="field_type2" checked> <label>MS_DIAL</label><br>
-                    <input id="Field3" type="radio" value="dna" name="field_type3"> <label>Metabolites</label><br>
-                    <input id="Field4" type="radio" value="dna" name="field_type4"> <label>Proteins</label>
+                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
+                    <p>please choose the group(s)</p><br>
+                    <div class="layui-form-item" id="subgroup">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input type="checkbox" name="subgroup[{{$i}}]" checked=""><label>{{$i}}</label><br>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>delOddChainOpt</h4>
+                <div class="col-md-4">
+                    <h4 style="margin-top: 2%;">Set the precent to delete the missing column</h4>
                 </div>
-                <div class="col-md-9">
-                    <input id="query_dna" type="radio" value="dna" name="query_type" checked> <label> T</label><br>
-                    <input id="query_protein" type="radio" value="protein" name="query_type"> <label> F</label>
+                <div class="col-md-1">
+                    <small>
+                        <input type="text" name="naperent" lay-verify="required" placeholder="80" value="80" class="layui-input">
+                    </small>
                 </div>
+                <div class="layui-form-mid layui-word-aux">%</div><br>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
@@ -75,73 +68,15 @@
   @include('partials.footer')
 @endsection
 @section('js')
-<script src="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
-<script src="{{ asset('/layer/layer.js') }}"></script>
-<script>
-layui.use('upload', function(){
-  var upload = layui.upload;
+<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
+<script href="{{ asset('/layer/layer.js') }}"></script>
 
-  //执行实例
-  var uploadInst = upload.render({
-    elem: '#test1' //绑定元素
-    ,url: '/upload/' //上传接口
-    ,done: function(res){
-      //上传完毕回调
-    }
-    ,error: function(){
-      //请求异常回调
-    }
-  });
-});
-</script>
 <script>
     $(document).ready(function(){
-        changetheprogram();
-
-    });
-
-    function changetheprogram() {
-        query_type = $("input[name='query_type']:checked").val();
-        subject_type = $("input[name='subject_type']:checked").val();
-        if (query_type == 'dna') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=blastn>BLASTN</option>");
-                $("#program").append("<option value=tblastx>TBLASTX</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastx>BLASTX</option>");
-            }
-        }else if (query_type == 'protein') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=tblastn>TBLASTN</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastp>BLASTP</option>");
-            }
-        }
-        $("#program").trigger("change");
-    }
-
-
-    $('#example').click(function(){
-        $('#seq').html('');
-        name = $(this).val();
-        name =$("input[name='query_type']:checked").val();
-        if(name == 'protein'){
-            $('#seq').html(">A0A0A0LTV1\nMSTSELACAYAALALHDDGIAITAEKIAAVVAAAGLCVESYWPSLFAKLAEKRNIGDLLLNVGCGGGAAASVAVAAPTASAAAAPAIEEKREEPKEESDDDMGFSLFD");
-        } else if(name == 'dna'){
-            $('#seq').html(">A0A0A0LTV1\nATGTCTACCAGTGAACTCGCGTGCGCGTACGCCGCCCTGGCTCTTCACGATGATGGAATCGCAATCACTGCGGAAAAGATTGCAGCCGTTGTAGCAGCTGCGGGGCTCTGTGTGGAATCTTACTGGCCTAGCTTGTTTGCTAAATTGGCCGAGAAGAGGAACATTGGGGACCTTCTTCTTAATGTTGGCTGTGGAGGTGGCGCTGCGGCTTCTGTGGCTGTAGCTGCTCCTACCGCCAGTGCTGCTGCCGCTCCTGCCATCGAGGAAAAGAGGGAGGAGCCAAAGGAGGAGAGCGATGATGACATGGGATTCAGCTTATTCGATTAA");
-        }
-    });
-
-    $("input:radio").change(function (){
-            changetheprogram();
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
+    });
 
-
-    $('#blastform').submit(function(e) {
-        if($('#seq').val() == ''){
-            layer.msg('Sequence is empty!');
-            e.preventDefault();
-        }
-    })
 </script>
 @endsection
