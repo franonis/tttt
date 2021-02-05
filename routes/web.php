@@ -55,7 +55,7 @@ Route::group(['prefix' => '/update'], function () {
 Route::group(['prefix' => '/result'], function () {
     Route::get('/set', [ResultController::class, 'getsetPage']);
 });
-TwoController
+
 Route::get('/upload', [UploadController::class, 'getUploadPage']);
 Route::get('/mutil', [TwoController::class, 'getTwoPage']);
 Route::get('/cross', [CrossController::class, 'getcrossPage']);
