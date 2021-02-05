@@ -230,7 +230,7 @@ layui.use('upload', function(){
     });
     $("#omics_right").click(function (){
         name =$("input[name='omics_right']:checked").val();
-        if (name == "Proteinomics") {
+        if (name == "Proteomics") {
           document.getElementById("dataType").style.display="none";
         }
         if (name == "Transcriptomics") {
