@@ -28,7 +28,7 @@ class TwoController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $pic_path =  'home/zhangqb/tttt/public/'.$outpath;
+        $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
 
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
         exec($command, $ooout, $flag);
