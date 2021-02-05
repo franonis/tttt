@@ -79,6 +79,7 @@ Route::get('/upload', [UploadController::class, 'getUploadPage']);
 Route::get('/canshu', [UploadController::class, 'canshu']);
 Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
 Route::get('/crosscanshu', [CrossController::class, 'crosscanshu']);
+Route::get('/examplecrosscanshu', [CrossController::class, 'examplecrosscanshu']);
 
 Route::post('/uploadfile', [UploadController::class, 'upload']);
 

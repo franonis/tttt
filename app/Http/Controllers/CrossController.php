@@ -10,24 +10,18 @@ class CrossController extends Controller
 #设置例子的参数
     public function crosscanshu(Request $request)
     {
-        #$omicsss = ['a' => 'Lipidomics', 'b' => 'Lipidomicscos', 'c' => 'Metabolomics', 'd' => 'Transcriptomicshan', 'e' => 'Transcriptomics', 'f' => 'Proteomics'];
-        $file_data = ['Lipidomics' => 'HANlipid_tidy.csv', 'Lipidomicscos' => 'Cos7_integ_2.csv', 'Metabolomics' => 'metabolites_tidy2.csv', 'Transcriptomicshan' => 'HANgene_tidy_geneid_allgroups.CSV', 'Transcriptomics' => 'gene_tidy.CSV', 'Proteomics' => 'proteins_Depletion_tidy.csv'];
-        $file_desc = ['Lipidomics' => 'HANsampleList_lipid.CSV', 'Lipidomicscos' => 'Cos7_integ_sampleList.csv', 'Metabolomics' => 'sampleList_lip.csv', 'Transcriptomicshan' => 'HANsampleList_allgroups.CSV', 'Transcriptomics' => 'sampleList.CSV', 'Proteomics' => 'sampleList_lip.csv'];
-        #foreach ($omicsss as $num => $omics) {
-        #    $path_datafile = 'uploads/' . $omics . $file_data[$num] . md5($file_data[$num]);
-        #    $path_descfile = 'uploads/' . $omics . $file_desc[$num] . md5($file_desc[$num]);
-        #    $outpath = 'uploads/' . $omics . $file_data[$num] . $file_desc[$num] . md5($file_data[$num] . $file_desc[$num]) . '/';
-        #    is_dir($outpath) or mkdir($outpath, 0777, true);
-        #    is_dir($path_datafile) or mkdir($path_datafile, 0777, true);
-        #    is_dir($path_descfile) or mkdir($path_descfile, 0777, true);
-        #}
-        $omics = $request->exampleomics;
-        $exam_omics = $omics;
-        if ($exam_omics == "Lipidomics" || $exam_omics == "Lipidomicscos") {
-            $omics = "Lipidomics";
+        $example = $request->exampleomics;
+        if ($example == "Example1") {
+            $command = "Lipidomics";
         }
-        if ($exam_omics == "Transcriptomics" || $exam_omics == "Transcriptomicshan") {
-            $omics = "Transcriptomics";
+        if ($example == "Example2") {
+            $command = "Transcriptomics";
+        }
+        if ($example == "Example3") {
+            $command = "Lipidomics";
+        }
+        if ($example == "Example4") {
+            $command = "Transcriptomics";
         }
         
         $outpath = 'uploads/' . $omics . $file_data[$exam_omics] . $file_desc[$exam_omics] . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
@@ -67,7 +61,7 @@ class CrossController extends Controller
         }
 
     }
-    
+
     private function isRunOver($file)
     {
         return file_exists($file) ? true : false;
