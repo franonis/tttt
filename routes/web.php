@@ -55,7 +55,8 @@ Route::group(['prefix' => '/result'], function () {
     Route::get('/set', [ResultController::class, 'getsetPage']);
 });
 #单组学
-Route::get('/upload', [UploadController::class, 'getUploadPage']);
+#Route::get('/upload', [UploadController::class, 'getUploadPage']);
+Route::get('/upload', [TwoController::class, 'getTwoPage']);
 Route::get('/canshu', [UploadController::class, 'canshu']);
 Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
 #多组学
