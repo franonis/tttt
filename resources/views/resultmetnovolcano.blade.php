@@ -12,23 +12,23 @@
         @include('partials.errors')
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Metabolomics</a>
         <hr>
+            <div class="col-md-2">
+            </div>
             <div class="col-md-12">
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
-                    <li>Volcano</li>
+                    <li >Volcano</li>
                     <li>Heatmap</li>
+                    <li>Enrichment</li>
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="border:1px dashed #000;">
                                     <div class="col-md-5">
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
@@ -36,6 +36,7 @@
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
                                 </div>
@@ -49,7 +50,6 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
                         <div class="col-md-2">
@@ -59,9 +59,6 @@
                         </div>
                     </div>
                     <div class="layui-tab-item">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -84,20 +81,23 @@
                                             <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                    <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
                                     </div>
                                 </form>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
-                                    @foreach($downloadfilename["heatmap"] as $k=>$i )
-                                        <div class="col-md-3">
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                        </div>
-                                    @endforeach
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <div class="col-md-12">
+                                        @foreach($downloadfilename["heatmap"] as $k=>$i )
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
+                                        @endforeach
+                                    </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
@@ -106,6 +106,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="layui-tab-item">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10">
+                            <p>Only the "one vs one" mode could give the Enrichment result</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

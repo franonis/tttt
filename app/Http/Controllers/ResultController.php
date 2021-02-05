@@ -191,6 +191,9 @@ class ResultController extends Controller
         #FA
         $fa_path = $pic_path . 'FAchainVisual';
         is_dir($fa_path) or mkdir($fa_path, 0777, true);
+        #enrich
+        $enrich_path = $pic_path . 'enrich/';
+        is_dir($enrich_path) or mkdir($enrich_path, 0777, true);
         #PCA
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/lipPCAPlot.R -r "' . $r_path . '" -q "' . $pic_path . '"';
         #dd($command);
