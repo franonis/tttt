@@ -19,6 +19,7 @@
                     <li  class="layui-this">Data Varability</li>
                     <li>Volcano Plot</li>
                     <li>Heatmap</li>
+                    <li>GO enrichment</li>
                     <li>Download</li>
                   </ul>
                   <div class="layui-tab-content">
