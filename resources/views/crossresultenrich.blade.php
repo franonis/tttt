@@ -17,7 +17,7 @@
             <div class="col-md-10">
                 <div class="col-md-12">
                     <div class="col-md-2">
-                        <h4>{{omics1}}</h4>
+                        <h4>{{$omics1}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
                         <pre>{{ $gene }}</pre>
@@ -25,7 +25,7 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$enrichpath}}--{{omics1}}" target="_blank">Enrich</a>
+                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$enrichpath}}--{{$omics1}}" target="_blank">Enrich</a>
                     </div>
                     <div class="col-md-1">
                     </div>
@@ -37,7 +37,7 @@
 
                 <div class="col-md-12">
                     <div class="col-md-2">
-                        <h4>{{omics2}}</h4>
+                        <h4>{{$omics2}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
                         <pre>{{ $lipid }}</pre>
@@ -45,7 +45,7 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$enrichpath}}--{{omics2}}" target="_blank">Enrich</a>
+                        <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$enrichpath}}--{{$omics2}}" target="_blank">Enrich</a>
                     </div>
                     <div class="col-md-1">
                     </div>
