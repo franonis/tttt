@@ -25,8 +25,8 @@
                     <h4>missing value percent to delete</h4>
                 </div>
                 <div class="col-md-9">
-                    <a>Remove features with ></a>
-                    <div class="col-md-1">
+                    <div class="col-md-3">
+                        <a>Remove features with ></a>
                         <small>
                         <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                         </small>

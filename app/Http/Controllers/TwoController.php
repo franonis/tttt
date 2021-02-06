@@ -56,7 +56,7 @@ class TwoController extends Controller
         $fgwidth = floor($size[0] / $k1);
         $fgheigh = floor($size[1] / $k2);
 
-        #dd($fgwidth);
+        dd($omics1);
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
         return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'omics1' => $omics1, 'omics2' => $omics2]);
     }
