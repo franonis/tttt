@@ -72,7 +72,7 @@ class TwoController extends Controller
         $omics2=$poss[4];#$omics2
         $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);#$enrichpath = preg_replace('/\//', "++", $outpath);
         $downloadpath = preg_replace('/\//', "++", $enrichpath);
-        $gene = file_get_contents($enrichpath . 'genes_'.$k1.'.csv');
+        $gene = file_get_contents($enrichpath . 'genes_'.$k1.'.csv',0,null,0,1000);
         $lipid = file_get_contents($enrichpath . 'lipids_'.$k2.'.csv');
 
         return view('crossresultenrich', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2]);
@@ -81,42 +81,19 @@ class TwoController extends Controller
     public function getenenrichresultPage($pos)
     {
         $poss=explode("--", $pos);
-        $k1 = $poss[0]+1;#行列数gene
-        $enrichpath=$poss[2];#$outpath
-        $omics=$poss[3];#$omics
+        $k1 = $poss[0];#行列数gene
+        $enrichpath=$poss[1];#$outpath
+        $omics=$poss[2];#$omics
+        $opath = preg_replace('/\+\+/', "/", $enrichpath);
+        $ipath = $opath . 'cor/';
+        is_dir($ipath) or mkdir($ipath, 0777, true);
         if ($omics == "Metabolomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "~/temp/cor/" -j 4 -o "~/temp/"';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "'.$ipath.'" -j '.$k1.' -o "'.$opath.'"';
         }
         if ($omics == "Lipidomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "~/temp/cor/" -j 4 -o "~/temp/"';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "'.$ipath.'" -j '.$k1.' -o "'.$opath.'"';
         }
-
-        
-        $allowed_extensions = ["csv", "txt", "CSV"]; //多类型
-        //判断文件是否是允许上传的文件类型
-        if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
-            $data = [
-                'status' => 0, //返回状态码，在js中用改状态判断是否上传成功。
-                'msg' => '不支持此格式',
-            ];
-            return json_encode($data);
-        }
-
-        //保存文件，新建路径，拷贝文件
-        //路径都是public--uploads下的文件名的md5值
-        $path = md5($file->getClientOriginalName());
-        $destinationPath = 'uploads/' . $path . '/';
-        is_dir($destinationPath) or mkdir($destinationPath, 0777, true);
-        $extension = $file->getClientOriginalExtension();
-        $fileName = $extension;
-        $file->move($destinationPath, $file->getClientOriginalName());
-        $data = [
-            'status' => 1, //返回状态码，在js中用改状态判断是否上传成功。
-            'msg' => $destinationPath . $fileName, //上传成功，返回服务器上文件名字
-            'originalname' => $file->getClientOriginalName(), //上传成功，返回上传原文件名字
-            'file' => $file, //上传成功，返回上传原文件名字
-        ];
-        return json_encode($data);
+        return view('crossresultenrichresult', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2]);
 
     }
     #设置参数
