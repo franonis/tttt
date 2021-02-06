@@ -19,7 +19,7 @@
                     <div class="col-md-2">
                         <h4>Genes</h4>
                     </div>
-                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:100%; height:300px;">
+                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
                         <pre>{{ $gene }}</pre>
                     </div>
                     <div class="col-md-3" style="border:1px dashed #000;">
@@ -34,7 +34,7 @@
                     <div class="col-md-2">
                         <h4>Lipids</h4>
                     </div>
-                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:100%; height:300px;">
+                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
                         <pre>{{ $lipid }}</pre>
                     </div>
                     <div class="col-md-3" style="border:1px dashed #000;">
