@@ -17,6 +17,8 @@
             {{ csrf_field() }}
             <input type="radio" value="{{$command}}" name="command" checked style="display: none;">
             <input type="radio" value="{{$outpath}}" name="outpath" checked style="display: none;">
+            <input type="radio" value="{{$omics1}}" name="omics1" checked style="display: none;">
+            <input type="radio" value="{{$omics2}}" name="omics2" checked style="display: none;">
             
             <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
                 <div class="col-md-3">
