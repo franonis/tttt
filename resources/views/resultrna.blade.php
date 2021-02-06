@@ -130,6 +130,10 @@
                                     <input name="f" value="{{ $f }}" style="display: none;">
                                     <input name="p" value="{{ $p }}" style="display: none;">
                                     <input name="u" value="{{ $u }}" style="display: none;">
+                                    <input name="t" value="{{ $t }}" style="display: none;">
+                                    <input name="g" value="{{ $g }}" style="display: none;">
+                                    <input name="s" value="{{ $s }}" style="display: none;">
+                                    <input name="c" value="{{ $c }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Set top number</h4>
                                     </div>
@@ -156,15 +160,15 @@
                     </div>
                     <div class="layui-tab-item">
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                <form  id="Heatmap" class="layui-form" action="/update/updaternaenrich">
                                     <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="f" value="{{ $f }}" style="display: none;">
+                                    <input name="p" value="{{ $p }}" style="display: none;">
+                                    <input name="u" value="{{ $u }}" style="display: none;">
+                                    <input name="v" value="{{ $v }}" style="display: none;">
+                                    <input name="t" value="{{ $t }}" style="display: none;">
+                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="b" value="{{ $b }}" style="display: none;">
-                                    <input name="x" value="{{ $x }}" style="display: none;">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="w" value="{{ $w }}" style="display: none;">
                                     <input name="c" value="{{ $c }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
@@ -176,6 +180,15 @@
                                                 <div class="layui-input-block" id="t">
                                                   <input type="radio" name="t" value="mmu" title="mmu" checked="">
                                                   <input type="radio" name="t" value="has" title="has">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Gene Type：</label>
+                                                <div class="layui-input-block" id="t">
+                                                  <input type="radio" name="g" value="ENSEMBL" title="ENSEMBL">
+                                                  <input type="radio" name="g" value="SYMBOL" title="SYMBOL" checked="">
                                                 </div>
                                             </div>
                                         </div>

@@ -67,7 +67,7 @@ class TwoController extends Controller
     public function getenrichPage($pos)
     {
         $poss=explode("--", $pos);
-        $k1 = $poss[0]+1;#列
+        $k1 = $poss[0]+1;#列gene
         $k2 = $poss[1]+1;
         $enrichpath=$poss[2];#$outpath
         $omics1=$poss[3];#$omics1
@@ -80,8 +80,13 @@ class TwoController extends Controller
         return view('crossresultenrich', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2]);
     }
 
-    public function upload(Request $request)
+    public function getenenrichresultPage($pos)
     {
+        $poss=explode("--", $pos);
+        $k1 = $poss[0]+1;#行列数gene
+        $enrichpath=$poss[2];#$outpath
+        $omics1=$poss[3];#$omics1
+        $omics2=$poss[4];#$omics2
         $allowed_extensions = ["csv", "txt", "CSV"]; //多类型
         //判断文件是否是允许上传的文件类型
         if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
