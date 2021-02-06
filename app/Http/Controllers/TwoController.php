@@ -26,10 +26,9 @@ class TwoController extends Controller
         $omics2=$request->omics2;#$outpath = 'mutil/example1'.md5("filename").'/';
         if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
             exec($command, $ooout, $flag);
-        }
-        #dd($ooout);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
         }
 
         $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
