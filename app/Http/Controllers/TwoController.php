@@ -64,7 +64,7 @@ class TwoController extends Controller
 
     public function getenrichPage($pos)
     {
-        $poss=explode("++", $pos);
+        $poss=explode("--", $pos);
         $k1 = $poss[0];#列
         $k2 = $poss[1];
         $enrichpath=$poss[2];#$outpath
