@@ -17,20 +17,10 @@
             <div class="col-md-10">
                 <div class="col-md-12">
                     <div class="col-md-2">
-                        <h4>{{$omics1}}</h4>
+                        <h4>Enrichment result</h4>
                     </div>
-                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <pre>{{ $gene }}</pre>
-                    </div>
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
-                    </div>
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-2" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$k1}}.csv">Download</a>
+                    <div class="col-md-10">
+                        <img src="http://www.lintwebomics.info/{{ $ipath }}{{%resultfile}}" style="height:50%;width: 60%;">
                     </div>
                 </div>
             <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>

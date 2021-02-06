@@ -89,11 +89,18 @@ class TwoController extends Controller
         is_dir($ipath) or mkdir($ipath, 0777, true);
         if ($omics == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "'.$ipath.'" -j '.$k1.' -o "'.$opath.'"';
+            $resultfile="ora_dpi72.png";
         }
         if ($omics == "Lipidomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "'.$ipath.'" -j '.$k1.' -o "'.$opath.'"';
+            $resultfile="ora_dot_dpi72.png";
         }
-        return view('crossresultenrichresult', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2]);
+        exec($command, $ooout, $flag);
+
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        return view('crossresultenrichresult', ['k1' => $k1,'opath' => $opath,'ipath' => $ipath,'resultfile' => $resultfile,'downloadpath' => $downloadpath, 'omics' => $omics1]);
 
     }
     #设置参数
