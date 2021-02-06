@@ -26,11 +26,12 @@
                 </div>
                 <div class="col-md-9">
                     <a>Remove features with ></a>
-                    <small>
-                    <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
-                    </small>
-                    <div class="layui-form-mid layui-word-aux">%</div><br>
-                    <a>Remove features with ></a>
+                    <div class="col-md-1">
+                        <small>
+                        <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">% missing values</div><br>
                 </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-3">
