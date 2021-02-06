@@ -19,14 +19,14 @@
                     <div class="col-md-2">
                         <h4>Genes</h4>
                     </div>
-                    <div class="col-md-4" style="border:1px dashed #000; height: 120px;">
+                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:400px; height:400px;">
                         <pre>{{ $gene }}</pre>
                     </div>
                     <div class="col-md-3" style="border:1px dashed #000;">
                         <a href="">Enrichment</a>
                     </div>
                     <div class="col-md-3" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_$k1csv">Download</a>
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$k1}}csv">Download</a>
                     </div>
                 </div>
 
@@ -34,14 +34,14 @@
                     <div class="col-md-2">
                         <h4>Lipids</h4>
                     </div>
-                    <div class="col-md-4" style="border:1px dashed #000; height: 120px;">
+                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:400px; height:400px;">
                         <pre>{{ $lipid }}</pre>
                     </div>
                     <div class="col-md-3" style="border:1px dashed #000;">
                         <a href="">Enrichment</a>
                     </div>
                     <div class="col-md-3" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_'.$k2.'.csv">Download</a>
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}csv">Download</a>
                     </div>
                 </div>
                     

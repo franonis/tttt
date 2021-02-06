@@ -55,7 +55,7 @@ class TwoController extends Controller
         $fgheigh = floor($size[1] / $k2);
 
         #dd($fgwidth);
-        $enrichpath = preg_replace('/\//', "++", $outpath);
+        $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
         return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2]);
 
 
@@ -65,13 +65,13 @@ class TwoController extends Controller
     public function getenrichPage($pos)
     {
         $poss=explode("--", $pos);
-        $k1 = $poss[0];#列
-        $k2 = $poss[1];
+        $k1 = $poss[0]+1;#列
+        $k2 = $poss[1]+1;
         $enrichpath=$poss[2];#$outpath
-        $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);
+        $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);#$enrichpath = preg_replace('/\//', "++", $outpath);
         $downloadpath = preg_replace('/\//', "++", $enrichpath);
         $gene = file_get_contents($enrichpath . 'genes_'.$k1.'.csv');
-        $lipid = file_get_contents($enrichpath . 'lipids_'.$k1.'.csv');
+        $lipid = file_get_contents($enrichpath . 'lipids_'.$k2.'.csv');
 
         return view('crossresultenrich', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath]);
     }
