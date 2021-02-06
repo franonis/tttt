@@ -58,7 +58,7 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
                 <br>
-                <button id="submit" class="layui-btn" type="submit">RUN</button>
+                <button id="submit" class="layui-btn" type="submit" onclick="MsgBox()">RUN</button>
             </div>
         </form>
     </div>
@@ -77,6 +77,10 @@
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
     });
+    function MsgBox() //声明标识符
+    {
+        alert("我是对话框的内容"); //弹出对话框
+    };
 
 </script>
 @endsection
