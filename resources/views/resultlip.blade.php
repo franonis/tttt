@@ -12,7 +12,9 @@
         @include('partials.errors')
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Lipidomics</a>
         <hr>
-            <div class="col-md-12">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10"> 
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
@@ -24,14 +26,11 @@
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="border:1px dashed #000;">
                                     <div class="col-md-5">
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
@@ -39,6 +38,7 @@
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
                                 </div>
@@ -52,12 +52,8 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -67,9 +63,11 @@
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
-                                        <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
-                                        <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
+                                        <div class="col-md-12">
+                                            <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
+                                            <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
+                                        </div>
                                         <div class="col-md-2">
                                             <h4>Set p type</h4>
                                         </div>
@@ -127,7 +125,6 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
                         <div class="col-md-2">
