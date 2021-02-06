@@ -69,7 +69,7 @@ class TwoController extends Controller
         $k2 = $poss[1];
         $enrichpath=$poss[2];#$outpath
         $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);
-        $downloadpath = preg_replace('/\//', "++", $downloadpath);
+        $downloadpath = preg_replace('/\//', "++", $enrichpath);
         $gene = file_get_contents($enrichpath . 'genes_'.$k1.'.csv');
         $lipid = file_get_contents($enrichpath . 'lipids_'.$k1.'.csv');
 
