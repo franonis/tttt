@@ -20,7 +20,7 @@
                         <h4>Enrichment result</h4>
                     </div>
                     <div class="col-md-10">
-                        <img src="http://www.lintwebomics.info/{{ $ipath }}{{%resultfile}}" style="height:50%;width: 60%;">
+                        <img src="http://www.lintwebomics.info/{{ $opath }}{{%resultfile}}" style="height:50%;width: 60%;">
                     </div>
                 </div>
             <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
