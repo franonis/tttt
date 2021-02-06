@@ -23,8 +23,10 @@ class TwoController extends Controller
         $g = $request->g;#列
         $k = $request->k;#行
         $omics1=$request->omics1;#
-        $omics2=$request->omics2;#
-        exec($command, $ooout, $flag);
+        $omics2=$request->omics2;#$outpath = 'mutil/example1'.md5("filename").'/';
+        if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
+            exec($command, $ooout, $flag);
+        }
         #dd($ooout);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
