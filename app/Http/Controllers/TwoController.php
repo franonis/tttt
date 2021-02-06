@@ -86,6 +86,7 @@ class TwoController extends Controller
         $omics=$poss[2];#$omics
         $opath = preg_replace('/\+\+/', "/", $enrichpath);
         $ipath = $opath . 'cor/';
+        $command="";
         is_dir($ipath) or mkdir($ipath, 0777, true);
         if ($omics == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "'.$ipath.'" -j '.$k1.' -o "'.$opath.'"';
