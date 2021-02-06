@@ -59,9 +59,6 @@ class TwoController extends Controller
         #dd($fgwidth);
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
         return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'omics1' => $omics1, 'omics2' => $omics2]);
-
-
-        return view('crossresult', ['title' => 'upload']);
     }
 
     public function getenrichPage($pos)
@@ -85,8 +82,15 @@ class TwoController extends Controller
         $poss=explode("--", $pos);
         $k1 = $poss[0]+1;#行列数gene
         $enrichpath=$poss[2];#$outpath
-        $omics1=$poss[3];#$omics1
-        $omics2=$poss[4];#$omics2
+        $omics=$poss[3];#$omics
+        if ($omics == "Metabolomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "~/temp/cor/" -j 4 -o "~/temp/"';
+        }
+        if ($omics == "Lipidomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "~/temp/cor/" -j 4 -o "~/temp/"';
+        }
+
+        
         $allowed_extensions = ["csv", "txt", "CSV"]; //多类型
         //判断文件是否是允许上传的文件类型
         if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
