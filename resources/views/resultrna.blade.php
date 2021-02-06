@@ -41,7 +41,6 @@
                             <div class="col-md-10" style="border:1px dashed #000; overflow-y:auto; width:300px; height:400px;">
                                 <pre>{{ $DEgeneStatistics }}</pre>
                             </div>
-                            </div>
                         </div>
                     </div>
                     <div class="layui-tab-item layui-show">
