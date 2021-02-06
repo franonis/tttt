@@ -13,7 +13,7 @@
         <hr>
         @include('partials.errors')
 
-        <form id="blastform" action="/result/set">
+        <form id="blastform" action="/result/set"> 
             {{ csrf_field() }}
             <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
             <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
@@ -61,26 +61,6 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
-            <div class="col-md-12">
-                <div class="col-md-3">
-                    <h4>dataType</h4>
-                </div>
-                <div class="col-md-9" id="dataType">
-                    <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label><br>
-                    <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
-                </div>
-            </div><br>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-            <div class="col-md-12" >
-                <div class="col-md-3">
-                    <h4>normalization</h4>
-                </div>
-                <div class="col-md-9" id="normalization" style="display: none;">
-                    <input id="query_dna" type="radio" value="T" name="normalization" checked> <label> T</label><br>
-                    <input id="query_protein" type="radio" value="F" name="normalization"> <label> F</label>
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
