@@ -22,7 +22,7 @@
                     <div class="row text-center" style="width: {{ $bgwidth }}px;height: {{ $bgheigh }}px; background-image: url({{ asset($image) }}); ">
                         @for ($i = 0; $i < $k2; $i++)
                             @for ($j = 0; $j < $k1; $j++)
-                                <a href="{{ url('enrich/')}}/{{$j}}++{{$i}}++{{$pic_path}}" target="_blank"><img style="width: {{ $fgwidth }}px;height: {{ $fgheigh }}px;opacity: 80%; margin-bottom: 1%;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
+                                <a href="{{ url('enrich/')}}/{{$j}}++{{$i}}++{{$enrichpath}}" target="_blank"><img style="width: {{ $fgwidth }}px;height: {{ $fgheigh }}px;opacity: 80%; margin-bottom: 1%;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
                             @endfor
                         @endfor
                     </div>

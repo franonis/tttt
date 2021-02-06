@@ -55,7 +55,8 @@ class TwoController extends Controller
         $fgheigh = floor($size[1] / $k2);
 
         #dd($fgwidth);
-        return view('crossresult', ['image' => $image, 'pic_path' => $pic_path, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2]);
+        $enrichpath = preg_replace('/\//', "==", $outpath);
+        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2]);
 
 
         return view('crossresult', ['title' => 'upload']);
@@ -66,13 +67,13 @@ class TwoController extends Controller
         $poss=explode("++", $pos);
         $k1 = $poss[0];#列
         $k2 = $poss[1];
-        $pic_path=$poss[2];
-        $downloadpath = preg_replace('/\/home\/zhangqb\/tttt\/public\//', "", $pic_path);
+        $enrichpath=$poss[2];#$outpath
+        $downloadpath = preg_replace('/\/home\/zhangqb\/tttt\/public\//', "", $enrichpath);
         $downloadpath = preg_replace('/\//', "++", $downloadpath);
-        $gene = file_get_contents($pic_path . '/genes_'.$k1.'.csv');
-        $lipid = file_get_contents($pic_path . '/lipids_'.$k1.'.csv');
+        $gene = file_get_contents($enrichpath . '/genes_'.$k1.'.csv');
+        $lipid = file_get_contents($enrichpath . '/lipids_'.$k1.'.csv');
 
-        return view('crossresultenrich', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'pic_path' => $pic_path,'downloadpath' => $downloadpath]);
+        return view('crossresultenrich', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath]);
     }
 
     public function upload(Request $request)
