@@ -70,7 +70,6 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_allgroups.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
                         <div class="col-md-2">
