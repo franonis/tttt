@@ -54,6 +54,7 @@ Route::group(['prefix' => '/update'], function () {
 Route::group(['prefix' => '/result'], function () {
     Route::get('/set', [ResultController::class, 'getsetPage']);
     Route::get('/two', [TwoController::class, 'getreaultPage']);
+    Route::get('/enrich/{pos}', [TwoController::class, 'getenrichPage']);
 });
 #单组学
 #Route::get('/upload', [UploadController::class, 'getUploadPage']);

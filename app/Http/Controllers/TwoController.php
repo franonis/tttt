@@ -31,10 +31,13 @@ class TwoController extends Controller
         $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
 
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
-        exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
         }
+        
         #图片切割
         $command = 'python3 /home/zhangqb/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -k ' . $k . ' -g ' . $g . ' -o "' . $pic_path . '"';
         #exec($command, $ooout, $flag);
@@ -46,16 +49,30 @@ class TwoController extends Controller
         $size = getimagesize($image);
         $bgwidth = $size[0] * 1.02;
         $bgheigh = $size[1] * 1.02;
-        $k1 = $g;
+        $k1 = $g;#列
         $k2 = $k;
         $fgwidth = floor($size[0] / $k1);
         $fgheigh = floor($size[1] / $k2);
 
         #dd($fgwidth);
-        return view('crossresult', ['image' => $image, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2]);
+        return view('crossresult', ['image' => $image, 'pic_path' => $pic_path, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2]);
 
 
         return view('crossresult', ['title' => 'upload']);
+    }
+
+    public function getenrichPage($pos)
+    {
+        $poss=explode("++", $pos);
+        $k1 = $poss[0];#列
+        $k2 = $poss[1];
+        $pic_path=$poss[2];
+        $downloadpath = preg_replace('/\/home\/zhangqb\/tttt\/public\//', "", $pic_path);
+        $downloadpath = preg_replace('/\//', "++", $downloadpath);
+        $gene = file_get_contents($pic_path . '/genes_'.$k1.'.csv');
+        $lipid = file_get_contents($pic_path . '/lipids_'.$k1.'.csv');
+
+        return view('crossresultenrich', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'pic_path' => $pic_path,'downloadpath' => $downloadpath]);
     }
 
     public function upload(Request $request)
