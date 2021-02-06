@@ -25,7 +25,7 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$enrichpath}}--{{$omics1}}" target="_blank">Enrich</a>
+                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
                     </div>
                     <div class="col-md-1">
                     </div>
@@ -45,7 +45,7 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$enrichpath}}--{{$omics2}}" target="_blank">Enrich</a>
+                        <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics2}}" target="_blank">Enrich</a>
                     </div>
                     <div class="col-md-1">
                     </div>
