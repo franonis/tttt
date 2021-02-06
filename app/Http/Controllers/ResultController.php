@@ -56,7 +56,7 @@ class ResultController extends Controller
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
                     $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                    $DEgeneStatistics = file_get_contents($outpath . '/DEgeneStatistics_*.csv');
+                    $DEgeneStatistics = file_get_contents($outpath . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
                     return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
                 }
             }
