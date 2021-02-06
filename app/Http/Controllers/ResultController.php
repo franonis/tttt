@@ -43,6 +43,8 @@ class ResultController extends Controller
         $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
         if ($omics == "Transcriptomics") {
             $experiment = $request->experimental;
+            $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/' . $experiment . $control . '/';
+            is_dir($outpath) or mkdir($outpath, 0777, true);
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/processing_RNA.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -n T  -t '.$data_type.' -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 exec($command, $ooout, $flag);
@@ -52,16 +54,10 @@ class ResultController extends Controller
                 }
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                if (count($subgroup) == 1) {
-                    if ($this->showresultrna($outpath)) {
-                        $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
-                    }
-                }else{
-                    if ($this->showresultrna2($outpath)) {
-                        $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                        return view('resultrnanovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]); 
-                    }
+                if ($this->showresultrna($outpath)) {
+                    $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
+                    $DEgeneStatistics = file_get_contents($outpath . '/DEgeneStatistics_*.csv');
+                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75]);                            
                 }
             }
         } else {
@@ -172,6 +168,23 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        #
+        #富集Rscript geneRegEnrich.R -r "~/temp/" -f 2.0 -p 0.05 -t "mmu" -g "SYMBOL" -s 50 -c "Biological_Process" -o "~/temp/results2/"
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f 2.0 -p 0.05 -t "mmu" -g "SYMBOL" -s 50 -c "Biological_Process"';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'up*.pdf ' . $enrich_path . 'up.png';
+        exec($command, $ooout, $flag);
+
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
+        exec($command, $ooout, $flag);
+        #dd($ooout);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+
         #dd($path . 'results/');
         return 1;
 
@@ -733,7 +746,15 @@ class ResultController extends Controller
         exec($command,$enrich,$flag);
         $download["enrich"]=$enrich;
         return $download;
-    }    
+    }
+
+    public function getrnadownloadfilename($downloadpath)
+    {
+        #volcano
+        $command='cd '.$downloadpath.' && ls ';
+        exec($command,$download,$flag);
+        return $download;
+    }
 
     public function getcrossPage(Request $request)
     {

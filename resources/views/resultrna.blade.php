@@ -15,21 +15,48 @@
         <div class="col-md-12">
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
-                    <li  class="layui-this">show_variability</li>
-                    <li>Volcano</li>
+                    <li>Different Expression</li>
+                    <li  class="layui-this">Data Varability</li>
+                    <li>Volcano Plot</li>
                     <li>Heatmap</li>
+                    <li>Download</li>
                   </ul>
                   <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        <div class="col-md-2">
+                    <div class="layui-tab-item">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                <h4>Download</h4>
+                            </div>
+                            <div class="col-md-10" style="border:1px dashed #000;">
+                                <div class="col-md-5">
+                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}DEgeneStatistics_*.csv">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                </div>
+                            </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                                
+                            <div class="col-md-2">
+                                <h4>Different Expression Gene Statistics</h4>
+                            </div>
+                            <div class="col-md-10" style="border:1px dashed #000; overflow-y:auto; width:300px; height:400px;">
+                                <pre>{{ $DEgeneStatistics }}</pre>
+                            </div>
+                            </div>
                         </div>
-                        <div class="col-md-10">
+                    </div>
+                    <div class="layui-tab-item layui-show">
                             <div class="col-md-12">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
                                 </div>
-                                <div class="col-md-6">
-                                    <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+PCA_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <div class="col-md-5">
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}heatmap_allgroups.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
                                 </div>
@@ -127,10 +154,97 @@
                             </div>
                         </div>
                     </div>
+                    <div class="layui-tab-item">
+                            <div class="col-md-12">
+                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="s" value="{{ $s }}" style="display: none;">
+                                    <input name="b" value="{{ $b }}" style="display: none;">
+                                    <input name="x" value="{{ $x }}" style="display: none;">
+                                    <input name="j" value="{{ $j }}" style="display: none;">
+                                    <input name="k" value="{{ $k }}" style="display: none;">
+                                    <input name="m" value="{{ $m }}" style="display: none;">
+                                    <input name="w" value="{{ $w }}" style="display: none;">
+                                    <input name="c" value="{{ $c }}" style="display: none;">
+                                    <div class="col-md-2">
+                                        <h4>Update with new parameters</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Choose species：</label>
+                                                <div class="layui-input-block" id="t">
+                                                  <input type="radio" name="t" value="mmu" title="mmu" checked="">
+                                                  <input type="radio" name="t" value="has" title="has">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">GO term：</label>
+                                                <div class="layui-input-block" id="c">
+                                                  <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
+                                                  <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
+                                                  <input type="radio" name="c" value="Molecular_Function" title="Molecular Function">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                  </div>
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Set top number：</label>
+                                                <div class="layui-input-block" id="s">
+                                                  <input id="s" type="text" name="s" value="{{ $s }}" style="width:50px; display:inline;" class="form-control" >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <div class="col-md-12">
+                                        @foreach($downloadfilename["enrich"] as $k=>$i )
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++enrich++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
+                                        @endforeach
+                                    </div>
+                                </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                                <div class="col-md-2">
+                                    <h4>Up</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up.png" style="height:50%;width: 60%;">
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Down</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down.png" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <div class="col-md-12">
+                                        @foreach($downloadfilename as $k=>$i )
+                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                 </div>
-        </div>
         <hr>
     </div>
 </div>
