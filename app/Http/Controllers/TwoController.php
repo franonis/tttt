@@ -89,11 +89,11 @@ class TwoController extends Controller
         $command="";
         is_dir($ipath) or mkdir($ipath, 0777, true);
         if ($omics == "Metabolomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "'.$ipath.'" -j '.$k1.' -o "'.$opath.'"';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$ipath.'" -j '.$k1.' -o "/home/zhangqb/tttt/public/'.$opath.'"';
             $resultfile="ora_dpi72.png";
         }
         if ($omics == "Lipidomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "'.$ipath.'" -j '.$k1.' -o "'.$opath.'"';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$ipath.'" -j '.$k1.' -o "/home/zhangqb/tttt/public/'.$opath.'"';
             $resultfile="ora_dot_dpi72.png";
         }
         exec($command, $ooout, $flag);
