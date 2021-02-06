@@ -55,7 +55,7 @@ class TwoController extends Controller
         $fgheigh = floor($size[1] / $k2);
 
         #dd($fgwidth);
-        $enrichpath = preg_replace('/\//', "==", $outpath);
+        $enrichpath = preg_replace('/\//', "++", $outpath);
         return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2]);
 
 
@@ -68,7 +68,7 @@ class TwoController extends Controller
         $k1 = $poss[0];#列
         $k2 = $poss[1];
         $enrichpath=$poss[2];#$outpath
-        $downloadpath = preg_replace('/==/', "/", $enrichpath);
+        $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);
         $downloadpath = preg_replace('/\//', "++", $downloadpath);
         $gene = file_get_contents($enrichpath . 'genes_'.$k1.'.csv');
         $lipid = file_get_contents($enrichpath . 'lipids_'.$k1.'.csv');
