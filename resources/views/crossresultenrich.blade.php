@@ -36,7 +36,7 @@
                 
                 <div class="col-md-12">
                     <div class="col-md-2">
-                        <h4>{{$omics}}</h4>
+                        <h4>{{$omics2}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
                         <pre>{{ $gene }}</pre>
@@ -84,11 +84,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                    <button id="submitEnrich" class="layui-btn" type="submit" >Enrich</button>
                                 </div>
                             </div>
                         </form>
-                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$downloadpath}}--{{$omics}}" target="_blank">Enrich</a>
                     </div>
                     <div class="col-md-1">
                     </div>
