@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-2" style="border:1px dashed #000;">
                         <form action="/result/enrichresultgene">
-                            <input name="omics" value="{{ $omics }}" style="display: none;">
+                            <input name="omics" value="{{ $omics2 }}" style="display: none;">
                             <div class="col-md-12">
                                 <div class="col-md-12">
                                     <div class="layui-form-item">
