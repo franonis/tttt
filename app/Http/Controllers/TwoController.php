@@ -51,7 +51,7 @@ class TwoController extends Controller
         }
         $split = file_get_contents($pic_path . 'splitWinArgs.csv');
         preg_match_all("/^(.*?)$/U", $split, $splits);
-        dd($splits);
+        dd($split);
 
 
 
