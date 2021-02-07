@@ -306,7 +306,7 @@ class ResultController extends Controller
         }
         #FAchain
         #for file in *.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.*}.png; done
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "FA_info" -w T';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "FA_info" -w T -e 75';
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
