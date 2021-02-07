@@ -54,7 +54,7 @@ class TwoController extends Controller
         $kongbai=explode(",", $splits[1][0]);
         $hang=explode(",", $splits[2][0]);
         $lie=explode(",", $splits[3][0]);
-        dd($hang);
+        #dd($hang);
 
 
 
@@ -69,7 +69,7 @@ class TwoController extends Controller
 
         #dd($omics1);
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
-        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'omics1' => $omics1, 'omics2' => $omics2]);
+        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'kongbai' => $kongbai, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
     }
 
     public function getenrichPage($pos)
