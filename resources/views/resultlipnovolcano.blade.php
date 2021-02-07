@@ -96,7 +96,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12">>
+                                    <div class="col-md-12">
                                         @foreach($downloadfilename["heatmap"] as $k=>$i )
                                             <div class="col-md-3">
                                                 <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
@@ -158,7 +158,7 @@
                                                     <div class="carousel-inner" role="listbox">
                                                     @foreach($headpng as $k=>$i )
                                                         <div class="item active">
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
                                                             <div class="carousel-caption">
                                                                 <h5>{{$i}}</h5>
                                                             </div>
