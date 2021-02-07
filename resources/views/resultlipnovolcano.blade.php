@@ -61,9 +61,6 @@
                         </div>
                     </div>
                     <div class="layui-tab-item">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -111,13 +108,8 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class Statisitics-->
-                        
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
                                     <div class="col-md-2">
@@ -178,12 +170,8 @@
                                         </div>
                                     </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid Statisics-->
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipfa">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -242,7 +230,6 @@
                                         @endforeach
                                     </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
                         <div class="col-md-2">
