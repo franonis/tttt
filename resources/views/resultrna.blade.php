@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-md-10" style="border:1px dashed #000;">
                                 <div class="col-md-5">
-                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}DEgeneStatistics_*.csv">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}{{$DEgeneStatistics}}">{{$DEgeneStatistics}}<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                             </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
@@ -53,7 +53,7 @@
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                     <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}heatmap_allgroups.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}heatmap_allgroups.pdf">heatmap_allgroups.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                 </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
