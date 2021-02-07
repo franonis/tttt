@@ -58,7 +58,8 @@ class ResultController extends Controller
                     $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                     $DEgeneStatistics = file_get_contents($outpath . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') {
-                        $up='<img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up.png" style="height:50%;width: 60%;">';
+                        #$up = '<img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up.png" style="height:50%;width: 60%;">';
+                        $up = ';';
                     }else{
                         $up='<p>No UP genes enriched! Try check your data!</p>';
                     }
