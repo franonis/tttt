@@ -12,7 +12,9 @@
         @include('partials.errors')
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Lipidomics</a>
         <hr>
-            <div class="col-md-12">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10"> 
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
@@ -24,14 +26,11 @@
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10">
                             <div class="col-md-12">
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10" style="border:1px dashed #000;">
                                     <div class="col-md-5">
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
@@ -39,6 +38,7 @@
                                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                 </div>
+                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>PCA result</h4>
                                 </div>
@@ -52,7 +52,6 @@
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
                     </div>
                     <div class="layui-tab-item">
                         <div class="col-md-2">
@@ -88,19 +87,22 @@
                                             <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                    <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
-                                    @foreach($downloadfilename["heatmap"] as $k=>$i )
-                                        <div class="col-md-3">
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                        </div>
-                                    @endforeach
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <div class="col-md-12">>
+                                        @foreach($downloadfilename["heatmap"] as $k=>$i )
+                                            <div class="col-md-3">
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
@@ -112,24 +114,35 @@
                         </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class Statisitics-->
+                        
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
-                                     <div class="col-md-2">
-                                        <h4>if ignore subclass</h4>
+                                    <div class="col-md-2">
+                                        <h4>Update with new parameters</h4>
                                     </div>
-                                    <div class="col-md-7">
-                                        <small>
-                                        <select name="w">
-                                            <option value="T">T</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                        </small>
+                                    <div class="col-md-10">
+                                        <div class="col-md-12">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                </form>
+                                    <div class="col-md-2">
+                                        <h4>Download</h4>
+                                    </div>
+                                    <div class="col-md-10" style="border:1px dashed #000;">
+                                        <div class="col-md-12">>
+                                            @foreach($downloadfilename["headgroup"] as $k=>$i )
+                                                <div class="col-md-3">
+                                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     <div class="col-md-2">
                                         <h4>Lipid Class Statisitics</h4>
@@ -139,20 +152,31 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Box plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                                <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner" role="listbox">
+                                                    @foreach($headpng as $k=>$i )
+                                                        <div class="item active">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                            <div class="carousel-caption">
+                                                                <h5>{{$i}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                    </div>
+                                                </div>
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Cumulation plot</h2>
                                             <div class="layui-colla-content">
-                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -194,43 +218,29 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
+                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
                                     </div>
                                 </form>
-                                <div class="col-md-2">
-                                    <h4>Lipid Fatty acid Statisics</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <div class="layui-collapse">
-                                        <div class="layui-colla-item">
-                                            <h2 class="layui-colla-title">Grid plot</h2>
-                                            <div class="layui-colla-content layui-show">
-                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
-                                            </div>
-                                        </div>
-                                        <div class="layui-colla-item">
-                                            <h2 class="layui-colla-title">Heatmap</h2>
-                                            <div class="layui-colla-content">
-                                                <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+headgroup+headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
-                                            </div>
-                                        </div>
-                                        <div class="layui-colla-item">
-                                            <h2 class="layui-colla-title">Box plot</h2>
-                                            <div class="layui-colla-content">
-                                                @foreach($fapng as $k=>$i )
-                                                    <div class="col-md-10">
-                                                        <img src="../../../..{{ $i }}" style="height:50%;width: 60%;">
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                    <div class="col-md-2">
+                                        <h4>Lipid Fatty acid Statisics</h4>
                                     </div>
-                                </div>
+                                    <div class="col-md-10">
+                                        @foreach($fapng as $k=>$i )
+                                        <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                    <div class="carousel-caption">
+                                                        <h5>{{$i}}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </div>
                             </div>
                         </div>
                     </div>

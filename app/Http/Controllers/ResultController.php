@@ -91,18 +91,18 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultlip($outpath)) {
-                            $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/other*.png';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$fapng,$flag);
-                            $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/other*.png';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
                             $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                             return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
                         }
                     }else{
                         if ($this->showresultlip2($outpath)) {
-                            $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/other*.png';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$fapng,$flag); 
-                            $command='ls /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/other*.png';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);                                  
                             $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                             return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
@@ -613,6 +613,13 @@ class ResultController extends Controller
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
+        exec($command, $ooout, $flag);
+        #dd($command);
+        if ($flag == 1) {
+            #dd($command);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #FAchain

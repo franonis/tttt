@@ -222,6 +222,18 @@
                                             <div class="layui-colla-content layui-show">
                                                 <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                                <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner" role="listbox">
+                                                    @foreach($headpng as $k=>$i )
+                                                        <div class="item active">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                            <div class="carousel-caption">
+                                                                <h5>{{$i}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                    </div>
+                                                </div>
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -280,14 +292,23 @@
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
                                     </div>
                                 </form>
-                                @foreach($fapng as $k=>$i )
                                     <div class="col-md-2">
                                         <h4>Lipid Fatty acid Statisics</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <img src="../../../..{{ $i }}" style="height:50%;width: 60%;">
+                                        @foreach($fapng as $k=>$i )
+                                        <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                    <div class="carousel-caption">
+                                                        <h5>{{$i}}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
                                     </div>
-                                @endforeach
                             </div>
                         </div>
                     </div>
