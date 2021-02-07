@@ -79,7 +79,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">Set top number：</label>
                                         <div class="layui-input-block" id="s">
-                                          <input id="s" type="text" name="s" value="{{ $s }}" style="width:50px; display:inline;" class="form-control" >
+                                          <input id="s" type="text" name="s" value="s" style="width:50px; display:inline;" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
