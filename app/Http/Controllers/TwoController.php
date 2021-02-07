@@ -43,10 +43,16 @@ class TwoController extends Controller
         
         #图片切割
         $command = 'python3 /home/zhangqb/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -k ' . $k . ' -g ' . $g . ' -o "' . $pic_path . '"';
-        #exec($command, $ooout, $flag);
-        #if ($flag == 1) {
-        #    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        #}
+        if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+        }
+        $split = file_get_contents($pic_path . '/split.csv');
+        dd($split);
+
+
 
         $image = $pic_path.'correlationPlot.png';
         $size = getimagesize($image);

@@ -98,25 +98,27 @@
                                         <div class="col-md-2">
                                             <h4>Set top number</h4>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-10">
                                             <small>
                                             <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
-                                    @foreach($downloadfilename["volcano"] as $k=>$i )
-                                        <div class="col-md-3">
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                        </div>
-                                    @endforeach
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <div class="col-md-12">
+                                        @foreach($downloadfilename["volcano"] as $k=>$i )
+                                            <div class="col-md-3">
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
@@ -153,19 +155,22 @@
                                             <input id="e" type="text" name="e" value="{{ $e }}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                    <div class="col-md-3">
-                                        <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
-                                <div class="col-md-10">
-                                    @foreach($downloadfilename["heatmap"] as $k=>$i )
-                                        <div class="col-md-3">
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                        </div>
-                                    @endforeach
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <div class="col-md-12">>
+                                        @foreach($downloadfilename["heatmap"] as $k=>$i )
+                                            <div class="col-md-3">
+                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
@@ -198,12 +203,14 @@
                                     <div class="col-md-2">
                                         <h4>Download</h4>
                                     </div>
-                                    <div class="col-md-10">
-                                        @foreach($downloadfilename["headgroup"] as $k=>$i )
-                                            <div class="col-md-3">
-                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                            </div>
-                                        @endforeach
+                                    <div class="col-md-10" style="border:1px dashed #000;">
+                                        <div class="col-md-12">>
+                                            @foreach($downloadfilename["headgroup"] as $k=>$i )
+                                                <div class="col-md-3">
+                                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     <div class="col-md-2">
                                         <h4>Lipid Class Statisitics</h4>
