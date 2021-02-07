@@ -49,7 +49,7 @@ class TwoController extends Controller
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
         }
-        $split = file_get_contents($pic_path . '/split.csv');
+        $split = file_get_contents($pic_path . 'splitWinArgs.csv');
         dd($split);
 
 
@@ -97,7 +97,7 @@ class TwoController extends Controller
             $resultfile="ora_dpi72.png";
         }
         if ($omics == "Lipidomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k1.' -o "/home/zhangqb/tttt/public/'.$opath.'"';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k1.' -o "/home/zhangqb/tttt/public/'.$opath.'"';
             $resultfile="ora_dot_dpi72.png";
         }
         exec($command, $ooout, $flag);

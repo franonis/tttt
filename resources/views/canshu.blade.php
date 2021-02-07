@@ -63,9 +63,6 @@
 
         </form>
     </div>
-    <div style="height:30px; width:100%; background:#f00; position:absolute; top:0px; left:0; z-index:2;">
-        <a href="">baba</a>
-    </div>
 </div>
 @endsection
 @section('footer')

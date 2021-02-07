@@ -150,7 +150,7 @@
                                                     <div class="carousel-inner" role="listbox">
                                                     @foreach($headpng as $k=>$i )
                                                         <div class="item active">
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
                                                             <div class="carousel-caption">
                                                                 <h5>{{$i}}</h5>
                                                             </div>
@@ -220,7 +220,7 @@
                                         <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="item active">
-                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/other_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
                                                     <div class="carousel-caption">
                                                         <h5>{{$i}}</h5>
                                                     </div>
@@ -249,6 +249,7 @@
   @include('partials.footer')
 @endsection
 @section('js')
+<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 <script>
 
