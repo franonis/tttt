@@ -20,7 +20,7 @@
                   <div class="layui-card-header">Correlation analysis result</div>
                   <div class="layui-card-body">
                     <div class="row text-center" style="width: {{ $bgwidth }}px;height: {{ $bgheigh }}px; background-image: url({{ asset($image) }}); ">
-                        <img style="width: {{ $fgwidth }}px;height: {{ $fgheigh }}px;opacity: 100%; margin-bottom: 1%;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" />
+                        <img style="width: {{ $bgwidth }}px;height: {{ $kongbai[2] }}px;opacity: 100%; margin-bottom: 1%;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" />
                         @for ($i = 0; $i < $k2; $i++)
                             @for ($j = 0; $j < $k1; $j++)
                                 <a href="{{ url('result/enrich/')}}/{{$j}}--{{$i}}--{{$enrichpath}}--{{$omics1}}--{{$omics2}}" target="_blank"><img style="width: {{ $hang[$j] }}px;height: {{ $lie[$i] }}px;opacity: 100%; margin-bottom: 1%;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
@@ -48,7 +48,7 @@
 <script type="text/javascript">
 function toumingImg(x)
 {
-    x.style.opacity="10%";
+    x.style.opacity="1%";
 };
 
 function normalImg(x)
@@ -60,7 +60,7 @@ function normalImg(x)
     $(document).ready(function(){
         function toumingImg(x)
         {
-            x.style.opacity="10%";
+            x.style.opacity="1%";
         }
 
         function normalImg(x)
