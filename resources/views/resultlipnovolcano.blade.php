@@ -128,9 +128,9 @@
                                         <h4>Download</h4>
                                     </div>
                                     <div class="col-md-10" style="border:1px dashed #000;">
-                                        <div class="col-md-12">>
+                                        <div class="col-md-12">
                                             @foreach($downloadfilename["headgroup"] as $k=>$i )
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
                                                 </div>
                                             @endforeach

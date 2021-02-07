@@ -36,7 +36,7 @@
                 
                 <div class="col-md-12">
                     <div class="col-md-2">
-                        <h4>{{$omics2}}</h4>
+                        <h4>{{$omics}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
                         <pre>{{ $gene }}</pre>
@@ -44,7 +44,51 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-2" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$downloadpath}}--{{$omics2}}" target="_blank">Enrich</a>
+                        <form action="/result/enrichresultgene">
+                            <input name="omics" value="{{ $omics }}" style="display: none;">
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">Choose species：</label>
+                                        <div class="layui-input-block" id="t">
+                                          <input type="radio" name="t" value="mmu" title="mmu" checked="">
+                                          <input type="radio" name="t" value="has" title="has">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" id="genetype" style="display: none;">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">Gene Type：</label>
+                                        <div class="layui-input-block" id="t">
+                                          <input type="radio" name="g" value="ENSEMBL" title="ENSEMBL">
+                                          <input type="radio" name="g" value="SYMBOL" title="SYMBOL" checked="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">GO term：</label>
+                                        <div class="layui-input-block" id="c">
+                                          <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
+                                          <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
+                                          <input type="radio" name="c" value="Molecular_Function" title="Molecular Function">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">Set top number：</label>
+                                        <div class="layui-input-block" id="s">
+                                          <input id="s" type="text" name="s" value="{{ $s }}" style="width:50px; display:inline;" class="form-control" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                </div>
+                            </div>
+                        </form>
+                        <a href="{{ url('result/enrichresult/')}}/{{$k1}}--{{$downloadpath}}--{{$omics}}" target="_blank">Enrich</a>
                     </div>
                     <div class="col-md-1">
                     </div>
@@ -73,7 +117,14 @@ layui.use('upload', function(){
 </script>
 <script>
     $(document).ready(function(){
-        changetheprogram();
+        omics=$("input[name='omics']").val();
+        if (omics == "Proteomics") {
+          document.getElementById("genetype").style.display="none";
+        }
+        if (omics == "Transcriptomics") {
+          document.getElementById("genetype").style.display="block";
+        }
+
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
@@ -115,38 +166,5 @@ layui.use('upload', function(){
         });
 
     });
-
-    function changetheprogram() {
-        query_type = $("input[name='query_type']:checked").val();
-        subject_type = $("input[name='subject_type']:checked").val();
-        if (query_type == 'dna') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=blastn>BLASTN</option>");
-                $("#program").append("<option value=tblastx>TBLASTX</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastx>BLASTX</option>");
-            }
-        }else if (query_type == 'protein') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=tblastn>TBLASTN</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastp>BLASTP</option>");
-            }
-        }
-        $("#program").trigger("change");
-    }
-
-
-    $("input:radio").change(function (){
-            changetheprogram();
-        });
-
-
-    $('#blastform').submit(function(e) {
-        if($('#seq').val() == ''){
-            layer.msg('Sequence is empty!');
-            e.preventDefault();
-        }
-    })
 </script>
 @endsection
