@@ -80,7 +80,7 @@
     });
     function MsgBox() //声明标识符
     {
-        alert("我是对话框的内容"); //弹出对话框
+        alert("it will take about one minute, don`t close this page"); //弹出对话框
     };
 
 </script>

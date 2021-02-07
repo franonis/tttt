@@ -74,7 +74,7 @@
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <br>
-                <button id="submit" class="layui-btn" type="submit">RUN</button><p>it will take 5 mins, please don`t close this page</p>
+                <button id="submit" class="layui-btn" type="submit" onclick="MsgBox()">RUN</button>
             </div>
         </form>
     </div>
@@ -103,6 +103,11 @@
         }
         console.log(name);
    });
+
+    function MsgBox() //声明标识符
+    {
+        alert("it will take few mins, don`t close this page"); //弹出对话框
+    };
 
 </script>
 @endsection
