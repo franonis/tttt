@@ -215,22 +215,14 @@
                                             <div class="layui-colla-content layui-show">
                                                 <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
-                                                <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
-                                                    <ol class="carousel-indicators">
-                                                        @foreach($headpng as $k=>$i )
-                                                        <li data-target="#carousel-example-captions" data-slide-to="{{$k}}" class="active"></li>
-                                                        @endforeach
-                                                    </ol>
-                                                    <div class="carousel-inner" role="listbox">
+                                                <div class="layui-carousel" id="test1" lay-filter="test1">
+                                                  <div carousel-item="">
                                                     @foreach($headpng as $k=>$i )
-                                                        <div class="item active">
+                                                        <div>
                                                             <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
-                                                            <div class="carousel-caption">
-                                                                <h5>{{$i}}</h5>
-                                                            </div>
                                                         </div>
                                                     @endforeach
-                                                    </div>
+                                                  </div>
                                                 </div>
                                             </div>
                                           </div>
@@ -290,24 +282,15 @@
                                         <h4>Lipid Fatty acid Statisics</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                @foreach($fapng as $k=>$i )
-                                                <li data-target="#carousel-example-captions" data-slide-to="{{$k}}" class="active"></li>
-                                                @endforeach
-                                            </ol>
-                                            <div class="carousel-inner" role="listbox">
+                                        <div class="layui-carousel" id="test2" lay-filter="test2">
+                                          <div carousel-item="">
                                             @foreach($fapng as $k=>$i )
-                                                <div class="item active">
+                                                <div>
                                                     <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
-                                                    <div class="carousel-caption">
-                                                        <h5>{{$i}}</h5>
-                                                    </div>
                                                 </div>
                                             @endforeach
-                                            </div>
+                                          </div>
                                         </div>
-                                        
                                     </div>
                             </div>
                     </div>
@@ -398,37 +381,19 @@ layui.use('upload', function(){
 
     });
 
-    function changetheprogram() {
-        query_type = $("input[name='query_type']:checked").val();
-        subject_type = $("input[name='subject_type']:checked").val();
-        if (query_type == 'dna') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=blastn>BLASTN</option>");
-                $("#program").append("<option value=tblastx>TBLASTX</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastx>BLASTX</option>");
-            }
-        }else if (query_type == 'protein') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=tblastn>TBLASTN</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastp>BLASTP</option>");
-            }
-        }
-        $("#program").trigger("change");
-    }
+    layui.use(['carousel', 'form'], function(){
+      var carousel = layui.carousel
+      ,form = layui.form;
+      
+      //常规轮播
+      carousel.render({
+        elem: '#test1'
+      });
 
+      carousel.render({
+        elem: '#test2'
+      });
+    });
 
-    $("input:radio").change(function (){
-            changetheprogram();
-        });
-
-
-    $('#blastform').submit(function(e) {
-        if($('#seq').val() == ''){
-            layer.msg('Sequence is empty!');
-            e.preventDefault();
-        }
-    })
 </script>
 @endsection
