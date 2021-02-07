@@ -38,7 +38,7 @@
                             <div class="col-md-2">
                                 <h4>Different Expression Gene Statistics</h4>
                             </div>
-                            <div class="col-md-10" style="border:1px dashed #000; overflow-y:auto; width:300px; height:400px;">
+                            <div class="col-md-10" style="border:1px dashed #000; overflow-y:auto; width:700px; height:400px;">
                                 <pre>{{ $DEgeneStatistics }}</pre>
                             </div>
                         </div>
@@ -220,13 +220,13 @@
                                     <h4>Up</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up.png" style="height:50%;width: 60%;">
+                                    {{$up}}
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Down</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down.png" style="height:50%;width: 60%;">
+                                    {{$down}}
                                 </div>
                             </div>
                         </div>
