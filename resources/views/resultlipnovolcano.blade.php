@@ -269,14 +269,12 @@
 
             carousel.render({
             elem: '#test1',
-            height: '100%',
             width: '100%'
           });
     
           carousel.render({
             elem: '#test2',
             width: '100%',
-            height: '100%'
           });
         });
 
