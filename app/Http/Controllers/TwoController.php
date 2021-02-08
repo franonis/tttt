@@ -62,8 +62,8 @@ class TwoController extends Controller
         $size = getimagesize($image);
         $kongbai2[0]=$size[0] - array_sum($hang);
         $kongbai2[1]=$size[1] - array_sum($lie);
-        $bgwidth = $size[0] * 1.1;
-        $bgheigh = $size[1] * 1.1;
+        $bgwidth = $size[0] * 1.02;
+        $bgheigh = $size[1] * 1.02;
         $k1 = $g;#列
         $k2 = $k;
         $fgwidth = floor($size[0] / $k1);
