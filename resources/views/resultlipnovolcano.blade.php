@@ -248,9 +248,9 @@
             layer.msg(elem.text());
           });
         });
-        layui.use('carousel', function(){
-            var carousel = layui.carousel;
-        });
+        //layui.use('carousel', function(){
+        //    var carousel = layui.carousel;
+        //});
 
     });
 
