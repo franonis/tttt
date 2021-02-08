@@ -15,12 +15,6 @@
         <li class="dropdown{{ (preg_match('/upload/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('upload') }}">Upload </a>
         </li>
-        <li class="dropdown{{ (preg_match('/mutil/', Request::path()) ) ? ' active':'' }}">
-          <a href="{{ url('mutil') }}">mutil </a>
-        </li>
-        <li class="dropdown{{ (preg_match('/cross/', Request::path()) ) ? ' active':'' }}">
-          <a href="{{ url('cross') }}">Cross-omics </a>
-        </li>
         <li id="disease" class="dropdown {{ ( preg_match('/disease/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('disease') }}">Search Disease </a>
         </li>
