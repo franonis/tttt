@@ -329,7 +329,6 @@
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 <script>
     $(document).ready(function(){
-        changetheprogram();
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
@@ -350,6 +349,14 @@
         });
         layui.use('carousel', function(){
             var carousel = layui.carousel;
+
+            carousel.render({
+            elem: '#test1'
+          });
+    
+          carousel.render({
+            elem: '#test2'
+          });
         });
 
     });

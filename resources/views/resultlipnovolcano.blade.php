@@ -267,6 +267,14 @@
         });
         layui.use('carousel', function(){
             var carousel = layui.carousel;
+
+            carousel.render({
+            elem: '#test1'
+          });
+    
+          carousel.render({
+            elem: '#test2'
+          });
         });
 
     });
