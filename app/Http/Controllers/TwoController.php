@@ -60,6 +60,8 @@ class TwoController extends Controller
 
         $image = $pic_path.'correlationPlot.png';
         $size = getimagesize($image);
+        $kongbai2[0]=$size[0] - array_sum($hang);
+        $kongbai2[1]=$size[1] - array_sum($lie);
         $bgwidth = $size[0] * 1.02;
         $bgheigh = $size[1] * 1.02;
         $k1 = $g;#列
@@ -69,7 +71,7 @@ class TwoController extends Controller
 
         #dd($omics1);
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
-        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'kongbai' => $kongbai, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
+        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
     }
 
     public function getenrichPage($pos)
