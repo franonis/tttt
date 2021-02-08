@@ -146,6 +146,15 @@
                                             <div class="layui-colla-content layui-show">
                                                 <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcolor_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                                <div class="layui-carousel" id="test1" lay-filter="test1">
+                                                  <div carousel-item="">
+                                                    @foreach($headpng as $k=>$i )
+                                                        <div>
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" data-holder-rendered="true">
+                                                        </div>
+                                                    @endforeach
+                                                  </div>
+                                                </div>
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -204,6 +213,15 @@
                                         <h4>Lipid Fatty acid Statisics</h4>
                                     </div>
                                     <div class="col-md-10">
+                                        <div class="layui-carousel" id="test2" lay-filter="test2">
+                                          <div carousel-item="">
+                                            @foreach($fapng as $k=>$i )
+                                                <div>
+                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" data-holder-rendered="true">
+                                                </div>
+                                            @endforeach
+                                          </div>
+                                        </div>
                                     </div>
                             </div>
                     </div>
@@ -229,7 +247,6 @@
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 <script>
     $(document).ready(function(){
-        changetheprogram();
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
@@ -248,9 +265,9 @@
             layer.msg(elem.text());
           });
         });
-        //layui.use('carousel', function(){
-        //    var carousel = layui.carousel;
-        //});
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
+        });
 
     });
 
