@@ -246,15 +246,6 @@
 <script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 <script>
-
-layui.use('upload', function(){
-  var upload = layui.upload;
-
-  //执行实例
-
-});
-</script>
-<script>
     $(document).ready(function(){
         changetheprogram();
         layui.use('form', function(){
@@ -275,43 +266,11 @@ layui.use('upload', function(){
             layer.msg(elem.text());
           });
         });
-        layui.use(['carousel', 'form'], function(){
-            var carousel = layui.carousel
-          ,form = layui.form;
-          
-          //常规轮播
-          carousel.render({
-            elem: '#test1'
-          });
-    
-          carousel.render({
-            elem: '#test2'
-          });
-        });
-        layui.use('slider', function(){
-          var $ = layui.$
-          ,slider = layui.slider;
-          //默认滑块
-          slider.render({
-            elem: '#slideTest1'
-          });
-
-          //定义初始值
-          slider.render({
-            elem: '#slideTest2'
-            ,value: 20 //初始值
-          });
-
-          //设置最大最小值
-          slider.render({
-            elem: '#slideTest3'
-            ,min: 1 //最小值
-            ,max: 8 //最大值
-          });
+        layui.use('carousel', function(){
+            var carousel = layui.carousel;
         });
 
     });
 
-    
 </script>
 @endsection
