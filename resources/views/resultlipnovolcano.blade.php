@@ -269,11 +269,13 @@
             var carousel = layui.carousel;
 
             carousel.render({
-            elem: '#test1'
+            elem: '#test1',
+            width: '100%'
           });
     
           carousel.render({
-            elem: '#test2'
+            elem: '#test2',
+            width: '100%'
           });
         });
 
