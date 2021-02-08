@@ -150,7 +150,7 @@
                                                   <div carousel-item="">
                                                     @foreach($headpng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -217,7 +217,7 @@
                                           <div carousel-item="">
                                             @foreach($fapng as $k=>$i )
                                                 <div>
-                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" data-holder-rendered="true">
                                                 </div>
                                             @endforeach
                                           </div>
@@ -275,6 +275,19 @@ layui.use('upload', function(){
             layer.msg(elem.text());
           });
         });
+        layui.use(['carousel', 'form'], function(){
+            var carousel = layui.carousel
+          ,form = layui.form;
+          
+          //常规轮播
+          carousel.render({
+            elem: '#test1'
+          });
+    
+          carousel.render({
+            elem: '#test2'
+          });
+        });
         layui.use('slider', function(){
           var $ = layui.$
           ,slider = layui.slider;
@@ -299,18 +312,6 @@ layui.use('upload', function(){
 
     });
 
-    layui.use(['carousel', 'form'], function(){
-      var carousel = layui.carousel
-      ,form = layui.form;
-      
-      //常规轮播
-      carousel.render({
-        elem: '#test1'
-      });
-
-      carousel.render({
-        elem: '#test2'
-      });
-    });
+    
 </script>
 @endsection

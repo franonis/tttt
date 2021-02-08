@@ -357,6 +357,19 @@ layui.use('upload', function(){
             layer.msg(elem.text());
           });
         });
+        layui.use(['carousel', 'form'], function(){
+            var carousel = layui.carousel
+          ,form = layui.form;
+          
+          //常规轮播
+          carousel.render({
+            elem: '#test1'
+          });
+    
+          carousel.render({
+            elem: '#test2'
+          });
+        });
         layui.use('slider', function(){
           var $ = layui.$
           ,slider = layui.slider;
@@ -379,20 +392,6 @@ layui.use('upload', function(){
           });
         });
 
-    });
-
-    layui.use(['carousel', 'form'], function(){
-      var carousel = layui.carousel
-      ,form = layui.form;
-      
-      //常规轮播
-      carousel.render({
-        elem: '#test1'
-      });
-
-      carousel.render({
-        elem: '#test2'
-      });
     });
 
 </script>
