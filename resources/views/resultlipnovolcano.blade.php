@@ -144,7 +144,7 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Box plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:70%;width: 80%;">
                                                 <div class="layui-carousel" id="test1" lay-filter="test1">
                                                   <div carousel-item="">
                                                     @foreach($headpng as $k=>$i )
@@ -269,8 +269,8 @@
 
             carousel.render({
             elem: '#test1',
-            height: '855px',
-            width: '794px'
+            height: '700px',
+            width: '600px'
           });
     
           carousel.render({
