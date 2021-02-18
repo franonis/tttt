@@ -22,7 +22,7 @@
                     <div class="row text-center" style="width: {{ $bgwidth }}px;height: {{ $bgheigh }}px; background-image: url({{ asset($image) }}); ">
                         <img style="width: {{ $bgwidth }}px;height: {{ $kongbai[1] }}px;opacity: 100%; margin-bottom: 1px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" />
                         @for ($i = 0; $i < $k2; $i++)
-                            <img style="width: {{ $kongbai[0] }}px;height: {{ $lie[$i] }}px;opacity: 100%; margin-bottom: 1px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" />
+                            <img style="width: {{ $kongbai[0] }}px;height: {{ $lie[$i] }}px;opacity: 100%; margin-bottom: 1px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" />
                             @for ($j = 0; $j < $k1; $j++)
                                 <a href="{{ url('result/enrich/')}}/{{$j}}--{{$i}}--{{$enrichpath}}--{{$omics1}}--{{$omics2}}" target="_blank"><img style="width: {{ $hang[$j] }}px;height: {{ $lie[$i] }}px;opacity: 100%; margin-bottom: 1px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
                             @endfor

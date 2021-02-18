@@ -53,16 +53,15 @@ class TwoController extends Controller
         #dd($split);
         preg_match_all("/^(.*?)\r\n(.*?)\r\n(.*?)\r\n/U", $split, $splits);
         $kongbai=explode(",", $splits[1][0]);
-        $hang=explode(",", $splits[2][0]);
-        $lie=explode(",", $splits[3][0]);
+        $hang=explode(",", $splits[2][0]);#宽
+        $lie=explode(",", $splits[3][0]);#高
         #dd($hang);
 
 
 
         $image = $pic_path.'correlationPlot.png';
         $size = getimagesize($image);
-        $kongbai2[0]=$size[0] - array_sum($hang) - $kongbai[0];
-        $kongbai2[1]=$size[1] - array_sum($lie) - $kongbai[1];
+        $kongbai2[0]=$size[0] - array_sum($hang) - $kongbai[0]-count($hang);
         $bgwidth = $size[0];
         $bgheigh = $size[1];
         $k1 = $g;#列
