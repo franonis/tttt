@@ -50,6 +50,7 @@ class TwoController extends Controller
             }
         }
         $split = file_get_contents($pic_path . 'splitWinArgs.csv');
+        dd($split);
         preg_match_all("/^(.*?)\r\n(.*?)\r\n(.*?)\r\n/U", $split, $splits);
         $kongbai=explode(",", $splits[1][0]);
         $hang=explode(",", $splits[2][0]);
@@ -60,8 +61,8 @@ class TwoController extends Controller
 
         $image = $pic_path.'correlationPlot.png';
         $size = getimagesize($image);
-        $kongbai2[0]=$size[0] - array_sum($hang)-$kongbai[0];
-        $kongbai2[1]=$size[1] - array_sum($lie)-$kongbai[1];
+        $kongbai2[0]=$size[0] - array_sum($hang) - $kongbai[0];
+        $kongbai2[1]=$size[1] - array_sum($lie) - $kongbai[1];
         $bgwidth = $size[0];
         $bgheigh = $size[1];
         $k1 = $g;#列
