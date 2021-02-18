@@ -55,7 +55,7 @@ function toumingImg(x)
 
 function normalImg(x)
 {
-    x.style.opacity="100%";
+    x.style.opacity="50%";
 };
 </script>
 <script>
