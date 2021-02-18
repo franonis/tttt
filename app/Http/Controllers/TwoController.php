@@ -60,10 +60,10 @@ class TwoController extends Controller
 
         $image = $pic_path.'correlationPlot.png';
         $size = getimagesize($image);
-        $kongbai2[0]=$size[0] - array_sum($hang);
-        $kongbai2[1]=$size[1] - array_sum($lie);
-        $bgwidth = $size[0] * 1.02;
-        $bgheigh = $size[1] * 1.02;
+        $kongbai2[0]=$size[0] - array_sum($hang)-$kongbai[0];
+        $kongbai2[1]=$size[1] - array_sum($lie)-$kongbai[1];
+        $bgwidth = $size[0];
+        $bgheigh = $size[1];
         $k1 = $g;#列
         $k2 = $k;
         $fgwidth = floor($size[0] / $k1);
