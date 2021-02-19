@@ -23,7 +23,7 @@
             <div class="panel-heading"><h4>CONTACT US</h4></div>
           <div class="panel-body">
         <p style="font-size: 110%">This project welcomes all questions and comments regarding the microbiome.</p>
-        <p style="font-size: 110%">Please, send your questions, comments or suggestions to: <a href="mailto:notyet@163.com" style="color: deepskyblue">email address</a>.</p>
+        <p style="font-size: 110%">Please, send your questions, comments or suggestions to: <a href="mailto:lintwebomic_service@outlook.com" style="color: deepskyblue">lintwebomic_service@outlook.com</a>.</p>
           </div>
         </div><br>
         <div class="panel panel-info regionbox" style="width: 100%">

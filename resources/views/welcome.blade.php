@@ -16,8 +16,30 @@
 </head>
 
   <div class="site-content">
+    <div style="padding: 20px; background-color: #F2F2F2;">
+                      <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">single omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">intro omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/intro" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
 
-    <section class="headintro">
+        <section class="headintro">
             <div class="splitback">
                 <div class="main">
                     <div class="img"></div>
@@ -29,9 +51,28 @@
             <div class="content-fp">
                 <span class="vcenr"></span>
                 <div class="vcenc">
-                <h1>Mission</h1>
-                    <p>What this website will do. what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do what this website will do.</p>
-                    <a href="/upload" style="color: white;font-size: 180%;">>>>click here to start<<<</a>
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                      <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">single omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">intro omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/intro" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
                 </div>
             </div>
         </section>

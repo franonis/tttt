@@ -1,4 +1,4 @@
-<!-- Fixed navbar -->
+  <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -12,8 +12,11 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown{{ (preg_match('/upload/', Request::path()) ) ? ' active':'' }}">
-          <a href="{{ url('upload') }}">Upload </a>
+        <li class="dropdown{{ (preg_match('/single/', Request::path()) ) ? ' active':'' }}">
+          <a href="{{ url('single') }}">Single Omic Dataset Analysis</a>
+        </li>
+        <li class="dropdown{{ (preg_match('/intra/', Request::path()) ) ? ' active':'' }}">
+          <a href="{{ url('intra') }}">Intra-omic Dataset Analysis</a>
         </li>
         <li id="disease" class="dropdown {{ ( preg_match('/disease/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('disease') }}">Search Disease </a>

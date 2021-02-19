@@ -23,13 +23,19 @@ use Illuminate\Support\Facades\Route;
 #Route::get('/', [TestController]'TestController@showwelcome');
 
 Route::get('/', function () {
-    return view('upload');
+    return view('welcome');
 });
 Route::get('/home', function () {
     return view('cross');
 });
+Route::get('/single', function () {
+    return view('upload');
+});
+Route::get('/intra', function () {
+    return view('uploadtwo');
+});
 Route::get('/about', function () {
-    return view('cross');
+    return view('about');
 });
 Route::get('/disease', function () {
     return view('disease');

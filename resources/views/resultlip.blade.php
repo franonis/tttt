@@ -236,6 +236,7 @@
                                         </div>
                                     </div>
                             </div>
+                        </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid Statisics-->
                             <div class="col-md-12">
