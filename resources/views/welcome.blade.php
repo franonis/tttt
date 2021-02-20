@@ -20,19 +20,19 @@
       <div class="layui-row layui-col-space15">
         <div class="layui-col-md6">
           <div class="layui-card">
-            <div class="layui-card-header">single omics analysis</div>
+            <div class="layui-card-header">Single Omic Dataset Analysis</div>
             <div class="layui-card-body">
-              something introduce single omics analysis<br>
+              Something introducing Single Omic Dataset Analysis<br>
               <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
             </div>
           </div>
         </div>
         <div class="layui-col-md6">
           <div class="layui-card">
-            <div class="layui-card-header">intro omics analysis</div>
+            <div class="layui-card-header">Intra-omic Dataset Analysis</div>
             <div class="layui-card-body">
-              something introduce single omics analysis<br>
-              <a href="/intro" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+              Something introducing Intra-omic Dataset Analysis<br>
+              <a href="/intra" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
             </div>
           </div>
         </div>
