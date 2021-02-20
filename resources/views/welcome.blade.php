@@ -21,7 +21,7 @@
   <div class="col-md-12">
     <div style="padding: 20px; background-color: #F2F2F2;">
       <div class="layui-row layui-col-space15">
-        <div class="layui-col-md6">
+        <div class="layui-col-md6"  style="height: 100px;">
           <div class="layui-card">
             <div class="layui-card-header">Single Omic Dataset Analysis</div>
             <div class="layui-card-body">
@@ -30,7 +30,7 @@
             </div>
           </div>
         </div>
-        <div class="layui-col-md6">
+        <div class="layui-col-md6"  style="height: 100px;">
           <div class="layui-card">
             <div class="layui-card-header">Intra-omic Dataset Analysis</div>
             <div class="layui-card-body">
@@ -45,7 +45,7 @@
 </div><br/><br/><br/><br/><br/><br/>
 <div class="col-md-1">
 </div><br/><br/><br/><br/><br/><br/>
-<div style="height: 120px;">
+<div style="height: 180px;">
   
 </div>
 @endsection
