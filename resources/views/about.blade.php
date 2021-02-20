@@ -38,7 +38,7 @@
 @endsection
 
 @section('footer')
-  @include('layouts.footer')
+  @include('partials.footer')
 @endsection
 @section('js')
 @endsection
