@@ -42,9 +42,12 @@
       </div>
     </div>
   </div>
-</div>
+</div><br/><br/><br/><br/><br/><br/>
 <div class="col-md-1">
-</div><br><br><br><br><br><br>
+</div><br/><br/><br/><br/><br/><br/>
+<div style="height: 120px;">
+  
+</div>
 @endsection
 
 @section('footer')
