@@ -222,13 +222,13 @@
                                     <h4>Up</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    {{!! $up !!}}
+                                    {!! $up !!}
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Down</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    {{!! $down !!}}
+                                    {!! $down !!}
                                 </div>
                             </div>
                         </div>
