@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-
+<link rel="stylesheet" type="text/css" href="{{ asset('/layui/dist/css/layui.css') }}"  media="all">
 @endsection
 
 @section('navbar')
