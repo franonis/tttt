@@ -29,6 +29,7 @@
             <div class="content-fp">
                 <span class="vcenr"></span>
                 <div class="vcenc">
+                    <div class="col-md-12">
                     <div style="padding: 20px; background-color: #F2F2F2;">
                       <div class="layui-row layui-col-space15">
                         <div class="layui-col-md6">
@@ -50,6 +51,7 @@
                           </div>
                         </div>
                       </div>
+                    </div>
                     </div> 
                 </div>
             </div>
