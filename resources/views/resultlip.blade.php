@@ -314,6 +314,80 @@
                                     <p>not finished</p>
                                 </div>
                             </div>
+                        <div class="col-md-12">
+                                <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="e" value="{{ $e }}" style="display: none;">
+                                    <input name="g" value="{{ $g }}" style="display: none;">
+                                    <div class="col-md-2">
+                                        <h4>Update with new parameters</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="col-md-12">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Choose species：</label>
+                                                <div class="layui-input-block" id="t">
+                                                  <input type="radio" name="t_enrich" value="target_list" title="target_list" checked="">
+                                                  <input type="radio" name="t_enrich" value="ranking" title="ranking">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div  class="col-md-12" id="target_list"  style="display: block;">
+                                            <div class="col-md-2">
+                                                <h4>Set FC thresh</h4>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <small>
+                                                <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                                </small>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h4>Set p thresh</h4>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <small>
+                                                <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div  class="col-md-12" id="ranking"  style="display: block;">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">Analytical statistic：</label>
+                                                <div class="layui-input-block" id="t">
+                                                  <input type="radio" name="t_enrich" value="p_value" title="p_value" checked="">
+                                                  <input type="radio" name="t_enrich" value="log2FC" title="log2FC">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}++lionenrichment">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>LION enrichment result</h4>
+                                </div>
+                                <div class="col-md-10">
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Up</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up_LION_enrichment-plot.png" style="height:50%;width: 60%;">
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Down</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down_LION_enrichment-plot.png" style="height:50%;width: 60%;">
+                                </div>
+                            </div>
                     </div>
                   </div>
                 </div>
