@@ -1,74 +1,122 @@
 @extends('layouts.app')
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('/layui/dist/css/layui.css') }}"  media="all">
-.description{
-    position: relative;
-    margin: 0 auto;
-    padding: 1em;
-    max-width: 23em;
-    background: hsla(0,0%,100%,.25) border-box;
-    overflow: hidden;
-    border-radius: .3em;
-    box-shadow: 0 0 0 1px hsla(0,0%,100%,.3) inset,
-                0 .5em 1em rgba(0, 0, 0, 0.6);
-    text-shadow: 0 1px 1px hsla(0,0%,100%,.3);
-}
-
-
-.description::before{
-    content: '';
-    position: absolute;
-    top: 0; rightright: 0; bottombottom: 0; left: 0;
-    margin: -30px;
-    z-index: -1;
-    -webkit-filter: blur(20px);
-    filter: blur(20px);
-}
-
 @endsection
 
 @section('navbar')
   @include('partials.navbar')
 @endsection
 @section('content')
-<div class="container-fluid">
-    <div class="carousel-inner">
-        <div class="carousel-item active}}" style="margin-top: 10%;margin-bottom: 10%;background-image: url({{ asset('images/lion.png') }});background-repeat: no-repeat; background-size: 100%;background-position: center;">
-            <div class="row" style="background-color: rgba(251, 225, 225, 0.7);">
-                @for ($i = 1; $i < $k2; $i++)
-                    @for ($j = 1; $j < $k1; $j++)
-                    <div style="width: {{ $miniwidth }};height: {{ $miniheigh }}">
-                        <a class="descriation">{{ $i }}-{{ $j }}</a>
-                        <td style="position:relative;">
-                            <img style="position:absolute; z-index:1;" width="150" height="200" src="{{ asset('images/gg.png') }}" />
-                            <img style="position:absolute; top:60px; left:30px; z-index:2" width="95" height="125" src="{{ asset('images/lion.png') }}" />
-                        </td>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel='stylesheet' id='hca-stylesheet-css'  href="{{ asset('/css/global.css') }}" type='text/css' media='all' />
+
+</head>
+
+  <div class="site-content">
+        <div style="padding: 20px; background-color: #F2F2F2;">
+                      <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">single omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">intro omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/intro" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    @endfor
-                @endfor
+
+        <section class="headintro">
+            <div class="splitback">
+                <div class="main">
+                    <div class="img"></div>
+                    <span class="over"><img src="{{ asset('images/welcome/bg.png') }}" style="height:120%"></span>
+                    <br><a href="#two">&#8595;&#8595;&#8595;</a><br>
+                </div>
+                <div class="second"></div>
             </div>
-            <p class="description">llladkdhfenbr</p>
+            <div class="content-fp">
+                <span class="vcenr"></span>
+                <div class="vcenc">
+                    <div class="col-md-12">
+                    <div style="padding: 20px; background-color: #F2F2F2;">
+                      <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">single omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layui-col-md6">
+                          <div class="layui-card">
+                            <div class="layui-card-header">intro omics analysis</div>
+                            <div class="layui-card-body">
+                              something introduce single omics analysis<br>
+                              <a href="/intro" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+        <div class="grid-wrapper">
+            <div class="grid-item-6">
+            <blockquote class="fp-offset">
+                <div class="quote">
+                    <p>The most important this about this website. the most important this about this website. the most important this about this website. the most important this about this website. </p>
+                </div>
+            </blockquote>
         </div>
-    </div>
-</div>
+        <div class="grid-item-6">
+            <h1>ABOUT LINT </h1>
+            <div id="intro" class="intro">
+                <p class="p1">something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. </p>
+                <p class="p1">something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. </p>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
+</html>
 @endsection
 
 @section('footer')
   @include('partials.footer')
 @endsection
 @section('js')
-<script type="text/javascript">
-function bigImg(x)
-{
-    x.style.height="10%";
-    x.style.width="10%";
-}
-
-function normalImg(x)
-{
-    x.style.height="20%";
-    x.style.width="20%";
-}
+<script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
+<script>
+layui.use(['element', 'layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+  
+  //监听折叠
+  element.on('collapse(test)', function(data){
+    layer.msg('展开状态：'+ data.show);
+  });
+});
 </script>
 
 
