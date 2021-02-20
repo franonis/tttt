@@ -30,7 +30,7 @@
                 <br>
                 <br>
                 <a style="display: none;" name="tax" id="name" value="{{$genename }}">{{$genename}}</a>
-                <table id="showdisease" lay-filter="test" style="margin-top: -0.7%;"></table>
+                <table id="showdisease" lay-filter="test" style="margin-top: 4%;"></table>
             </div>
         </div>
     </div>
