@@ -88,17 +88,17 @@
                 </thead>
                 <tbody id="exampleomics">
                   <tr>
-                    <td><input type="radio" name="exampleomics" value="Lipidomics" title="Lipidomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANlipid_tidy.csv" >Sample 1</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_lipid.CSV" >Sample 1 desc</a></td>
+                    <td><input type="radio" name="exampleomics" value="Lipidomics" title="Lipidomics" checked=""></td><td><a href="{{ url('download/example').'/' }}HANlipid_tidy.csv" >Sample 1.csv</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_lipid.CSV" >Sample 1 description.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Lipidomicscos" title="Lipidomics"></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_2.csv" >Sample 2</a></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_sampleList.csv" >Sample 2 desc</a></td>
+                    <td><input type="radio" name="exampleomics" value="Lipidomicscos" title="Lipidomics"></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_2.csv" >Sample 2.csv</a></td><td><a href="{{ url('download/example').'/' }}Cos7_integ_sampleList.csv" >Sample 2 description.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Metabolomics" title="Metabolomics"></td><td><a href="{{ url('download/example').'/' }}metabolites_tidy2.csv" >Sample 3</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >Sample 3 desc</a></td>
+                    <td><input type="radio" name="exampleomics" value="Metabolomics" title="Metabolomics"></td><td><a href="{{ url('download/example').'/' }}metabolites_tidy2.csv" >Sample 3.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >Sample 3 description.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Transcriptomics" title="Transcriptomics"></td><td><a href="{{ url('download/example').'/' }}gene_tidy.CSV" >Sample 4</a></td><td><a href="{{ url('download/example').'/' }}sampleList.CSV" >Sample 4 desc</a></td>
+                    <td><input type="radio" name="exampleomics" value="Transcriptomics" title="Transcriptomics"></td><td><a href="{{ url('download/example').'/' }}gene_tidy.CSV" >Sample 4.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList.CSV" >Sample 4 description.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Transcriptomicshan" title="Transcriptomics"></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy_geneid_allgroups.CSV" >Sample 5</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_allgroups.CSV" >Sample 5 desc</a></td>
+                    <td><input type="radio" name="exampleomics" value="Transcriptomicshan" title="Transcriptomics"></td><td><a href="{{ url('download/example').'/' }}HANgene_tidy_geneid_allgroups.CSV" >Sample 5.csv</a></td><td><a href="{{ url('download/example').'/' }}HANsampleList_allgroups.CSV" >Sample 5 description.csv</a></td>
                   </tr><tr>
-                    <td><input type="radio" name="exampleomics" value="Proteomics" title="Proteomics"></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv" >Sample 6</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >Sample 6 desc</a></td>
+                    <td><input type="radio" name="exampleomics" value="Proteomics" title="Proteomics"></td><td><a href="{{ url('download/example').'/' }}proteins_Depletion_tidy.csv" >Sample 6.csv</a></td><td><a href="{{ url('download/example').'/' }}sampleList_lip.csv" >Sample 6 description.csv</a></td>
                   </tr>
                 </tbody>
             </table>
