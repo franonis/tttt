@@ -14,7 +14,7 @@
               <p><strong><i><a >LINT</a></i></strong>, an integrated database for LINT</p>
           </div>
         </div>
-    </div>
+    </div><br><br>
 
     <div style="padding: 20px; background-color: #F2F2F2;">
       <div class="layui-row layui-col-space15">
@@ -38,6 +38,7 @@
         </div>
       </div>
     </div>
+    <div><br><br><br><br><br><br></div>
 @endsection
 
 @section('footer')
