@@ -324,7 +324,7 @@ class ResultController extends Controller
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         #return 1;Rscript lipRegEnrich.R -r "~/temp/" -t "target_list" -j 2.0 -k 0.1 -p "~/temp/enrich/"
         #富集分析
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "target_list" -j 2.0 -k 0.1 -p "' . $enrich_path . '"';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "target_list" -j 2.0 -k 0.1 -p "' . $pic_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
