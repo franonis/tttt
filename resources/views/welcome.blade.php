@@ -15,9 +15,9 @@
           </div>
         </div>
 </div><br><br>
-<div class="col-md-2">
+<div class="col-md-1">
 </div>
-<div class="col-md-8">
+<div class="col-md-10">
   <div class="col-md-12">
     <div style="padding: 20px; background-color: #F2F2F2;">
       <div class="layui-row layui-col-space15">
@@ -42,6 +42,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="col-md-1">
 </div>
     <div><br><br><br><br><br><br></div>
 @endsection
