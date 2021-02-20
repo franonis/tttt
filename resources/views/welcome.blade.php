@@ -19,7 +19,7 @@
 </div>
 <div class="col-md-10">
   <div class="col-md-12">
-    <div style="padding: 20px; background-color: #F2F2F2;">
+    <div style="padding: 20px; background-color: #F2F2F2;" style="height: 150px;">
       <div class="layui-row layui-col-space15">
         <div class="layui-col-md6"  style="height: 100px;">
           <div class="layui-card">

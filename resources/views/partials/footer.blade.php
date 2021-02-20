@@ -2,10 +2,10 @@
       <div class="row">
         <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
          <div class="col-xs-12">
-          <h4>Contact Us</h4>
+          <h4>Contact Us</h4><br/>
            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 contact">
-            <p style="word-wrap:break-word">Add: Room E7006-4, Interdisciplinary Building No.2, Fudan Univeristy (Jiangwan Campus), Songhu Road 2005, Shanghai 200438, China<br>
-            Tel.: 021-31242078，021-31242079<br>
+            <p style="word-wrap:break-word">Add: Room E7006-4, Interdisciplinary Building No.2, Fudan Univeristy (Jiangwan Campus), Songhu Road 2005, Shanghai 200438, China<br><br>
+            Tel.: 021-31242078，021-31242079<br><br>
              <span class="fui-mail"></span>   E-mail: <a href="mailto:lintwebomic_service@outlook.com">lintwebomic_service@outlook.com</a>
             </p>
            </div>
@@ -14,7 +14,7 @@
          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
           <h4>Links</h4>
            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-            <p><a href="https://imib.fudan.edu.cn/" target="_blank">The Institute of Metabolism and Integrative Biology (IMIB)，Fudan University</a></p>
+            <p><a href="https://imib.fudan.edu.cn/" target="_blank" style="color: deepskyblue">The Institute of Metabolism and Integrative Biology (IMIB)，Fudan University</a></p>
            </div>
          </div>
       </div>
