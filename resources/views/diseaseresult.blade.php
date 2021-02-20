@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 text-center">
-                        <label class="layui-form-label"></label>
+                        <label class="layui-form-label" ><a style="color: #F2F2F2;">为中国人留下的彩蛋，加勒万河谷，誓死捍卫，致敬</a></label>
                         <div class="layui-input-block">
                           <button id="submitleft" class="layui-btn" type="submit">Search</button>
                         </div>
