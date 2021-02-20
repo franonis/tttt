@@ -23,7 +23,11 @@
                         </div>
                     </div>
                     <div class="col-md-3 text-center">
-                        <button id="submitleft" class="layui-btn" type="submit">Search</button>
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-block">
+                          <button id="submitleft" class="layui-btn" type="submit">Search</button>
+                        </div>
+                        
                     </div>
                 </form>
                 <br>
