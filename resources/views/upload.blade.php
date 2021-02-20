@@ -75,9 +75,10 @@
         <form class="layui-form" action="/examplecanshu" id="example">
             <table class="layui-table">
                 <colgroup>
-                  <col width="33%">
-                  <col width="33%">
                   <col>
+                  <col>
+                  <col width="33%">
+                  <col width="33%">
                 </colgroup>
                 <thead>
                   <tr>
