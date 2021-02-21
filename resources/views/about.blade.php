@@ -17,13 +17,14 @@
         <div class="panel panel-info regionbox" style="width: 100%">
             <div class="panel-heading"><h4>ABOUT LINT</h4></div>
           <div class="panel-body">
-        <p style="font-size: 110%">something about your lab.something about your lab.something about your lab.something about your lab.something about your lab.something about your lab.something about your lab.something about your lab.</p>
+        <p style="font-size: 110%">LINT is a lipidomic data processing website aims to provide users a friendly pipeline for statistical analyses and lipidomic data mining. LINT can take various types of "omic" datasets, and integrate multi-omics for data mining. Construction of multi-omic networks can readily accomplish on the LINT. We release the first version of LINT, and more functions and features are on the way...</p>
           </div>
         </div><br>
         <div class="panel panel-info regionbox" style="width: 100%">
             <div class="panel-heading"><h4>CONTACT US</h4></div>
           <div class="panel-body">
-        <p style="font-size: 110%">This project welcomes all questions and comments regarding the microbiome.</p>
+        <p style="font-size: 110%">This project welcomes all questions and comments regarding the lipidomic data analysis
+.</p>
         <p style="font-size: 110%">Please, send your questions, comments or suggestions to: <a href="mailto:lintwebomic_service@outlook.com" style="color: deepskyblue">lintwebomic_service@outlook.com</a>.</p>
           </div>
         </div><br>

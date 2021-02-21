@@ -11,7 +11,8 @@
       <div class="container">
           <div class="col-md-12">
               <h2>Welcome to</h2>
-              <p><strong><i><a >LINT</a></i></strong>, an integrated database for LINT</p>
+              <p><strong><i><a >LINT</a></i></strong>, a lipidomic data processing website aims to provide users a friendly pipeline for statistical analyses and lipidomic data mining. LINT can take various types of "omic" datasets, and integrate multi-omics for data mining. Construction of multi-omic networks can readily accomplish on the LINT. We release the first version of LINT, and more functions and features are on the way...
+</p>
           </div>
         </div>
 </div><br><br>
