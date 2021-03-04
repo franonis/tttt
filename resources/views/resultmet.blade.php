@@ -8,13 +8,13 @@
 @endsection
 @section('content')
 <div class="container content">
-    <div class="row">
+    <div class="row"> 
         @include('partials.errors')
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Metabolomics</a>
         <hr>
             <div class="col-md-2">
             </div>
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
