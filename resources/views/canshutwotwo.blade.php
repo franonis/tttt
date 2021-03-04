@@ -29,13 +29,11 @@
                     <h4>missing value percent to delete</h4>
                 </div>
                 <div class="col-md-9">
-                    <div class="col-md-3">
-                        <a>Remove features with ></a>
+                        <a>Remove features with more than</a>
                         <small>
                         <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                         </small>
-                        <a>% missing values</a>
-                    </div>
+                        <a> missing values</a>
                 </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-3">
