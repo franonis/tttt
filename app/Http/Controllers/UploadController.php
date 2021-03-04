@@ -59,8 +59,8 @@ class UploadController extends Controller
         }else{
             $delodd = "F";
         }
-        $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
-        $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
+        $path_datafile = 'uploads/' . md5($file_data) . '/' . $file_data;
+        $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
 
         #输出文件位置
         $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';

@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-md-1">
                     </div>
-                    <div class="col-md-2" style="border:1px dashed #000;">
+                    <div class="col-md-5" style="border:1px dashed #000;">
                         <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
                     </div>
                     <div class="col-md-1">

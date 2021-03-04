@@ -75,7 +75,7 @@
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
                                     <hr>
-                                    <input id="datafile_right" name='datafile_right' value="no data" />
+                                    <input id="file_datafile_right" name='file_datafile_right' value="no data" />
                                 </div>
                             </div>
                             <div class="layui-form-item">
@@ -158,10 +158,10 @@ layui.use('upload', function(){
     ,data:{
         '_token':'{{csrf_token()}}'
     }
-    ,url: '/uploadfile' //改成您自己的上传接口
+    ,url: '/uploadfilemutil' //改成您自己的上传接口
     ,done: function(res){
       layer.msg('upload succeed');
-      $("#file_right1").val(res.originalname);
+      $("#file_datafile_right").val(res.originalname);
       console.log(res)
     }
   });
@@ -172,10 +172,10 @@ layui.use('upload', function(){
     ,data:{
         '_token':'{{csrf_token()}}'
     }
-    ,url: '/uploadfile' //改成您自己的上传接口
+    ,url: '/uploadfilemutil' //改成您自己的上传接口
     ,done: function(res){
       layer.msg('upload succeed');
-      $("#file_right2").val(res.originalname);
+      $("#file_descfile_right").val(res.originalname);
       console.log(res)
     }
   });
@@ -186,10 +186,10 @@ layui.use('upload', function(){
     ,data:{
         '_token':'{{csrf_token()}}'
     }
-    ,url: '/uploadfile' //改成您自己的上传接口
+    ,url: '/uploadfilemutil' //改成您自己的上传接口
     ,done: function(res){
       layer.msg('upload succeed');
-      $("#file_left1").val(res.originalname);
+      $("#file_datafile_left").val(res.originalname);
       console.log(res)
     }
   });
@@ -200,14 +200,14 @@ layui.use('upload', function(){
     ,data:{
         '_token':'{{csrf_token()}}'
     }
-    ,url: '/uploadfile' //改成您自己的上传接口
+    ,url: '/uploadfilemutil' //改成您自己的上传接口
     ,done: function(res){
       layer.msg('upload succeed');
-      $("#file_left2").val(res.originalname);
+      $("#file_descfile_left").val(res.originalname);
       console.log(res)
     }
   });
-});
+}); 
 </script>
 <script>
     $(document).ready(function(){

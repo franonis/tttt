@@ -74,6 +74,92 @@ class TwoController extends Controller
         return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
     }
 
+    public function gettwotwoPage(Request $request)
+    {
+        $file_datafile_left = $request->file_datafile_left;
+        $file_descfile_left = $request->file_descfile_left;
+        $file_datafile_right = $request->file_datafile_right;
+        $file_descfile_right = $request->file_descfile_right;
+        $omics1 = $request->omics_left;
+        $omics2 = $request->omics_right;
+        $delodd = $request->delodd;
+        $data_type = $request->data_type;
+        $m = $request->m;#missing
+        $n = $request->n;#是否70%gk
+        $s = $request->s;#自己设的值
+        $g = $request->g;#列
+        $k = $request->k;#行
+
+
+        #t和u的设置
+        $t = ['Lipidomics' => 'Lipids', 'Metabolomics' => 'Metabolites', 'Transcriptomics' => 'RNAseq', 'Proteomics' => 'Proteins'];
+        if ($data_type == "microarray") {
+            $t['Transcriptomics'] = 'MiAr';
+        }
+        #输出文件位置
+        $outpath = 'mutil/' . $omics_left . $omics_right . $file_datafile_left . $file_datafile_right . md5($file_descfile_left . $file_descfile_right) . '/';
+        is_dir($outpath) or mkdir($outpath, 0777, true);
+
+        #执行程序
+        #$command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/correlation/correlation_main.R -i "/home/zhangqb/program/branch/benchmark/input/HANLipidMediator_imm_forcor.CSV" -d "/home/zhangqb/program/branch/benchmark/input/HANsampleList_lipmid.csv" -t "Metabolites" -l F -m 0.67 -j "/home/zhangqb/program/branch/benchmark/input/HANgene_tidy.CSV" -e "/home/zhangqb/program/branch/benchmark/input/HANsampleList.CSV" -u "RNAseq" -g 6 -k 4 -n F -s 0.4 -o "' . $outpath . '"';
+        if ($n) {
+            $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -m '.$m.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -g '.$g.' -k '.$k.' -n F -s '.$s.' -o "' . $outpath . '"';
+            # code...
+        }else{
+            $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -m '.$m.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -g '.$g.' -k '.$k.' -n T -o "' . $outpath . '"';
+        }
+        
+        
+        if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+        }
+
+        $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
+
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
+        if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+        }
+        
+        #图片切割
+        $command = 'python3 /home/zhangqb/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -k ' . $k . ' -g ' . $g . ' -o "' . $pic_path . '"';
+        if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+        }
+        $split = file_get_contents($pic_path . 'splitWinArgs.csv');
+        #dd($split);
+        preg_match_all("/^(.*?)\r\n(.*?)\r\n(.*?)\r\n/U", $split, $splits);
+        $kongbai=explode(",", $splits[1][0]);
+        $hang=explode(",", $splits[2][0]);#宽
+        $lie=explode(",", $splits[3][0]);#高
+        #dd($hang);
+
+
+
+        $image = $pic_path.'correlationPlot.png';
+        $size = getimagesize($image);
+        $kongbai2[0]=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*2;
+        $bgwidth = $size[0];
+        $bgheigh = $size[1];
+        $k1 = $g;#列
+        $k2 = $k;
+        $fgwidth = floor($size[0] / $k1);
+        $fgheigh = floor($size[1] / $k2);
+
+        #dd($omics1);
+        $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
+        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
+    }
+
     public function getenrichPage($pos)
     {
         $poss=explode("--", $pos);
@@ -118,60 +204,31 @@ class TwoController extends Controller
     public function canshu(Request $request)
     {
         dd($request);
-        $omics = $request->omics;
-        if ($request->file_datafile == "no data" || $request->file_descfile == "no data") {
+        
+        $file_datafile_left  = $request->file_datafile_left ;
+        $file_descfile_left  = $request->file_descfile_left ;
+        $file_datafile_right = $request->file_datafile_right;       
+        $file_descfile_right = $request->file_descfile_right; 
+        if ($file_datafile_left == "no data" || $file_descfile_left == "no data" || $file_datafile_right == "no data" || $file_descfile_left == "no data") {
             return view('errors.200', ['title' => 'No Data', 'msg' => 'Please upload your file!', 'back' => 'Go back upload Page']);
         }
-        $file_data = $request->file_datafile;
-        $file_desc = $request->file_descfile;
+        $omics_left  = $request->omics_left;
+        $omics_right = $request->omics_right;
+        
         if ($request->delodd) {
             $delodd = "T";
         }else{
             $delodd = "F";
         }
-        $path_datafile = 'uploads/' . $omics . $file_data . md5($file_data) . '/' . $file_data;
-        $path_descfile = 'uploads/' . $omics . $file_desc . md5($file_desc) . '/' . $file_desc;
+        $data_type = $request->data_type;
 
-        #输出文件位置
-        $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
-        is_dir($outpath) or mkdir($outpath, 0777, true);
+        #改成路径+文件名
+        $file_datafile_left  = 'mutil/' . md($file_datafile_left) . '/' . $file_datafile_left ;
+        $file_descfile_left  = 'mutil/' . md($file_descfile_left) . '/' . $file_descfile_left ;
+        $file_datafile_right = 'mutil/' . md($file_datafile_right) . '/' . $file_datafile_right ;
+        $file_descfile_right = 'mutil/' . md($file_descfile_right) . '/' . $file_descfile_right ;
 
-        if ($omics != "Transcriptomics") {
-            $t = ['Lipidomics' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Proteomics' => 'Proteins'];
-
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
-
-            exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel.csv')) {
-                $groupsLevel = file_get_contents($outpath . '/groupsLevel.csv');
-                preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
-                array_shift($groupsLevels[1]); #去掉第一行
-                $groupsLevels = $groupsLevels[1];
-                #dd($groupsLevels[1]);
-                $firstline = file_get_contents($outpath . '/firstline.csv');
-                preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
-                array_shift($firstlines[1]); #去掉第一行
-                $firstlines = $firstlines[1];
-                return view('canshu', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc, 'firstlines' => $firstlines, 'delodd' => $delodd]);
-            }
-        } else {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
-            #dd($command);
-            exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'groupsLevel_RNA.csv')) {
-                $groupsLevel = file_get_contents($outpath . '/groupsLevel_RNA.csv');
-                preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
-                array_shift($groupsLevels[1]); #去掉第一行
-                $groupsLevels = $groupsLevels[1];
-                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc]);
-            }
-        }
+        return view('canshutwotwo', ['file_datafile_left' => $file_datafile_left,'file_descfile_left' => $file_descfile_left,'file_datafile_right' => $file_datafile_right,'file_descfile_right' => $file_descfile_right,'omics_left' => $omics_left,'omics_right' => $omics_right,'delodd' => $delodd,'data_type' => $data_type,'m' => '0.67','g' => '4','k' => '4','s' => '0.8']);
     }
     private function isRunOver($file)
     {
@@ -213,6 +270,39 @@ class TwoController extends Controller
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/correlation/correlation_main.R -i "/home/zhangqb/program/testData/CerebrospinalFluid_multiomics/input/metabolites_tidy2.csv" -d "/home/zhangqb/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -t "Metabolites" -m 0.67 -j "/home/zhangqb/program/testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv" -e "/home/zhangqb/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -u "Proteins" -g 7 -k 6 -n F -s 0.82 -o "' . $outpath . '"';
             return view('canshutwo', ['t' => '设置参数', 'l' => "F", 'm' => "0.67", 'u' => "Proteins", 'g' => "7", 'k' => "6", 'n' => "F", 's' => "0.82", 'outpath' => $outpath, 'command' => $command, 'omics1' => $omics1, 'omics2' => $omics2]);
         }
+    }
+
+    public function upload(Request $request)
+    {
+        #dd("vv");
+        $file = $request->file('file');
+        #dd($file);
+        $allowed_extensions = ["csv", "txt", "CSV"]; //多类型
+        //判断文件是否是允许上传的文件类型
+        if ($file->getClientOriginalExtension() && !in_array($file->getClientOriginalExtension(), $allowed_extensions)) {
+            $data = [
+                'status' => 0, //返回状态码，在js中用改状态判断是否上传成功。
+                'msg' => '不支持此格式',
+            ];
+            return json_encode($data);
+        }
+
+        //保存文件，新建路径，拷贝文件
+        //路径都是public--mutil下的文件名的md5值
+        $path = md5($file->getClientOriginalName());
+        $destinationPath = 'mutil/' . $path . '/';
+        is_dir($destinationPath) or mkdir($destinationPath, 0777, true);
+        $extension = $file->getClientOriginalExtension();
+        $fileName = $extension;
+        $file->move($destinationPath, $file->getClientOriginalName());
+        $data = [
+            'status' => 1, //返回状态码，在js中用改状态判断是否上传成功。
+            'msg' => $destinationPath . $fileName, //上传成功，返回服务器上文件名字
+            'originalname' => $file->getClientOriginalName(), //上传成功，返回上传原文件名字
+            'file' => $file, //上传成功，返回上传原文件名字
+        ];
+        return json_encode($data);
+
     }
 
     public function crosscanshu(Request $request)

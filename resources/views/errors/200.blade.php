@@ -39,7 +39,9 @@
             <div class="content">
                 <div class="title">错了</div>
                 <a href="{{ url('/') }}">
-                        <button class="button button-primary button-circle button-giant button-longshadow"><i class="fa fa-home"></i></button></a>
+                        <button class="button button-primary button-circle button-giant button-longshadow">Go to home page</button></a>
+                <a href="{{ url()->previous() }}">
+                        <button class="button button-highlight button-circle button-giant button-longshadow">Back to previous page</button></a>
                 <p>{!! $msg !!}</p>
             </div>
         </div>

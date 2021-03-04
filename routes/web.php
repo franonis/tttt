@@ -60,6 +60,7 @@ Route::group(['prefix' => '/update'], function () {
 Route::group(['prefix' => '/result'], function () {
     Route::get('/set', [ResultController::class, 'getsetPage']);
     Route::get('/two', [TwoController::class, 'getreaultPage']);
+    Route::get('/twotwo', [TwoController::class, 'gettwotwoPage']);
     Route::get('/enrich/{pos}', [TwoController::class, 'getenrichPage']);
     Route::get('/enrichresult/{pos}', [TwoController::class, 'getenenrichresultPage']);
 });
@@ -74,6 +75,7 @@ Route::get('/mutilcanshu', [TwoController::class, 'canshu']);
 Route::get('/mutilexamplecanshu', [TwoController::class, 'examplecanshu']);
 
 Route::post('/uploadfile', [UploadController::class, 'upload']);
+Route::post('/uploadfilemutil', [TwoController::class, 'upload']);
 
 Route::group(['prefix' => '/download'], function () {
     Route::get('/example/{filename}', [DownloadController::class, 'exampleFile']);
