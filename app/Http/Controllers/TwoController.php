@@ -203,7 +203,7 @@ class TwoController extends Controller
     #设置参数
     public function canshu(Request $request)
     {
-        dd($request);
+        #dd($request);
         
         $file_datafile_left  = $request->file_datafile_left ;
         $file_descfile_left  = $request->file_descfile_left ;
