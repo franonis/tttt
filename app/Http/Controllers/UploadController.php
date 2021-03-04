@@ -59,6 +59,7 @@ class UploadController extends Controller
         }else{
             $delodd = "F";
         }
+        $data_type = $request->data_type;
         $path_datafile = 'uploads/' . md5($file_data) . '/' . $file_data;
         $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
 

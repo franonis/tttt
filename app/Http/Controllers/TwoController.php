@@ -97,7 +97,7 @@ class TwoController extends Controller
             $t['Transcriptomics'] = 'MiAr';
         }
         #输出文件位置
-        $outpath = 'mutil/' . $omics1 . $omics2 . $file_datafile_left . $file_datafile_right . md5($file_descfile_left . $file_descfile_right) . '/';
+        $outpath = 'mutil/' . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
         #执行程序
