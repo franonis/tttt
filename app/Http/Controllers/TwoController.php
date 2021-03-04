@@ -223,10 +223,10 @@ class TwoController extends Controller
         $data_type = $request->data_type;
 
         #改成路径+文件名
-        $file_datafile_left  = 'mutil/' . md($file_datafile_left) . '/' . $file_datafile_left ;
-        $file_descfile_left  = 'mutil/' . md($file_descfile_left) . '/' . $file_descfile_left ;
-        $file_datafile_right = 'mutil/' . md($file_datafile_right) . '/' . $file_datafile_right ;
-        $file_descfile_right = 'mutil/' . md($file_descfile_right) . '/' . $file_descfile_right ;
+        $file_datafile_left  = 'mutil/' . md5($file_datafile_left) . '/' . $file_datafile_left ;
+        $file_descfile_left  = 'mutil/' . md5($file_descfile_left) . '/' . $file_descfile_left ;
+        $file_datafile_right = 'mutil/' . md5($file_datafile_right) . '/' . $file_datafile_right ;
+        $file_descfile_right = 'mutil/' . md5($file_descfile_right) . '/' . $file_descfile_right ;
 
         return view('canshutwotwo', ['file_datafile_left' => $file_datafile_left,'file_descfile_left' => $file_descfile_left,'file_datafile_right' => $file_datafile_right,'file_descfile_right' => $file_descfile_right,'omics_left' => $omics_left,'omics_right' => $omics_right,'delodd' => $delodd,'data_type' => $data_type,'m' => '0.67','g' => '4','k' => '4','s' => '0.8']);
     }
