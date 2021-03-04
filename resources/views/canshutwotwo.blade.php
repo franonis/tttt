@@ -75,6 +75,7 @@
                 </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12 text-center">
                 <br>
                 <button id="submit" class="layui-btn" type="submit" onclick="MsgBox()">RUN</button>
             </div>
