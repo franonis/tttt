@@ -20,7 +20,7 @@
                         <h4>{{$omics1}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <br><p>list of lipid</p><br>
+                        <br><p>list of lipids</p><br>
                         <pre>{{ $lipid }}</pre>
                     </div>
                     <div class="col-md-6">
