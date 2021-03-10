@@ -20,19 +20,21 @@
                         <h4>{{$omics1}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <p>list of lipid</p>
+                        <p>list of lipid</p><br>
                         <pre>{{ $lipid }}</pre>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-6">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
+                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}.csv">Download the lipid list file</a>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
+                            <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
+                        </div><br>
                     </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}.csv">Download the lipid list file</a>
-                    </div>
-                    <div class="col-md-7">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
-                    </div><br>
                 </div><br>
             <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
               <div class="col-md-12">
@@ -70,21 +72,14 @@
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
-        layui.use(['form', 'layedit', 'laydate'], function(){
-          var form = layui.form
-          ,layer = layui.layer
-          ,layedit = layui.layedit
-          ,laydate = layui.laydate;
-        });
-        layui.use('element', function(){
-          var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 
-          //监听导航点击
-          element.on('nav(demo)', function(elem){
-            //console.log(elem)
-            layer.msg(elem.text());
-          });
+        layui.use('table', function(){
+          var table = layui.table; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
+        omics=$("input[name='omics']").val();
+
+        console.log(omics);
+
     });
 </script>
 @endsection

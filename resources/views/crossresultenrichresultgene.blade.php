@@ -20,21 +20,22 @@
                         <h4>{{$omics2}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <p>list of genes</p>
+                        <p>list of genes</p><br>
                         <pre>{{ $gene }}</pre>
                     </div>
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
-                    </div>
-                    <div class="col-md-7">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
+                    <div class="col-md-6">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
+                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
                         <form action="/result/enrichresultgene">
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
-                            <input name="k" value="{{ $k }}" style="display: none;">
+                            <input name="k" value="{{ $g }}" style="display: none;">
                             <div class="col-md-12">
                                 <div class="col-md-12">
                                     <div class="layui-form-item">
@@ -68,7 +69,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">Set top number：</label>
                                         <div class="layui-input-block" id="s">
-                                          <input id="s" type="text" name="s" value="{{$s}}" style="width:50px; display:inline;" class="form-control" >
+                                          <input id="s" type="text" name="s" value="s" style="width:50px; display:inline;" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -77,6 +78,7 @@
                                 </div>
                             </div>
                         </form>
+                        </div>
                     </div>
                 </div>
               <div class="col-md-12">
@@ -122,21 +124,19 @@
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
-        layui.use(['form', 'layedit', 'laydate'], function(){
-          var form = layui.form
-          ,layer = layui.layer
-          ,layedit = layui.layedit
-          ,laydate = layui.laydate;
-        });
-        layui.use('element', function(){
-          var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 
-          //监听导航点击
-          element.on('nav(demo)', function(elem){
-            //console.log(elem)
-            layer.msg(elem.text());
-          });
+        layui.use('table', function(){
+          var table = layui.table; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
+        omics=$("input[name='omics']").val();
+        if (omics == "Proteomics") {
+          document.getElementById("genetype").style.display="none";
+        }
+        if (omics == "Transcriptomics") {
+          document.getElementById("genetype").style.display="block";
+        }
+        console.log(omics);
+
     });
 </script>
 @endsection

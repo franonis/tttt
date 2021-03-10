@@ -20,19 +20,21 @@
                         <h4>{{$omics1}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <p>list of lipid</p>
+                        <p>list of lipid</p><br>
                         <pre>{{ $lipid }}</pre>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-6">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
+                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}.csv">Download the lipid list file</a>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
+                            <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
+                        </div><br>
                     </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}.csv">Download the lipid list file</a>
-                    </div>
-                    <div class="col-md-7">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
-                    </div><br>
                 </div><br>
             <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
                 
@@ -41,17 +43,19 @@
                         <h4>{{$omics2}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <p>list of genes</p>
+                        <p>list of genes</p><br>
                         <pre>{{ $gene }}</pre>
                     </div>
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
-                    </div>
-                    <div class="col-md-7">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
+
+                    <div class="col-md-6">
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
+                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                        <div class="col-md-10" style="border:1px dashed #000;">
                         <form action="/result/enrichresultgene">
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
@@ -98,6 +102,7 @@
                                 </div>
                             </div>
                         </form>
+                        </div>
                     </div>
                 </div>
             <hr>
@@ -110,17 +115,16 @@
 @endsection
 @section('js')
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
-<script>
 
-layui.use('upload', function(){
-  var upload = layui.upload;
-
-  //执行实例
-
-});
-</script>
 <script>
     $(document).ready(function(){
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        });
+
+        layui.use('table', function(){
+          var table = layui.table; //只有执行了这一步，部分表单元素才会自动修饰成功
+        });
         omics=$("input[name='omics']").val();
         if (omics == "Proteomics") {
           document.getElementById("genetype").style.display="none";
@@ -128,46 +132,7 @@ layui.use('upload', function(){
         if (omics == "Transcriptomics") {
           document.getElementById("genetype").style.display="block";
         }
-
-        layui.use('form', function(){
-          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
-        });
-        layui.use(['form', 'layedit', 'laydate'], function(){
-          var form = layui.form
-          ,layer = layui.layer
-          ,layedit = layui.layedit
-          ,laydate = layui.laydate;
-        });
-        layui.use('element', function(){
-          var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-
-          //监听导航点击
-          element.on('nav(demo)', function(elem){
-            //console.log(elem)
-            layer.msg(elem.text());
-          });
-        });
-        layui.use('slider', function(){
-          var $ = layui.$
-          ,slider = layui.slider;
-          //默认滑块
-          slider.render({
-            elem: '#slideTest1'
-          });
-
-          //定义初始值
-          slider.render({
-            elem: '#slideTest2'
-            ,value: 20 //初始值
-          });
-
-          //设置最大最小值
-          slider.render({
-            elem: '#slideTest3'
-            ,min: 1 //最小值
-            ,max: 8 //最大值
-          });
-        });
+        console.log(omics);
 
     });
 </script>
