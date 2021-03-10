@@ -184,6 +184,7 @@ class TwoController extends Controller
         $omics=$poss[2];#$omics
         $opath = preg_replace('/\+\+/', "/", $downloadpath);
         $lipid = file_get_contents($opath . 'lipids_'.$k2.'.csv');
+        is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
         $command="";
         if ($omics == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k2.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
@@ -215,6 +216,7 @@ class TwoController extends Controller
 
         $opath = preg_replace('/\+\+/', "/", $downloadpath);#末尾有/
         $gene = file_get_contents($enrichpath . 'genes_'.$k.'.csv',0,null,0,1000);
+        is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
         $command="";
         if ($omics == "Transcriptomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t '.$t.' -g '.$g.' -s '.$s.' -c '.$c.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
