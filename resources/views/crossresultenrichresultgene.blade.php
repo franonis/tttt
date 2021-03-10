@@ -36,7 +36,7 @@
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
                             <input name="k" value="{{ $g }}" style="display: none;">
-                            <div class="col-md-12">
+                            <div class="col-md-12" style="margin-left: -10px;">
                                 <div class="col-md-12">
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">Choose species：</label>
@@ -58,7 +58,7 @@
                                 <div class="col-md-12">
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">GO term：</label>
-                                        <div class="layui-input-block" id="c">
+                                        <div class="layui-input-block" id="c" style="margin-right: -10px;">
                                           <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
                                           <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
                                           <input type="radio" name="c" value="Molecular_Function" title="Molecular Function">
@@ -69,7 +69,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">Set top number：</label>
                                         <div class="layui-input-block" id="s">
-                                          <input id="s" type="text" name="s" value="s" style="width:50px; display:inline;" class="form-control" >
+                                          <input id="s" type="text" name="s" value="{{$s}}" style="width:50px; display:inline;" class="form-control" >
                                         </div>
                                     </div>
                                 </div>

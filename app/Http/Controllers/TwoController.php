@@ -206,6 +206,7 @@ class TwoController extends Controller
 
     public function getenenrichresultgenePage(Request $request)
     {
+        dd($request);
         $downloadpath=$request->$downloadpath;#$outpath,可下载
         $omics=$request->$omics;
         $k=$request->$k;#行列数gene
@@ -238,7 +239,7 @@ class TwoController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('crossresultenrichresultgene', ['g' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics]);
+        return view('crossresultenrichresultgene', ['g' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics, 's' => '50']);
     }
     #设置参数
     public function canshu(Request $request)
