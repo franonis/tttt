@@ -23,7 +23,7 @@
                         <img style="width: {{ $bgwidth }}px;height: {{ $kongbai[1] }}px;opacity: 0%; margin-bottom: 1px;" src="{{ asset('images/gg.png') }}" />
                         @for ($i = 0; $i < $k2; $i++)
                             <img style="width: {{ $kongbai[0] }}px;height: {{ $lie[$i] }}px;opacity: 0%; margin-bottom: 1px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" />
-                            @for ($j = 0; $j < $k1; $j++)
+                            @for ($j = 0; $j < $g; $j++)
                                 <a href="{{ url('result/enrich/')}}/{{$j}}--{{$i}}--{{$enrichpath}}--{{$omics1}}--{{$omics2}}" target="_blank"><img style="width: {{ $hang[$j] }}px;height: {{ $lie[$i] }}px;opacity: 50%; margin-bottom: 1px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
                             @endfor
                             <img style="width: {{ $kongbai2[0] }}px;height: {{ $lie[$i] }}px;opacity: 0%; margin-bottom: 1px;" src="{{ asset('images/gg.png') }}" />

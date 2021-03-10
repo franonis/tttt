@@ -82,6 +82,7 @@
                     </div>
                 </div>
               <div class="col-md-12">
+        <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
                     <div class="col-md-2">
                         <h4>Download</h4>
                     </div>
