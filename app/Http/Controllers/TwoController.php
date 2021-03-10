@@ -207,13 +207,13 @@ class TwoController extends Controller
     public function getenenrichresultgenePage(Request $request)
     {
         #dd($request);
-        $downloadpath=$request->$downloadpath;#$outpath,可下载
-        $omics=$request->$omics;
-        $k=$request->$k;#行列数gene
-        $t=$request->$t;
-        $g=$request->$g;
-        $s=$request->$s;
-        $c=$request->$c;
+        $downloadpath=$request->downloadpath;#$outpath,可下载
+        $omics=$request->omics;
+        $k=$request->k;#行列数gene
+        $t=$request->t;
+        $g=$request->g;
+        $s=$request->s;
+        $c=$request->c;
 
         $opath = preg_replace('/\+\+/', "/", $downloadpath);#末尾有/
         $gene = file_get_contents($enrichpath . 'genes_'.$k.'.csv',0,null,0,1000);

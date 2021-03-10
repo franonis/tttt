@@ -82,10 +82,10 @@
                                 <div class="col-md-12">
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">GO term：</label>
-                                        <div class="layui-input-block" id="c" style="margin-right: -10px;">
-                                          <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
-                                          <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
-                                          <input type="radio" name="c" value="Molecular_Function" title="Molecular Function">
+                                        <div class="layui-input-block" id="c" >
+                                          <input type="radio" name="c" style="margin-right: -10px;" value="Biological_Process" title="Biological Process" checked="">
+                                          <input type="radio" name="c" style="margin-right: -10px;" value="Cellular_Component" title="Cellular Component">
+                                          <input type="radio" name="c" style="margin-right: -10px;" value="Molecular_Function" title="Molecular Function">
                                         </div>
                                     </div>
                                 </div>
