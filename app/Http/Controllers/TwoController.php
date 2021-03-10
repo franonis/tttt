@@ -206,7 +206,7 @@ class TwoController extends Controller
 
     public function getenenrichresultgenePage(Request $request)
     {
-        dd($request);
+        #dd($request);
         $downloadpath=$request->$downloadpath;#$outpath,可下载
         $omics=$request->$omics;
         $k=$request->$k;#行列数gene
