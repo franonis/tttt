@@ -98,7 +98,7 @@
                         <h4>GO Enrichment result</h4>
                     </div>
                     <div class="col-md-10">
-                        <img src="http://www.lintwebomics.info/{{ $opath }}enrich/GOenrich.png" style="height:50%;width: 60%;">
+                      {!! $resultpng !!}
                     </div>
                 </div>
 
