@@ -96,6 +96,16 @@ class ResultController extends Controller
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
                             $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
+                        $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+                    }else{
+                        $up='<p>No UP genes enriched! Try check your data!</p>';
+                    }
+                    if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
+                        $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+                    }else{
+                        $down='<p>No DOWN genes enriched! Try check your data!</p>';
+                    }
                             return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'b' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
                         }
                     }else{

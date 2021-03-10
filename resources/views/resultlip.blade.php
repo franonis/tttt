@@ -25,7 +25,7 @@
                     <li>LION enrichment</li>
                   </ul>
                   <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
+                    <div class="layui-tab-item layui-show"><!--第一部分 1 Dimensionality Reduction Analyses-->
                             <div class="col-md-12">
                                 <div class="col-md-2">
                                     <h4>Download</h4>
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item">
+                    <div class="layui-tab-item"><!--第一部分 2 Volcano-->
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item">
+                    <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -144,7 +144,7 @@
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             <h4>Set top number</h4>
                                         </div>
                                         <div class="col-md-8">
@@ -295,25 +295,7 @@
                                     </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item"><!--第一部分 6 LION-->
-                            <div class="col-md-12">
-                                <div class="col-md-6">
-                                    <h4>Not finished yet</h4>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+lion.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
-                                </div>
-                                <div class="col-md-3">
-                                    <button id="submitright" class="layui-btn" type="submit">Update</button>
-
-                                </div>
-                                <div class="col-md-2">
-                                    <h4>LION enrichment</h4>
-                                </div>
-                                <div class="col-md-10">
-                                    <p>not finished</p>
-                                </div>
-                            </div>
+                    <div class="layui-tab-item"><!--第一部分 6 LION enrichment-->
                         <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <input name="path" value="{{ $path }}" style="display: none;">

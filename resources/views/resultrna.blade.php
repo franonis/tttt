@@ -203,7 +203,22 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-2">
+                                            <h4>Set fc_thresh</h4>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <small>
+                                            <input id="f" type="text" name="f" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <h4>Set p_thresh</h4>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <small>
+                                            <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
+                                        </div>
                                         <div class="col-md-12">
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">Set top number：</label>

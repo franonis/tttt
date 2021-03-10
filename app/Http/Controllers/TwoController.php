@@ -64,16 +64,16 @@ class TwoController extends Controller
         $kongbai2[0]=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*2;
         $bgwidth = $size[0];
         $bgheigh = $size[1];
-        $k1 = $g;#列
+        $g = $g;#列
         $k2 = $k;
-        $fgwidth = floor($size[0] / $k1);
+        $fgwidth = floor($size[0] / $g);
         $fgheigh = floor($size[1] / $k2);
 
         #dd($omics1);
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
-        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
+        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'g' => $g, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
     }
-
+    #非例子数据的多组学数据，得到切割图片页面
     public function gettwotwoPage(Request $request)
     {
         $file_datafile_left = $request->file_datafile_left;
@@ -150,55 +150,93 @@ class TwoController extends Controller
         $kongbai2[0]=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*2;
         $bgwidth = $size[0];
         $bgheigh = $size[1];
-        $k1 = $g;#列
+        $g = $g;#列
         $k2 = $k;
-        $fgwidth = floor($size[0] / $k1);
+        $fgwidth = floor($size[0] / $g);
         $fgheigh = floor($size[1] / $k2);
 
         #dd($omics1);
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
-        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'k1' => $k1, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
+        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'g' => $g, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
     }
 
     public function getenrichPage($pos)
     {
         $poss=explode("--", $pos);
-        $k1 = $poss[0]+1;#列gene
+        $g = $poss[0]+1;#列gene
         $k2 = $poss[1]+1;
         $enrichpath=$poss[2];#$outpath
         $omics1=$poss[3];#$omics1
         $omics2=$poss[4];#$omics2
         $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);#$enrichpath = preg_replace('/\//', "++", $outpath);
         $downloadpath = preg_replace('/\//', "++", $enrichpath);
-        $gene = file_get_contents($enrichpath . 'genes_'.$k1.'.csv',0,null,0,1000);
+        $gene = file_get_contents($enrichpath . 'genes_'.$g.'.csv',0,null,0,1000);
         $lipid = file_get_contents($enrichpath . 'lipids_'.$k2.'.csv');
 
-        return view('crossresultenrich', ['k1' => $k1,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2]);
+        return view('crossresultenrich', ['g' => $g,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50']);
     }
 
     public function getenenrichresultPage($pos)
     {
         $poss=explode("--", $pos);
-        $k1 = $poss[0];#行列数gene
-        $enrichpath=$poss[1];#$outpath
+        $k2 = $poss[0];#行列数gene
+        $downloadpath=$poss[1];#$outpath,可下载
         $omics=$poss[2];#$omics
-        $opath = preg_replace('/\+\+/', "/", $enrichpath);
+        $opath = preg_replace('/\+\+/', "/", $downloadpath);
+        $lipid = file_get_contents($opath . 'lipids_'.$k2.'.csv');
         $command="";
         if ($omics == "Metabolomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k1.' -o "/home/zhangqb/tttt/public/'.$opath.'"';
-            $resultfile="ora_dpi72.png";
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k2.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+            return view('crossresultenrichresultmet', ['k2' => $k2,'lipid' => $lipid,'opath' => $opath,'downloadpath' => $downloadpath, 'omics' => $omics1]);
         }
         if ($omics == "Lipidomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k1.' -o "/home/zhangqb/tttt/public/'.$opath.'"';
-            $resultfile="ora_dot_dpi72.png";
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k2.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+            return view('crossresultenrichresultlip', ['k2' => $k2,'lipid' => $lipid,'opath' => $opath,'downloadpath' => $downloadpath, 'omics' => $omics1]);
+        }
+    }
+
+    public function getenenrichresultgenePage(Request $request)
+    {
+        $downloadpath=$request->$downloadpath;#$outpath,可下载
+        $omics=$request->$omics;
+        $k=$request->$k;#行列数gene
+        $t=$request->$t;
+        $g=$request->$g;
+        $s=$request->$s;
+        $c=$request->$c;
+
+        $opath = preg_replace('/\+\+/', "/", $downloadpath);#末尾有/
+        $gene = file_get_contents($enrichpath . 'genes_'.$k.'.csv',0,null,0,1000);
+        $command="";
+        if ($omics == "Transcriptomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t '.$t.' -g '.$g.' -s '.$s.' -c '.$c.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        }
+        if ($omics == "Proteomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t '.$t.' -s '.$s.' -c '.$c.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
         exec($command, $ooout, $flag);
-
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('crossresultenrichresult', ['k1' => $k1,'opath' => $opath,'resultfile' => $resultfile,'downloadpath' => $downloadpath, 'omics' => $omics1]);
-
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichup.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichup.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichdown.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichdown.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        return view('crossresultenrichresultgene', ['k' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics]);
     }
     #设置参数
     public function canshu(Request $request)

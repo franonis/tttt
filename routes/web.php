@@ -63,6 +63,7 @@ Route::group(['prefix' => '/result'], function () {
     Route::get('/twotwo', [TwoController::class, 'gettwotwoPage']);
     Route::get('/enrich/{pos}', [TwoController::class, 'getenrichPage']);
     Route::get('/enrichresult/{pos}', [TwoController::class, 'getenenrichresultPage']);
+    Route::get('/enrichresultgene', [TwoController::class, 'getenenrichresultgenePage']);
 });
 #单组学
 #Route::get('/upload', [UploadController::class, 'getUploadPage']);

@@ -15,28 +15,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-10">
-                <div class="col-md-12">
-                    <div class="col-md-2">
-                        <h4>{{$omics1}}</h4>
-                    </div>
-                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <p>list of lipid</p>
-                        <pre>{{ $lipid }}</pre>
-                    </div>
-                    <div class="col-md-1">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}.csv">Download the lipid list file</a>
-                    </div>
-                    <div class="col-md-7">
-                    </div>
-                    <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
-                    </div><br>
-                </div><br>
-            <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
-                
-                <div class="col-md-12">
+              <div class="col-md-12">
                     <div class="col-md-2">
                         <h4>{{$omics2}}</h4>
                     </div>
@@ -55,7 +34,7 @@
                         <form action="/result/enrichresultgene">
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
-                            <input name="k" value="{{ $g }}" style="display: none;">
+                            <input name="k" value="{{ $k }}" style="display: none;">
                             <div class="col-md-12">
                                 <div class="col-md-12">
                                     <div class="layui-form-item">
@@ -89,7 +68,7 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">Set top number：</label>
                                         <div class="layui-input-block" id="s">
-                                          <input id="s" type="text" name="s" value="s" style="width:50px; display:inline;" class="form-control" >
+                                          <input id="s" type="text" name="s" value="{{$s}}" style="width:50px; display:inline;" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -100,35 +79,46 @@
                         </form>
                     </div>
                 </div>
+              <div class="col-md-12">
+                    <div class="col-md-2">
+                        <h4>Download</h4>
+                    </div>
+                    <div class="col-md-10" style="border:1px dashed #000;">
+                        <div class="col-md-5">
+                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}enrich++GOenrichup.pdf">GOenrichup.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                        </div>
+                        <div class="col-md-5">
+                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}enrich++GOenrichdown.pdf">GOenrichdown.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                        </div>
+                    </div>
+        <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                    <div class="col-md-2">
+                        <h4>GO Enrichment result UP</h4>
+                    </div>
+                    <div class="col-md-10">
+                        <img src="http://www.lintwebomics.info/{{ $opath }}enrich/GOenrichup.png" style="height:50%;width: 60%;">
+                    </div>
+                    <div class="col-md-2">
+                        <h4>GO Enrichment result DOWN</h4>
+                    </div>
+                    <div class="col-md-10">
+                        <img src="http://www.lintwebomics.info/{{ $opath }}enrich/GOenrichupdown.png" style="height:50%;width: 60%;">
+                    </div>
+                </div>
+
+            </div>
             <hr>
-        </div>
     </div>
 </div>
 @endsection
 @section('footer')
   @include('partials.footer')
+  
 @endsection
 @section('js')
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 <script>
-
-layui.use('upload', function(){
-  var upload = layui.upload;
-
-  //执行实例
-
-});
-</script>
-<script>
     $(document).ready(function(){
-        omics=$("input[name='omics']").val();
-        if (omics == "Proteomics") {
-          document.getElementById("genetype").style.display="none";
-        }
-        if (omics == "Transcriptomics") {
-          document.getElementById("genetype").style.display="block";
-        }
-
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
@@ -147,28 +137,6 @@ layui.use('upload', function(){
             layer.msg(elem.text());
           });
         });
-        layui.use('slider', function(){
-          var $ = layui.$
-          ,slider = layui.slider;
-          //默认滑块
-          slider.render({
-            elem: '#slideTest1'
-          });
-
-          //定义初始值
-          slider.render({
-            elem: '#slideTest2'
-            ,value: 20 //初始值
-          });
-
-          //设置最大最小值
-          slider.render({
-            elem: '#slideTest3'
-            ,min: 1 //最小值
-            ,max: 8 //最大值
-          });
-        });
-
     });
 </script>
 @endsection
