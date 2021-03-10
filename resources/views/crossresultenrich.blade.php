@@ -47,7 +47,7 @@
                     <div class="col-md-1">
                     </div>
                     <div class="col-md-5" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$k1}}.csv">Download the gene list file</a>
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
                     </div>
                     <div class="col-md-7">
                     </div>

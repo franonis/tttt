@@ -236,7 +236,7 @@ class TwoController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('crossresultenrichresultgene', ['k' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics]);
+        return view('crossresultenrichresultgene', ['g' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics]);
     }
     #设置参数
     public function canshu(Request $request)
