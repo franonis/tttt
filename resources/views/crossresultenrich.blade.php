@@ -56,7 +56,7 @@
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10" style="border:1px dashed #000;">
-                        <form action="/result/enrichresultgene">
+                        <form id="regionform" class="layui-form" action="/result/enrichresultgene">
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
                             <input name="k" value="{{ $g }}" style="display: none;">
