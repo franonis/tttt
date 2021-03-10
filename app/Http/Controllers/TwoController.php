@@ -216,7 +216,7 @@ class TwoController extends Controller
         $c=$request->c;
 
         $opath = preg_replace('/\+\+/', "/", $downloadpath);#末尾有/
-        $gene = file_get_contents($enrichpath . 'genes_'.$k.'.csv',0,null,0,1000);
+        $gene = file_get_contents($opath . 'genes_'.$k.'.csv',0,null,0,1000);
         is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
         $command="";
         if ($omics == "Transcriptomics") {
