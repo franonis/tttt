@@ -225,6 +225,7 @@ class TwoController extends Controller
         if ($omics == "Proteomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t '.$t.' -s '.$s.' -c '.$c.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
+        dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
