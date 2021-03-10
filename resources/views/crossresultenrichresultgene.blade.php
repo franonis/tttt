@@ -86,25 +86,18 @@
                         <h4>Download</h4>
                     </div>
                     <div class="col-md-10" style="border:1px dashed #000;">
-                        <div class="col-md-5">
-                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}enrich++GOenrichup.pdf">GOenrichup.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                        </div>
-                        <div class="col-md-5">
-                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}enrich++GOenrichdown.pdf">GOenrichdown.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
+                        <div class="col-md-12">
+                          @foreach($downloadfilename as $k=>$i )
+                              <a href="{{ url('download/file/')}}/{{ $downloadpath }}++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;&nbsp;&nbsp;
+                          @endforeach
                         </div>
                     </div>
         <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                     <div class="col-md-2">
-                        <h4>GO Enrichment result UP</h4>
+                        <h4>GO Enrichment result</h4>
                     </div>
                     <div class="col-md-10">
-                        <img src="http://www.lintwebomics.info/{{ $opath }}enrich/GOenrichup.png" style="height:50%;width: 60%;">
-                    </div>
-                    <div class="col-md-2">
-                        <h4>GO Enrichment result DOWN</h4>
-                    </div>
-                    <div class="col-md-10">
-                        <img src="http://www.lintwebomics.info/{{ $opath }}enrich/GOenrichupdown.png" style="height:50%;width: 60%;">
+                        <img src="http://www.lintwebomics.info/{{ $opath }}enrich/GOenrich.png" style="height:50%;width: 60%;">
                     </div>
                 </div>
 

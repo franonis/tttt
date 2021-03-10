@@ -229,17 +229,15 @@ class TwoController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichup.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichup.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_'.$c.'.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichdown.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrichdown.png';
-        exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
-        return view('crossresultenrichresultgene', ['g' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics, 's' => '50']);
+        
+        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $opath.'enrich/');
+
+        return view('crossresultenrichresultgene', ['g' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics, 's' => '50', 'downloadfilename' => $downloadfilename]);
     }
     #设置参数
     public function canshu(Request $request)
@@ -344,6 +342,14 @@ class TwoController extends Controller
         ];
         return json_encode($data);
 
+    }
+
+    public function getrnadownloadfilename($downloadpath)
+    {
+        #volcano
+        $command='cd '.$downloadpath.' && ls ';
+        exec($command,$download,$flag);
+        return $download;
     }
 
     public function crosscanshu(Request $request)
