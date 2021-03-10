@@ -17,7 +17,7 @@
 
               <div class="layui-col-md12">
                 <div class="layui-card">
-                  <div class="layui-card-header">{{$omics1}} {{$omics2}} Correlation analysis result, click the brick for more details</div>
+                  <div class="layui-card-header">{{$omics1}} and {{$omics2}} Correlation analysis result, click the brick for more details</div>
                   <div class="layui-card-body">
                     <div class="row text-center" style="width: {{ $bgwidth }}px;height: {{ $bgheigh }}px; background-image: url({{ asset($image) }}); ">
                         <img style="width: {{ $bgwidth }}px;height: {{ $kongbai[1] }}px;opacity: 0%; margin-bottom: 1px;" src="{{ asset('images/gg.png') }}" />
