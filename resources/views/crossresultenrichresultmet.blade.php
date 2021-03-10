@@ -20,7 +20,7 @@
                         <h4>{{$omics1}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <p>list of lipid</p><br>
+                        <br><p>list of lipid</p><br>
                         <pre>{{ $lipid }}</pre>
                     </div>
                     <div class="col-md-6">
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-md-10" style="border:1px dashed #000;">
                             <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}.csv">Download the lipid list file</a>
-                        </div>
+                        </div><br><br>
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10" style="border:1px dashed #000;">
