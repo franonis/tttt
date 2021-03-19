@@ -128,8 +128,7 @@
   @include('partials.footer')
 @endsection
 @section('js')
-<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
-<script href="{{ asset('/layer/layer.js') }}"></script>
+<script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 
 <script>
     $(document).ready(function(){
