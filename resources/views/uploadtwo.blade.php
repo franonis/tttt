@@ -14,7 +14,7 @@
         <hr>
         <div class="col-md-12">
             <div class="col-md-12">
-                <form class="layui-form" action="/mutilcanshu">
+                <form class="layui-form" class="layui-form" action="/mutilcanshu">
                 <div class="col-md-6">
                     <div class="col-md-12">
                         <div style="padding: 20px; background-color: #F2F2F2;">
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class="col-md-6">
                     <div class="col-md-12">
                         <div style="padding: 20px; background-color: #F2F2F2;">

@@ -13,7 +13,7 @@
         <hr>
         @include('partials.errors')
 
-        <form id="blastform" action="/result/two">
+        <form id="blastform" class="layui-form" action="/result/two">
             {{ csrf_field() }}
             <input type="radio" value="{{$command}}" name="command" checked style="display: none;">
             <input type="radio" value="{{$outpath}}" name="outpath" checked style="display: none;">
@@ -32,23 +32,68 @@
                         <a>% missing values</a>
                 </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                <div class="col-md-3">
-                    <h4>Set colum number(for gene/protein)</h4>
+                <div class="col-md-12">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">Choose How to Hierarchical Clustering：</label>
+                        <div class="layui-input-block" id="hierarchical">
+                          <input type="radio" name="b" value="hierarchical" title="hierarchical" checked="">
+                          <input type="radio" name="b" value="k_means" title="k_means">
+                          <input type="radio" name="b" value="DBSCAN" title="DBSCAN">
+                          <input type="radio" name="b" value="MCL" title="MCL">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-9">
-                    <small>
-                    <input id="g" type="text" name="g" value="{{$g}}" style="width:50px; display:inline;" class="form-control" >
-                    </small>
-                </div>
-            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                <div class="col-md-3">
-                    <h4>Set line number(for lipid/met)</h4>
-                </div>
-                <div class="col-md-9">
-                    <small>
-                    <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
-                    </small>
-                </div>
+            <div id="canshu1" style="display: block;">
+                <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                    <div class="col-md-3">
+                        <h4>Set colum number(for gene/protein)</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <small>
+                        <input id="g" type="text" name="g" value="{{$g}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div>
+                <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                    <div class="col-md-3">
+                        <h4>Set line number(for lipid/met)</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <small>
+                        <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div>
+            </div> 
+            <div id="canshu2" style="display: none;">
+                <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                    <div class="col-md-3">
+                        <h4>Set Minimum number of clustering units(for gene/protein)</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <small>
+                        <input id="c" type="text" name="c" value="{{$c}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div>
+                <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                    <div class="col-md-3">
+                        <h4>Set Minimum number of clustering units(for lipid/met)</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <small>
+                        <input id="f" type="text" name="f" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div>
+            </div>
+            <div id="canshu3" style="display: none;">
+                <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+                    <div class="col-md-3">
+                        <h4>The quantile threshold for the Markov dichotomy</h4>
+                    </div>
+                    <div class="col-md-9">
+                        <small>
+                        <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div>
+            </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-3">
                     <h4>Set filtering thread</h4>
@@ -101,6 +146,23 @@
             document.getElementById("ownfilter").style.display="block";
         }
         console.log(name);
+   });
+    $("#hierarchical").click(function (){
+        name =$("input[name='b']:checked").val();
+        if (name == "hierarchical" or name == "k_means" ) {
+            document.getElementById("canshu1").style.display="block";
+            document.getElementById("canshu2").style.display="none";
+            document.getElementById("canshu3").style.display="none";
+        }
+        if (name == "DBSCAN") {
+            document.getElementById("canshu1").style.display="none";
+            document.getElementById("canshu2").style.display="block";
+            document.getElementById("canshu3").style.display="none";        }
+        if (name == "DBSCAN") {
+            document.getElementById("canshu1").style.display="none";
+            document.getElementById("canshu2").style.display="none";
+            document.getElementById("canshu3").style.display="block";
+        }
    });
 
     function MsgBox() //声明标识符
