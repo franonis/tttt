@@ -152,7 +152,7 @@
    });
     $("#hierarchical").click(function (){
         name =$("input[name='b']:checked").val();
-        if (name == "hierarchical" or name == "k_means" ) {
+        if (name == "hierarchical" || name == "k_means" ) {
             document.getElementById("canshu1").style.display="block";
             document.getElementById("canshu2").style.display="none";
             document.getElementById("canshu3").style.display="none";
