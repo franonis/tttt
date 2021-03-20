@@ -113,15 +113,15 @@ class TwoController extends Controller
         #不同聚类的命令，对应的参数，不同的输出路径
         if ($b == "hierarchical" || $b == "k_means") {
             $keycanshu=$m . $ns . $g . $k . '/';
-            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshue;
+            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshu;
         }
         if ($b == "DBSCAN") {
             $keycanshu=$m . $ns . $c . $f . '/';
-            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshue;
+            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshu;
         }
         if ($b == "MCL") {
             $keycanshu=$m . $ns . $p . '/';
-            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshue;
+            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshu;
         }
 
         is_dir($outpath) or mkdir($outpath, 0777, true);
