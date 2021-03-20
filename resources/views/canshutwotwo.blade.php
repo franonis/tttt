@@ -15,14 +15,16 @@
 
         <form id="blastform" class="layui-form" action="/result/twotwo">
             {{ csrf_field() }}
-            <input type="radio" value="{{$file_datafile_left}}" name="file_datafile_left" checked style="display: none;">
-            <input type="radio" value="{{$file_descfile_left}}" name="file_descfile_left" checked style="display: none;">
-            <input type="radio" value="{{$file_datafile_right}}" name="file_datafile_right" checked style="display: none;">
-            <input type="radio" value="{{$file_descfile_right}}" name="file_descfile_right" checked style="display: none;">
-            <input type="radio" value="{{$omics_left}}" name="omics_left" checked style="display: none;">
-            <input type="radio" value="{{$omics_right}}" name="omics_right" checked style="display: none;">
-            <input type="radio" value="{{$delodd}}" name="delodd" checked style="display: none;">
-            <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
+            <div class="col-md-12" style="display: none;">
+                <input type="radio" value="{{$file_datafile_left}}" name="file_datafile_left" checked style="display: none;">
+                <input type="radio" value="{{$file_descfile_left}}" name="file_descfile_left" checked style="display: none;">
+                <input type="radio" value="{{$file_datafile_right}}" name="file_datafile_right" checked style="display: none;">
+                <input type="radio" value="{{$file_descfile_right}}" name="file_descfile_right" checked style="display: none;">
+                <input type="radio" value="{{$omics_left}}" name="omics_left" checked style="display: none;">
+                <input type="radio" value="{{$omics_right}}" name="omics_right" checked style="display: none;">
+                <input type="radio" value="{{$delodd}}" name="delodd" checked style="display: none;">
+                <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
+            </div>
             
             <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
                 <div class="col-md-3">
@@ -161,7 +163,7 @@
             document.getElementById("canshu1").style.display="none";
             document.getElementById("canshu2").style.display="block";
             document.getElementById("canshu3").style.display="none";        }
-        if (name == "DBSCAN") {
+        if (name == "MCL") {
             document.getElementById("canshu1").style.display="none";
             document.getElementById("canshu2").style.display="none";
             document.getElementById("canshu3").style.display="block";
