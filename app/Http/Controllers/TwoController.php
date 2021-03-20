@@ -89,6 +89,10 @@ class TwoController extends Controller
         $s = $request->s;#自己设的值
         $g = $request->g;#列
         $k = $request->k;#行
+        $b = $request->b;
+        $c = $request->c;
+        $f = $request->f;
+        $p = $request->p;
 
 
         #t和u的设置
@@ -97,17 +101,33 @@ class TwoController extends Controller
             $t['Transcriptomics'] = 'MiAr';
         }
         #输出文件位置
-        $outpath = 'mutil/' . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/';
-        is_dir($outpath) or mkdir($outpath, 0777, true);
 
         #执行程序 
         #$command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANLipidMediator_imm_forcor.CSV" -d "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList_lipmid.csv" -t "Metabolites" -l F -m 0.67 -j "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANgene_tidy.CSV" -e "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList.CSV" -u "RNAseq" -g 6 -k 4 -n F -s 0.4 -o "' . $outpath . '"';
+        #ns的组合
         if ($n) {
-            $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -m '.$m.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -g '.$g.' -k '.$k.' -n F -s '.$s.' -o "' . $outpath . '"';
-            # code...
+            $ns=' -n F -s '.$s;
         }else{
-            $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -m '.$m.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -g '.$g.' -k '.$k.' -n T -o "' . $outpath . '"';
+            $ns=' -n T';
         }
+        #不同聚类的命令，对应的参数，不同的输出路径
+        if ($b == "hierarchical" || $b == "k_means") {
+            $keycanshu=$m . $ns . $g . $k . '/';
+            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshue;
+        }
+        if ($b == "DBSCAN") {
+            $keycanshu=$m . $ns . $c . $f . '/';
+            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshue;
+        }
+        if ($b == "MCL") {
+            $keycanshu=$m . $ns . $p . '/';
+            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshue;
+        }
+
+        is_dir($outpath) or mkdir($outpath, 0777, true);
+
+        $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -m '.$m.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -p '.$p.$ns.' -o "' . $outpath . '" -b "'.$b.'"';
+
         
         
         if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
@@ -292,37 +312,91 @@ class TwoController extends Controller
     {
         $example = $request->exampleomics;
         if ($example == "Example1") {
-            $outpath = 'mutil/example1'.md5("HANLipidMediator_imm_forcor.CSVHANsampleList_lipmid.csvHANsampleList.CSV").'/';
-            is_dir($outpath) or mkdir($outpath, 0777, true);
-            $omics1="Metabolomics";
-            $omics2="Transcriptomics";
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANLipidMediator_imm_forcor.CSV" -d "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList_lipmid.csv" -t "Metabolites" -l F -m 0.67 -j "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANgene_tidy.CSV" -e "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList.CSV" -u "RNAseq" -g 6 -k 4 -n F -s 0.4 -o "' . $outpath . '"';
-            return view('canshutwo', ['t' => '设置参数', 'l' => "F", 'm' => "0.67", 'u' => "RNAseq", 'g' => "6", 'k' => "4", 'n' => "F", 's' => "0.4", 'outpath' => $outpath, 'command' => $command, 'omics1' => $omics1, 'omics2' => $omics2,'c' => '4','f' => '3','p' => '0.55']);
+            #命令
+            #Rscript correlation_main.R -i "./branch/benchmark/input/HANLipidMediator_imm_forcor.CSV" -d "./branch/benchmark/input/HANsampleList_lipmid.csv" -t "Metabolites" -l F -m 0.67 -j "./branch/benchmark/input/HANgene_tidy.CSV" -e "./branch/benchmark/input/HANsampleList.CSV" -u "RNAseq" -g 6 -k 4 -n F -s 0.4 -o "~/temp/cor_hi/" -b "hierarchical" 
+            #改成路径+文件名
+            $file_datafile_left  = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANLipidMediator_imm_forcor.CSV' ; 
+            $file_descfile_left  = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList_lipmid.csv' ; 
+            $file_datafile_right = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANgene_tidy.CSV' ; 
+            $file_descfile_right = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList.CSV' ;
+            $delodd = 'F';
+            $data_type = '';
+            $n = 'F'; 
+            $s = '0.4'; 
+            $g = 6; 
+            $k = 4; 
+            $b = "hierarchical" ; 
+            $c = 6; 
+            $f = 4; 
+            $p = 0.55; 
+            $omics_left="Metabolomics";
+            $omics_right="Transcriptomics";
         }
         if ($example == "Example2") {
-            $outpath = 'mutil/example2'.md5("lipids.csvRNAseq_genesymbol.csvsampleList.csv").'/';
-            is_dir($outpath) or mkdir($outpath, 0777, true);
-            $omics1="Lipidomics";
-            $omics2="Transcriptomics";
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/lipids.csv" -d "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv" -t "Lipids" -l T -m 0.67 -j "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv" -e "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv" -u "RNAseq" -g 7 -k 6 -n T -o "' . $outpath . '"';
-            return view('canshutwo', ['t' => '设置参数', 'l' => "T", 'm' => "0.67", 'u' => "RNAseq", 'g' => "7", 'k' => "6", 'n' => "T", 'outpath' => $outpath, 'command' => $command, 'omics1' => $omics1, 'omics2' => $omics2,'c' => '4','f' => '3','p' => '0.55']);
+            #命令
+            #Rscript correlation_main.R -i "./testData/SVFmultiomics_210118/input/lipids.csv" -d "./testData/SVFmultiomics_210118/input/sampleList.csv" -t "Lipids" -l T -m 0.67 -j "./testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv" -e "./testData/SVFmultiomics_210118/input/sampleList.csv" -u "RNAseq" -g 7 -k 6 -n T -o "~/temp/cor_kmeans/" -b "k_means"
+            #改成路径+文件名
+            $file_datafile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/lipids.csv'  ;
+            $file_descfile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv'  ;
+            $file_datafile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv'  ;
+            $file_descfile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv' ;
+            $delodd = "T";
+            $data_type = '';
+            $n =  'T';
+            $s =  '';
+            $g =  7;
+            $k =  6;
+            $b =  "k_means";
+            $c =  7;
+            $f =  6;
+            $p =  0.55;
+            $omics_left="Lipidomics";
+            $omics_right="Transcriptomics";
         }
         if ($example == "Example3") {
-            $outpath = 'mutil/example3'.md5("metabolites.csvRNAseq_genesymbol.csvsampleList.csv").'/';
-            is_dir($outpath) or mkdir($outpath, 0777, true);
-            $omics1="Metabolomics";
-            $omics2="Transcriptomics";
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/metabolites.csv" -d "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv" -t "Metabolites" -m 0.67 -j "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv" -e "/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv" -u "RNAseq" -g 7 -k 6 -n T -o "' . $outpath . '"';
-            return view('canshutwo', ['t' => '设置参数', 'l' => "F", 'm' => "0.67", 'u' => "RNAseq", 'g' => "7", 'k' => "6", 'n' => "T", 'outpath' => $outpath, 'command' => $command, 'omics1' => $omics1, 'omics2' => $omics2,'c' => '4','f' => '3','p' => '0.55']);
+            #命令
+            #Rscript correlation_main.R -i "./testData/SVFmultiomics_210118/input/metabolites.csv" -d "./testData/SVFmultiomics_210118/input/sampleList.csv" -t "Metabolites" -m 0.67 -j "./testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv" -e "./testData/SVFmultiomics_210118/input/sampleList.csv" -u "RNAseq" -c 4 -f 3 -n T -o "~/temp/cor_db/" -b "DBSCAN"
+            #改成路径+文件名
+            $file_datafile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/metabolites.csv'  ;
+            $file_descfile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv'  ;
+            $file_datafile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv'  ;
+            $file_descfile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv' ;
+            $delodd = '';
+            $data_type = '';
+            $n =  'T';
+            $s =  '';
+            $g =  4;
+            $k =  3;
+            $b =  "DBSCAN";
+            $c =  4;
+            $f =  3;
+            $p =  0.55;
+            $omics_left="Metabolomics";
+            $omics_right="Transcriptomics";
         }
         if ($example == "Example4") {
-            $outpath = 'mutil/example4'.md5("metabolites_tidy2.csvproteins_Depletion_tidy.csvsampleList_lip.csv").'/';
-            is_dir($outpath) or mkdir($outpath, 0777, true);
-            $omics1="Metabolomics";
-            $omics2="Proteomics";
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/metabolites_tidy2.csv" -d "/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -t "Metabolites" -m 0.67 -j "/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv" -e "/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -u "Proteins" -g 7 -k 6 -n F -s 0.82 -o "' . $outpath . '"';
-            return view('canshutwo', ['t' => '设置参数', 'l' => "F", 'm' => "0.67", 'u' => "Proteins", 'g' => "7", 'k' => "6", 'n' => "F", 's' => "0.82", 'outpath' => $outpath, 'command' => $command, 'omics1' => $omics1, 'omics2' => $omics2,'c' => '4','f' => '3','p' => '0.55']);
+            #命令
+            #Rscript correlation_main.R -i "./testData/CerebrospinalFluid_multiomics/input/metabolites_tidy2.csv" -d "./testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -t "Metabolites" -m 0.67 -j "./testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv" -e "./testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -u "Proteins" -p 0.55 -n F -s 0.82 -o "~/temp/cor_mcl/" -b "MCL" 
+            #改成路径+文件名
+            $file_datafile_left  = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/metabolites_tidy2.csv'  ;
+            $file_descfile_left  = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv'  ;
+            $file_datafile_right = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv'  ;
+            $file_descfile_right = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv' ;
+            $delodd = '';
+            $data_type = '';
+            $n =  'F';
+            $s =  0.82;
+            $g =  4;
+            $k =  3;
+            $b =  "MCL";
+            $c =  4;
+            $f =  3;
+            $p =  0.55;
+            $omics_left="Metabolomics";
+            $omics_right="Proteomics";
         }
+        return view('canshutwotwo', ['file_datafile_left' => $file_datafile_left,'file_descfile_left' => $file_descfile_left,'file_datafile_right' => $file_datafile_right,'file_descfile_right' => $file_descfile_right,'omics_left' => $omics_left,'omics_right' => $omics_right,'delodd' => $delodd,'data_type' => $data_type,'m' => '0.67','g' => $g,'k' => $k,'s' => $s,'c' => $c,'f' => $f,'p' => $p]);
+
     }
 
     public function upload(Request $request)
