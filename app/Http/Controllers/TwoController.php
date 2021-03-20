@@ -316,10 +316,10 @@ class TwoController extends Controller
             #命令
             #Rscript correlation_main.R -i "./branch/benchmark/input/HANLipidMediator_imm_forcor.CSV" -d "./branch/benchmark/input/HANsampleList_lipmid.csv" -t "Metabolites" -l F -m 0.67 -j "./branch/benchmark/input/HANgene_tidy.CSV" -e "./branch/benchmark/input/HANsampleList.CSV" -u "RNAseq" -g 6 -k 4 -n F -s 0.4 -o "~/temp/cor_hi/" -b "hierarchical" 
             #改成路径+文件名
-            $file_datafile_left  = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANLipidMediator_imm_forcor.CSV' ; 
-            $file_descfile_left  = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList_lipmid.csv' ; 
-            $file_datafile_right = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANgene_tidy.CSV' ; 
-            $file_descfile_right = '/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList.CSV' ;
+            $file_datafile_left  = 'program/branch/benchmark/input/HANLipidMediator_imm_forcor.CSV' ; 
+            $file_descfile_left  = 'program/branch/benchmark/input/HANsampleList_lipmid.csv' ; 
+            $file_datafile_right = 'program/branch/benchmark/input/HANgene_tidy.CSV' ; 
+            $file_descfile_right = 'program/branch/benchmark/input/HANsampleList.CSV' ;
             $delodd = 'F';
             $data_type = '';
             $n = 'F'; 
@@ -337,10 +337,10 @@ class TwoController extends Controller
             #命令
             #Rscript correlation_main.R -i "./testData/SVFmultiomics_210118/input/lipids.csv" -d "./testData/SVFmultiomics_210118/input/sampleList.csv" -t "Lipids" -l T -m 0.67 -j "./testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv" -e "./testData/SVFmultiomics_210118/input/sampleList.csv" -u "RNAseq" -g 7 -k 6 -n T -o "~/temp/cor_kmeans/" -b "k_means"
             #改成路径+文件名
-            $file_datafile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/lipids.csv'  ;
-            $file_descfile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv'  ;
-            $file_datafile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv'  ;
-            $file_descfile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv' ;
+            $file_datafile_left  = 'program/testData/SVFmultiomics_210118/input/lipids.csv'  ;
+            $file_descfile_left  = 'program/testData/SVFmultiomics_210118/input/sampleList.csv'  ;
+            $file_datafile_right = 'program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv'  ;
+            $file_descfile_right = 'program/testData/SVFmultiomics_210118/input/sampleList.csv' ;
             $delodd = "T";
             $data_type = '';
             $n =  'T';
@@ -358,10 +358,10 @@ class TwoController extends Controller
             #命令
             #Rscript correlation_main.R -i "./testData/SVFmultiomics_210118/input/metabolites.csv" -d "./testData/SVFmultiomics_210118/input/sampleList.csv" -t "Metabolites" -m 0.67 -j "./testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv" -e "./testData/SVFmultiomics_210118/input/sampleList.csv" -u "RNAseq" -c 4 -f 3 -n T -o "~/temp/cor_db/" -b "DBSCAN"
             #改成路径+文件名
-            $file_datafile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/metabolites.csv'  ;
-            $file_descfile_left  = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv'  ;
-            $file_datafile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv'  ;
-            $file_descfile_right = '/home/zhangqb/tttt/public/program/testData/SVFmultiomics_210118/input/sampleList.csv' ;
+            $file_datafile_left  = 'program/testData/SVFmultiomics_210118/input/metabolites.csv'  ;
+            $file_descfile_left  = 'program/testData/SVFmultiomics_210118/input/sampleList.csv'  ;
+            $file_datafile_right = 'program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv'  ;
+            $file_descfile_right = 'program/testData/SVFmultiomics_210118/input/sampleList.csv' ;
             $delodd = '';
             $data_type = '';
             $n =  'T';
@@ -379,10 +379,10 @@ class TwoController extends Controller
             #命令
             #Rscript correlation_main.R -i "./testData/CerebrospinalFluid_multiomics/input/metabolites_tidy2.csv" -d "./testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -t "Metabolites" -m 0.67 -j "./testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv" -e "./testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv" -u "Proteins" -p 0.55 -n F -s 0.82 -o "~/temp/cor_mcl/" -b "MCL" 
             #改成路径+文件名
-            $file_datafile_left  = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/metabolites_tidy2.csv'  ;
-            $file_descfile_left  = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv'  ;
-            $file_datafile_right = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv'  ;
-            $file_descfile_right = '/home/zhangqb/tttt/public/program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv' ;
+            $file_datafile_left  = 'program/testData/CerebrospinalFluid_multiomics/input/metabolites_tidy2.csv'  ;
+            $file_descfile_left  = 'program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv'  ;
+            $file_datafile_right = 'program/testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv'  ;
+            $file_descfile_right = 'program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv' ;
             $delodd = '';
             $data_type = '';
             $n =  'F';
