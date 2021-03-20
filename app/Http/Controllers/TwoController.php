@@ -112,21 +112,22 @@ class TwoController extends Controller
         }
         #不同聚类的命令，对应的参数，不同的输出路径
         if ($b == "hierarchical" || $b == "k_means") {
-            $keycanshu=$m . $ns . $g . $k . '/';
-            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshu;
+            $keycanshudir=$m . $n . $s . $g . $k . '/';
+            $keycanshu= ' -m '. $m . $ns . ' -g ' . $g . ' -k ' . $k;
         }
         if ($b == "DBSCAN") {
-            $keycanshu=$m . $ns . $c . $f . '/';
-            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshu;
+            $keycanshudir=$m . $n . $s . $c . $f . '/';
+            $keycanshu= ' -m '. $m . $ns . ' -c ' . $c . ' -f ' . $f;
         }
         if ($b == "MCL") {
-            $keycanshu=$m . $ns . $p . '/';
-            $outpath = 'mutil/' . $b . $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $keycanshu;
+            $keycanshudir=$m . $n . $s . $p . '/';
+            $keycanshu= ' -m '. $m . $ns . ' -p ' . $p;
         }
 
+        $outpath = 'mutil/'. $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $b  . $keycanshudir;
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
-        $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -m '.$m.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -p '.$p.$ns.' -o "' . $outpath . '" -b "'.$b.'"';
+        $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2]. $keycanshu.' -o "' . $outpath . '" -b "'.$b.'"';
 
         
         
