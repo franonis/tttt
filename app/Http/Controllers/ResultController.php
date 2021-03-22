@@ -79,7 +79,6 @@ class ResultController extends Controller
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-            $keycanshudir=
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $outpath . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 exec($command, $ooout, $flag);
