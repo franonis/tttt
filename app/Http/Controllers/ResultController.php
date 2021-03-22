@@ -30,9 +30,9 @@ class ResultController extends Controller
                 $outpath=$outpath.$key;
             }
         }
-
+        $outpath =$outpath.$naperent."/";
         is_dir($outpath) or mkdir($outpath, 0777, true);#该样本底下各个小输出
-        $outpath =$outpath."/";
+        
         $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
         if (!array_key_exists($control, $subgroup) ) {
             fwrite($subgroupfile, $control . "\n");
@@ -73,12 +73,13 @@ class ResultController extends Controller
             }
         } else {
             $delodd = $request->delodd;
-            $command = '/home/new/R-3.6.3/bin/Rscript subgroupsSel.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -s "/home/zhangqb/tttt/public/' . $tmpout . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/subgroupsSel.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -s "/home/zhangqb/tttt/public/' . $tmpout . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             exec($command, $ooout, $flag);
             #dd($ooout);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
+            $keycanshudir=
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $outpath . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 exec($command, $ooout, $flag);
