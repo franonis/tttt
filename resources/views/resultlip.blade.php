@@ -319,7 +319,7 @@
                                                   <div carousel-item="">
                                                     @foreach($fapng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -450,8 +450,8 @@
     
           carousel.render({
             elem: '#test2',
-            width: '100%',
-            height: '100%'
+            //width: '100%',
+            //height: '100%'
           });
         });
 
