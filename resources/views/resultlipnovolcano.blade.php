@@ -130,7 +130,7 @@
                                     <div class="col-md-10" style="border:1px dashed #000;">
                                         <div class="col-md-12">
                                             @foreach($downloadfilename["headgroup"] as $k=>$i )
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
                                                 </div>
                                             @endforeach
@@ -161,6 +161,12 @@
                                             <div class="layui-colla-content">
                                                 <a href="{{ url('download/file/')}}/{{ $downloadpath }}headgroup++headgroupcum_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download this picture</a>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                            </div>
+                                          </div>
+                                          <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Heatmap</h2>
+                                            <div class="layui-colla-content">
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                         </div>
@@ -209,16 +215,47 @@
                                     </div>
                                 </form>
                                     <div class="col-md-2">
+                                        <h4>Download</h4>
+                                    </div>
+                                    <div class="col-md-10" style="border:1px dashed #000;">
+                                        <div class="col-md-12">
+                                            @foreach($downloadfilename["FAchainVisual"] as $k=>$i )
+                                                <div class="col-md-6">
+                                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}++FAchainVisual++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
                                         <h4>Lipid Fatty acid Statisics</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="layui-carousel" id="test2" lay-filter="test2">
-                                          <div carousel-item="">
-                                            @foreach($fapng as $k=>$i )
-                                                <div>
-                                                    <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" data-holder-rendered="true">
+                                        <div class="layui-collapse">
+                                          <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Grid plot</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
+                                            </div>
+                                          </div>
+                                          <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Heatmap</h2>
+                                            <div class="layui-colla-content">
+                                                <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
+                                            </div>
+                                          </div>
+                                          <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">Box plot</h2>
+                                            <div class="layui-colla-content">
+                                                <div class="layui-carousel" id="test2" lay-filter="test2">
+                                                  <div carousel-item="">
+                                                    @foreach($fapng as $k=>$i )
+                                                        <div>
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                        </div>
+                                                    @endforeach
+                                                  </div>
                                                 </div>
-                                            @endforeach
+                                            </div>
                                           </div>
                                         </div>
                                     </div>
