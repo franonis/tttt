@@ -204,7 +204,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <h4>Set fc_thresh</h4>
+                                            <h4>Set fc_thresh：</h4>
                                         </div>
                                         <div class="col-md-10">
                                             <small>
@@ -212,20 +212,20 @@
                                             </small>
                                         </div>
                                         <div class="col-md-2">
-                                            <h4>Set p_thresh</h4>
+                                            <h4>Set p_thresh：</h4>
                                         </div>
                                         <div class="col-md-10">
                                             <small>
                                             <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label">Set top number：</label>
-                                                <div class="layui-input-block" id="s">
-                                                  <input id="s" type="text" name="s" value="{{ $s }}" style="width:50px; display:inline;" class="form-control" >
-                                                </div>
-                                            </div>
+                                        <div class="col-md-2">
+                                            <h4>Set top number：</h4>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <small>
+                                            <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
+                                            </small>
                                         </div>
                                         <div class="col-md-3">
                                             <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>

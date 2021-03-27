@@ -391,7 +391,6 @@
                                     <h4>LION enrichment result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                </div>
                                 <div class="col-md-2">
                                     <h4>Up</h4>
                                 </div>
@@ -403,6 +402,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down_LION_enrichment-plot.png" style="height:50%;width: 60%;">
+                                </div>
                                 </div>
                             </div>
                     </div>
