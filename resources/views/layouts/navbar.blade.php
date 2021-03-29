@@ -28,6 +28,9 @@
         <li id="help" class="dropdown {{ ( preg_match('/help/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('help') }}">Help </a>
         </li>
+        <li id="help" class="dropdown {{ ( preg_match('/help/', Request::path()) ) ? ' active':'' }}">
+          <a href="{{ url('help') }}">Download </a>
+        </li>
         <li id="faq" class="dropdown {{ ( preg_match('/faq/', Request::path()) ) ? ' active':'' }}">
           <a href="{{ url('faq') }}">FAQ </a>
         </li>
