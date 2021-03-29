@@ -23,7 +23,13 @@
             
             <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
                 <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%; background-color: #FFFFFF;"> 
-                    <p>please choose one control group</p><br>
+                    <p>BLAST all-vs-all (HSP)</p><br>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+
+                        </div>
+                    </div>
+                    <p>Machine learning</p><br>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
 
@@ -31,7 +37,13 @@
                     </div>
                 </div>
                 <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
-                    <p>please choose the group(s)</p><br>
+                    <p>muti-kmer colored De bruijn graph</p><br>
+                    <div class="layui-form-item" id="subgroup">
+                        <div class="layui-input-block">
+
+                        </div>
+                    </div>
+                    <p>Deep Learning</p><br>
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
 
@@ -42,7 +54,7 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
                 <div class="col-md-4">
-                    <h4 style="margin-top: 2%;">Set the precent to delete the missing column</h4>
+                    <h4 style="margin-top: 2%;">Set Number of snp</h4>
                 </div>
                 <div class="col-md-1">
                     <small>
