@@ -306,8 +306,8 @@
 
             carousel.render({
             elem: '#test1',
-            width: '635px',
-            height: '684px'
+            width: '100%',
+            height: '100%'
           });
     
           carousel.render({

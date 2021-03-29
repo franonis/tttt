@@ -342,26 +342,26 @@
                                     <div class="col-md-10">
                                         <div class="col-md-12">
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label">Choose species：</label>
-                                                <div class="layui-input-block" id="t">
+                                                <label class="layui-form-label">Analysis data by: </label>
+                                                <div class="layui-input-block" id="t_enrich">
                                                   <input type="radio" name="t_enrich" value="target_list" title="target_list" checked="">
                                                   <input type="radio" name="t_enrich" value="ranking" title="ranking">
                                                 </div>
                                             </div>
                                         </div>
                                         <div  class="col-md-12" id="target_list"  style="display: block;">
-                                            <div class="col-md-2">
-                                                <h4>Set FC thresh</h4>
+                                            <div class="col-md-3">
+                                                <h4>Set FC thresh: </h4>
                                             </div>
-                                            <div class="col-md-10">
+                                            <div class="col-md-9">
                                                 <small>
                                                 <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                                 </small>
+                                            </div><br>
+                                            <div class="col-md-3">
+                                                <h4>Set p thresh: </h4>
                                             </div>
-                                            <div class="col-md-2">
-                                                <h4>Set p thresh</h4>
-                                            </div>
-                                            <div class="col-md-10">
+                                            <div class="col-md-9">
                                                 <small>
                                                 <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                                 </small>
@@ -370,9 +370,9 @@
                                         <div  class="col-md-12" id="ranking"  style="display: block;">
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">Analytical statistic：</label>
-                                                <div class="layui-input-block" id="t">
-                                                  <input type="radio" name="t_enrich" value="p_value" title="p_value" checked="">
-                                                  <input type="radio" name="t_enrich" value="log2FC" title="log2FC">
+                                                <div class="layui-input-block" id="l">
+                                                  <input type="radio" name="l" value="p_value" title="p_value" checked="">
+                                                  <input type="radio" name="l" value="log2FC" title="log2FC">
                                                 </div>
                                             </div>
                                         </div>
@@ -456,6 +456,19 @@
         });
 
     });
+
+    $("#t_enrich").click(function (){
+        name =$("input[name='t_enrich']:checked").val();
+        if (name == "target_list") {
+          document.getElementById("target_list").style.display="block";
+          document.getElementById("ranking").style.display="none";
+        }        
+        if (name == "ranking") {
+          document.getElementById("ranking").style.display="block";
+          document.getElementById("target_list").style.display="none";
+        }
+        console.log(name);
+   });
 
 </script>
 @endsection

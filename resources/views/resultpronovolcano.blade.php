@@ -138,7 +138,6 @@ layui.use('upload', function(){
 </script>
 <script>
     $(document).ready(function(){
-        changetheprogram();
         layui.use('form', function(){
           var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
@@ -180,38 +179,5 @@ layui.use('upload', function(){
         });
 
     });
-
-    function changetheprogram() {
-        query_type = $("input[name='query_type']:checked").val();
-        subject_type = $("input[name='subject_type']:checked").val();
-        if (query_type == 'dna') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=blastn>BLASTN</option>");
-                $("#program").append("<option value=tblastx>TBLASTX</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastx>BLASTX</option>");
-            }
-        }else if (query_type == 'protein') {
-            if (subject_type == 'dna') {
-                $("#program").html("<option value=tblastn>TBLASTN</option>");
-            }else if (subject_type == 'protein') {
-                $("#program").html("<option value=blastp>BLASTP</option>");
-            }
-        }
-        $("#program").trigger("change");
-    }
-
-
-    $("input:radio").change(function (){
-            changetheprogram();
-        });
-
-
-    $('#blastform').submit(function(e) {
-        if($('#seq').val() == ''){
-            layer.msg('Sequence is empty!');
-            e.preventDefault();
-        }
-    })
 </script>
 @endsection
