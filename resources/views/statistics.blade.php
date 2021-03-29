@@ -53,15 +53,38 @@
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <h4 style="margin-top: 2%;">Set Coverage</h4>
+                </div>
+                <div class="col-md-1">
+                    <small>
+                        <input type="text" name="naperent" lay-verify="required" placeholder="70" value="70" class="layui-input">
+                    </small>
+                </div>
+                <div class="layui-form-mid layui-word-aux">%</div><br>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <h4 style="margin-top: 2%;">Set identity</h4>
+                </div>
+                <div class="col-md-1">
+                    <small>
+                        <input type="text" name="naperent" lay-verify="required" placeholder="99" value="99" class="layui-input">
+                    </small>
+                <div class="layui-form-mid layui-word-aux">%</div><br>
+                </div>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-3">
                     <h4 style="margin-top: 2%;">Set Number of snp</h4>
                 </div>
                 <div class="col-md-1">
                     <small>
-                        <input type="text" name="naperent" lay-verify="required" placeholder="80" value="80" class="layui-input">
+                        <input type="text" name="naperent" lay-verify="required" placeholder="1" value="1" class="layui-input">
                     </small>
                 </div>
-                <div class="layui-form-mid layui-word-aux">%</div><br>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
