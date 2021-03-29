@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
-                    <p>muti-kmer colored De bruijn graph</p><br>
+                    <p>Muti-kmer colored de Bruijn graph</p><br>
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
 
