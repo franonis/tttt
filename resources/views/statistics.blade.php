@@ -97,7 +97,7 @@
 </div>
 @endsection
 @section('footer')
-  @include('partials.footer')
+  @include('layouts.footer')
 @endsection
 @section('js')
 <script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') " ></script>
