@@ -1,124 +1,87 @@
 @extends('layouts.app')
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset('/layui/dist/css/layui.css') }}"  media="all">
-@endsection
 
+@endsection
 @section('navbar')
-  @include('partials.navbar')
+  @include('layouts.navbar')
 @endsection
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<div class="container content">
+    <div class="row">
+        <p>Upload your data /<a style="font-size: 200%;"> Set Parameters</a> / AS detectional Results / choose model / Predictional Results</p>
+        <hr>
+        @include('partials.errors')
 
-<link rel='stylesheet' id='hca-stylesheet-css'  href="{{ asset('/css/global.css') }}" type='text/css' media='all' />
-
-</head>
-
-  <div class="site-content">
-        <div style="padding: 20px; background-color: #F2F2F2;">
-                      <div class="layui-row layui-col-space15">
-                        <div class="layui-col-md6">
-                          <div class="layui-card">
-                            <div class="layui-card-header">single omics analysis</div>
-                            <div class="layui-card-body">
-                              something introduce single omics analysis<br>
-                              <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
-                            </div>
-                          </div>
+        <form id="blastform" action="/result/set"> 
+            {{ csrf_field() }}
+            <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
+            <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
+            <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
+            <input type="radio" value="{{$delodd}}" name="delodd" checked style="display: none;">
+            <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
+            
+            <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
+                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%; background-color: #FFFFFF;"> 
+                    <p>please choose one control group</p><br>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input  type="radio" value="{{$i}}" name="control" checked> <label>{{$i}}</label><br>
+                            @endforeach
                         </div>
-                        <div class="layui-col-md6">
-                          <div class="layui-card">
-                            <div class="layui-card-header">intro omics analysis</div>
-                            <div class="layui-card-body">
-                              something introduce single omics analysis<br>
-                              <a href="/intro" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-
-        <section class="headintro">
-            <div class="splitback">
-                <div class="main">
-                    <div class="img"></div>
-                    <span class="over"><img src="{{ asset('images/welcome/bg.png') }}" style="height:120%"></span>
-                    <br><a href="#two">&#8595;&#8595;&#8595;</a><br>
                 </div>
-                <div class="second"></div>
-            </div>
-            <div class="content-fp">
-                <span class="vcenr"></span>
-                <div class="vcenc">
-                    <div class="col-md-12">
-                    <div style="padding: 20px; background-color: #F2F2F2;">
-                      <div class="layui-row layui-col-space15">
-                        <div class="layui-col-md6">
-                          <div class="layui-card">
-                            <div class="layui-card-header">single omics analysis</div>
-                            <div class="layui-card-body">
-                              something introduce single omics analysis<br>
-                              <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
-                            </div>
-                          </div>
+                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
+                    <p>please choose the group(s)</p><br>
+                    <div class="layui-form-item" id="subgroup">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input type="checkbox" name="subgroup[{{$i}}]" checked=""><label>{{$i}}</label><br>
+                            @endforeach
                         </div>
-                        <div class="layui-col-md6">
-                          <div class="layui-card">
-                            <div class="layui-card-header">intro omics analysis</div>
-                            <div class="layui-card-body">
-                              something introduce single omics analysis<br>
-                              <a href="/intro" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    </div> 
                 </div>
-            </div>
-        </section>
-
-        <div class="container">
-        <div class="grid-wrapper">
-            <div class="grid-item-6">
-            <blockquote class="fp-offset">
-                <div class="quote">
-                    <p>The most important this about this website. the most important this about this website. the most important this about this website. the most important this about this website. </p>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <h4 style="margin-top: 2%;">Set the precent to delete the missing column</h4>
                 </div>
-            </blockquote>
-        </div>
-        <div class="grid-item-6">
-            <h1>ABOUT LINT </h1>
-            <div id="intro" class="intro">
-                <p class="p1">something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. </p>
-                <p class="p1">something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. something about this website. </p>
-
+                <div class="col-md-1">
+                    <small>
+                        <input type="text" name="naperent" lay-verify="required" placeholder="80" value="80" class="layui-input">
+                    </small>
+                </div>
+                <div class="layui-form-mid layui-word-aux">%</div><br>
+            </div><br>
+            <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
+            <div class="col-md-12 text-center">
+                <br>
+                <button id="submit" class="layui-btn" type="submit" onclick="MsgBox()">RUN</button>
             </div>
-        </div>
-        </div>
-        </div>
 
-</html>
+        </form>
+    </div>
+</div>
 @endsection
-
 @section('footer')
   @include('partials.footer')
 @endsection
 @section('js')
-<script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
+<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
+<script href="{{ asset('/layer/layer.js') }}"></script>
+
 <script>
-layui.use(['element', 'layer'], function(){
-  var element = layui.element;
-  var layer = layui.layer;
-  
-  //监听折叠
-  element.on('collapse(test)', function(data){
-    layer.msg('展开状态：'+ data.show);
-  });
-});
+    $(document).ready(function(){
+        layui.use('form', function(){
+          var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        });
+    });
+    function MsgBox() //声明标识符
+    {
+        alert("it will take about one minute, don`t close this page"); //弹出对话框
+    };
+
 </script>
-
-
-
 @endsection

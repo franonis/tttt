@@ -40,6 +40,9 @@ Route::get('/about', function () {
 Route::get('/disease', function () {
     return view('disease');
 });
+Route::get('/tmp', function () {
+    return view('statistics');
+});
 Route::get('/searchdisease', [BabaController::class, 'searchdisease']);
 Route::get('/diseasetable/f{name}', [BabaController::class, 'diseasetable']);
 
