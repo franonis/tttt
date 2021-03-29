@@ -15,20 +15,18 @@
 
         <form id="blastform" action="/result/set"> 
             {{ csrf_field() }}
-            <input type="radio" value="{{$omics}}" name="omics" checked style="display: none;">
-            <input type="radio" value="{{$file_data}}" name="file_data" checked style="display: none;">
-            <input type="radio" value="{{$file_desc}}" name="file_desc" checked style="display: none;">
-            <input type="radio" value="{{$delodd}}" name="delodd" checked style="display: none;">
-            <input type="radio" value="{{$data_type}}" name="data_type" checked style="display: none;">
+            <input type="radio" value="omics" name="omics" checked style="display: none;">
+            <input type="radio" value="file_data" name="file_data" checked style="display: none;">
+            <input type="radio" value="file_desc" name="file_desc" checked style="display: none;">
+            <input type="radio" value="delodd" name="delodd" checked style="display: none;">
+            <input type="radio" value="data_type" name="data_type" checked style="display: none;">
             
             <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
                 <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%; background-color: #FFFFFF;"> 
                     <p>please choose one control group</p><br>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            @foreach($groupsLevels as $k=>$i )
-                                <input  type="radio" value="{{$i}}" name="control" checked> <label>{{$i}}</label><br>
-                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -36,9 +34,7 @@
                     <p>please choose the group(s)</p><br>
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
-                            @foreach($groupsLevels as $k=>$i )
-                                <input type="checkbox" name="subgroup[{{$i}}]" checked=""><label>{{$i}}</label><br>
-                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -69,8 +65,8 @@
   @include('partials.footer')
 @endsection
 @section('js')
-<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
-<script href="{{ asset('/layer/layer.js') }}"></script>
+<script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') " ></script>
+<script href="{{ asset('/layer/layer.js') "></script>
 
 <script>
     $(document).ready(function(){
