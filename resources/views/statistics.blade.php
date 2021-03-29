@@ -72,8 +72,8 @@
                     <small>
                         <input type="text" name="naperent" lay-verify="required" placeholder="99" value="99" class="layui-input">
                     </small>
-                <div class="layui-form-mid layui-word-aux">%</div><br>
                 </div>
+                <div class="layui-form-mid layui-word-aux">%</div><br>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
