@@ -78,9 +78,8 @@
                                 <input name="DEname" value="{{ $DEname }}" style="display: none;">
                                 <input name="path" value="{{ $path }}" style="display: none;">
                                 <input name="v" value="{{ $v }}" style="display: none;">
-                                <input name="t" value="{{ t }}" style="display: none;">
-                                <input name="g" value="{{ g }}" style="display: none;">
-                                <input name="c" value="{{ c }}" style="display: none;">
+                                <input name="g" value="{{ $g }}" style="display: none;">
+                                <input name="c" value="{{ $c }}" style="display: none;">
                                 <div class="col-md-2">
                                     <h4>Update with new parameters</h4>
                                 </div>

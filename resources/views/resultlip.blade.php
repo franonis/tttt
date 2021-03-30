@@ -20,8 +20,8 @@
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
                     <li>Volcano</li>
                     <li>Heatmap</li>
-                    <li>Lipid Class Statisitics</li>
-                    <li>Lipid Fatty acid Statisics</li>
+                    <li>Lipid Class statistics</li>
+                    <li>Lipid Fatty acid statistics</li> 
                     <li>LION enrichment</li>
                   </ul>
                   <div class="layui-tab-content">
@@ -177,7 +177,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item"><!--第一部分 4 Lipid Class Statisitics-->
+                    <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
@@ -206,7 +206,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <h4>Lipid Class Statisitics</h4>
+                                        <h4>Lipid Class statistics</h4>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="layui-collapse">
@@ -242,7 +242,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid Statisics-->
+                    <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipfa">
                                     <input name="path" value="{{ $path }}" style="display: none;">
@@ -296,7 +296,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <h4>Lipid Fatty acid Statisics</h4>
+                                        <h4>Lipid Fatty acid statistics</h4>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="layui-collapse">
