@@ -141,7 +141,6 @@
                                 <input name="f" value="{{ $f }}" style="display: none;">
                                 <input name="p" value="{{ $p }}" style="display: none;">
                                 <input name="u" value="{{ $u }}" style="display: none;">
-                                <input name="t" value="{{ $t }}" style="display: none;">
                                 <input name="g" value="{{ $g }}" style="display: none;">
                                 <input name="s" value="{{ $s }}" style="display: none;">
                                 <input name="c" value="{{ $c }}" style="display: none;">
@@ -190,7 +189,6 @@
                                     <input name="p" value="{{ $p }}" style="display: none;">
                                     <input name="u" value="{{ $u }}" style="display: none;">
                                     <input name="v" value="{{ $v }}" style="display: none;">
-                                    <input name="t" value="{{ $t }}" style="display: none;">
                                     <input name="g" value="{{ $g }}" style="display: none;">
                                     <input name="s" value="{{ $s }}" style="display: none;">
                                     <input name="c" value="{{ $c }}" style="display: none;">

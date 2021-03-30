@@ -16,7 +16,6 @@ class UpdateController extends Controller
         $p = $request->p;
         $u = $request->u;
         $v = $request->v;
-        $t = $request->t;
         $g = $request->g;
         $c = $request->c;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
@@ -33,20 +32,20 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-        $DEgeneStatistics = file_get_contents($outpath . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
-            $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $path.'results/');
+        $DEgeneStatistics = file_get_contents($path . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/up.png') ){
+            $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/up.png" style="height:50%;width: 60%;">';
         }else{
             $up='<p>No UP genes enriched! Try check your data!</p>';
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
-            $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/down.png') ){
+            $down='<img src="http://www.lintwebomics.info/' . $path . 'results/down.png" style="height:50%;width: 60%;">';
         }else{
             $down='<p>No DOWN genes enriched! Try check your data!</p>';
         }
         
-        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'up' => $up, 'down' => $down, 'omics' => $omics, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv', 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'up' => $up, 'down' => $down, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv', 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]);
     }
     public function updaternaHeatmap(Request $request)
     {
@@ -70,20 +69,20 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-        $DEgeneStatistics = file_get_contents($outpath . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
-            $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $path.'results/');
+        $DEgeneStatistics = file_get_contents($path . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/up.png') ){
+            $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/up.png" style="height:50%;width: 60%;">';
         }else{
             $up='<p>No UP genes enriched! Try check your data!</p>';
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
-            $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/down.png') ){
+            $down='<img src="http://www.lintwebomics.info/' . $path . 'results/down.png" style="height:50%;width: 60%;">';
         }else{
             $down='<p>No DOWN genes enriched! Try check your data!</p>';
         }
         
-        return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'up' => $up, 'down' => $down, 'omics' => $omics, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv', 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]);
+        return view('resultrna', ['title' => '上传数据', 'path' => $path, 'up' => $up, 'down' => $down, 'omics' => $omics, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv', 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]);
     }
 #, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $, '' => $
     public function updatelipVolcano(Request $request)
