@@ -382,7 +382,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}++lionenrichment">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++lionenrichment">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>LION enrichment result</h4>

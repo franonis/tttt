@@ -1,3 +1,3 @@
-git add app/Http/Controllers/TwoController.php
+git add ./*
 git commit -m "ds"
 git push

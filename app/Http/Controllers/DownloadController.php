@@ -21,6 +21,15 @@ class DownloadController extends Controller
         return response()->download(storage_path($file));
     }
 
+    public function zip($file)
+    {
+        #Event::fire(new FileDownload($file));
+        dd($file);
+        $file=preg_replace('/\+\+/', "/", $file);
+        #return view('202');
+        return response()->download(storage_path($file));
+    }
+
 
     public function dir($file)
     {

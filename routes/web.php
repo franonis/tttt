@@ -84,4 +84,5 @@ Route::post('/uploadfilemutil', [TwoController::class, 'upload']);
 Route::group(['prefix' => '/download'], function () {
     Route::get('/example/{filename}', [DownloadController::class, 'exampleFile']);
     Route::get('/file/{filename}', [DownloadController::class, 'file']);
+    Route::get('/zip/{filename}', [DownloadController::class, 'zip']);
 });
