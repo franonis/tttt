@@ -22,7 +22,6 @@
                     <li>Volcano Plot</li>
                     <li>Heatmap</li>
                     <li>GO enrichment</li>
-                    <li>Download</li>
                   </ul>
                   <div class="layui-tab-content">
                     <div class="layui-tab-item">
@@ -266,22 +265,7 @@
                                     {!! $down !!}
                                 </div>
                             </div>
-                        </div>
-                        <div class="layui-tab-item">
-                            <div class="col-md-12">
-                                <div class="col-md-2">
-                                    <h4>Download</h4>
-                                </div>
-                                <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12">
-                                        @foreach($downloadfilename as $k=>$i )
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    </div>
                 </div>
             </div>
         <hr>

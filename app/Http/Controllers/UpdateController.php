@@ -90,7 +90,6 @@ class UpdateController extends Controller
         $path = $request->path;
         $downloadpath = $request->downloadpath;
         $s = $request->s;
-        $b = $request->b;
         $x = $request->x;
         $j = $request->j;
         $k = $request->k;
@@ -122,7 +121,6 @@ class UpdateController extends Controller
         $path = $request->path;
         $downloadpath = $request->downloadpath;
         $s = $request->s;
-        $b = $request->b;
         $x = $request->x;
         $j = $request->j;
         $k = $request->k;
@@ -153,7 +151,6 @@ class UpdateController extends Controller
         $path = $request->path;
         $downloadpath = $request->downloadpath;
         $s = $request->s;
-        $b = $request->b;
         $x = $request->x;
         $j = $request->j;
         $k = $request->k;
@@ -186,7 +183,6 @@ class UpdateController extends Controller
         $path = $request->path;
         $downloadpath = $request->downloadpath;
         $s = $request->s;
-        $b = $request->b;
         $x = $request->x;
         $j = $request->j;
         $k = $request->k;

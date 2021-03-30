@@ -66,7 +66,6 @@
                                         <div class="col-md-12">
                                             <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
                                             <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
-                                            <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
                                         </div>
                                         <div class="col-md-2">
                                             <h4>Set p type</h4>
@@ -133,7 +132,6 @@
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="b" value="{{ $b }}" style="display: none;">
                                     <input name="x" value="{{ $x }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
@@ -247,7 +245,6 @@
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipfa">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="b" value="{{ $b }}" style="display: none;">
                                     <input name="x" value="{{ $x }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
@@ -395,13 +392,13 @@
                                     <h4>Up</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up_LION_enrichment-plot.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Down</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down_LION_enrichment-plot.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">
                                 </div>
                                 </div>
                             </div>
@@ -450,8 +447,8 @@
     
           carousel.render({
             elem: '#test2',
-            //width: '100%',
-            //height: '100%'
+            width: '100%',
+            height: '100%'
           });
         });
 

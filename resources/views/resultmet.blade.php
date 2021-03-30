@@ -63,7 +63,6 @@
                                         <div class="col-md-12">
                                             <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
                                             <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
-                                            <input type="checkbox" name="b[yes]" lay-skin="primary" title="If paired" checked="">
                                         </div>
                                         <div class="col-md-2">
                                             <h4>Set p type</h4>
@@ -130,7 +129,6 @@
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="b" value="{{ $b }}" style="display: none;">
                                     <input name="x" value="{{ $x }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
@@ -178,7 +176,6 @@
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="b" value="{{ $b }}" style="display: none;">
                                     <input name="x" value="{{ $x }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
