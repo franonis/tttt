@@ -190,7 +190,7 @@
                                             <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                         </div>
                                     </div>
-                                </form>
+                                
                                     <div class="col-md-2">
                                         <h4>Download</h4>
                                     </div>
@@ -232,11 +232,15 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
+                                                <div class="col-md-12">
+                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details" checked="">
+                                                </div>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                         </div>
                                     </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -279,7 +283,7 @@
                                     <div class="col-md-3">
                                         <button id="submitright" class="layui-btn" type="submit">Update</button>
                                     </div>
-                                </form>
+                                
                                     <div class="col-md-2">
                                         <h4>Download</h4>
                                     </div>
@@ -306,6 +310,14 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
+                                                <div class="col-md-2">
+                                                    <h4>Set top number</h4>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <small>
+                                                    <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                                                    </small>
+                                                </div>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
@@ -325,6 +337,7 @@
                                           </div>
                                         </div>
                                     </div>
+                                </form>
                             </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 6 LION enrichment-->
@@ -439,49 +452,49 @@
         layui.use(['carousel'], function () {
             var carousel = layui.carousel;
             var i = 0
-            var ins
+            var ins1
             // var width = $(".img")[i].width //获取图片宽度
             var height = $(".img1")[i].height //获取图片高度
-            ins = carousel.render({
+            ins1 = carousel.render({
                 elem: '#test1',
                 width: '100%', //设置容器宽度
                 height: height, //轮播图高度为图片高度
                 arrow: 'hover', //始终显示箭头
                 anim: 'default', //切换动画方式
             });
-            re1(ins, i)
+            re1(ins1, i)
             carousel.on('change(carofilter)', function(obj){
                 i = obj.index
-                re1(ins, i)
+                re1(ins1, i)
             });
         });
-        
+
         layui.use(['carousel'], function () {
             var carousel = layui.carousel;
-            var i = 0
-            var ins
+            var j = 0
+            var ins2
             // var width = $(".img")[i].width //获取图片宽度
-            var height = $(".img2")[i].height //获取图片高度
-            ins = carousel.render({
+            var height = $(".img2")[j].height //获取图片高度
+            ins2 = carousel.render({
                 elem: '#test2',
                 width: '100%', //设置容器宽度
                 height: height, //轮播图高度为图片高度
                 arrow: 'hover', //始终显示箭头
                 anim: 'default', //切换动画方式
             });
-            re2(ins, i)
+            re2(ins2, j)
             carousel.on('change(carofilter)', function(obj){
-                i = obj.index
-                re2(ins, i)
+                j = obj.index
+                re2(ins2, j)
             });
         });
 
     });
 
-    function re1(ins, i){
+    function re1(ins1, i){
         // var width = $(".img")[i].width
         var height = $(".img1")[i].height
-        ins.reload({
+        ins1.reload({
             elem: '#test1',
             width: '100%', //设置轮播图宽度
             height: height, //轮播图高度为图片高度
@@ -490,10 +503,10 @@
         });
     }
 
-    function re2(ins, i){
+    function re2(ins2, j){
         // var width = $(".img")[i].width
-        var height = $(".img2")[i].height
-        ins.reload({
+        var height = $(".img2")[j].height
+        ins2.reload({
             elem: '#test2',
             width: '100%', //设置轮播图宽度
             height: height, //轮播图高度为图片高度

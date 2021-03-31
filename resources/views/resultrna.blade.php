@@ -199,7 +199,7 @@
                                                 <label class="layui-form-label">Choose species：</label>
                                                 <div class="layui-input-block" id="t">
                                                   <input type="radio" name="t" value="mmu" title="mmu" checked="">
-                                                  <input type="radio" name="t" value="has" title="has">
+                                                  <input type="radio" name="t" value="hsa" title="hsa">
                                                 </div>
                                             </div>
                                         </div>
