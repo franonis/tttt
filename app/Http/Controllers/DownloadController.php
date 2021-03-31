@@ -23,11 +23,14 @@ class DownloadController extends Controller
 
     public function zip($file)
     {
-        #Event::fire(new FileDownload($file));
-        dd($file);
-        $file=preg_replace('/\+\+/', "/", $file);
-        #return view('202');
-        return response()->download(storage_path($file));
+        $files= explode("++++", $file)
+        $path = preg_replace('/\+\+/', "/", $files[0])
+        $zip_file = $files[1];
+        $zip = new \ZipArchive();
+        $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+        $zip->addFile($path.'/'.$zip_file, $zip_file);
+        $zip->close();
+        return response()->download($zip_file);
     }
 
 
