@@ -216,7 +216,7 @@
                                                   <div carousel-item="">
                                                     @foreach($headpng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" style="height:50%;width: 60%;" data-holder-rendered="true">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -316,7 +316,7 @@
                                                   <div carousel-item="">
                                                     @foreach($fapng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" data-holder-rendered="true">
+                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -382,7 +382,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++lionenrichment">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}enrich">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>LION enrichment result</h4>
@@ -436,23 +436,75 @@
             layer.msg(elem.text());
           });
         });
-        layui.use('carousel', function(){
+        layui.use(['carousel'], function () {
             var carousel = layui.carousel;
-
-            carousel.render({
-            elem: '#test1',
-            height: '100%',
-            width: '100%'
-          });
-    
-          carousel.render({
-            elem: '#test2',
-            width: '100%',
-            height: '100%'
-          });
+            var i = 0
+            var ins
+            // var width = $(".img")[i].width //获取图片宽度
+            var height = $(".img1")[i].height //获取图片高度
+            ins = carousel.render({
+                elem: '#test1',
+                width: '100%', //设置容器宽度
+                height: height, //轮播图高度为图片高度
+                arrow: 'hover', //始终显示箭头
+                anim: 'default', //切换动画方式
+            });
+            re1(ins, i)
+            carousel.on('change(carofilter)', function(obj){
+                i = obj.index
+                re1(ins, i)
+            });
+        });
+        
+        layui.use(['carousel'], function () {
+            var carousel = layui.carousel;
+            var i = 0
+            var ins
+            // var width = $(".img")[i].width //获取图片宽度
+            var height = $(".img2")[i].height //获取图片高度
+            ins = carousel.render({
+                elem: '#test2',
+                width: '100%', //设置容器宽度
+                height: height, //轮播图高度为图片高度
+                arrow: 'hover', //始终显示箭头
+                anim: 'default', //切换动画方式
+            });
+            re2(ins, i)
+            carousel.on('change(carofilter)', function(obj){
+                i = obj.index
+                re2(ins, i)
+            });
         });
 
     });
+
+    function re1(ins, i){
+        // var width = $(".img")[i].width
+        var height = $(".img1")[i].height
+        ins.reload({
+            elem: '#test1',
+            width: '100%', //设置轮播图宽度
+            height: height, //轮播图高度为图片高度
+            arrow: 'hover', //始终显示箭头
+            anim: 'default', //切换动画方式
+        });
+    }
+
+    function re2(ins, i){
+        // var width = $(".img")[i].width
+        var height = $(".img2")[i].height
+        ins.reload({
+            elem: '#test2',
+            width: '100%', //设置轮播图宽度
+            height: height, //轮播图高度为图片高度
+            arrow: 'hover', //始终显示箭头
+            anim: 'default', //切换动画方式
+        });
+    }
+    
+    
+//https://blog.csdn.net/qq_37768929/article/details/106684781
+
 
     $("#t_enrich").click(function (){
         name =$("input[name='t_enrich']:checked").val();
