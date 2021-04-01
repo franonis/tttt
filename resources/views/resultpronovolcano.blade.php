@@ -23,35 +23,29 @@
                     <li>GO enrichment</li>
                   </ul>
                   <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
+                    <div class="layui-tab-item layui-show"><!--第一部分 1 Dimensionality Reduction Analyses-->
                             <div class="col-md-12">
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
-                                </div>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++DRA.zip">DRA.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                </div><br>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
-                                    <h4>PCA result</h4>
+                                    <h4>PCA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                                 <div class="col-md-2">
-                                    <h4>OPLSDA result</h4>
+                                    <h4>OPLS-DA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
-                    
                     <div class="layui-tab-item">
                         <div class="col-md-2">
                         </div>
@@ -59,24 +53,21 @@
                             <p>Only the "one vs one" mode could give the Volcano result</p>
                         </div>
                     </div>
-                    <div class="layui-tab-item">
+                    <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="b" value="{{ $b }}" style="display: none;">
-                                    <input name="x" value="{{ $x }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="w" value="{{ $w }}" style="display: none;">
-                                    <input name="c" value="{{ $c }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-2">
-                                            <h4>Set top number</h4>
+                                        <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                            <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
                                         </div>
                                         <div class="col-md-8">
                                             <small>
@@ -88,33 +79,27 @@
                                         </div>
                                     </div>
                                 </form>
-                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12" >
-                                        @foreach($downloadfilename["heatmap"] as $k=>$i )
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
-                                        @endforeach
-                                    </div>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++Heatmap.zip">Heatmap.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
-                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_top.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
-                
+                    </div>
                     <div class="layui-tab-item">
                         <div class="col-md-2">
                         </div>
                         <div class="col-md-10">
                             <p>Only the "one vs one" mode could give the GO enrichment result</p>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

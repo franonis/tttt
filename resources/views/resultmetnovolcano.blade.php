@@ -97,7 +97,7 @@
                             <div class="col-md-2">
                             </div>
                             <div class="col-md-10">
-                                <p>Only the "one vs one" mode could give the LION enrichment result</p>
+                                <p>Only the "one vs one" mode could give the enrichment result</p>
                             </div>
                         </div>
                     </div>
