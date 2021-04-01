@@ -23,7 +23,7 @@
             
             <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
                 <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%; background-color: #FFFFFF;"> 
-                    <p>please choose one control group</p><br>
+                    <p title="Select the control group for comparison">Control group: <i class="layui-icon layui-icon-about"></i></p><br>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
-                    <p>please choose the group(s)</p><br>
+                    <p title="Select one/multiple group(s) for comparison">Experimental group: <i class="layui-icon layui-icon-about"></i></p><br>
                     <div class="layui-form-item" id="subgroup">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
@@ -45,15 +45,16 @@
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
-                <div class="col-md-4">
-                    <h4 style="margin-top: 2%;">Set the precent to delete the missing column</h4>
+                <div class="col-md-3">
+                    <h4>missing value percent to delete</h4>
                 </div>
-                <div class="col-md-1">
-                    <small>
-                        <input type="text" name="naperent" lay-verify="required" placeholder="80" value="80" class="layui-input">
-                    </small>
+                <div class="col-md-9">
+                        <a>Remove features with ></a>
+                        <small>
+                        <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                        <a>% missing values</a>
                 </div>
-                <div class="layui-form-mid layui-word-aux">%</div><br>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
