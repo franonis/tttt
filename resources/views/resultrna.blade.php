@@ -156,7 +156,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_top.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                         </div>
                     </div>
@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     {!! $up !!}
-                                </div>
+                                </div><br>
                                 <div class="col-md-2">
                                     <h4>Down-regulated genes:</h4>
                                 </div>

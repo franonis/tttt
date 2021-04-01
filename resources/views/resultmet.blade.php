@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     {!! $up !!}
-                                </div>
+                                </div><br>
                                 <div class="col-md-2">
                                     <h4>Down-regulated lipids: </h4>
                                 </div>
