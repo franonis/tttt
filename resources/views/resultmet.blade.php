@@ -18,79 +18,82 @@
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li class="layui-this">Dimensionality Reduction Analyses</li>
-                    <li >Volcano</li>
+                    <li>Volcano</li>
                     <li>Heatmap</li>
                     <li>Enrichment</li>
                   </ul>
                   <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
+                    <div class="layui-tab-item layui-show"><!--第一部分 1 Dimensionality Reduction Analyses-->
                             <div class="col-md-12">
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
-                                </div>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++DRA.zip">DRA.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                </div><br>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
-                                    <h4>PCA result</h4>
+                                    <h4>PCA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                                 <div class="col-md-2">
-                                    <h4>OPLSDA result</h4>
+                                    <h4>OPLS-DA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item">
+                    <div class="layui-tab-item"><!--第一部分 2 Volcano-->
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-2">
-                                            <h4>Set p type</h4>
+                                        <div class="col-md-12" title="Lipid class information will be illustrated on volcano plot">
+                                            <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4>Adjusted P-Value:</h4>
+                                        </div>
+                                        <div class="col-md-8">
                                             <small>
                                             <select name="x">
-                                                <option value="raw">raw</option>
-                                                <option value="fdr">fdr</option>
+                                                <option value="raw">P-Value</option>
+                                                <option value="fdr">Benjamini-Hochberg adjusted P-Value</option>
                                             </select>
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set FC thresh</h4>
+                                        <div class="col-md-4">
+                                            <h4>Fold Change threshold:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set p thresh</h4>
+                                        <div class="col-md-4">
+                                            <h4>P-Value threshold:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set top number</h4>
+                                        <div class="col-md-4">
+                                            <h4>Show TOP hits names:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
@@ -100,18 +103,12 @@
                                         </div>
                                     </div>
                                 </form>
-                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12">
-                                        @foreach($downloadfilename["volcano"] as $k=>$i )
-                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
-                                        @endforeach
-                                    </div>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++Volcano.zip">Volcano.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
-                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
                                 </div>
@@ -120,22 +117,21 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item">
+                    <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="x" value="{{ $x }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="w" value="{{ $w }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-2">
-                                            <h4>Set top number</h4>
+                                        <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                            <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
                                         </div>
                                         <div class="col-md-8">
                                             <small>
@@ -147,68 +143,48 @@
                                         </div>
                                     </div>
                                 </form>
-                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12">
-                                        @foreach($downloadfilename["heatmap"] as $k=>$i )
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
-                                        @endforeach
-                                    </div>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++Heatmap.zip">Heatmap.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
-                    <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_top.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
-                        </div>
-                        <div class="layui-tab-item">
+                    </div>
+                        <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="x" value="{{ $x }}" style="display: none;">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="w" value="{{ $w }}" style="display: none;">
+                                    <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-12">
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label">Choose species：</label>
-                                                <div class="layui-input-block" id="t">
-                                                  <input type="radio" name="t" value="mmu" title="mmu" checked="">
-                                                  <input type="radio" name="t" value="has" title="has">
-                                                </div>
+                                        <div class="col-md-3">
+                                                <h4>Fold Change threshold: </h4>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label">GO term：</label>
-                                                <div class="layui-input-block" id="c">
-                                                  <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
-                                                  <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
-                                                  <input type="radio" name="c" value="Molecular_Function" title="Molecular Function">
-                                                </div>
+                                            <div class="col-md-9">
+                                                <small>
+                                                <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                                </small>
+                                            </div><br>
+                                            <div class="col-md-3">
+                                                <h4>P-Value threshold: </h4>
                                             </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="layui-form-item">
-                                                <label class="layui-form-label">Set top number：</label>
-                                                <div class="layui-input-block" id="s">
-                                                  <input id="s" type="text" name="s" value="{{ $s }}" style="width:50px; display:inline;" class="form-control" >
-                                                </div>
+                                            <div class="col-md-9">
+                                                <small>
+                                                <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                                </small>
                                             </div>
-                                        </div>
                                         <div class="col-md-3">
                                             <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                         </div>
@@ -219,24 +195,20 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12">
-                                        @foreach($downloadfilename["enrich"] as $k=>$i )
-                                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}++enrich++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>&nbsp;
-                                        @endforeach
-                                    </div>
+                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}enrich++++enrichment.zip">enrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
-                                    <h4>Up</h4>
+                                    <h4>Up-regulated lipids: </h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up.png" style="height:50%;width: 60%;">
+                                    {!! $up !!}
                                 </div>
                                 <div class="col-md-2">
-                                    <h4>Down</h4>
+                                    <h4>Down-regulated lipids: </h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down.png" style="height:50%;width: 60%;">
+                                    {!! $down !!}
                                 </div>
                             </div>
                         </div>

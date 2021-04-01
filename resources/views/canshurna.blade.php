@@ -22,21 +22,22 @@
             
             <div class="col-md-12" id="choosegroup" style="padding: 20px; background-color: #F2F2F2;">
                 <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%; background-color: #FFFFFF;"> 
-                    <p>please choose one experimental group</p><br>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            @foreach($groupsLevels as $k=>$i )
-                                <input  type="radio" value="{{$i}}" name="experimental" checked> <label>{{$i}}</label><br>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
-                    <p>please choose one control group</p><br>
+                    <p title="Select the control group for comparison">Control group: <i class="layui-icon layui-icon-about"></i></p><br>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             @foreach($groupsLevels as $k=>$i )
                                 <input  type="radio" value="{{$i}}" name="control" checked> <label>{{$i}}</label><br>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-md-5" style="padding: 2%; margin-left: 4%; margin-right: 4%;background-color: #FFFFFF;"> 
+                    <p title="Select one group for comparison">Experimental group: <i class="layui-icon layui-icon-about"></i></p><br>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input  type="radio" value="{{$i}}" name="experimental" checked> <label>{{$i}}</label><br>
                             @endforeach
                         </div>
                     </div>

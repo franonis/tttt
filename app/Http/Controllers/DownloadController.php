@@ -32,6 +32,49 @@ class DownloadController extends Controller
         return response()->download($path . $zip_file);
     }
 
+    public function mar($file)
+    {
+        $files= explode("++++", $file);
+        $path = preg_replace('/\+\+/', "/", $files[0]);
+        $zip_file = $files[1];
+        if ($zip_file == "DRA.zip") {
+            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . '*A_score_plot_*.pdf';
+        }
+        if ($zip_file == "Volcano.zip") {
+            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'volcano*';
+        }
+        if ($zip_file == "Heatmap.zip") {
+            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'heatmap*';
+        }
+        #$command='zip -r -o ' . $path . $zip_file . ' ' . $path;
+        #dd($command);
+        exec($command, $ooout, $flag);
+        return response()->download($path . $zip_file);
+    }
+
+    public function rna($file)
+    {
+        $files= explode("----", $file);
+        $path = preg_replace('/\+\+/', "/", $files[0]);
+        $zip_file = $files[1];
+        if ($zip_file == "DV.zip") {
+            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'PCA* heatmap_allgroups*';
+        }
+        if ($zip_file == "Volcano.zip") {
+            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'volcano*';
+        }
+        if ($zip_file == "Heatmap.zip") {
+            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'heatmap_top*';
+        }
+        if ($zip_file == "GOenrichment.zip") {
+            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'up* down*';
+        }
+        #$command='zip -r -o ' . $path . $zip_file . ' ' . $path;
+        #dd($command);
+        exec($command, $ooout, $flag);
+        return response()->download($path . $zip_file);
+    }
+
 
     public function dir($file)
     {

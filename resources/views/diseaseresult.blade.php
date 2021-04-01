@@ -17,7 +17,7 @@
             <div style="padding: 80px; background-color: #F2F2F2;">
                 <form class="layui-form" action="/searchdisease">
                     <div class="layui-form-item col-md-9">
-                        <label class="layui-form-label">Gene name</label>
+                        <label class="layui-form-label">Search gene associated diseases</label>
                         <div class="layui-input-block">
                           <input type="text" name="gene" id="genename" lay-verify="name" autocomplete="off" value="{{$genename}}" placeholder="eg:AKT1" class="layui-input">
                         </div>

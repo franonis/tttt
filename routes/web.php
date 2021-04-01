@@ -58,6 +58,7 @@ Route::group(['prefix' => '/update'], function () {
     Route::get('/updatelipVolcano', [UpdateController::class, 'updatelipVolcano']);
     Route::get('/updatelipfa', [UpdateController::class, 'updatelipfa']);
     Route::get('/updateliphead', [UpdateController::class, 'updateliphead']);
+    Route::get('/updatelipenrich', [UpdateController::class, 'updatelipenrich']);
 });
 
 Route::group(['prefix' => '/result'], function () {
@@ -85,4 +86,6 @@ Route::group(['prefix' => '/download'], function () {
     Route::get('/example/{filename}', [DownloadController::class, 'exampleFile']);
     Route::get('/file/{filename}', [DownloadController::class, 'file']);
     Route::get('/zip/{filename}', [DownloadController::class, 'zip']);
+    Route::get('/mar/{filename}', [DownloadController::class, 'mar']);
+    Route::get('/rna/{filename}', [DownloadController::class, 'rna']);
 });

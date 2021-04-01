@@ -31,17 +31,17 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
-                                </div>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++DRA.zip">DRA.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                </div><br>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
-                                    <h4>PCA result</h4>
+                                    <h4>PCA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                                 <div class="col-md-2">
-                                    <h4>OPLSDA result</h4>
+                                    <h4>OPLS-DA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
@@ -51,48 +51,51 @@
                     <div class="layui-tab-item"><!--第一部分 2 Volcano-->
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="e" value="{{ $e }}" style="display: none;">
-                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-12">
-                                            <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked="">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
+                                        <div class="col-md-12" title="Lipid class information will be illustrated on volcano plot">
+                                            <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set p type</h4>
+                                        <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-4">
+                                            <h4>Adjusted P-Value:</h4>
+                                        </div>
+                                        <div class="col-md-8">
                                             <small>
                                             <select name="x">
-                                                <option value="raw">raw</option>
-                                                <option value="fdr">fdr</option>
+                                                <option value="raw">P-Value</option>
+                                                <option value="fdr">Benjamini-Hochberg adjusted P-Value</option>
                                             </select>
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set FC thresh</h4>
+                                        <div class="col-md-4">
+                                            <h4>Fold Change threshold:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set p thresh</h4>
+                                        <div class="col-md-4">
+                                            <h4>P-Value threshold:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set top number</h4>
+                                        <div class="col-md-4">
+                                            <h4>Show TOP hits names:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
@@ -106,7 +109,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++Volcano.zip">Volcano.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
@@ -119,20 +122,18 @@
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="x" value="{{ $x }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="w" value="{{ $w }}" style="display: none;">
-                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-4">
-                                            <h4>Set top number</h4>
+                                        <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                            <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
                                         </div>
                                         <div class="col-md-8">
                                             <small>
@@ -148,7 +149,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++Heatmap.zip">Heatmap.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
@@ -162,12 +163,19 @@
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
+                                    <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
+                                    <input name="j" value="{{ $j }}" style="display: none;">
+                                    <input name="k" value="{{ $k }}" style="display: none;">
+                                    <input name="m" value="{{ $m }}" style="display: none;">
+                                    <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-12">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked="">
+                                        <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
@@ -209,8 +217,8 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
-                                                <div class="col-md-12">
-                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details" checked="">
+                                                <div class="col-md-12" title="Heatmap displaying lipid class information">
+                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details" checked=""><i class="layui-icon layui-icon-about"></i>
                                                 </div>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
@@ -224,43 +232,35 @@
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipfa">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="x" value="{{ $x }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="w" value="{{ $w }}" style="display: none;">
                                     <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
-                                        <h4>Set plot type</h4>
+                                        <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <small>
-                                        <select name="g">
-                                            <option value="FA_info">FA_info</option>
-                                            <option value="all_info">all_info</option>
-                                        </select>
-                                        </small>
+                                        <div class="col-md-4" title="Lipid acyl-chain organization way 'FA_info': only consider the acyl-chain differences in each lipid; 'all_info' consider the summarized acyl-chain length number in each lipid">
+                                            <h4>Set plot type <i class="layui-icon layui-icon-about"></i>:</h4>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <small>
+                                            <select name="g">
+                                                <option value="FA_info">FA_info</option>
+                                                <option value="all_info">all_info</option>
+                                            </select>
+                                            </small>
+                                        </div>
+                                        <div class="col-md-12" title="Display the chemical bond links of lipids">
+                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button id="submitright" class="layui-btn" type="submit">Update</button>
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <h4>if ignore subclass</h4>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <small>
-                                        <select name="w">
-                                            <option value="T">T</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                        </small>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button id="submitright" class="layui-btn" type="submit">Update</button>
-                                    </div>
-                                
                                     <div class="col-md-2">
                                         <h4>Download</h4>
                                     </div>
@@ -281,10 +281,10 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
-                                                <div class="col-md-2">
-                                                    <h4>Set top number</h4>
+                                                <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                                    <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
                                                 </div>
-                                                <div class="col-md-10">
+                                                <div class="col-md-8">
                                                     <small>
                                                     <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                                     </small>
@@ -313,17 +313,20 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 6 LION enrichment-->
                         <div class="col-md-12">
-                                <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
+                                <form  id="Volcano" class="layui-form" action="/update/updatelipenrich">
+                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
+                                    <input name="jb" value="{{ $jb }}" style="display: none;">
+                                    <input name="m" value="{{ $m }}" style="display: none;">
                                     <input name="e" value="{{ $e }}" style="display: none;">
-                                    <input name="g" value="{{ $g }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12">
                                             <div class="layui-form-item">
-                                                <label class="layui-form-label">Analysis data by: </label>
+                                                <label class="layui-form-label" title="“Target-list mode” enrichment analysis of a subset of lipids of interest, which will be most significant change lipids in lint-web; 
+“Ranking mode” performs an enrichment analysis on a complete and ranked list of lipids.">Analysis data by <i class="layui-icon layui-icon-about"></i> : </label>
                                                 <div class="layui-input-block" id="t_enrich">
                                                   <input type="radio" name="t_enrich" value="target_list" title="target_list" checked="">
                                                   <input type="radio" name="t_enrich" value="ranking" title="ranking">
@@ -332,7 +335,7 @@
                                         </div>
                                         <div  class="col-md-12" id="target_list"  style="display: block;">
                                             <div class="col-md-3">
-                                                <h4>Set FC thresh: </h4>
+                                                <h4>Fold Change threshold: </h4>
                                             </div>
                                             <div class="col-md-9">
                                                 <small>
@@ -340,7 +343,7 @@
                                                 </small>
                                             </div><br>
                                             <div class="col-md-3">
-                                                <h4>Set p thresh: </h4>
+                                                <h4>P-Value threshold: </h4>
                                             </div>
                                             <div class="col-md-9">
                                                 <small>
@@ -353,7 +356,7 @@
                                                 <label class="layui-form-label">Analytical statistic：</label>
                                                 <div class="layui-input-block" id="l">
                                                   <input type="radio" name="l" value="p_value" title="p_value" checked="">
-                                                  <input type="radio" name="l" value="log2FC" title="log2FC">
+                                                  <input type="radio" name="l" value="log2FC" title="Fold Change">
                                                 </div>
                                             </div>
                                         </div>
@@ -367,21 +370,22 @@
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
                                     <a href="{{ url('download/zip/')}}/{{ $downloadpath }}enrich++++lionenrichment.zip">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
-                                </div>
+                                </div><br>
                                 <div class="col-md-2">
                                     <h4>LION enrichment result</h4>
                                 </div>
                                 <div class="col-md-10">
                                 <div class="col-md-2">
-                                    <h4>Up</h4>
+                                    <h4>Up-regulated lipids: </h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">
+                                    {!! $up !!}
                                 </div>
                                 <div class="col-md-2">
-                                    <h4>Down</h4>
+                                    <h4>Down-regulated lipids:</h4>
                                 </div>
                                 <div class="col-md-10">
+                                    {!! $down !!}
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">
                                 </div>
                                 </div>

@@ -33,9 +33,8 @@
                                 <a href="{{ url('download/file/')}}/{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv">DEgeneStatistics_{{$DEname}}.csv<i class="layui-icon layui-icon-download-circle"></i></a>
                             </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                                
                             <div class="col-md-2">
-                                <h4>File Preview</h4>
+                                <h4>Gene differential expression result: </h4>
                             </div>
                             <div class="col-md-10" style="border:1px dashed #000; overflow-y:auto; width:700px; height:400px;">
                                 <pre>{{ $DEgeneStatistics }}</pre>
@@ -48,22 +47,17 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}heatmap_allgroups.pdf">heatmap_allgroups.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
+                                    <a href="{{ url('download/rna/')}}/{{ $downloadpath }}----DV.zip">DV.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
-                                    <h4>PCA result</h4>
+                                    <h4>PCA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/PCA_show.png" style="height:50%;width: 60%;">
                                 </div>
                                 <div class="col-md-2">
-                                    <h4>Heatmap allgroup result</h4>
+                                    <h4>Heatmap result:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_allgroups.png" style="height:50%;width: 60%;">
@@ -77,38 +71,34 @@
                                 <input name="DEname" value="{{ $DEname }}" style="display: none;">
                                 <input name="path" value="{{ $path }}" style="display: none;">
                                 <input name="v" value="{{ $v }}" style="display: none;">
-                                <input name="g" value="{{ $g }}" style="display: none;">
-                                <input name="c" value="{{ $c }}" style="display: none;">
+                                <input name="s" value="{{ $s }}" style="display: none;">
                                 <div class="col-md-2">
                                     <h4>Update with new parameters</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <div class="col-md-3">
-                                        <h4>Set fc_thresh</h4>
+                                    <div class="col-md-4">
+                                        <h4>Fold Change threshold:</h4>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <small>
                                         <input id="f" type="text" name="f" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
-                                    <div class="col-md-3">
-                                        <h4>Set p_thresh</h4>
+                                    <div class="col-md-4">
+                                        <h4>P-Value threshold:</h4>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <small>
                                         <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
-                                    <div class="col-md-3">
-                                        <h4>Set top number</h4>
+                                    <div class="col-md-4">
+                                        <h4>Show TOP hits names:</h4>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-8">
                                         <small>
                                         <input id="u" type="text" name="u" value="{{$u}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+volcano_show.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano"  class="layui-btn" type="submit" >Update</button>
@@ -119,8 +109,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}volcano_{{$DEname}}.pdf">volcano_{{$DEname}}.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    
+                                    <a href="{{ url('download/rna/')}}/{{ $downloadpath }}----Volcano.zip">Volcano.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
@@ -139,23 +128,18 @@
                                 <input name="f" value="{{ $f }}" style="display: none;">
                                 <input name="p" value="{{ $p }}" style="display: none;">
                                 <input name="u" value="{{ $u }}" style="display: none;">
-                                <input name="g" value="{{ $g }}" style="display: none;">
                                 <input name="s" value="{{ $s }}" style="display: none;">
-                                <input name="c" value="{{ $c }}" style="display: none;">
                                 <div class="col-md-2">
                                     <h4>Update with new parameters</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <div class="col-md-2">
-                                        <h4>Set top number</h4>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                            <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
+                                        </div>
+                                    <div class="col-md-8">
                                         <small>
                                         <input id="v" type="text" name="v" value="{{ $v }}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="{{ url('download/png/')}}/{{ $downloadpath }}results+heatmap_top.png"><i class="layui-icon layui-icon-download-circle" style="font-size: 30px;"></i>Download</a>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
@@ -166,8 +150,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}heatmap_top{{$v}}_{{$DEname}}.pdf">heatmap_top{{$v}}_{{$DEname}}.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    
+                                    <a href="{{ url('download/rna/')}}/{{ $downloadpath }}----Heatmap.zip">Heatmap.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
@@ -183,13 +166,8 @@
                                     <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="DEname" value="{{ $DEname }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="f" value="{{ $f }}" style="display: none;">
-                                    <input name="p" value="{{ $p }}" style="display: none;">
                                     <input name="u" value="{{ $u }}" style="display: none;">
                                     <input name="v" value="{{ $v }}" style="display: none;">
-                                    <input name="g" value="{{ $g }}" style="display: none;">
-                                    <input name="s" value="{{ $s }}" style="display: none;">
-                                    <input name="c" value="{{ $c }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -198,8 +176,8 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">Choose species：</label>
                                                 <div class="layui-input-block" id="t">
-                                                  <input type="radio" name="t" value="mmu" title="mmu" checked="">
-                                                  <input type="radio" name="t" value="hsa" title="hsa">
+                                                  <input type="radio" name="t" value="mmu" title="Mus musculus" checked="">
+                                                  <input type="radio" name="t" value="hsa" title="Homo sapiens">
                                                 </div>
                                             </div>
                                         </div>
@@ -222,28 +200,28 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set fc_thresh：</h4>
+                                        <div class="col-md-4">
+                                            <h4>Fold Change threshold:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="f" type="text" name="f" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set p_thresh：</h4>
+                                        <div class="col-md-4">
+                                            <h4>P-Value threshold:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
                                             <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <h4>Set top number：</h4>
+                                        <div class="col-md-4">
+                                            <h4>Show TOP hits names:</h4>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-8">
                                             <small>
-                                            <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="s" type="text" name="s" value="{{$s}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-3">
@@ -251,15 +229,21 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="col-md-2">
+                                    <h4>Download</h4>
+                                </div>
+                                <div class="col-md-10" style="border:1px dashed #000;">
+                                    <a href="{{ url('download/rna/')}}/{{ $downloadpath }}----GOenrichment.zip">GOenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                </div><br>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
-                                    <h4>Up</h4>
+                                    <h4>Up-regulated genes:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     {!! $up !!}
                                 </div>
                                 <div class="col-md-2">
-                                    <h4>Down</h4>
+                                    <h4>Down-regulated genes:</h4>
                                 </div>
                                 <div class="col-md-10">
                                     {!! $down !!}

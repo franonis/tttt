@@ -17,7 +17,7 @@
             <div style="padding: 220px; background-color: #F2F2F2;">
                 <form class="layui-form" action="/searchdisease">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">Gene name</label>
+                        <label class="layui-form-label">Search gene associated diseases</label>
                         <div class="layui-input-block">
                           <input type="text" id="genename" name="gene" lay-verify="gene" autocomplete="off" value="AKT1" placeholder="eg:AKT1" class="layui-input">
                         </div>

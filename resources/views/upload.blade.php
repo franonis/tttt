@@ -32,8 +32,8 @@
                           </div>
                         </div>
                         <div class="col-md-12" id="dataType" style="display: none;">
-                            <div class="col-md-2">
-                                <h4>Which Type</h4>
+                            <div class="col-md-2" title="Indicating your transcriptomic data type">
+                                <h4>Data Type <i class="layui-icon layui-icon-about"></i>:</h4>
                             </div>
                             <div class="col-md-10" >
                                 <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>

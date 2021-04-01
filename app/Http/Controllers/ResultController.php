@@ -55,20 +55,19 @@ class ResultController extends Controller
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
-                    $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
                     $DEgeneStatistics = file_get_contents($outpath . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
                         $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
                     }else{
-                        $up='<p>No UP genes enriched! Try check your data!</p>';
+                        $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                     }
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
                         $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
                     }else{
-                        $down='<p>No DOWN genes enriched! Try check your data!</p>';
+                        $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                     }
                     
-                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'up' => $up, 'down' => $down, 'omics' => $omics, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => $experiment .'_vs_'. $control, 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]); 
+                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'up' => $up, 'down' => $down, 'omics' => $omics, 'downloadpath' => $downloadpath, 'DEname' => $experiment .'_vs_'. $control, 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]); 
                 }
             }
         } else {
@@ -95,18 +94,17 @@ class ResultController extends Controller
                             exec($command,$fapng,$flag);
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
-                            $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
-                            $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
-                        }else{
-                            $up='<p>No UP genes enriched! Try check your data!</p>';
-                        }
-                        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
-                            $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
-                        }else{
-                            $down='<p>No DOWN genes enriched! Try check your data!</p>';
-                        }
-                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up_LION-enrichment-plot.png') ){
+                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                            }else{
+                                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                            }
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down_LION-enrichment-plot.png') ){
+                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                            }else{
+                                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                            }
+                            return view('resultlip', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
                         }
                     }else{
                         if ($this->showresultlip2($outpath)) {
@@ -114,8 +112,7 @@ class ResultController extends Controller
                             exec($command,$fapng,$flag); 
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);                                  
-                            $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
                         }
                     }
                 }
@@ -123,13 +120,21 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultmet($outpath)) {
-                            $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
+                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+                            }else{
+                                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                            }
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
+                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+                            }else{
+                                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                            }
+                            return view('resultmet', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }
                     }else{
                         if ($this->showresultmet2($outpath)) {
-                            $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
+                            return view('resultmetnovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75]);
                         }
                     }
                 }
@@ -137,13 +142,21 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultpro($outpath)) {
-                            $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            return view('resultpro', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "20", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'c' => "Biological_Process", 't' => "mmu"]);
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
+                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+                            }else{
+                                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                            }
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
+                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+                            }else{
+                                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                            }
+                            return view('resultpro', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "20", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'c' => "Biological_Process", 't' => "mmu"]);
                         }
                     }else{
                         if ($this->showresultpro2($outpath)) {
-                            $downloadfilename = $this->getdownloadfilename('/home/zhangqb/tttt/public/' . $outpath.'results/');
-                            return view('resultpronovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadfilename' => $downloadfilename, 'downloadpath' => $downloadpath, 's' => "20", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'c' => "Biological_Process", 't' => "mmu"]);
+                            return view('resultpronovolcano', ['title' => '上传数据', 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "20", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'c' => "Biological_Process", 't' => "mmu"]);
                         }
                     }
                 }
@@ -351,7 +364,7 @@ class ResultController extends Controller
         #return 1;Rscript lipRegEnrich.R -r "~/temp/" -t "target_list" -j 2.0 -k 0.1 -p "~/temp/enrich/"
         #富集分析
         #/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day8Day080/"  -t "target_list" -j 2.0 -k 0.1 -p "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day8Day080/results/enrich/"
-        
+
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "target_list" -j 2.0 -k 0.1 -p "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
