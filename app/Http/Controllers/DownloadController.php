@@ -26,10 +26,8 @@ class DownloadController extends Controller
         $files= explode("++++", $file);
         $path = preg_replace('/\+\+/', "/", $files[0]);
         $zip_file = $files[1];
-        $zip = new \ZipArchive();
-        $zip->open($zip_file, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
-        $zip->addFile($path.'/'.$zip_file, $zip_file);
-        $zip->close();
+        $command='zip -r -o ' . $path . $zip_file . ' ' . $path;
+        exec($command, $ooout, $flag);
         return response()->download($zip_file);
     }
 

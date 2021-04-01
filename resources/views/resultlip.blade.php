@@ -31,12 +31,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+PCA_score_plot_all.pdf">PCA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}MARresults+OPLSDA_score_plot_all.pdf">OPLSDA_score_plot_all.pdf<i class="layui-icon layui-icon-download-circle"></i></a>
-                                    </div>
+                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
@@ -111,13 +106,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12">
-                                        @foreach($downloadfilename["volcano"] as $k=>$i )
-                                            <div class="col-md-3">
-                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++MARresults++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Volcano result</h4>
@@ -159,13 +148,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <div class="col-md-12">
-                                        @foreach($downloadfilename["headgroup"] as $k=>$i )
-                                            <div class="col-md-4">
-                                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
@@ -195,13 +178,7 @@
                                         <h4>Download</h4>
                                     </div>
                                     <div class="col-md-10" style="border:1px dashed #000;">
-                                        <div class="col-md-12">
-                                            @foreach($downloadfilename["headgroup"] as $k=>$i )
-                                                <div class="col-md-6">
-                                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}++headgroup++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                                </div>
-                                            @endforeach
-                                        </div>
+                                        <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++headgroup++++headgroup.zip">headgroup.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                     <div class="col-md-2">
                                         <h4>Lipid Class statistics</h4>
@@ -288,13 +265,7 @@
                                         <h4>Download</h4>
                                     </div>
                                     <div class="col-md-10" style="border:1px dashed #000;">
-                                        <div class="col-md-12">
-                                            @foreach($downloadfilename["FAchainVisual"] as $k=>$i )
-                                                <div class="col-md-6">
-                                                    <a href="{{ url('download/file/')}}/{{ $downloadpath }}++FAchainVisual++{{$i}}">{{$i}}<i class="layui-icon layui-icon-download-circle"></i></a>
-                                                </div>
-                                            @endforeach
-                                        </div>
+                                        <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++FAchainVisual++++FAchainVisual.zip">FAchainVisual.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                     </div>
                                     <div class="col-md-2">
                                         <h4>Lipid Fatty acid statistics</h4>
@@ -395,7 +366,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}enrich">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}++enrich++++lionenrichment.zip">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>LION enrichment result</h4>
