@@ -276,6 +276,8 @@
             ,text: {
                 none: 'no data avalible' //默认：无数据。
             }
+            ,toolbar: '<div> just top 20 for show</div>'
+            ,defaultToolbar: ['filter', 'print', 'exports']
             ,url: '{{url('/detable/f')}}'+ name//数据接口
             ,cols: [[ //表头
             {field: 'gene', title: 'gene', width: '22%', sort: true,}
