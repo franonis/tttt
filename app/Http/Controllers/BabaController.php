@@ -45,21 +45,35 @@ class BabaController extends Controller
     {
         
         $name=preg_replace('/\+\+/', "/", $name);
-        $gene_de = file_get_contents($name,0,null,0,1000);
-        dd($gene_de);
-        preg_match_all("/\t.*?$name.*?\t.*\n/U", $gene_disease, $diseases);
-        #preg_match_all
-        #dd($diseases);
+        $gene_de = file_get_contents($name,0,null,0,2000);
+        $hangs = explode("\n", $gene_de);
+        
         $count = 0;
         $tableJson = [];
         $loctmp = [];
-        foreach ($diseases[0] as $disease) {
-            #dd($diseases);
+        foreach ($hangs as $hang) {
+            $t=[];
+            $lie=explode(",", $hang);
+            for ($i=1; $i < 7; $i++) { 
+                if (strstr($lie[$i],'e')) {
+                    $temp = explode("e", $lie[$i]);
+                    $tmp = explode(".", $temp[0]);
+                    $t[$i] = $tmp[0] . '.' . $tmp[1][:2] . 'e' . $temp;
+                }else{
+                    $tmp = explode(".", $lie[$i]);
+                    $t[$i] = $tmp[0] . '.' . $tmp[1][:2];
+                }
+            }
             $t = explode("\t", $disease);
             $tableJson['data'][] = [
-                'no' => $count + 1,
-                'gene' => $t[1],
-                'disease' => $t[2],
+                'gene' => $lie[0],
+                'logFC' => $t[1],
+                'AveExpr' => $t[2],
+                't' => $t[3], 
+                'PValue' => $t[4],
+                'adjPVal'=> $t[5],
+                'B' => $t[6],
+
             ];
             $count++;
         }
