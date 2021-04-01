@@ -44,8 +44,7 @@ class BabaController extends Controller
     public function detable($name)
     {   
         $name=preg_replace('/\+\+/', "/", $name);
-        $gene_de = file_get_contents($name,0,null,80,2000);
-        dd($gene_de);
+        $gene_de = file_get_contents($name,0,null,55,2000);
         $hangs = explode("\n", $gene_de);
         
         $count = 0;
