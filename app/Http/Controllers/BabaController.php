@@ -45,7 +45,7 @@ class BabaController extends Controller
     {
         
         $name=preg_replace('/\+\+/', "/", $name);
-        $gene_de = file_get_contents($name,,,,1000);
+        $gene_de = file_get_contents($name,0,null,0,1000);
         dd($gene_de);
         preg_match_all("/\t.*?$name.*?\t.*\n/U", $gene_disease, $diseases);
         #preg_match_all
