@@ -27,7 +27,7 @@ class DownloadController extends Controller
         $path = preg_replace('/\+\+/', "/", $files[0]);
         $zip_file = $files[1];
         $command='zip -r -o ' . $path . $zip_file . ' ' . $path;
-        dd($command);
+        #dd($command);
         exec($command, $ooout, $flag);
         return response()->download($zip_file);
     }
