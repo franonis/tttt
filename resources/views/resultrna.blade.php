@@ -36,7 +36,7 @@
                             <div class="col-md-2">
                                 <h4>Gene differential expression result: </h4>
                             </div>
-                            <div class="col-md-10" style="border:1px dashed #000; overflow-y:auto; width:700px; height:400px;">
+                            <div class="col-md-10">
                                 <a style="display: none;" name="tax" id="name" value="{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv">{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv</a>
                                 <table id="showde" lay-filter="test" style="margin-top: 4%;"></table>
                                 <pre>{{ $DEgeneStatistics }}</pre>
@@ -277,8 +277,6 @@
             ,text: {
                 none: 'no data avalible' //默认：无数据。
             }
-            ,toolbar: '<div> </div>'
-            ,defaultToolbar: ['filter', 'print', 'exports']
             ,url: '{{url('/detable/f')}}'+ name//数据接口
             ,cols: [[ //表头
             {field: 'gene', title: 'gene', width: '20%', sort: true,}

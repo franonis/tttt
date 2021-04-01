@@ -43,8 +43,10 @@ class BabaController extends Controller
 
     public function detable($name)
     {
-        dd($name);
-        $gene_disease = file_get_contents('gene_disease.txt');
+        
+        $name=preg_replace('/\+\+/', "/", $name);
+        $gene_de = file_get_contents($name,,,,1000);
+        dd($gene_de);
         preg_match_all("/\t.*?$name.*?\t.*\n/U", $gene_disease, $diseases);
         #preg_match_all
         #dd($diseases);
