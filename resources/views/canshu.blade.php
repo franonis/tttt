@@ -51,7 +51,7 @@
                 <div class="col-md-9">
                         <a>Remove features with ></a>
                         <small>
-                        <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                        <input id="m" type="text" name="naperent" value="80" style="width:50px; display:inline;" class="form-control" >
                         </small>
                         <a>% missing values</a>
                 </div>
