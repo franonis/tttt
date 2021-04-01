@@ -29,7 +29,7 @@ class DownloadController extends Controller
         $command='zip -r -o ' . $path . $zip_file . ' ' . $path;
         #dd($command);
         exec($command, $ooout, $flag);
-        return response()->download($zip_file);
+        return response()->download($path . $zip_file);
     }
 
 
