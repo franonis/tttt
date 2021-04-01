@@ -45,6 +45,7 @@ class ResultController extends Controller
             $experiment = $request->experimental;
             $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/' . $experiment . $control . '/';
             is_dir($outpath) or mkdir($outpath, 0777, true);
+            $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing_RNA.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -t '.$data_type.' -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 exec($command, $ooout, $flag);
