@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-md-10">
                                 <a style="display: none;" name="tax" id="name" value="{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv">{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv</a>
-                                <table id="showde" lay-filter="test" style="margin-top: 4%;"></table>
+                                <table id="showde" lay-filter="test"></table>
                             </div>
                         </div>
                     </div>
