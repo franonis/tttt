@@ -157,9 +157,9 @@
                                 </div>
                             </div>
                     </div>
-                        <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
+                        <div class="layui-tab-item"><!--第一部分 4 enrich-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                <form  id="enrich" class="layui-form" action="/update/updatelipenrich">
                                     <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                     <input name="path" value="{{ $path }}" style="display: none;">
                                     <input name="jb" value="{{ $jb }}" style="display: none;">
