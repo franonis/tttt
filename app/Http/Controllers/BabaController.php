@@ -64,7 +64,6 @@ class BabaController extends Controller
                     $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2);
                 }
             }
-            $t = explode("\t", $disease);
             $tableJson['data'][] = [
                 'gene' => $lie[0],
                 'logFC' => $t[1],
