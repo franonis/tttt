@@ -37,7 +37,7 @@
                                 <h4>Gene differential expression result: </h4>
                             </div>
                             <div class="col-md-10">
-                                <a style="display: none;" name="tax" id="name" value="{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv">{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv</a>
+                                <a style="display: none;" name="tax" id="name" value="{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv">{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv</a>
                                 <table id="showde" lay-filter="test" style="margin-top: 4%;"></table>
                                 <pre>{{ $DEgeneStatistics }}</pre>
                             </div>
