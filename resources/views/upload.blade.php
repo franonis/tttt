@@ -26,9 +26,9 @@
                             </div>
                         </div>
                         <div class="layui-form-item" pane="" id="delodd" style="display: block;">
-                          <label class="layui-form-label">analysis option：</label>
-                          <div class="layui-input-block" title="Delete the lipid hits with odd acyl-chain fatty acid associated">
-                            <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="Odd acyl-chain clearance" checked=""><a><i class="layui-icon layui-icon-about" style="margin-top: 10px;"></i></a>
+                          <label class="layui-form-label">analysis option<i class="layui-icon layui-icon-about" title="Delete the lipid hits with odd acyl-chain fatty acid associated"></i>：</label>
+                          <div class="layui-input-block" >
+                            <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="Odd acyl-chain clearance" checked="">
                           </div>
                         </div>
                         <div class="col-md-12" id="dataType" style="display: none;">
@@ -42,7 +42,7 @@
                         </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p><br>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">Data File：<a style="color: white">......</a></label>
+                            <label class="layui-form-label">Data File：<a style="color: #F2F2F2;">.........</a></label>
                             <div class="layui-upload-drag" id="datafile">
                               <i class="layui-icon"></i>
                               <p>Click to upload, or drag the file here</p>
