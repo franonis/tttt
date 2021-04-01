@@ -44,15 +44,15 @@ class BabaController extends Controller
     public function detable($name)
     {   
         $name=preg_replace('/\+\+/', "/", $name);
-        $gene_de = file_get_contents($name,0,null,55,2000);
+        $gene_de = file_get_contents($name,0,null,0,3000);
         $hangs = explode("\n", $gene_de);
         
         $count = 0;
         $tableJson = [];
         $loctmp = [];
-        foreach ($hangs as $hang) {
+        for ($h=1; $h < 20; $h++) {
             $t=[];
-            $lie=explode(",", $hang);
+            $lie=explode(",", $hangs[$h]);
             for ($i=1; $i < 7; $i++) { 
                 if (strstr($lie[$i],'e')) {
                     $temp = explode("e", $lie[$i]);
@@ -60,7 +60,6 @@ class BabaController extends Controller
                     $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2) . 'e' . $temp[1];
                 }else{
                     $tmp = explode('.', $lie[$i]);
-                    
                     $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2);
                 }
             }
