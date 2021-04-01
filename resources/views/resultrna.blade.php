@@ -284,8 +284,8 @@
             ,{field: 'logFC', title: 'logFC', sort: true}
             ,{field: 'AveExpr', title: 'AveExpr', sort: true}
             ,{field: 't', title: 't', sort: true}
-            ,{field: 'PValue', title: 'P.Value', sort: true}
-            ,{field: 'adjPVal', title: 'adj.P.Val', sort: true}
+            ,{field: 'PValue', title: 'P_Value', sort: true}
+            ,{field: 'adjPVal', title: 'adj_P_Val', sort: true}
             ,{field: 'B', title: 'B', sort: true}
             ]]
 
