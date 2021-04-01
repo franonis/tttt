@@ -26,10 +26,11 @@
                             </div>
                         </div>
                         <div class="layui-form-item" pane="" id="delodd" style="display: block;">
-                          <label class="layui-form-label">analysis option<i class="layui-icon layui-icon-about" title="Delete the lipid hits with odd acyl-chain fatty acid associated"></i>：</label>
-                          <div class="layui-input-block" >
-                            <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="Odd acyl-chain clearance" checked="">
+                          <label class="layui-form-label">analysis option：</label>
+                          <div class="layui-input-block" title="Delete the lipid hits with odd acyl-chain fatty acid associated">
+                            <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="Odd acyl-chain clearance" checked=""><i class="layui-icon layui-icon-about" style="margin-top: 10px;"></i>
                           </div>
+                          <i class="layui-icon layui-icon-about" style="margin-top: 10px;"></i>
                         </div>
                         <div class="col-md-12" id="dataType" style="display: none;">
                             <div class="col-md-2">
