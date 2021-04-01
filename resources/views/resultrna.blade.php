@@ -280,7 +280,7 @@
             ,defaultToolbar: ['filter', 'print', 'exports']
             ,url: '{{url('/detable/f')}}'+ name//数据接口
             ,cols: [[ //表头
-            {field: 'gene', title: 'gene', sort: true,}
+            {field: 'gene', title: 'gene', sort: true}
             ,{field: 'logFC', title: 'logFC', sort: true}
             ,{field: 'AveExpr', title: 'AveExpr', sort: true}
             ,{field: 't', title: 't', sort: true}
