@@ -45,7 +45,7 @@
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12">
-                <div class="col-md-3">
+                <div class="col-md-3" style="margin-top: 1%;">
                     <h4>missing value percent to delete</h4>
                 </div>
                 <div class="col-md-9">
