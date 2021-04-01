@@ -31,11 +31,11 @@
                             <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="Odd acyl-chain clearance" checked=""><i class="layui-icon layui-icon-about" style="margin-top: 10px;"></i>
                           </div>
                         </div>
-                        <div class="col-md-12" id="dataType" style="display: none;">
-                            <label class="layui-form-label"><a  title="Indicating your transcriptomic data type">Data Type <i class="layui-icon layui-icon-about"></i>:</a></label>
+                        <div class="col-md-12" id="dataType" style="display: none;" title="Indicating your transcriptomic data type">
+                            <label class="layui-form-label"><a>Data Type <i class="layui-icon layui-icon-about"></i>:</a></label>
                                 <div class="layui-input-block">
-                                  <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
-                                    <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
+                                  <input  type="radio" value="rna" name="data_type" title="RNA-seq"checked> 
+                                  <input  type="radio" value="microarray" name="data_type" title="Microarray"> 
                                 </div>
                         </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p><br>

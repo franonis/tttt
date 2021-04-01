@@ -62,13 +62,13 @@
                                   <input type="radio" name="omics_right" value="Proteomics" title="Proteomics">
                                 </div>
                             </div>
-                            <div class="layui-form-item" id="dataType" style="display: block;">
-                                <label class="layui-form-label"><a  title="Indicating your transcriptomic data type">Data Type <i class="layui-icon layui-icon-about"></i>:</a></label>
+                            <div class="col-md-12" id="dataType" style="display: none;" title="Indicating your transcriptomic data type">
+                              <label class="layui-form-label"><a>Data Type <i class="layui-icon layui-icon-about"></i>:</a></label>
                                 <div class="layui-input-block">
-                                  <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
-                                    <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
+                                  <input  type="radio" value="rna" name="data_type" title="RNA-seq"checked> 
+                                  <input  type="radio" value="microarray" name="data_type" title="Microarray"> 
                                 </div>
-                            </div>
+                              </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">Data File:<a style="color: #F2F2F2;">..........</a></label>
                                 <div class="layui-upload-drag" id="right1">

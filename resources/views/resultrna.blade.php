@@ -37,6 +37,8 @@
                                 <h4>Gene differential expression result: </h4>
                             </div>
                             <div class="col-md-10" style="border:1px dashed #000; overflow-y:auto; width:700px; height:400px;">
+                                <a style="display: none;" name="tax" id="name" value="{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv">{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv</a>
+                                <table id="showde" lay-filter="test" style="margin-top: 4%;"></table>
                                 <pre>{{ $DEgeneStatistics }}</pre>
                             </div>
                         </div>
@@ -262,13 +264,36 @@
 @section('js')
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 <script>
+    layui.use(['element', 'layer','form','table'], function(){
+        var element = layui.element;
+        var layer = layui.layer;
+        var table = layui.table;
+        var name = document.getElementById("name").innerHTML;
 
-layui.use('upload', function(){
-  var upload = layui.upload;
 
-  //执行实例
+        table.render({
+            elem: '#showde'
+            ,autoSort: true
+            ,text: {
+                none: 'no data avalible' //默认：无数据。
+            }
+            ,toolbar: '<div> </div>'
+            ,defaultToolbar: ['filter', 'print', 'exports']
+            ,url: '{{url('/detable/f')}}'+ name//数据接口
+            ,cols: [[ //表头
+            {field: 'gene', title: 'gene', width: '20%', sort: true,}
+            ,{field: 'logFC', title: 'logFC', sort: true}
+            ,{field: 'AveExpr', title: 'AveExpr', sort: true}
+            ,{field: 't', title: 't', sort: true}
+            ,{field: 'PValue', title: 'P.Value', sort: true}
+            ,{field: 'adjPVal', title: 'adj.P.Val', sort: true}
+            ,{field: 'B', title: 'B', sort: true}
+            ]]
 
-});
+        });
+
+
+    });
 </script>
 <script>
     $(document).ready(function(){

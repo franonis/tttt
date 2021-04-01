@@ -45,6 +45,7 @@ Route::get('/tmp', function () {
 });
 Route::get('/searchdisease', [BabaController::class, 'searchdisease']);
 Route::get('/diseasetable/f{name}', [BabaController::class, 'diseasetable']);
+Route::get('/detable/f{name}', [BabaController::class, 'detable']);
 
 Route::get('/pdf/{name}', [PdfController::class, 'getpdf']);
 
