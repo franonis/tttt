@@ -27,12 +27,12 @@
                             </div>
                             <div class="layui-form-item" pane="" id="delodd" style="display: block;">
                               <label class="layui-form-label">analysis option：</label>
-                              <div class="layui-input-block">
-                                <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="I want to delete the odd chain" checked="">
-                              </div>
+                              <div class="layui-input-block" title="Delete the lipid hits with odd acyl-chain fatty acid associated">
+                            <input type="checkbox" name="delodd[yes]" lay-skin="primary" title="Odd acyl-chain clearance" checked=""><i class="layui-icon layui-icon-about" style="margin-top: 10px;"></i>
+                          </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">Data File</label>
+                                <label class="layui-form-label">Data File:<a style="color: #F2F2F2;">..........</a></label>
                                 <div class="layui-upload-drag" id="left1">
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">Desc File</label>
+                                <label class="layui-form-label">Description file:</label>
                                 <div class="layui-upload-drag" id="left2">
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
@@ -63,14 +63,14 @@
                                 </div>
                             </div>
                             <div class="layui-form-item" id="dataType" style="display: block;">
-                                <label class="layui-form-label">Which Type：</label>
+                                <label class="layui-form-label" title="Indicating your transcriptomic data type">Data Type <i class="layui-icon layui-icon-about"></i>:</label>
                                 <div class="layui-input-block">
                                   <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
                                     <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">Data File</label>
+                                <label class="layui-form-label">Data File:<a style="color: #F2F2F2;">..........</a></label>
                                 <div class="layui-upload-drag" id="right1">
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">Desc File</label>
+                                <label class="layui-form-label">Description file:</label>
                                 <div class="layui-upload-drag" id="right2">
                                   <i class="layui-icon"></i>
                                   <p>Click to upload, or drag the file here</p>

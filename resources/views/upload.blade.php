@@ -32,17 +32,15 @@
                           </div>
                         </div>
                         <div class="col-md-12" id="dataType" style="display: none;">
-                            <div class="col-md-2" title="Indicating your transcriptomic data type">
-                                <h4>Data Type <i class="layui-icon layui-icon-about"></i>:</h4>
-                            </div>
-                            <div class="col-md-10" >
-                                <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
-                                <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
-                            </div>
+                            <label class="layui-form-label" title="Indicating your transcriptomic data type">Data Type <i class="layui-icon layui-icon-about"></i>:</label>
+                                <div class="layui-input-block">
+                                  <input  type="radio" value="rna" name="data_type" checked> <label>RNA-seq</label>
+                                    <input  type="radio" value="microarray" name="data_type"> <label>Microarray</label>
+                                </div>
                         </div>
                         <p style="margin-left: 0px;">If you don`t know what to upload, you can click our example to download the file.</p><br>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">Data File：<a style="color: #F2F2F2;">.........</a></label>
+                            <label class="layui-form-label">Data File:<a style="color: #F2F2F2;">..........</a></label>
                             <div class="layui-upload-drag" id="datafile">
                               <i class="layui-icon"></i>
                               <p>Click to upload, or drag the file here</p>
@@ -51,7 +49,7 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label">Description file：</label>
+                            <label class="layui-form-label">Description file:</label>
                             <div class="layui-upload-drag" id="descfile">
                               <i class="layui-icon"></i>
                               <p>Click to upload, or drag the file here</p>
