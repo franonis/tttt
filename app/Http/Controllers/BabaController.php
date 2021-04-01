@@ -58,10 +58,10 @@ class BabaController extends Controller
                 if (strstr($lie[$i],'e')) {
                     $temp = explode("e", $lie[$i]);
                     $tmp = explode(".", $temp[0]);
-                    $t[$i] = $tmp[0] . '.' . $tmp[1][:2] . 'e' . $temp;
+                    $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2) . 'e' . $temp;
                 }else{
                     $tmp = explode(".", $lie[$i]);
-                    $t[$i] = $tmp[0] . '.' . $tmp[1][:2];
+                    $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2);
                 }
             }
             $t = explode("\t", $disease);
