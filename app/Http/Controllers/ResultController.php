@@ -700,6 +700,10 @@ class ResultController extends Controller
             #dd($command);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
+        exec($command, $ooout, $flag);
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_show.png';
+        exec($command, $ooout, $flag);
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         #return 1;
 
