@@ -30,7 +30,7 @@
                 <div class="col-md-3">
                     <h4>missing value percent to delete</h4>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9" style="margin-bottom: 1%;">
                         <a>Remove features with more than</a>
                         <small>
                         <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
