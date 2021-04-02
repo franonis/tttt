@@ -67,7 +67,7 @@ PDFObject.embed("/pdf/PCA_score_plot_all.pdf", "#pdf-viewer");
             ,defaultToolbar: ['filter', 'print', 'exports']
             ,url: '{{url('/diseasetable/f')}}'+ name//数据接口
             ,cols: [[ //表头
-            {field: 'no', title: 'id', width: '20%', sort: true,}
+            {field: 'no', title: 'id', width: '20%', sort: true}
             ,{field: 'gene', title: 'Gene', width: '20%', sort: true}
             ,{field: 'disease', title: 'Disease', width: '60%', sort: true}
             ]]
