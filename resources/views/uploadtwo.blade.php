@@ -62,7 +62,7 @@
                                   <input type="radio" name="omics_right" value="Proteomics" title="Proteomics">
                                 </div>
                             </div>
-                            <div class="col-md-12" id="dataType" style="display: none;" title="Indicating your transcriptomic data type">
+                            <div class="col-md-12" id="dataType" style="display: block;" title="Indicating your transcriptomic data type">
                               <label class="layui-form-label"><a>Data Type <i class="layui-icon layui-icon-about"></i>:</a></label>
                                 <div class="layui-input-block">
                                   <input  type="radio" value="rna" name="data_type" title="RNA-seq"checked> 

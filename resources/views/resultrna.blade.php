@@ -242,6 +242,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     {!! $up !!}
+                                    <p></p>
                                 </div><br>
                                 <div class="col-md-2">
                                     <h4>Down-regulated genes:</h4>
