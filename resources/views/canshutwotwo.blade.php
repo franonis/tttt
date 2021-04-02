@@ -39,13 +39,13 @@
                 </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-12">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">Hierarchical Clustering algorithm:<i class="layui-icon layui-icon-about" title="Clustering method to generate Intra-omics correlation matrix"></i></label>
+                    <div class="layui-form-item"  title="Clustering method to generate Intra-omics correlation matrix">
+                        <label class="layui-form-label">Hierarchical Clustering algorithm:<i class="layui-icon layui-icon-about"></i></label>
                         <div class="layui-input-block" id="hierarchical">
-                          <input type="radio" name="b" value="hierarchical" title="hierarchical" checked=""><i class="layui-icon layui-icon-about" title="Using hierarchical clustering to do correlation matrix clustering."></i>
-                          <input type="radio" name="b" value="k_means" title="k_means"><i class="layui-icon layui-icon-about" title="Using k-means clustering to do correlation matrix clustering."></i>
-                          <input type="radio" name="b" value="DBSCAN" title="DBSCAN"><i class="layui-icon layui-icon-about" title="Using DBSCAN clustering to do correlation matrix clustering."></i>
-                          <input type="radio" name="b" value="MCL" title="MCL"><i class="layui-icon layui-icon-about" title="Using Markov clustering algorithm to do correlation matrix clustering."></i>
+                          <input type="radio" name="b" value="hierarchical" title="hierarchical" checked=""><i class="layui-icon layui-icon-about" title="Using hierarchical clustering to do correlation matrix clustering."></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="radio" name="b" value="k_means" title="k_means"><i class="layui-icon layui-icon-about" title="Using k-means clustering to do correlation matrix clustering."></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="radio" name="b" value="DBSCAN" title="DBSCAN"><i class="layui-icon layui-icon-about" title="Using DBSCAN clustering to do correlation matrix clustering."></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="radio" name="b" value="MCL" title="MCL"><i class="layui-icon layui-icon-about" title="Using Markov clustering algorithm to do correlation matrix clustering."></i>&nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
                     </div>
                 </div>
