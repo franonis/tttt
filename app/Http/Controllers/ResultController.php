@@ -94,13 +94,13 @@ class ResultController extends Controller
                             exec($command,$fapng,$flag);
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up_LION-enrichment-plot.png') ){
-                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png') ){
+                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
                             }else{
                                 $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down_LION-enrichment-plot.png') ){
-                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png') ){
+                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
                             }else{
                                 $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
@@ -120,13 +120,13 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultmet($outpath)) {
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
-                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') ){
+                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:50%;width: 60%;">';
                             }else{
                                 $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
-                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down.png') ){
+                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:50%;width: 60%;">';
                             }else{
                                 $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
@@ -142,13 +142,13 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultpro($outpath)) {
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
-                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') ){
+                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:50%;width: 60%;">';
                             }else{
                                 $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
-                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down.png') ){
+                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:50%;width: 60%;">';
                             }else{
                                 $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
