@@ -371,10 +371,9 @@
                                 <div class="col-md-10" style="border:1px dashed #000;">
                                     <a href="{{ url('download/zip/')}}/{{ $downloadpath }}enrich++++lionenrichment.zip">lionenrichment.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div><br>
-                                <div class="col-md-2">
+                                <div class="col-md-12">
                                     <h4>LION enrichment result</h4>
                                 </div>
-                                <div class="col-md-10">
                                 <div class="col-md-2">
                                     <h4>Up-regulated lipids: </h4>
                                 </div>
@@ -386,8 +385,6 @@
                                 </div>
                                 <div class="col-md-10">
                                     {!! $down !!}
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">
-                                </div>
                                 </div>
                             </div>
                     </div>
