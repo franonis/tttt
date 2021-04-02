@@ -276,6 +276,7 @@
             ,text: {
                 none: 'no data avalible' //默认：无数据。
             }
+            ,cellMinWidth: 80
             ,toolbar: '<div> just top 20 for show</div>'
             ,defaultToolbar: ['filter', 'print', 'exports']
             ,url: '{{url('/detable/f')}}'+ name//数据接口
