@@ -40,19 +40,19 @@
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                 <div class="col-md-12">
                     <div class="layui-form-item">
-                        <label class="layui-form-label">Choose How to Hierarchical Clustering：</label>
+                        <label class="layui-form-label">Hierarchical Clustering algorithm:</label><i class="layui-icon layui-icon-about" title="Clustering method to generate Intra-omics correlation matrix"></i>
                         <div class="layui-input-block" id="hierarchical">
-                          <input type="radio" name="b" value="hierarchical" title="hierarchical" checked="">
-                          <input type="radio" name="b" value="k_means" title="k_means">
-                          <input type="radio" name="b" value="DBSCAN" title="DBSCAN">
-                          <input type="radio" name="b" value="MCL" title="MCL">
+                          <input type="radio" name="b" value="hierarchical" title="hierarchical" checked=""><i class="layui-icon layui-icon-about" title="Using hierarchical clustering to do correlation matrix clustering."></i>
+                          <input type="radio" name="b" value="k_means" title="k_means"><i class="layui-icon layui-icon-about" title="Using k-means clustering to do correlation matrix clustering."></i>
+                          <input type="radio" name="b" value="DBSCAN" title="DBSCAN"><i class="layui-icon layui-icon-about" title="Using DBSCAN clustering to do correlation matrix clustering."></i>
+                          <input type="radio" name="b" value="MCL" title="MCL"><i class="layui-icon layui-icon-about" title="Using Markov clustering algorithm to do correlation matrix clustering."></i>
                         </div>
                     </div>
                 </div>
             <div id="canshu1" style="display: block;">
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                    <div class="col-md-3">
-                        <h4>Set colum number(for gene/protein)</h4>
+                    <div class="col-md-3" title="Setting the number of blocks when dividing Transcriptomics/Proteomics data into blocks in the correlation matrix.">
+                        <h4>Set colum number(for gene/protein) <i class="layui-icon layui-icon-about"></i></h4>
                     </div>
                     <div class="col-md-9">
                         <small>
@@ -60,8 +60,8 @@
                         </small>
                     </div>
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                    <div class="col-md-3">
-                        <h4>Set line number(for lipid/met)</h4>
+                    <div class="col-md-3" title="Setting the number of blocks when dividing Lipidomics/Metabolomics data into blocks in the correlation matrix.">
+                        <h4>Set line number(for lipid/met) <i class="layui-icon layui-icon-about"></i></h4>
                     </div>
                     <div class="col-md-9">
                         <small>
@@ -71,8 +71,8 @@
             </div> 
             <div id="canshu2" style="display: none;">
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                    <div class="col-md-3">
-                        <h4>Set Minimum number of clustering units(for gene/protein)</h4>
+                    <div class="col-md-3" title="Setting minimum number of clustering units when dividing Transcriptomics/Proteomics data into blocks in the correlation matrix.">
+                        <h4>Set Minimum number of clustering units(for gene/protein) <i class="layui-icon layui-icon-about"></i></h4>
                     </div>
                     <div class="col-md-9">
                         <small>
@@ -80,8 +80,8 @@
                         </small>
                     </div>
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                    <div class="col-md-3">
-                        <h4>Set Minimum number of clustering units(for lipid/met)</h4>
+                    <div class="col-md-3" title="Setting minimum number of clustering units when dividing Lipidomics/Metabolomics data into blocks in the correlation matrix.">
+                        <h4>Set Minimum number of clustering units(for lipid/met) <i class="layui-icon layui-icon-about"></i></h4>
                     </div>
                     <div class="col-md-9">
                         <small>
@@ -91,8 +91,8 @@
             </div>
             <div id="canshu3" style="display: none;">
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                    <div class="col-md-3">
-                        <h4>The quantile threshold for the Markov dichotomy</h4>
+                    <div class="col-md-3" title="Setting the quantile threshold for the Markov dichotomy when dividing intra-omics data into blocks in the correlation matrix.">
+                        <h4>The quantile threshold for the Markov dichotomy <i class="layui-icon layui-icon-about"></i></h4>
                     </div>
                     <div class="col-md-9">
                         <small>
@@ -101,12 +101,12 @@
                     </div>
             </div>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
-                <div class="col-md-3">
-                    <h4>Set filtering thread</h4>
+                <div class="col-md-3" title="Filter the correlation matrix with a criterion">
+                    <h4>Set filtering thread <i class="layui-icon layui-icon-about"></i>:</h4>
                 </div>
                 <div class="col-md-9" id="filtering">
                     <input  type="radio" value="quantile" name="filtering" checked> <label>with 70% quantile of max value</label><br>
-                    <input  type="radio" value="own" name="filtering"> <label>using my own thread</label>
+                    <input  type="radio" value="own" name="filtering"> <label>customized thresholds</label>
                 </div>
                 <div class="col-md-12" id="ownfilter"  style="display: none;">
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
