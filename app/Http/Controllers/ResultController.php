@@ -363,7 +363,7 @@ class ResultController extends Controller
         return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         #return 1;Rscript lipRegEnrich.R -r "~/temp/" -t "target_list" -j 2.0 -k 0.1 -p "~/temp/enrich/"
         #富集分析
-        #/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day8Day080/"  -t "target_list" -j 2.0 -k 0.1 -p "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day8Day080/results/enrich/"
+        #/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day1Day880/"  -t "target_list" -j 2.0 -k 0.1 -p "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day1Day880/results/enrich/"
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "target_list" -j 2.0 -k 0.1 -p "' . $enrich_path . '"';
         #dd($command);
