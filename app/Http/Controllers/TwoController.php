@@ -362,7 +362,7 @@ class TwoController extends Controller
             $file_descfile_left  = 'program/testData/SVFmultiomics_210118/input/sampleList.csv'  ;
             $file_datafile_right = 'program/testData/SVFmultiomics_210118/input/RNAseq_genesymbol.csv'  ;
             $file_descfile_right = 'program/testData/SVFmultiomics_210118/input/sampleList.csv' ;
-            $delodd = '';
+            $delodd = 'F';
             $data_type = '';
             $n =  'T';
             $s =  '';
@@ -383,7 +383,7 @@ class TwoController extends Controller
             $file_descfile_left  = 'program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv'  ;
             $file_datafile_right = 'program/testData/CerebrospinalFluid_multiomics/input/proteins_Depletion_tidy.csv'  ;
             $file_descfile_right = 'program/testData/CerebrospinalFluid_multiomics/input/sampleList_lip.csv' ;
-            $delodd = '';
+            $delodd = 'F';
             $data_type = '';
             $n =  'F';
             $s =  0.82;
