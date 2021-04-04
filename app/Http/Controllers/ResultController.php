@@ -99,12 +99,12 @@ class ResultController extends Controller
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png') ){
                                 $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
                             }else{
-                                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $up='<p>No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png') ){
                                 $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
                             }else{
-                                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
                         }
@@ -125,12 +125,12 @@ class ResultController extends Controller
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') ){
                                 $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:50%;width: 60%;">';
                             }else{
-                                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $up='<p>No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down.png') ){
                                 $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:50%;width: 60%;">';
                             }else{
-                                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             return view('resultmet', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'up' => $up, 'down' => $down]);
                         }
@@ -362,7 +362,7 @@ class ResultController extends Controller
             #dd($command);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         #return 1;Rscript lipRegEnrich.R -r "~/temp/" -t "target_list" -j 2.0 -k 0.1 -p "~/temp/enrich/"
         #富集分析
         #/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day1Day880/"  -t "target_list" -j 2.0 -k 0.1 -p "/home/zhangqb/tttt/public/uploads/LipidomicsHANlipid_tidy.csvHANsampleList_lipid.CSV8d852c767707f00302f939401260cc64/Day1Day880/results/enrich/"
@@ -373,8 +373,8 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        #return 1;
-
+        return 1;
+        #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }
 
     public function showresultmet($path)
@@ -455,8 +455,8 @@ class ResultController extends Controller
 
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
         exec($command, $ooout, $flag);
-        #return 1;
-        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        return 1;
+        #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }
 
     public function showresultpro($path)
@@ -538,8 +538,8 @@ class ResultController extends Controller
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
         exec($command, $ooout, $flag);
 
-        #return 1;
-        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        return 1;
+        #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }
 
     public function showresultrna2($path)
@@ -706,8 +706,8 @@ class ResultController extends Controller
         exec($command, $ooout, $flag);
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_show.png';
         exec($command, $ooout, $flag);
-        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        #return 1;
+        #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        return 1;
 
     }
 
@@ -764,8 +764,8 @@ class ResultController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        #return 1;
-        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        return 1;
+        #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }
 
     public function showresultpro2($path)
@@ -819,8 +819,8 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        #return 1;
-        return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        return 1;
+        #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
     }
 
     public function getdownloadfilename($downloadpath)

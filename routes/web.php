@@ -51,15 +51,20 @@ Route::get('/pdf/{name}', [PdfController::class, 'getpdf']);
 
 Route::group(['prefix' => '/update'], function () {
     Route::get('/updatePCA', [UpdateController::class, 'updatePCA']);
+    Route::get('/updatelipVolcano', [UpdateController::class, 'updatelipVolcano']);#
+    Route::get('/updatelipHeatmap', [UpdateController::class, 'updatelipHeatmap']);
+    Route::get('/updateliphead', [UpdateController::class, 'updateliphead']);
+    Route::get('/updatelipfa', [UpdateController::class, 'updatelipfa']);
+    Route::get('/updatelipenrich', [UpdateController::class, 'updatelipenrich']);
     Route::get('/updaternaHeatmap', [UpdateController::class, 'updaternaHeatmap']);
     Route::get('/updaternaVolcano', [UpdateController::class, 'updaternaVolcano']);
+    Route::get('/updaternaenrich', [UpdateController::class, 'updaternaenrich']);
     Route::get('/updatemetHeatmap', [UpdateController::class, 'updatemetHeatmap']);
     Route::get('/updatemetVolcano', [UpdateController::class, 'updatemetVolcano']);
-    Route::get('/updatelipHeatmap', [UpdateController::class, 'updatelipHeatmap']);
-    Route::get('/updatelipVolcano', [UpdateController::class, 'updatelipVolcano']);
-    Route::get('/updatelipfa', [UpdateController::class, 'updatelipfa']);
-    Route::get('/updateliphead', [UpdateController::class, 'updateliphead']);
-    Route::get('/updatelipenrich', [UpdateController::class, 'updatelipenrich']);
+    Route::get('/updatemetenrich', [UpdateController::class, 'updatemetenrich']);
+    Route::get('/updateproHeatmap', [UpdateController::class, 'updateproHeatmap']);
+    Route::get('/updateproVolcano', [UpdateController::class, 'updateproVolcano']);
+    Route::get('/updateproenrich', [UpdateController::class, 'updateproenrich']);
 });
 
 Route::group(['prefix' => '/result'], function () {
