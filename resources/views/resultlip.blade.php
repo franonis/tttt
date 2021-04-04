@@ -327,9 +327,9 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label" title="“Target-list mode” enrichment analysis of a subset of lipids of interest, which will be most significant change lipids in lint-web; 
 “Ranking mode” performs an enrichment analysis on a complete and ranked list of lipids.">Analysis data by <i class="layui-icon layui-icon-about"></i> : </label>
-                                                <div class="layui-input-block" id="t_enrich">
-                                                  <input type="radio" name="t_enrich" value="target_list" title="target_list" checked="">
-                                                  <input type="radio" name="t_enrich" value="ranking" title="ranking">
+                                                <div class="layui-input-block" id="t">
+                                                  <input type="radio" name="t" value="target_list" title="target_list" checked="">
+                                                  <input type="radio" name="t" value="ranking" title="ranking">
                                                 </div>
                                             </div>
                                         </div>
@@ -493,8 +493,8 @@
 //https://blog.csdn.net/qq_37768929/article/details/106684781
 
 
-    $("#t_enrich").click(function (){
-        name =$("input[name='t_enrich']:checked").val();
+    $("#t").click(function (){
+        name =$("input[name='t']:checked").val();
         if (name == "target_list") {
           document.getElementById("target_list").style.display="block";
           document.getElementById("ranking").style.display="none";

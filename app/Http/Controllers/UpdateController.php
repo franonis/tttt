@@ -268,6 +268,8 @@ class UpdateController extends Controller
         $j = $request->j;
         $k = $request->k;
         $m = $request->m;
+        $t = $request->t;
+        $l = $request->l;
         if ($request->s) {
             $s = "T";
         }else{
@@ -280,7 +282,11 @@ class UpdateController extends Controller
         }
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $enrich_path = '/home/zhangqb/tttt/public/' . $path . 'results/enrich/';
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "target_list" -j 2.0 -k 0.1 -p "' . $enrich_path . '"';
+        if ($t == "target_list") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
+        }elseif ($t == "ranking") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -l '.$l.' -p "' . $enrich_path . '"';
+        }
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
@@ -313,8 +319,6 @@ class UpdateController extends Controller
                 }
                 return view('resultlipranking', ['title' => 'result', 'jb' => "yes", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng, 'ranking' => $ranking]);
             }
-        }elseif ($jb == "no") {
-            return view('resultlipnovolcano', ['title' => 'result', 'jb' => "no", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng]);
         }
     }
 
