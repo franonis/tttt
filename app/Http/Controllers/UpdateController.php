@@ -7,6 +7,60 @@ use Illuminate\Http\Request;
 
 class UpdateController extends Controller 
 {
+    public function updatelipenrich(Request $request)
+    {
+        $downloadpath = $request->downloadpath;
+        $path = $request->path;
+        $jb = $request->jb;
+        $e = $request->e;
+        $x = $request->x;
+        $j = $request->j;
+        $k = $request->k;
+        $m = $request->m;
+        if ($request->s) {
+            $s = "T";
+        }else{
+            $s = "F";
+        }
+        if ($request->w) {
+            $w = "T";
+        }else{
+            $w = "F";
+        }
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b ' . $b . ' -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_*.pdf ' . $pic_path . 'MARresults/volcano_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+
+        $command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
+        exec($command,$fapng,$flag);
+        $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
+        exec($command,$headpng,$flag);
+
+        if ($jb == "yes") {
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/up_LION-enrichment-plot.png') ){
+                $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+            }else{
+                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+            }
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/down_LION-enrichment-plot.png') ){
+                $down='<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+            }else{
+                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+            }
+            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $path, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
+        }elseif ($jb == "no") {
+            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $path, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
+        }
+    }
+
     public function updaternaVolcano(Request $request)
     {
         $DEname = $request->DEname;

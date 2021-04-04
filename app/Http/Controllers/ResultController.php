@@ -104,7 +104,7 @@ class ResultController extends Controller
                             }else{
                                 $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
-                            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "yes", 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
+                            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
                         }
                     }else{
                         if ($this->showresultlip2($outpath)) {
