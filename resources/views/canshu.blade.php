@@ -61,7 +61,7 @@
                 <div class="col-md-3" style="margin-top: 1%;">
                     <h4>How to normalization: </h4>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9 layui-form">
                     <div class="layui-input-block" id="n">
                       <input type="radio" name="n" value="A" title="MedianNorm+LogTransformation+AutoScaling" checked=""><br>
                       <input type="radio" name="n" value="B" title="PQN+AutoScaling"><br>
