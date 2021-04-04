@@ -114,6 +114,19 @@
                     </div>
                 </div>
             </div><br>
+            <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
+            <div class="col-md-12">
+                <div class="col-md-3" style="margin-top: 1%;">
+                    <h4>How to normalization: </h4>
+                </div>
+                <div class="col-md-9 layui-form">
+                    <div class="layui-input-block" id="n">
+                      <input type="radio" name="n" value="A" title="MedianNorm+LogTransformation+AutoScaling" checked=""><br>
+                      <input type="radio" name="n" value="B" title="PQN+AutoScaling"><br>
+                      <input type="radio" name="n" value="C" title="AutoScaling"><br>
+                    </div>
+                </div>
+            </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
             <div class="col-md-12 text-center">
                 <br>

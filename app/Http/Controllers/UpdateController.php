@@ -9,6 +9,7 @@ class UpdateController extends Controller
 {
     public function updatelipenrich(Request $request)
     {
+
         $downloadpath = $request->downloadpath;
         $path = $request->path;
         $jb = $request->jb;
@@ -27,6 +28,8 @@ class UpdateController extends Controller
         }else{
             $w = "F";
         }
+        $r_path = '/home/zhangqb/tttt/public/' . $path;
+        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b ' . $b . ' -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
         #dd($command);
         exec($command, $ooout, $flag);
