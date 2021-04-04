@@ -55,9 +55,9 @@ class UpdateController extends Controller
             }else{
                 $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
             }
-            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $path, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
+            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $path, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => $s, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'w' => $w, 'e' => $e, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
         }elseif ($jb == "no") {
-            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $path, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
+            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $path, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => $s, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'w' => $w, 'e' => $e, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
         }
     }
 

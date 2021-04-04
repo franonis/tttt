@@ -72,6 +72,8 @@ class ResultController extends Controller
             }
         } else {
             $delodd = $request->delodd;
+            $n = $request->n;
+
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/subgroupsSel.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -s "/home/zhangqb/tttt/public/' . $tmpout . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
             exec($command, $ooout, $flag);
             #dd($ooout);
@@ -79,7 +81,7 @@ class ResultController extends Controller
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
-                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $outpath . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
+                $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $outpath . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -n ' . $n . ' -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);

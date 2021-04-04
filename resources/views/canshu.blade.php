@@ -58,22 +58,14 @@
             </div><br>
             <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12">
-                <div class="layui-form-item">
-                    <label class="layui-form-label">Way for normalization:</label>
+                <div class="col-md-3" style="margin-top: 1%;">
+                    <h4>How to normalization: </h4>
+                </div>
+                <div class="col-md-9">
                     <div class="layui-input-block" id="n">
                       <input type="radio" name="n" value="A" title="MedianNorm+LogTransformation+AutoScaling" checked=""><br>
                       <input type="radio" name="n" value="B" title="PQN+AutoScaling"><br>
                       <input type="radio" name="n" value="C" title="AutoScaling"><br>
-                    </div>
-                </div>
-                <div class="col-md-3" style="margin-top: 1%;">
-                    <h4>Way for normalization: </h4>
-                </div>
-                <div class="col-md-9">
-                    <div class="layui-input-block" id="n2">
-                      <input type="radio" name="n2" value="A" title="MedianNorm+LogTransformation+AutoScaling" checked=""><br>
-                      <input type="radio" name="n2" value="B" title="PQN+AutoScaling"><br>
-                      <input type="radio" name="n2" value="C" title="AutoScaling"><br>
                     </div>
                 </div>
             </div><br>
@@ -93,6 +85,7 @@
 @section('js')
 <script href="{{ asset('/layui/layui-2.4.5/dist/layui.all.js') }}" ></script>
 <script href="{{ asset('/layer/layer.js') }}"></script>
+<script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 
 <script>
     $(document).ready(function(){
