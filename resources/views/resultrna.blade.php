@@ -346,6 +346,13 @@
 
 </script>
 <script type="text/javascript">
+    $("#insertpo").click(function(){
+            // alert('1');
+            $.get('/insertpo',{msg:$("#pomsg").val()},function(data){
+                alert(data);
+            },'json');
+    });
+
     function register() {
         var path = $("input[name='path']").val();
         var v = $("input[name='v']").val();
@@ -356,11 +363,11 @@
             url: "{{ url('/update/updaternaHeatmap') }}",
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data1: {
+            data: {
                 "path": path,
                 "v": v,
             },
-            success: function (data1) {
+            success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
                 }else{
