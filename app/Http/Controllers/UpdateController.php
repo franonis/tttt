@@ -364,7 +364,7 @@ class UpdateController extends Controller
     }
     public function updaternaHeatmap(Request $request)
     {
-        dd($request);
+        dd($request->query('v');
         $path = $request->path;
         $v = $request->v;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
