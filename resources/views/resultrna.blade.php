@@ -349,6 +349,7 @@
     function register() {
         var path = $('#path').val();
         var v = $('#v').val();
+        console.log(name);
         $.ajax({
             type: "POST",
             url: "{{ url('/update/updaternaHeatmap') }}",
@@ -360,7 +361,7 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    console.log("keyi")
+                    console.log("keyi");
                 }else{
                     alert('register fail');
                 }
