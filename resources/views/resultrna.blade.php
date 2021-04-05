@@ -347,8 +347,8 @@
 </script>
 <script type="text/javascript">
     function register() {
-        var path = $('#path').val();
-        var v = $('#v').val();
+        var path = $("input[name='omics']").val();
+        var v = $("input[name='v']").val();
         console.log(name);
         $.ajax({
             type: "POST",
