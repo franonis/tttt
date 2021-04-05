@@ -362,9 +362,9 @@ class UpdateController extends Controller
         
         return view('resultrna', ['title' => 'result', 'path' => $path, 'up' => $up, 'down' => $down, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv', 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]);
     }
-    public function updaternaHeatmap(Request $request)
+    public function updaternaHeatmap($data)
     {
-        dd($request);
+        dd($data);
         $path = $request->path;
         $v = $request->v;
         $r_path = '/home/zhangqb/tttt/public/' . $path;

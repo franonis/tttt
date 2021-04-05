@@ -355,11 +355,11 @@
             url: "{{ url('/update/updaternaHeatmap') }}",
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: {
+            data1: {
                 "path": path,
                 "v": v,
             },
-            success: function (data) {
+            success: function (data1) {
                 if(data.code == 'success'){
                     console.log("keyi");
                 }else{
