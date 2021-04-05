@@ -349,7 +349,7 @@
     function register() {
         var path = $("input[name='omics']").val();
         var v = $("input[name='v']").val();
-        console.log(name);
+        console.log(path);
         $.ajax({
             type: "POST",
             url: "{{ url('/update/updaternaHeatmap') }}",
