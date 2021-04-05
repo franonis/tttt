@@ -350,6 +350,7 @@
         var path = $("input[name='path']").val();
         var v = $("input[name='v']").val();
         console.log(path);
+        console.log(v);
         $.ajax({
             type: "POST",
             url: "{{ url('/update/updaternaHeatmap') }}",
