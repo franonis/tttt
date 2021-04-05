@@ -366,10 +366,6 @@ class UpdateController extends Controller
     {
         #dd($request);
         $path = $request->path;
-        $downloadpath = $request->downloadpath;
-        $f = $request->f;
-        $p = $request->p;
-        $u = $request->u;
         $v = $request->v;
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
@@ -379,25 +375,63 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_top.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top'.$v.'*.pdf ' . $pic_path . 'heatmap_top.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $path.'results/');
-        $DEgeneStatistics = file_get_contents($path . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/up.png') ){
-            $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/up.png" style="height:50%;width: 60%;">';
-        }else{
-            $up='<p>No UP genes enriched! Try check your data!</p>';
+        return response()->json([‘code’=> ‘success’]);
+    }
+
+    public function showresultrna2($path)
+    {
+        $r_path = '/home/zhangqb/tttt/public/' . $path;
+        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/'; #$path是上一个处理数据程序的输出目录 $pic_path是本程序的输出目录
+        is_dir($pic_path) or mkdir($pic_path, 0777, true);
+
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/show_variability.R -r "' . $r_path . '" -o "' . $pic_path . '"';
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/down.png') ){
-            $down='<img src="http://www.lintwebomics.info/' . $path . 'results/down.png" style="height:50%;width: 60%;">';
-        }else{
-            $down='<p>No DOWN genes enriched! Try check your data!</p>';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'PCA_score_plot_*.pdf ' . $pic_path . 'PCA_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        
-        return view('resultrna', ['title' => 'result', 'path' => $path, 'up' => $up, 'down' => $down, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv', 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]);
+
+        #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f 2.0 -p 0.1 -u 20';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano*.pdf ' . $pic_path . 'heatmap_show.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v 75';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_allgroups.pdf ' . $pic_path . 'heatmap_allgroups.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_show.png';
+        exec($command, $ooout, $flag);
+        #dd($ooout);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        #dd($path . 'results/');
+        return 1;
+
     }
 
     public function getdownloadfilename($downloadpath)

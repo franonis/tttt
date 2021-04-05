@@ -126,7 +126,7 @@
                             <form  id="Heatmap" class="layui-form" action="/update/updaternaHeatmap">
                                 <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                                 <input name="DEname" value="{{ $DEname }}" style="display: none;">
-                                <input name="path" value="{{ $path }}" style="display: none;">
+                                <input id="path" name="path" value="{{ $path }}" style="display: none;">
                                 <input name="f" value="{{ $f }}" style="display: none;">
                                 <input name="p" value="{{ $p }}" style="display: none;">
                                 <input name="u" value="{{ $u }}" style="display: none;">
@@ -144,6 +144,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
+                                        <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success form-control" onclick="register()">Update</button>
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </div>
@@ -344,4 +345,34 @@
     });
 
 </script>
+<script type="text/javascript">
+    function register() {
+        var path = $('#path').val();
+        var v = $('#v').val();
+        $.ajax({
+            type: "POST",
+            url: "{{ url('/update/updaternaHeatmap') }}",
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+                "v": v,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi")
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+//————————————————
+//版权声明：本文为CSDN博主「zlshmily」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+//原文链接：https://blog.csdn.net/zlshmily/article/details/105513800
+</script>
+
 @endsection
