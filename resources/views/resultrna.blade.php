@@ -343,7 +343,7 @@
         var p = $("input[name='p_volcano']").val();
         var u = $("input[name='u']").val();
         document.getElementById("volcanoupdatebutton").style.display="block";
-        console.log(path);
+        console.log('/update/updaternaVolcano/'+path+det+f+det+p+det+u);
         $.ajax({
             type: "get",
             url: '/update/updaternaVolcano/'+path+det+f+det+p+det+u,
