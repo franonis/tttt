@@ -99,7 +99,7 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button type="button" id="volcanoupdate" name="volcanoupdate" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
+                                            <button type="button" id="volcanoupdateri" name="volcanoupdateri" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
                                         </div>
                                         <div class="col-md-3">
                                             <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -160,7 +160,7 @@
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
+                                <form  id="head" class="layui-form" action="/update/updateliphead">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -498,6 +498,8 @@
     function volcanoupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
+        var s = "F";
+        var w = "F";
         if ($("#s").is(":checked")) {
             var s = "T";
         }else{

@@ -27,13 +27,13 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_*.pdf ' . $pic_path . 'MARresults/volcano_'.$s.$x.$j.$k.$m.$w'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_*.pdf ' . $pic_path . 'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'.png']);
     }
 
     public function updatelipHeatmap($data)
@@ -69,7 +69,7 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
     }
 
     public function updateliphead($data)
@@ -137,7 +137,7 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
     }
 
     public function updatelipfa($data)
@@ -189,7 +189,7 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
     }
 
     public function updatelipenrich($data)
@@ -233,7 +233,7 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
     }
 
     public function updaternaVolcano($data)
@@ -254,12 +254,12 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_'.$f.$p.$u'png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_'.$f.$p.$u.'.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
     }
     public function updaternaHeatmap($data)
     {
