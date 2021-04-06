@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <small>
-                                        <input id="f_vocano" type="text" name="f_vocano" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="f_volcano" type="text" name="f_volcano" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-4">
