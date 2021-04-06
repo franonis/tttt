@@ -116,8 +116,7 @@
                                     <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img id="volcanopng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: block;">
-                                    <img id="volcanopng1"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: none;">
+                                    <img id="volcanopng1" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: block;">
                                     <img id="volcanopng2"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: none;">
                                 </div>
                             </div>
@@ -536,18 +535,15 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    if (data.sub == "F") {
-                        document.getElementById("volcanopng").src = data.png;
-                        document.getElementById("volcanopng").style.display="block";
-                        document.getElementById("volcanopng1").style.display="none";
-                        document.getElementById("volcanopng2").style.display="none";
-                    }
                     if (data.sub == "T") {
-                        document.getElementById("volcanopng").style.display="none";
                         document.getElementById("volcanopng1").src = data.png1;
-                        document.getElementById("volcanopng1").style.display="block";
                         document.getElementById("volcanopng2").src = data.png2;
                         document.getElementById("volcanopng2").style.display="block";
+                    }
+                    if (data.sub == "F") {
+                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng2").style.display="none";
+
                     }
                     document.getElementById("volcanoupdatebutton").style.display="none";
                 }else{

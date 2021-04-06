@@ -339,19 +339,18 @@
     function volcanoupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
-        var f_volcano = $("input[name='f_volcano']").val();
-        var p_volcano = $("input[name='p_volcano']").val();
+        var f = $("input[name='f_volcano']").val();
+        var p = $("input[name='p_volcano']").val();
         var u = $("input[name='u']").val();
         document.getElementById("volcanoupdatebutton").style.display="block";
         console.log(path);
         $.ajax({
             type: "get",
-            url: '/update/updaternaVolcano/'+path+det+f_volcano+det+p_volcano+det+u,
+            url: '/update/updaternaVolcano/'+path+det+f+det+p+det+u,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
                 "path": path,
-                "v": v,
             },
             success: function (data) {
                 if(data.code == 'success'){

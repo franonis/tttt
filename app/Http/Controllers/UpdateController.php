@@ -28,15 +28,14 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_*.pdf ' . $pic_path . 'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_reg_*.pdf ' . $pic_path . 'MARresults/volcano_reg_'.$s.$x.$j.$k.$m.$w.'.png';
+        exec($command, $ooout, $flag);
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_regClass_*.pdf ' . $pic_path . 'MARresults/volcano_regClass_'.$s.$x.$j.$k.$m.$w.'.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        if ($w == "") {
-            # code...
-        }
-        return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'.png','png1' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'-1.png','png2' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'-0.png','sub' => $w]);
+        return response()->json(['code'=> 'success','png1' => $pic_path.'MARresults/volcano_reg_'.$s.$x.$j.$k.$m.$w.'.png','png2' => $pic_path.'MARresults/volcano_regClass_'.$s.$x.$j.$k.$m.$w.'.png','sub' => $s]);
     }
 
     public function updatelipHeatmap($data)
@@ -217,7 +216,7 @@ class UpdateController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u . '';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u;
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
