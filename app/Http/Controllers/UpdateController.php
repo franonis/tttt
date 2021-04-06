@@ -380,7 +380,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return response()->json([‘code’=> ‘success’]);
+        return response()->json(['code'=> 'success']);
     }
 
     public function showresultrna2($data)
