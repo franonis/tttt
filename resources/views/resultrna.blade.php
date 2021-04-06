@@ -14,6 +14,7 @@
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Transcriptomics</a>
         <hr>
             <div class="col-md-2">
+                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
             </div>
             <div class="col-md-10">
                 <div class="layui-tab">
@@ -69,10 +70,6 @@
                     <div class="layui-tab-item"><!--第一部分 3 Volcano-->
                         <div class="col-md-12">
                             <form  id="Volcano" class="layui-form" action="/update/updaternaVolcano">
-                                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                <input name="DEname" value="{{ $DEname }}" style="display: none;">
-                                <input name="path" value="{{ $path }}" style="display: none;">
-                                <input name="s" value="{{ $s }}" style="display: none;">
                                 <div class="col-md-2">
                                     <h4>Update with new parameters</h4>
                                 </div>
@@ -82,7 +79,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <small>
-                                        <input id="f" type="text" name="f" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="f_vocano" type="text" name="f_vocano" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-4">
@@ -90,7 +87,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <small>
-                                        <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
+                                        <input id="p_volcano" type="text" name="p_volcano" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
                                         </small>
                                     </div>
                                     <div class="col-md-4">
@@ -102,7 +99,10 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button id="submitupdateVolcano"  class="layui-btn" type="submit" >Update</button>
+                                        <button type="button" id="volcanoupdate" name="volcanoupdate" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                     </div>
                                 </div>
                             </form>
@@ -116,20 +116,13 @@
                                     <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/volcano_show.png" style="height:50%;width: 60%;">
+                                    <img id="volcanopng" src="http://www.lintwebomics.info/{{ $path }}results/volcano_show.png" style="height:80%;width: 80%;">
                                 </div>
                         </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 4 Heatmap-->
                         <div class="col-md-12">
                             <form  id="Heatmap" class="layui-form" action="/update/updaternaHeatmap">
-                                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                <input name="DEname" value="{{ $DEname }}" style="display: none;">
-                                <input id="path" name="path" value="{{ $path }}" style="display: none;">
-                                <input name="f" value="{{ $f }}" style="display: none;">
-                                <input name="p" value="{{ $p }}" style="display: none;">
-                                <input name="u" value="{{ $u }}" style="display: none;">
-                                <input name="s" value="{{ $s }}" style="display: none;">
                                 <div class="col-md-2">
                                     <h4>Update with new parameters</h4>
                                 </div>
@@ -143,7 +136,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success form-control" onclick="register()">Update</button>
+                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
                                     </div>
                                     <div class="col-md-3">
                                         <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -167,10 +160,6 @@
                     <div class="layui-tab-item"><!--第一部分 5 GO enrichment-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updaternaenrich">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="DEname" value="{{ $DEname }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="u" value="{{ $u }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -208,7 +197,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="f" type="text" name="f" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="f_enrich" type="text" name="f_enrich" value="{{$f}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -216,7 +205,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="p" type="text" name="p" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="p_enrich" type="text" name="p_enrich" value="{{$p}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -346,14 +335,46 @@
 
 </script>
 <script type="text/javascript">
-    $("#insertpo").click(function(){
-            // alert('1');
-            $.get('/insertpo',{msg:$("#pomsg").val()},function(data){
-                alert(data);
-            },'json');
-    });
+    
+    function volcanoupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var f_volcano = $("input[name='f_volcano']").val();
+        var p_volcano = $("input[name='p_volcano']").val();
+        var u = $("input[name='u']").val();
+        document.getElementById("volcanoupdatebutton").style.display="block";
+        console.log(path);
+        console.log(v);
+        $.ajax({
+            type: "get",
+            url: '/update/updaternaVolcano/'+path+det+f_volcano+det+p_volcano+det+u,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+                "v": v,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("volcanopng").src;
+                    console.log(sr);
+                    console.log(data.png);
+                    document.getElementById("volcanopng").src = data.png;
+                    document.getElementById("volcanoupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
 
-    function register() {
+
+    function heatmapupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var v = $("input[name='v']").val();

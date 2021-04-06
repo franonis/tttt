@@ -73,7 +73,9 @@
             <div class="col-md-12 text-center">
                 <br>
                 <button id="submit" class="layui-btn" type="submit" onclick="MsgBox()">RUN</button>
-                <p id="runbutton" style="display: none; size: 150%; ">it will take about one minute, don`t close this page<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                <div class="col-md-12 text-center" style="border:2px solid #000; margin-top: 10%; margin-bottom: 10% ">
+                    <p id="runbutton" style="display: none; size: 150%; ">it will take about one minute, don`t close this page<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                </div>
             </div>
 
         </form>

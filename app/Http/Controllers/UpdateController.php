@@ -324,17 +324,14 @@ class UpdateController extends Controller
 
     public function updaternaVolcano(Request $request)
     {
-        $DEname = $request->DEname;
-        $downloadpath = $request->downloadpath;
-        $path = $request->path;
-        $f = $request->f;
-        $p = $request->p;
-        $u = $request->u;
-        $v = $request->v;
-        $g = $request->g;
-        $c = $request->c;
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $f = $datas[1];
+        $p = $datas[2];
+        $u = $datas[3];
+
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u . '';
@@ -342,25 +339,12 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_'.$f.$p.$u'png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $path.'results/');
-        $DEgeneStatistics = file_get_contents($path . 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv');
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/up.png') ){
-            $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/up.png" style="height:50%;width: 60%;">';
-        }else{
-            $up='<p>No UP genes enriched! Try check your data!</p>';
-        }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/down.png') ){
-            $down='<img src="http://www.lintwebomics.info/' . $path . 'results/down.png" style="height:50%;width: 60%;">';
-        }else{
-            $down='<p>No DOWN genes enriched! Try check your data!</p>';
-        }
-        
-        return view('resultrna', ['title' => 'result', 'path' => $path, 'up' => $up, 'down' => $down, 'downloadpath' => $downloadpath, 'downloadfilename' => $downloadfilename, 'DEname' => 'DEgeneStatistics_'.$experiment .'_vs_'. $control .'.csv', 'DEgeneStatistics' => $DEgeneStatistics, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
     }
     public function updaternaHeatmap($data)
     {

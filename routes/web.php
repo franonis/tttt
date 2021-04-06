@@ -50,21 +50,21 @@ Route::get('/detable/f{name}', [BabaController::class, 'detable']);
 Route::get('/pdf/{name}', [PdfController::class, 'getpdf']);
 
 Route::group(['prefix' => '/update'], function () {
-    Route::get('/updatePCA', [UpdateController::class, 'updatePCA']);
-    Route::get('/updatelipVolcano', [UpdateController::class, 'updatelipVolcano']);#
-    Route::get('/updatelipHeatmap', [UpdateController::class, 'updatelipHeatmap']);
-    Route::get('/updateliphead', [UpdateController::class, 'updateliphead']);
-    Route::get('/updatelipfa', [UpdateController::class, 'updatelipfa']);
-    Route::get('/updatelipenrich', [UpdateController::class, 'updatelipenrich']);
+    Route::any('/updatePCA/{data}', [UpdateController::class, 'updatePCA']);
+    Route::any('/updatelipVolcano/{data}', [UpdateController::class, 'updatelipVolcano']);#
+    Route::any('/updatelipHeatmap/{data}', [UpdateController::class, 'updatelipHeatmap']);
+    Route::any('/updateliphead/{data}', [UpdateController::class, 'updateliphead']);
+    Route::any('/updatelipfa/{data}', [UpdateController::class, 'updatelipfa']);
+    Route::any('/updatelipenrich/{data}', [UpdateController::class, 'updatelipenrich']);
     Route::any('/updaternaHeatmap/{data}', [UpdateController::class, 'updaternaHeatmap']);
-    Route::get('/updaternaVolcano', [UpdateController::class, 'updaternaVolcano']);
-    Route::get('/updaternaenrich', [UpdateController::class, 'updaternaenrich']);
-    Route::get('/updatemetHeatmap', [UpdateController::class, 'updatemetHeatmap']);
-    Route::get('/updatemetVolcano', [UpdateController::class, 'updatemetVolcano']);
-    Route::get('/updatemetenrich', [UpdateController::class, 'updatemetenrich']);
-    Route::get('/updateproHeatmap', [UpdateController::class, 'updateproHeatmap']);
-    Route::get('/updateproVolcano', [UpdateController::class, 'updateproVolcano']);
-    Route::get('/updateproenrich', [UpdateController::class, 'updateproenrich']);
+    Route::any('/updaternaVolcano/{data}', [UpdateController::class, 'updaternaVolcano']);
+    Route::any('/updaternaenrich/{data}', [UpdateController::class, 'updaternaenrich']);
+    Route::any('/updatemetHeatmap/{data}', [UpdateController::class, 'updatemetHeatmap']);
+    Route::any('/updatemetVolcano/{data}', [UpdateController::class, 'updatemetVolcano']);
+    Route::any('/updatemetenrich/{data}', [UpdateController::class, 'updatemetenrich']);
+    Route::any('/updateproHeatmap/{data}', [UpdateController::class, 'updateproHeatmap']);
+    Route::any('/updateproVolcano/{data}', [UpdateController::class, 'updateproVolcano']);
+    Route::any('/updateproenrich/{data}', [UpdateController::class, 'updateproenrich']);
 });
 
 Route::group(['prefix' => '/result'], function () {
