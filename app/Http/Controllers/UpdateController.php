@@ -33,23 +33,18 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png','png1' => $pic_path.'volcano_'.$f.$p.$u.'-1.png','png2' => $pic_path.'volcano_'.$f.$p.$u.'-0.png','sub' => $w]);
+        return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'.png','png1' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'-1.png','png2' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'-0.png','sub' => $w]);
     }
 
     public function updatelipHeatmap($data)
     {
-        dd($data);
-        $downloadpath = $request->downloadpath;
-        $path = $request->path;
-        $jb = $request->jb;
-        $e = $request->e;
-        $x = $request->x;
-        $j = $request->j;
-        $k = $request->k;
-        $m = $request->m;
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $e = $datas[1];
         
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
+
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e ' . $e;
         #dd($command);
@@ -57,32 +52,19 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/heatmap_top'.$e.'*.pdf ' . $pic_path . 'MARresults/heatmap_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/heatmap_top'.$e.'*.pdf ' . $pic_path . 'MARresults/heatmap_'.$e.'.png';
         exec($command, $ooout, $flag);
         #dd($ooout);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$fapng,$flag);
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$headpng,$flag);
-
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/heatmap_'.$e.'.png']);
     }
 
     public function updateliphead($data)
     {
         dd($data);
-        $downloadpath = $request->downloadpath;
-        $path = $request->path;
-        $jb = $request->jb;
-        $e = $request->e;
-        $x = $request->x;
-        $j = $request->j;
-        $k = $request->k;
-        $m = $request->m;
         if ($request->w) {
             $w = "T";
         }else{
@@ -93,8 +75,9 @@ class UpdateController extends Controller
         }else{
             $z = "F";
         }
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
+
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w ' . $w;
         #dd($command);
         exec($command, $ooout, $flag);
@@ -143,15 +126,6 @@ class UpdateController extends Controller
     public function updatelipfa($data)
     {
         dd($data);
-        $downloadpath = $request->downloadpath;
-        $path = $request->path;
-        $jb = $request->jb;
-        $e = $request->e;
-        $x = $request->x;
-        $j = $request->j;
-        $k = $request->k;
-        $m = $request->m;
-        $g = $request->g;
         if ($request->s) {
             $s = "T";
         }else{
@@ -162,8 +136,9 @@ class UpdateController extends Controller
         }else{
             $w = "F";
         }
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
+
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "'.$g.'" -w '.$w.' -e '.$e;
 
         exec($command, $ooout, $flag);
@@ -195,16 +170,6 @@ class UpdateController extends Controller
     public function updatelipenrich($data)
     {
         dd($data);
-        $downloadpath = $request->downloadpath;
-        $path = $request->path;
-        $jb = $request->jb;
-        $e = $request->e;
-        $x = $request->x;
-        $j = $request->j;
-        $k = $request->k;
-        $m = $request->m;
-        $t = $request->t;
-        $l = $request->l;
         if ($request->s) {
             $s = "T";
         }else{
@@ -285,8 +250,9 @@ class UpdateController extends Controller
 
     public function showresultrna2($data)
     {
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/'; #$path是上一个处理数据程序的输出目录 $pic_path是本程序的输出目录
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
+ #$path是上一个处理数据程序的输出目录 $pic_path是本程序的输出目录
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/show_variability.R -r "' . $r_path . '" -o "' . $pic_path . '"';

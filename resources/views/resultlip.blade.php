@@ -116,7 +116,7 @@
                                     <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img id="volcanopng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
+                                    <img id="volcanopng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: block;">
                                     <img id="volcanopng1"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: none;">
                                     <img id="volcanopng2"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: none;">
                                 </div>
@@ -138,7 +138,7 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                        <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
                                     </div>
                                     <div class="col-md-3">
                                         <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -155,7 +155,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
+                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
@@ -564,18 +564,15 @@
     function heatmapupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
-        var v = $("input[name='v']").val();
+        var e = $("input[name='e']").val();
         document.getElementById("heatmapupdatebutton").style.display="block";
-        console.log(path);
-        console.log(v);
         $.ajax({
             type: "get",
-            url: '/update/updatelipHeatmap/'+path+det+v,
+            url: '/update/updatelipHeatmap/'+path+det+e,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
                 "path": path,
-                "v": v,
             },
             success: function (data) {
                 if(data.code == 'success'){
