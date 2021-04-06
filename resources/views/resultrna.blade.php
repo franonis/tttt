@@ -143,7 +143,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success form-control" onclick="register()">Update</button><i id="heatmapupdatebutton" class="layui-icon layui-icon-loading" style="display: none;"></i>
+                                        <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success form-control" onclick="register()">Update<i id="heatmapupdatebutton" class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop" style="display: none;"></i></button>
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </div>
