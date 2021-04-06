@@ -33,6 +33,9 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        if ($w == "") {
+            # code...
+        }
         return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'.png','png1' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'-1.png','png2' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'-0.png','sub' => $w]);
     }
 
@@ -64,7 +67,7 @@ class UpdateController extends Controller
 
     public function updateliphead($data)
     {
-        dd($data);
+        #dd($data);
         if ($request->w) {
             $w = "T";
         }else{
@@ -125,7 +128,7 @@ class UpdateController extends Controller
 
     public function updatelipfa($data)
     {
-        dd($data);
+        #dd($data);
         if ($request->s) {
             $s = "T";
         }else{
@@ -169,7 +172,7 @@ class UpdateController extends Controller
 
     public function updatelipenrich($data)
     {
-        dd($data);
+        #dd($data);
         if ($request->s) {
             $s = "T";
         }else{
@@ -203,7 +206,7 @@ class UpdateController extends Controller
 
     public function updaternaVolcano($data)
     {
-        dd($data);
+        #dd($data);
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
         $f = $datas[1];

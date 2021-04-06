@@ -159,7 +159,7 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 GO enrichment-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updaternaenrich">
+                                <form  id="enrich" class="layui-form" action="/update/updaternaenrich">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -344,7 +344,6 @@
         var u = $("input[name='u']").val();
         document.getElementById("volcanoupdatebutton").style.display="block";
         console.log(path);
-        console.log(v);
         $.ajax({
             type: "get",
             url: '/update/updaternaVolcano/'+path+det+f_volcano+det+p_volcano+det+u,

@@ -501,16 +501,16 @@
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var s = "F";
-        var w = "F";
+        var w = "T";
         if ($("#s").is(":checked")) {
             var s = "T";
         }else{
             var s = "F";
         }
         if ($("#w").is(":checked")) {
-            var w = "F";
+            var w = "T";
         }else{
-            var w = "";
+            var w = "F";
         }
 
         var x = document.getElementById("x").value;
