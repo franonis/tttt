@@ -354,7 +354,7 @@
     });
 
     function register() {
-        var path = $("input[name='path']").val();
+        var path = $("input[name='downloadpath']").val();
         var v = $("input[name='v']").val();
         console.log(path);
         console.log(v);
