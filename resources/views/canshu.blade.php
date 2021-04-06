@@ -73,6 +73,7 @@
             <div class="col-md-12 text-center">
                 <br>
                 <button id="submit" class="layui-btn" type="submit" onclick="MsgBox()">RUN</button>
+                <p id="runbutton" style="display: none; size: 150%; ">it will take about one minute, don`t close this page<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
             </div>
 
         </form>
@@ -93,7 +94,8 @@
     });
     function MsgBox() //声明标识符
     {
-        alert("it will take about one minute, don`t close this page"); //弹出对话框
+        document.getElementById("runbutton").style.display="block";
+        //alert("it will take about one minute, don`t close this page"); //弹出对话框
     };
 
 </script>

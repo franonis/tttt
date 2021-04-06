@@ -146,7 +146,7 @@
                                         <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success form-control" onclick="register()">Update</button>
                                     </div>
                                     <div class="col-md-3">
-                                        <p id="heatmapupdatebutton" style="display: none;">Updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                     </div>
                                 </div>
                             </form>
