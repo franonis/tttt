@@ -7,6 +7,7 @@
   @include('partials.navbar')
 @endsection
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container content">
     <div class="row">
         @include('partials.errors')
@@ -494,7 +495,6 @@
 </script>
 
 <script type="text/javascript">
-    
     function volcanoupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
