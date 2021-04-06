@@ -13,10 +13,11 @@ class UpdateController extends Controller
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
         $x = $datas[1];
-        $j = $datas[2];
-        $k = $datas[3];
-        $m = $datas[4];
-        $w = $datas[5];
+        $x = $datas[2];
+        $j = $datas[3];
+        $k = $datas[4];
+        $m = $datas[5];
+        $w = $datas[6];
 
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
