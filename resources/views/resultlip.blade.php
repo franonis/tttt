@@ -13,6 +13,7 @@
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Lipidomics</a>
         <hr>
             <div class="col-md-2">
+                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
             </div>
             <div class="col-md-10"> 
                 <div class="layui-tab">
@@ -51,26 +52,22 @@
                     <div class="layui-tab-item"><!--第一部分 2 Volcano-->
                             <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Lipid class information will be illustrated on volcano plot">
-                                            <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="s" name="s[yes]" lay-skin="primary" title="Show lipid class"><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-4">
                                             <h4>Adjusted P-Value:</h4>
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <select name="x">
+                                            <select id="x" name="x">
                                                 <option value="raw">P-Value</option>
                                                 <option value="fdr">Benjamini-Hochberg adjusted P-Value</option>
                                             </select>
@@ -81,7 +78,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="j_volcano" type="text" name="j_volcano" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -89,7 +86,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="k_volcano" type="text" name="k_volcano" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -101,8 +98,11 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
-                                        </div>
+                                        <button type="button" id="volcanoupdate" name="volcanoupdate" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                    </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
@@ -122,9 +122,6 @@
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
@@ -141,8 +138,11 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
-                                        </div>
+                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                    </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
@@ -163,9 +163,6 @@
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
@@ -178,8 +175,11 @@
                                             <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
-                                        </div>
+                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                    </div>
                                     </div>
                                 
                                     <div class="col-md-2">
@@ -232,9 +232,6 @@
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipfa">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
                                     <input name="j" value="{{ $j }}" style="display: none;">
                                     <input name="k" value="{{ $k }}" style="display: none;">
                                     <input name="m" value="{{ $m }}" style="display: none;">
@@ -314,11 +311,6 @@
                     <div class="layui-tab-item"><!--第一部分 6 LION enrichment-->
                         <div class="col-md-12">
                                 <form  id="Volcano" class="layui-form" action="/update/updatelipenrich">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -339,7 +331,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <small>
-                                                <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                                <input id="j_enrich" type="text" name="j_enrich" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                                 </small>
                                             </div><br>
                                             <div class="col-md-3">
@@ -347,7 +339,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <small>
-                                                <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                                <input id="k_enrich" type="text" name="k_enrich" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                                 </small>
                                             </div>
                                         </div>
@@ -361,8 +353,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
-                                        </div>
+                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                    </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
@@ -487,9 +482,7 @@
             arrow: 'hover', //始终显示箭头
             anim: 'default', //切换动画方式
         });
-    }
-    
-    
+    }  
 //https://blog.csdn.net/qq_37768929/article/details/106684781
 
 
@@ -507,4 +500,102 @@
    });
 
 </script>
+
+<script type="text/javascript">
+    
+    function volcanoupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        if ($("#s").is(":checked")) {
+            var s = "T"
+        }else{
+            var s = "F"
+        }
+        if ($("#w").is(":checked")) {
+            var w = "T"
+        }else{
+            var w = "F"
+        }
+
+        var x = document.getElementById("x").value;
+        var j = $("input[name='j_volcano']").val();
+        var k = $("input[name='k_volcano']").val();
+        var m = $("input[name='m']").val();
+
+        document.getElementById("volcanoupdatebutton").style.display="block";
+        console.log(path);
+        console.log("s"s);
+        console.log("x"x);
+        console.log("j"j);
+        console.log("k"k);
+        console.log("m"m);
+        console.log("w"w);
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+                "v": v,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("volcanopng").src;
+                    console.log(sr);
+                    console.log(data.png);
+                    document.getElementById("volcanopng").src = data.png;
+                    document.getElementById("volcanoupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+
+    function heatmapupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var v = $("input[name='v']").val();
+        document.getElementById("heatmapupdatebutton").style.display="block";
+        console.log(path);
+        console.log(v);
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipHeatmap/'+path+det+v,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+                "v": v,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("heatmappng").src;
+                    console.log(sr);
+                    console.log(data.png);
+                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+//————————————————
+//版权声明：本文为CSDN博主「zlshmily」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+//原文链接：https://blog.csdn.net/zlshmily/article/details/105513800
+</script>
+
 @endsection

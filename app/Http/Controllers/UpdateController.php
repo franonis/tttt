@@ -7,64 +7,38 @@ use Illuminate\Http\Request;
 
 class UpdateController extends Controller 
 {
-    public function updatelipVolcano(Request $request)
+    public function updatelipVolcano($data)
     {
-        $downloadpath = $request->downloadpath;
-        $path = $request->path;
-        $jb = $request->jb;
-        $e = $request->e;
-        $x = $request->x;
-        $j = $request->j;
-        $k = $request->k;
-        $m = $request->m;
-        if ($request->s) {
-            $s = "T";
-        }else{
-            $s = "F";
-        }
-        if ($request->w) {
-            $w = "T";
-        }else{
-            $w = "F";
-        }
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        dd($data);
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $x = $datas[1];
+        $j = $datas[2];
+        $k = $datas[3];
+        $m = $datas[4];
+        $w = $datas[5];
+
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
+
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b F -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_*.pdf ' . $pic_path . 'MARresults/volcano_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_*.pdf ' . $pic_path . 'MARresults/volcano_'.$s.$x.$j.$k.$m.$w'.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$fapng,$flag);
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$headpng,$flag);
-
-        if ($jb == "yes") {
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/up_LION-enrichment-plot.png') ){
-                $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/down_LION-enrichment-plot.png') ){
-                $down='<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            return view('resultlip', ['title' => 'result', 'jb' => "yes", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
-        }elseif ($jb == "no") {
-            return view('resultlipnovolcano', ['title' => 'result', 'jb' => "no", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng]);
-        }
+        return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w'.png']);
     }
 
-    public function updatelipHeatmap(Request $request)
+    public function updatelipHeatmap($data)
     {
+        dd($data);
         $downloadpath = $request->downloadpath;
         $path = $request->path;
         $jb = $request->jb;
@@ -95,25 +69,12 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        if ($jb == "yes") {
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/up_LION-enrichment-plot.png') ){
-                $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/down_LION-enrichment-plot.png') ){
-                $down='<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            return view('resultlip', ['title' => 'result', 'jb' => "yes", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
-        }elseif ($jb == "no") {
-            return view('resultlipnovolcano', ['title' => 'result', 'jb' => "no", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng]);
-        }
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
     }
 
-    public function updateliphead(Request $request)
+    public function updateliphead($data)
     {
+        dd($data);
         $downloadpath = $request->downloadpath;
         $path = $request->path;
         $jb = $request->jb;
@@ -176,25 +137,12 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        if ($jb == "yes") {
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/up_LION-enrichment-plot.png') ){
-                $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/down_LION-enrichment-plot.png') ){
-                $down='<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            return view('resultlip', ['title' => 'result', 'jb' => "yes", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
-        }elseif ($jb == "no") {
-            return view('resultlipnovolcano', ['title' => 'result', 'jb' => "no", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng]);
-        }
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
     }
 
-    public function updatelipfa(Request $request)
+    public function updatelipfa($data)
     {
+        dd($data);
         $downloadpath = $request->downloadpath;
         $path = $request->path;
         $jb = $request->jb;
@@ -241,25 +189,12 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        if ($jb == "yes") {
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/up_LION-enrichment-plot.png') ){
-                $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/down_LION-enrichment-plot.png') ){
-                $down='<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
-            }
-            return view('resultlip', ['title' => 'result', 'jb' => "yes", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
-        }elseif ($jb == "no") {
-            return view('resultlipnovolcano', ['title' => 'result', 'jb' => "no", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng]);
-        }
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
     }
 
-    public function updatelipenrich(Request $request)
+    public function updatelipenrich($data)
     {
+        dd($data);
         $downloadpath = $request->downloadpath;
         $path = $request->path;
         $jb = $request->jb;
@@ -298,32 +233,12 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        if ($jb == "yes") {
-            if ($t == "target_list") {
-                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/up_LION-enrichment-plot.png') ){
-                    $up = '<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-                }else{
-                    $up='<p>No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
-                }
-                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/down_LION-enrichment-plot.png') ){
-                    $down='<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-                }else{
-                    $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
-                }
-                return view('resultlip', ['title' => 'result', 'jb' => "yes", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
-            }elseif ($t == "ranking") {
-                if ($this->isRunOver('/home/zhangqb/tttt/public/' . $path . 'results/enrich/LION-enrichment-plot.png') ){
-                    $ranking='<img src="http://www.lintwebomics.info/' . $path . 'results/enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-                }else{
-                    $ranking='<p>No lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
-                }
-                return view('resultlipranking', ['title' => 'result', 'jb' => "yes", 'path' => $path, 'downloadpath' => $downloadpath, 'x' => $x, 'j' => $j, 'k' => $k, 'm' => $m, 'e' => $e, 'fapng' => $fapng, 'headpng' => $headpng, 'ranking' => $ranking]);
-            }
-        }
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u'.png']);
     }
 
-    public function updaternaVolcano(Request $request)
+    public function updaternaVolcano($data)
     {
+        dd($data);
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
         $f = $datas[1];
