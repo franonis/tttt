@@ -94,15 +94,15 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="m_volcano" type="text" name="m_volcano" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="volcanoupdate" name="volcanoupdate" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
-                                    </div>
+                                            <button type="button" id="volcanoupdate" name="volcanoupdate" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
@@ -168,11 +168,11 @@
                                             <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="headupdate" name="headupdate" class="btn btn-success form-control" onclick="headupdate()">Update</button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p id="headupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
-                                    </div>
+                                            <button type="button" id="headupdate" name="headupdate" class="btn btn-success form-control" onclick="headupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="headupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
                                     </div>
                                 
                                     <div class="col-md-2">
@@ -224,11 +224,7 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipfa">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
+                                <form  id="fa" class="layui-form" action="/update/updatelipfa">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -248,7 +244,10 @@
                                             <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitright" class="layui-btn" type="submit">Update</button>
+                                            <button type="button" id="faupdate" name="faupdate" class="btn btn-success form-control" onclick="faupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="faupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -276,7 +275,7 @@
                                                 </div>
                                                 <div class="col-md-8">
                                                     <small>
-                                                    <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                                                    <input id="m_fa" type="text" name="m_fa" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                                     </small>
                                                 </div>
                                                 <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
@@ -303,7 +302,7 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 6 LION enrichment-->
                         <div class="col-md-12">
-                                <form  id="Volcano" class="layui-form" action="/update/updatelipenrich">
+                                <form  id="enrich" class="layui-form" action="/update/updatelipenrich">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -346,10 +345,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                        <button type="button" id="enrichupdate" name="enrichupdate" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
                                     </div>
                                     <div class="col-md-3">
-                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                     </div>
                                     </div>
                                 </form>
@@ -500,14 +499,14 @@
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         if ($("#s").is(":checked")) {
-            var s = "T"
+            var s = "T";
         }else{
-            var s = "F"
+            var s = "F";
         }
         if ($("#w").is(":checked")) {
-            var w = "T"
+            var w = "T";
         }else{
-            var w = "F"
+            var w = "F";
         }
 
         var x = document.getElementById("x").value;
