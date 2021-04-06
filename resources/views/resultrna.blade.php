@@ -354,13 +354,14 @@
     });
 
     function register() {
+        var det = "----";
         var path = $("input[name='downloadpath']").val();
         var v = $("input[name='v']").val();
         console.log(path);
         console.log(v);
         $.ajax({
             type: "POST",
-            url: '/update/updaternaHeatmap/'+path+v,
+            url: '/update/updaternaHeatmap/'+path+det+v,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
@@ -370,6 +371,8 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
+                    location.reload()
+                    //document.getElementById("img").src
                 }else{
                     alert('register fail');
                 }

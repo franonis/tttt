@@ -364,11 +364,11 @@ class UpdateController extends Controller
     }
     public function updaternaHeatmap($data)
     {
-        dd($data);
-        $path = $request->path;
-        $v = $request->v;
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $v = $datas[0];
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v ' . $v;
         exec($command, $ooout, $flag);
