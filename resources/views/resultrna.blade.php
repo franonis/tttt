@@ -99,7 +99,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button type="button" id="volcanoupdate" name="volcanoupdate" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
+                                        <button type="button" id="volcanoupdateri" name="volcanoupdateri" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
                                     </div>
                                     <div class="col-md-3">
                                         <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -136,7 +136,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                        <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
                                     </div>
                                     <div class="col-md-3">
                                         <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
