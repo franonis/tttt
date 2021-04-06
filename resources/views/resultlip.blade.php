@@ -516,12 +516,12 @@
 
         document.getElementById("volcanoupdatebutton").style.display="block";
         console.log(path);
-        console.log("s"s);
-        console.log("x"x);
-        console.log("j"j);
-        console.log("k"k);
-        console.log("m"m);
-        console.log("w"w);
+        console.log("s"+s);
+        console.log("x"+x);
+        console.log("j"+j);
+        console.log("k"+k);
+        console.log("m"+m);
+        console.log("w"+w);
         $.ajax({
             type: "get",
             url: '/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w,
