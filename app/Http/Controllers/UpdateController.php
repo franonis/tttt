@@ -9,7 +9,7 @@ class UpdateController extends Controller
 {
     public function updatelipVolcano($data)
     {
-        dd($data);
+        #dd($data);
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
         $x = $datas[1];

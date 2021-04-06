@@ -514,7 +514,7 @@
         var x = document.getElementById("x").value;
         var j = $("input[name='j_volcano']").val();
         var k = $("input[name='k_volcano']").val();
-        var m = $("input[name='m']").val();
+        var m = $("input[name='m_volcano']").val();
 
         document.getElementById("volcanoupdatebutton").style.display="block";
         console.log(path);
@@ -531,7 +531,6 @@
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
                 "path": path,
-                "v": v,
             },
             success: function (data) {
                 if(data.code == 'success'){
