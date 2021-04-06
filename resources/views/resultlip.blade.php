@@ -122,9 +122,6 @@
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -163,10 +160,6 @@
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -175,10 +168,10 @@
                                             <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="heatmapupdate" name="heatmapupdate" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                        <button type="button" id="headupdate" name="headupdate" class="btn btn-success form-control" onclick="headupdate()">Update</button>
                                     </div>
                                     <div class="col-md-3">
-                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        <p id="headupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                     </div>
                                     </div>
                                 
