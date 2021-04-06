@@ -12,7 +12,7 @@ class UpdateController extends Controller
         #dd($data);
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
-        $x = $datas[1];
+        $s = $datas[1];
         $x = $datas[2];
         $j = $datas[3];
         $k = $datas[4];
