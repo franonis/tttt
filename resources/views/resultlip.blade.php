@@ -117,6 +117,8 @@
                                 </div>
                                 <div class="col-md-10">
                                     <img id="volcanopng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
+                                    <img id="volcanopng1"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: none;">
+                                    <img id="volcanopng2"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: none;">
                                 </div>
                             </div>
                     </div>
@@ -506,9 +508,9 @@
             var s = "F";
         }
         if ($("#w").is(":checked")) {
-            var w = "T";
-        }else{
             var w = "F";
+        }else{
+            var w = "";
         }
 
         var x = document.getElementById("x").value;
@@ -534,12 +536,19 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    console.log("keyi");
-                    //location.reload()
-                    var sr = document.getElementById("volcanopng").src;
-                    console.log(sr);
-                    console.log(data.png);
-                    document.getElementById("volcanopng").src = data.png;
+                    if (data.sub == "F") {
+                        document.getElementById("volcanopng").src = data.png;
+                        document.getElementById("volcanopng").style.display="block";
+                        document.getElementById("volcanopng1").style.display="none";
+                        document.getElementById("volcanopng2").style.display="none";
+                    }
+                    if (data.sub == "T") {
+                        document.getElementById("volcanopng").style.display="none";
+                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng1").style.display="block";
+                        document.getElementById("volcanopng2").src = data.png2;
+                        document.getElementById("volcanopng2").style.display="block";
+                    }
                     document.getElementById("volcanoupdatebutton").style.display="none";
                 }else{
                     alert('register fail');

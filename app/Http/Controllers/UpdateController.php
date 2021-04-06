@@ -33,8 +33,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-
-        return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/volcano_'.$s.$x.$j.$k.$m.$w.'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png','png1' => $pic_path.'volcano_'.$f.$p.$u.'-1.png','png2' => $pic_path.'volcano_'.$f.$p.$u.'-0.png','sub' => $w]);
     }
 
     public function updatelipHeatmap($data)
