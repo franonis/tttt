@@ -374,7 +374,8 @@
                     //location.reload()
                     var sr = document.getElementById("heatmappng").src;
                     console.log(sr);
-                    document.getElementById("heatmappng").src = sr;
+                    console.log(data.png);
+                    document.getElementById("heatmappng").src = data.png;
                 }else{
                     alert('register fail');
                 }
