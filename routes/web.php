@@ -56,7 +56,7 @@ Route::group(['prefix' => '/update'], function () {
     Route::get('/updateliphead', [UpdateController::class, 'updateliphead']);
     Route::get('/updatelipfa', [UpdateController::class, 'updatelipfa']);
     Route::get('/updatelipenrich', [UpdateController::class, 'updatelipenrich']);
-    Route::post('/updaternaHeatmap/{data}', [UpdateController::class, 'updaternaHeatmap']);
+    Route::any('/updaternaHeatmap/{data}', [UpdateController::class, 'updaternaHeatmap']);
     Route::get('/updaternaVolcano', [UpdateController::class, 'updaternaVolcano']);
     Route::get('/updaternaenrich', [UpdateController::class, 'updaternaenrich']);
     Route::get('/updatemetHeatmap', [UpdateController::class, 'updatemetHeatmap']);
