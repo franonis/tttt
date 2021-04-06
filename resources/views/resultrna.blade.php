@@ -360,7 +360,7 @@
         console.log(path);
         console.log(v);
         $.ajax({
-            type: "POST",
+            type: "get",
             url: '/update/updaternaHeatmap/'+path+det+v,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
