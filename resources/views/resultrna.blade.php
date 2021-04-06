@@ -143,7 +143,7 @@
                                         </small>
                                     </div>
                                     <div class="col-md-3">
-                                        <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success form-control" onclick="register()">Update</button>
+                                        <button type="button" id="confirmsignup" name="confirmsignup" class="btn btn-success form-control" onclick="register()">Update</button><i id="heatmapupdatebutton" class="layui-icon layui-icon-loading" style="display: none;"></i>
                                         <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                     </div>
                                 </div>
@@ -355,6 +355,7 @@
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var v = $("input[name='v']").val();
+        document.getElementById("heatmapupdatebutton").style.display="block";
         console.log(path);
         console.log(v);
         $.ajax({
@@ -374,6 +375,7 @@
                     console.log(sr);
                     console.log(data.png);
                     document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
                 }
