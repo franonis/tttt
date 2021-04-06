@@ -372,7 +372,9 @@
                 if(data.code == 'success'){
                     console.log("keyi");
                     //location.reload()
-                    document.getElementById("heatmappng").src.reload()
+                    var sr = document.getElementById("heatmappng").src;
+                    console.log(sr);
+                    document.getElementById("heatmappng").src.reload();
                 }else{
                     alert('register fail');
                 }
