@@ -159,7 +159,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/heatmap_show.png" style="height:50%;width: 60%;">
+                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                         </div>
                     </div>
@@ -371,8 +371,8 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    location.reload()
-                    //document.getElementById("img").src
+                    //location.reload()
+                    document.getElementById("heatmappng").src.reload()
                 }else{
                     alert('register fail');
                 }
