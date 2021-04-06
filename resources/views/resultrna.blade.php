@@ -358,8 +358,6 @@
                 if(data.code == 'success'){
                     console.log("keyi");
                     //location.reload()
-                    var sr = document.getElementById("volcanopng").src;
-                    console.log(sr);
                     console.log(data.png);
                     document.getElementById("volcanopng").src = data.png;
                     document.getElementById("volcanoupdatebutton").style.display="none";
