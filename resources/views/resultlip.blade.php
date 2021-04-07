@@ -61,7 +61,7 @@
                                             <input type="checkbox" id="s" name="s[yes]" lay-skin="primary" title="Show lipid class"><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_vol" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-4">
                                             <h4>Adjusted P-Value:</h4>
@@ -158,7 +158,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
+                    <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->fuck
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="head" class="layui-form" action="/update/updateliphead">
@@ -167,10 +167,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_head" id="w_fa" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                            <button type="button" id="headupdate" name="headupdate" class="btn btn-success form-control" onclick="headupdate()">Update</button>
+                                            <button type="button" id="headupdateri" name="headupdateri" class="btn btn-success form-control" onclick="headgroupupdate()">Update</button>
                                         </div>
                                         <div class="col-md-3">
                                             <p id="headupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -191,12 +191,12 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Box plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                                <img id="headgroupcolor" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
                                                 <div class="layui-carousel" id="test1" lay-filter="test1">
                                                   <div carousel-item="">
                                                     @foreach($headpng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="headpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -206,16 +206,22 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Cumulation plot</h2>
                                             <div class="layui-colla-content">
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                                <img id="headgroupcum" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
                                                 <div class="col-md-12" title="Heatmap displaying lipid class information">
-                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details" checked=""><i class="layui-icon layui-icon-about"></i>
+                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details"><i class="layui-icon layui-icon-about"></i>
                                                 </div>
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
+                                                <div class="col-md-3">
+                                                    <button type="button" id="headheatmapupdateri" name="headheatmapupdateri" class="btn btn-success form-control" onclick="headheatmapupdate()">Update</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <p id="headheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                </div>
+                                                <img id="headheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                         </div>
@@ -231,22 +237,22 @@
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-4" title="Lipid acyl-chain organization way 'FA_info': only consider the acyl-chain differences in each lipid; 'all_info' consider the summarized acyl-chain length number in each lipid">
+                                        <div class="col-md-3" title="Lipid acyl-chain organization way 'FA_info': only consider the acyl-chain differences in each lipid; 'all_info' consider the summarized acyl-chain length number in each lipid">
                                             <h4>Set plot type <i class="layui-icon layui-icon-about"></i>:</h4>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <small>
-                                            <select name="g">
+                                            <select name="g" id="g">
                                                 <option value="FA_info">FA_info</option>
                                                 <option value="all_info">all_info</option>
                                             </select>
                                             </small>
                                         </div>
                                         <div class="col-md-12" title="Display the chemical bond links of lipids">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_fa" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                            <button type="button" id="faupdate" name="faupdate" class="btn btn-success form-control" onclick="faupdate()">Update</button>
+                                            <button type="button" id="faupdateri" name="faupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
                                         </div>
                                         <div class="col-md-3">
                                             <p id="faupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -272,15 +278,21 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
-                                                <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                                <div class="col-md-3" title="Set the number of top significant changed lipids to display on the heatmap">
                                                     <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-9">
                                                     <small>
                                                     <input id="m_fa" type="text" name="m_fa" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
                                                     </small>
                                                 </div>
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
+                                                <div class="col-md-3">
+                                                    <button type="button" id="faheatmapupdateri" name="faheatmapupdateri" class="btn btn-success form-control" onclick="faheatmapupdate()">Update</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <p id="faheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                </div>
+                                                <img id="faheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -506,7 +518,7 @@
         }else{
             var s = "F";
         }
-        if ($("#w").is(":checked")) {
+        if ($("#w_vol").is(":checked")) {
             var w = "T";
         }else{
             var w = "F";
@@ -579,6 +591,146 @@
                     console.log(data.png);
                     document.getElementById("heatmappng").src = data.png;
                     document.getElementById("heatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+    function headheatmapupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var w = "T";
+        var z = "F";
+        if ($("#w_head").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+
+        if ($("#z").is(":checked")) {
+            var z = "T";
+        }else{
+            var z = "F";
+        }
+
+        document.getElementById("headheatmapupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipheadheatmap/'+path+det+w+det+z,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("headheatmappng").src;
+                    console.log(sr);
+                    console.log(data.png);
+                    document.getElementById("headheatmappng").src = data.png;
+                    document.getElementById("headheatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+    function headgroupupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var w = "T";
+        var z = "F";
+        if ($("#w_fa").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+
+        if ($("#z").is(":checked")) {
+            var z = "T";
+        }else{
+            var z = "F";
+        }
+
+        document.getElementById("headupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updateliphead/'+path+det+w+det+z,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("headpng").src;
+                    console.log(sr);
+                    console.log(data.png);
+                    document.getElementById("headgroupcolor").src = data.color;
+                    document.getElementById("headgroupcum").src = data.cum;
+                    document.getElementById("headheatmappng").src = data.heatmap;
+                    for (var i = 0; i <= data.pngnum; i++) {
+                        var sr = document.getElementById("headpng"+i).src ;
+                        document.getElementById("headpng"+i).src = sr+".png";
+                    }
+                    document.getElementById("headupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+    function faupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var w = "T";
+        var e = "F";
+        if ($("#w_head").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+
+        if ($("#z").is(":checked")) {
+            var z = "T";
+        }else{
+            var z = "F";
+        }
+
+        document.getElementById("headheatmapupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updateliphead/'+path+det+w+det+z,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("headheatmappng").src;
+                    console.log(sr);
+                    console.log(data.png);
+                    document.getElementById("headheatmappng").src = data.png;
+                    document.getElementById("headheatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
                 }

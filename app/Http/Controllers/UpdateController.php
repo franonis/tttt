@@ -64,65 +64,74 @@ class UpdateController extends Controller
         return response()->json(['code'=> 'success','png' => $pic_path.'MARresults/heatmap_'.$e.'.png']);
     }
 
-    public function updateliphead($data)
+    public function updatelipheadheatmap($data)
     {
-        #dd($data);
-        if ($request->w) {
-            $w = "T";
-        }else{
-            $w = "F";
-        }
-        if ($request->z) {
-            $z = "T";
-        }else{
-            $z = "F";
-        }
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $w = $datas[1];
+        $z = $datas[2];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w ' . $w;
-        #dd($command);
-        exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
         exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_color_*.pdf ' . $pic_path . 'headgroup/headgroupcolor_show.png';
-        exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_cum_*.pdf ' . $pic_path . 'headgroup/headgroupcum_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_'.$z.'.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
-        exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            #dd($ooout);
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
-        $command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
-        exec($command, $ooout, $flag);
+
+        return response()->json(['code'=> 'success','png' => $pic_path.'headgroupheatmap_'.$z.'.png']);
+    }
+
+    public function updateliphead($data)
+    {
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $w = $datas[1];
+        $z = $datas[2];
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
+
+        exec('rm '.$pic_path.'headgroup/*');
+
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w T';
         #dd($command);
+        exec($command, $ooout, $flag);
         if ($flag == 1) {
-            #dd($command);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$fapng,$flag);
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$headpng,$flag);
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_color_*.pdf ' . $pic_path . 'headgroup/headgroupcolor_new.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_cum_*.pdf ' . $pic_path . 'headgroup/headgroupcum_new.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            #dd($ooout);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
+        #dd($command);
+        exec($command, $ooout, $flag);
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_'.$z.'.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            #dd($ooout);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+
+        $command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png.png; done';
+        exec($command, $ooout, $flag);
+
+        exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);
+
+        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'color' => $pic_path.'headgroupheatmap_'.$z.'.png','cum' => $pic_path.'headgroupheatmap_'.$z.'.png','heatmap' => $pic_path.'headgroupheatmap_'.$z.'.png']);
     }
 
     public function updatelipfa($data)
