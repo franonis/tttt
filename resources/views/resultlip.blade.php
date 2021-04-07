@@ -671,7 +671,7 @@
                     document.getElementById("headheatmappng").src = data.heatmap;
                     for (var i = 0; i <= data.pngnum; i++) {
                         var sr = document.getElementById("headpng"+i).src ;
-                        document.getElementById("headpng"+i).src = sr+".png";
+                        document.getElementById("headpng"+i).src = sr+'?t='+'+Math.random()';
                     }
                     document.getElementById("headupdatebutton").style.display="none";
                 }else{
@@ -712,7 +712,7 @@
                     document.getElementById("faheatmappng").src = data.heatmap;
                     for (var i = 0; i <= data.pngnum; i++) {
                         var sr = document.getElementById("fapng"+i).src ;
-                        document.getElementById("fapng"+i).src = sr+".png";
+                        document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
                     }
 
                     document.getElementById("faheatmapupdatebutton").style.display="none";
