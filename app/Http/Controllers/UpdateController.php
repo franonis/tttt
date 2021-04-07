@@ -184,8 +184,8 @@ class UpdateController extends Controller
         $j = $datas[2];
         $k = $datas[3];
         $l = $datas[4];
-        $r_path = '/home/zhangqb/tttt/public/' . $path . '../../';
-        dd($r_path);
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        #dd($r_path);
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
         exec('rm '.$enrich_path.'*');
@@ -197,7 +197,7 @@ class UpdateController extends Controller
         }elseif ($t == "ranking") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -l '.$l.' -p "' . $enrich_path . '"';
         }
-        #dd($command);
+        dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
