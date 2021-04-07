@@ -360,7 +360,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="enrichupdate" name="enrichupdate" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
+                                        <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
                                     </div>
                                     <div class="col-md-3">
                                         <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -376,7 +376,7 @@
                                 <div class="col-md-2">
                                     <h4>LION enrichment result</h4>
                                 </div>
-                                <div class="col-md-10" id="target_listblock">
+                                <div class="col-md-10" id="target_listblock" style="display: block;">
                                     <div class="col-md-2">
                                         <h4>Up-regulated lipids: </h4>
                                     </div>
@@ -390,7 +390,7 @@
                                         {!! $down !!}
                                     </div>
                                 </div>
-                                <div class="col-md-10" id="rankingblock">
+                                <div class="col-md-10" id="rankingblock" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Up-regulated lipids: </h4>
                                     </div>
