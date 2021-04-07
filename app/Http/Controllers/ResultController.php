@@ -97,16 +97,16 @@ class ResultController extends Controller
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png') ){
-                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                                $up = '<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
                             }else{
                                 $up='<p>No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png') ){
-                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
                             }else{
                                 $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
-                            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
+                            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
                         }
                     }else{
                         if ($this->showresultlip2($outpath)) {
@@ -114,7 +114,7 @@ class ResultController extends Controller
                             exec($command,$fapng,$flag); 
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);                                  
-                            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
                         }
                     }
                 }
@@ -170,6 +170,7 @@ class ResultController extends Controller
     {
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/'; #$path是上一个处理数据程序的输出目录 $pic_path是本程序的输出目录
+        exec('rm '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/show_variability.R -r "' . $r_path . '" -o "' . $pic_path . '"';
@@ -239,6 +240,8 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        exec('rm '.$pic_path.'*');
+
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults';
@@ -382,6 +385,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        exec('rm '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -464,6 +468,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        exec('rm '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -547,6 +552,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        exec('rm '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults';
@@ -665,6 +671,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        exec('rm '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -722,6 +729,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
+        exec('rm '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';

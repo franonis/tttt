@@ -178,17 +178,17 @@ class UpdateController extends Controller
 
     public function updatelipenrich($data)
     {
-        #dd($data);
-        if ($request->s) {
-            $s = "T";
-        }else{
-            $s = "F";
-        }
-        if ($request->w) {
-            $w = "T";
-        }else{
-            $w = "F";
-        }
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $t = $datas[1];
+        $g = $datas[2];
+        $k = $datas[3];
+        $l = $datas[4];
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
+
+        exec('rm '.$enrich_path.'*');
+
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $enrich_path = '/home/zhangqb/tttt/public/' . $path . 'results/enrich/';
         if ($t == "target_list") {
@@ -202,12 +202,7 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$fapng,$flag);
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$headpng,$flag);
-
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
+        return response()->json(['code'=> 'success','pngup' => $enrich_path.'up_LION-enrichment-plot.png','pngdown' => $enrich_path.'down_LION-enrichment-plot.png','png' => $enrich_path.'up_LION-enrichment-plot.png']);
     }
 
     public function updaternaVolcano($data)
