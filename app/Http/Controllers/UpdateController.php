@@ -200,7 +200,7 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        return response()->json(['code'=> 'success','pngup' => $enrich_path.'up_LION-enrichment-plot.png','pngdown' => $enrich_path.'down_LION-enrichment-plot.png','png' => $enrich_path.'up_LION-enrichment-plot.png']);
+        return response()->json(['code'=> 'success','pngup' => $enrich_path.'up_LION-enrichment-plot.png','pngdown' => $enrich_path.'down_LION-enrichment-plot.png','png' => $enrich_path.'LION-enrichment-plot.png']);
     }
 
     public function updaternaVolcano($data)
