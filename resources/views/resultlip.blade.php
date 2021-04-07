@@ -738,7 +738,7 @@
         document.getElementById("headheatmapupdatebutton").style.display="block";
         $.ajax({
             type: "get",
-            url: '/update/updateliphead/'+path+det+t+det+g+det+k+det+l,
+            url: '/update/updateliphead/'+path+det+t+det+j+det+k+det+l,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
