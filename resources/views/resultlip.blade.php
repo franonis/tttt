@@ -287,7 +287,7 @@
                                                     </small>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <button type="button" id="faheatmapupdateri" name="faheatmapupdateri" class="btn btn-success form-control" onclick="faheatmapupdate()">Update</button>
+                                                    <button type="button" id="faheatmapupdateri" name="faheatmapupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <p id="faheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
@@ -700,18 +700,14 @@
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var w = "T";
-        var e = "F";
-        if ($("#w_head").is(":checked")) {
+        if ($("#w_fa").is(":checked")) {
             var w = "T";
         }else{
             var w = "F";
         }
+        var g = document.getElementById("g").value;
+        var m = $("input[name='m_fa']").val();
 
-        if ($("#z").is(":checked")) {
-            var z = "T";
-        }else{
-            var z = "F";
-        }
 
         document.getElementById("headheatmapupdatebutton").style.display="block";
         $.ajax({
@@ -742,7 +738,7 @@
     };
 
 
-    function faheatmapupdate() {
+    function enrichupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var w = "T";
