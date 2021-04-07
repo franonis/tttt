@@ -393,7 +393,7 @@
                     var sr = document.getElementById("heatmappng").src;
                     console.log(sr);
                     console.log(data.png);
-                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmappng").src = sr+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
