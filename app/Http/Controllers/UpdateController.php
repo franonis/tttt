@@ -217,6 +217,8 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
+        exec('rm '.$pic_path.'*');
+
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u;
         exec($command, $ooout, $flag);
@@ -237,6 +239,7 @@ class UpdateController extends Controller
         $v = $datas[1];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
+        exec('rm '.$pic_path.'*');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v ' . $v;
         #dd($command);
@@ -244,7 +247,8 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top'.$v.'*.pdf ' . $pic_path . 'heatmap_'.$v.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_show.png';
+        #$command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top'.$v.'*.pdf ' . $pic_path . 'heatmap_'.$v.'.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
