@@ -392,7 +392,7 @@
                     //location.reload()
                     var sr = document.getElementById("heatmappng").src;
                     console.log(sr);
-                    console.log(data.png);
+                    //console.log(data.png);
                     document.getElementById("heatmappng").src = sr+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
