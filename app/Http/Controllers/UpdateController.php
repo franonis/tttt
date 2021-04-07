@@ -184,7 +184,8 @@ class UpdateController extends Controller
         $j = $datas[2];
         $k = $datas[3];
         $l = $datas[4];
-        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../../';
+        dd($r_path);
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
         exec('rm '.$enrich_path.'*');
