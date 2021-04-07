@@ -97,12 +97,12 @@ class ResultController extends Controller
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png') ){
-                                $up = '<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                                $up = '<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png" style="height:90%;width: 90%;">';
                             }else{
                                 $up='<p>No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png') ){
-                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_LION-enrichment-plot.png" style="height:90%;width: 90%;">';
                             }else{
                                 $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
