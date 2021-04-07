@@ -735,6 +735,11 @@
         var j = $("input[name='j_enrich']").val();
         var k = $("input[name='k_enrich']").val();
         var l =$("input[name='l']:checked").val();
+        console.log("t"+t);
+        console.log("j"+j);
+        console.log("k"+k);
+        console.log("l"+l);
+
         document.getElementById("enrichupdatebutton").style.display="block";
         $.ajax({
             type: "get",
