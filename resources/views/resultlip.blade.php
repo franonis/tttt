@@ -391,10 +391,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-10" id="rankingblock" style="display: none;">
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-10">
-                                        <img id="rankingpng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
+                                    <div class="col-md-12">
+                                        <img id="rankingpng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:90%;width: 90%;">
                                     </div>
                                 </div>
                             </div>
