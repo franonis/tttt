@@ -743,7 +743,7 @@
         document.getElementById("enrichupdatebutton").style.display="block";
         $.ajax({
             type: "get",
-            url: '/update/updateliphead/'+path+det+t+det+j+det+k+det+l,
+            url: '/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
