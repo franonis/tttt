@@ -392,7 +392,6 @@
                                 </div>
                                 <div class="col-md-10" id="rankingblock" style="display: none;">
                                     <div class="col-md-2">
-                                        <h4>Up-regulated lipids: </h4>
                                     </div>
                                     <div class="col-md-10">
                                         <img id="rankingpng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
