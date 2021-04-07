@@ -214,12 +214,12 @@
                                             <div class="layui-colla-content">
                                                 <div class="col-md-12" title="Heatmap displaying lipid class information">
                                                     <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details"><i class="layui-icon layui-icon-about"></i>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <button type="button" id="headheatmapupdateri" name="headheatmapupdateri" class="btn btn-success form-control" onclick="headheatmapupdate()">Update</button>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <p id="headheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                    <div class="col-md-3">
+                                                        <button type="button" id="headheatmapupdateri" name="headheatmapupdateri" class="btn btn-success form-control" onclick="headheatmapupdate()">Update</button>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p id="headheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                    </div>
                                                 </div>
                                                 <img id="headheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
@@ -285,12 +285,13 @@
                                                     <small>
                                                     <input id="e_fa" type="text" name="e_fa" value="{{$e}}" style="width:50px; display:inline;" class="form-control" >
                                                     </small>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <button type="button" id="faheatmapupdateri" name="faheatmapupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <p id="faheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                
+                                                    <div class="col-md-3">
+                                                        <button type="button" id="faheatmapupdateri" name="faheatmapupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p id="faheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                    </div>
                                                 </div>
                                                 <img id="faheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
