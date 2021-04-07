@@ -131,15 +131,16 @@ class UpdateController extends Controller
 
         exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);
 
-        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'color' => $pic_path.'headgroupheatmap_'.$z.'.png','cum' => $pic_path.'headgroupheatmap_'.$z.'.png','heatmap' => $pic_path.'headgroupheatmap_'.$z.'.png']);
+        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'color' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png','cum' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png','heatmap' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png']);
     }
 
     public function updatelipfa($data)
     {
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
-        $w = $datas[1];
-        $z = $datas[2];
+        $g = $datas[1];
+        $w = $datas[2];
+        $e = $datas[3];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
