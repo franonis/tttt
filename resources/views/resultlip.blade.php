@@ -158,7 +158,7 @@
                                 </div>
                             </div>
                     </div>
-                    <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->fuck
+                    <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
                         <div class="col-md-10">
                             <div class="col-md-12">
                                 <form  id="head" class="layui-form" action="/update/updateliphead">
@@ -531,13 +531,6 @@
         var m = $("input[name='m_volcano']").val();
 
         document.getElementById("volcanoupdatebutton").style.display="block";
-        console.log(path);
-        console.log("s"+s);
-        console.log("x"+x);
-        console.log("j"+j);
-        console.log("k"+k);
-        console.log("m"+m);
-        console.log("w"+w);
         $.ajax({
             type: "get",
             url: '/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w,
@@ -585,11 +578,6 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    console.log("keyi");
-                    //location.reload()
-                    var sr = document.getElementById("heatmappng").src;
-                    console.log(sr);
-                    console.log(data.png);
                     document.getElementById("heatmappng").src = data.png;
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
@@ -630,11 +618,6 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    console.log("keyi");
-                    //location.reload()
-                    var sr = document.getElementById("headheatmappng").src;
-                    console.log(sr);
-                    console.log(data.png);
                     document.getElementById("headheatmappng").src = data.png;
                     document.getElementById("headheatmapupdatebutton").style.display="none";
                 }else{
@@ -675,11 +658,6 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    console.log("keyi");
-                    //location.reload()
-                    var sr = document.getElementById("headpng").src;
-                    console.log(sr);
-                    console.log(data.png);
                     document.getElementById("headgroupcolor").src = data.color;
                     document.getElementById("headgroupcum").src = data.cum;
                     document.getElementById("headheatmappng").src = data.heatmap;
@@ -723,10 +701,6 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    //location.reload()
-                    var sr = document.getElementById("headheatmappng").src;
-                    console.log(sr);
-                    console.log(data.png);
                     document.getElementById("fashow").src = data.show;
                     document.getElementById("faheatmappng").src = data.heatmap;
                     for (var i = 0; i <= data.pngnum; i++) {
@@ -776,10 +750,6 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    //location.reload()
-                    var sr = document.getElementById("headheatmappng").src;
-                    console.log(sr);
-                    console.log(data.png);
                     document.getElementById("headheatmappng").src = data.png;
                     document.getElementById("headheatmapupdatebutton").style.display="none";
                 }else{
