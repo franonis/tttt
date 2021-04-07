@@ -136,19 +136,14 @@ class UpdateController extends Controller
 
     public function updatelipfa($data)
     {
-        #dd($data);
-        if ($request->s) {
-            $s = "T";
-        }else{
-            $s = "F";
-        }
-        if ($request->w) {
-            $w = "T";
-        }else{
-            $w = "F";
-        }
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $w = $datas[1];
+        $z = $datas[2];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
+
+        exec('rm '.$pic_path.'FAchainVisual/*');
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "'.$g.'" -w '.$w.' -e '.$e;
 
@@ -157,12 +152,12 @@ class UpdateController extends Controller
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_new.png';
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_new.png';
         exec($command, $ooout, $flag);
 
-        $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
+        $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png.png; done';
         exec($command, $ooout, $flag);
         #dd($command);
         if ($flag == 1) {
@@ -175,51 +170,9 @@ class UpdateController extends Controller
         $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
         exec($command,$headpng,$flag);
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
-    }
+        exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);
 
-    public function updatelipfaheatmap($data)
-    {
-        #dd($data);
-        if ($request->s) {
-            $s = "T";
-        }else{
-            $s = "F";
-        }
-        if ($request->w) {
-            $w = "T";
-        }else{
-            $w = "F";
-        }
-        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
-        $pic_path = '/home/zhangqb/tttt/public/' . $path;
-
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "'.$g.'" -w '.$w.' -e '.$e;
-
-        exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            #dd($ooout);
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
-        exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_show.png';
-        exec($command, $ooout, $flag);
-
-        $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
-        exec($command, $ooout, $flag);
-        #dd($command);
-        if ($flag == 1) {
-            #dd($command);
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
-
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$fapng,$flag);
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$headpng,$flag);
-
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
+        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'show' => $pic_path.'FAchainVisual/fa_new.png','heatmap' => $pic_path.'FAchainVisual/faheatmap_new.png']);
     }
 
     public function updatelipenrich($data)

@@ -272,7 +272,7 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Grid plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
+                                                <img id="fashow" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -283,7 +283,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <small>
-                                                    <input id="m_fa" type="text" name="m_fa" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                                                    <input id="e_fa" type="text" name="e_fa" value="{{$e}}" style="width:50px; display:inline;" class="form-control" >
                                                     </small>
                                                 </div>
                                                 <div class="col-md-3">
@@ -302,7 +302,7 @@
                                                   <div carousel-item="">
                                                     @foreach($fapng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -706,13 +706,14 @@
             var w = "F";
         }
         var g = document.getElementById("g").value;
-        var m = $("input[name='m_fa']").val();
+        var e = $("input[name='e_fa']").val();
 
 
-        document.getElementById("headheatmapupdatebutton").style.display="block";
+        document.getElementById("faheatmapupdatebutton").style.display="block";
+        document.getElementById("faupdatebutton").style.display="block";
         $.ajax({
             type: "get",
-            url: '/update/updateliphead/'+path+det+w+det+z,
+            url: '/update/updatelipfa/'+path+det+g+det+w+det+e,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
@@ -725,8 +726,15 @@
                     var sr = document.getElementById("headheatmappng").src;
                     console.log(sr);
                     console.log(data.png);
-                    document.getElementById("headheatmappng").src = data.png;
-                    document.getElementById("headheatmapupdatebutton").style.display="none";
+                    document.getElementById("fashow").src = data.show;
+                    document.getElementById("faheatmappng").src = data.heatmap;
+                    for (var i = 0; i <= data.pngnum; i++) {
+                        var sr = document.getElementById("fapng"+i).src ;
+                        document.getElementById("fapng"+i).src = sr+".png";
+                    }
+
+                    document.getElementById("faheatmapupdatebutton").style.display="none";
+                    document.getElementById("faupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
                 }

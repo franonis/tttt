@@ -56,7 +56,6 @@ Route::group(['prefix' => '/update'], function () {
     Route::any('/updateliphead/{data}', [UpdateController::class, 'updateliphead']);
     Route::any('/updatelipheadheatmap/{data}', [UpdateController::class, 'updatelipheadheatmap']);
     Route::any('/updatelipfa/{data}', [UpdateController::class, 'updatelipfa']);
-    Route::any('/updatelipfaheatmap/{data}', [UpdateController::class, 'updatelipfaheatmap']);
     Route::any('/updatelipenrich/{data}', [UpdateController::class, 'updatelipenrich']);
     Route::any('/updaternaHeatmap/{data}', [UpdateController::class, 'updaternaHeatmap']);
     Route::any('/updaternaVolcano/{data}', [UpdateController::class, 'updaternaVolcano']);
