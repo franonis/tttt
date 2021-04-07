@@ -189,15 +189,12 @@ class UpdateController extends Controller
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
         exec('rm '.$enrich_path.'*');
-
-        $r_path = '/home/zhangqb/tttt/public/' . $path;
-        $enrich_path = '/home/zhangqb/tttt/public/' . $path . 'results/enrich/';
         if ($t == "target_list") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         }elseif ($t == "ranking") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -l '.$l.' -p "' . $enrich_path . '"';
         }
-        dd($command);
+        #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
