@@ -83,7 +83,7 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'headgroupheatmap_'.$z.'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png']);
     }
 
     public function updateliphead($data)
