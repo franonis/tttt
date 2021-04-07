@@ -181,7 +181,7 @@ class UpdateController extends Controller
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
         $t = $datas[1];
-        $g = $datas[2];
+        $j = $datas[2];
         $k = $datas[3];
         $l = $datas[4];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';

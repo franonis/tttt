@@ -735,7 +735,7 @@
         var j = $("input[name='j_enrich']").val();
         var k = $("input[name='k_enrich']").val();
         var l =$("input[name='l']:checked").val();
-        document.getElementById("headheatmapupdatebutton").style.display="block";
+        document.getElementById("enrichupdatebutton").style.display="block";
         $.ajax({
             type: "get",
             url: '/update/updateliphead/'+path+det+t+det+j+det+k+det+l,
@@ -760,7 +760,7 @@
                         document.getElementById("rankingpng").src = data.png;
 
                     }
-                    document.getElementById("headheatmapupdatebutton").style.display="none";
+                    document.getElementById("enrichupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
                 }
