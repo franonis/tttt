@@ -738,7 +738,7 @@
         console.log("t"+t);
         console.log("j"+j);
         console.log("k"+k);
-        console.log("l"+l);
+        console.log('/update/updateliphead/'+path+det+t+det+j+det+k+det+l);
 
         document.getElementById("enrichupdatebutton").style.display="block";
         $.ajax({
