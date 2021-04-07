@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_head" id="w_fa" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" id="headupdateri" name="headupdateri" class="btn btn-success form-control" onclick="headgroupupdate()">Update</button>
@@ -651,7 +651,7 @@
         var path = $("input[name='downloadpath']").val();
         var w = "T";
         var z = "F";
-        if ($("#w_fa").is(":checked")) {
+        if ($("#w_head").is(":checked")) {
             var w = "T";
         }else{
             var w = "F";
@@ -697,6 +697,52 @@
         });
     };
     function faupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var w = "T";
+        var e = "F";
+        if ($("#w_head").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+
+        if ($("#z").is(":checked")) {
+            var z = "T";
+        }else{
+            var z = "F";
+        }
+
+        document.getElementById("headheatmapupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updateliphead/'+path+det+w+det+z,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("headheatmappng").src;
+                    console.log(sr);
+                    console.log(data.png);
+                    document.getElementById("headheatmappng").src = data.png;
+                    document.getElementById("headheatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+
+    function faheatmapupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var w = "T";
