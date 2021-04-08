@@ -137,11 +137,11 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
-                                    </div>
+                                            <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
@@ -360,11 +360,11 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
-                                    </div>
+                                            <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">

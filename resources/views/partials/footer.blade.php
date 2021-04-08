@@ -20,9 +20,6 @@
            </div>
          </div>
       </div>
-      <div class="text-center">      
-        <a href="http://www.reliablecounter.com" target="_blank"><img src="https://www.reliablecounter.com/count.php?page=60743545&digit=style/plain/10/&reloads=0" alt="reliablecounter.com" title="reliablecounter.com" border="0"></a><br /><a href="http://https://www.reliablecounter.com/blog" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;">reliablecounter blog</a>
-      </div>
       <div class="row"><h6 class="text-center">Copyright &copy; 2020-{{ date('Y') }} <a href="mailto:{{ env('APP_ADMIN') }}" data-toggle="tooltip" data-placement="top" title="Send e-mail to the web administrator">{{ env('APP_NAME') }}</a> All Rights Reserved.</h6></div>
     </footer>
       <div id="back-to-top"><a href="#top"><span class="glyphicon glyphicon-chevron-up"></span></a></div>

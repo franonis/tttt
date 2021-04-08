@@ -14,6 +14,7 @@
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Metabolomics</a>
         <hr>
             <div class="col-md-2">
+                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
             </div>
             <div class="col-md-10">
                 <div class="layui-tab">
@@ -49,27 +50,16 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 2 Volcano-->
                             <div class="col-md-12">
-                                <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-12" title="Lipid class information will be illustrated on volcano plot">
-                                            <input type="checkbox" name="s[yes]" lay-skin="primary" title="Show lipid class" checked=""><i class="layui-icon layui-icon-about"></i>
-                                        </div>
-                                        <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
-                                        </div>
                                         <div class="col-md-4">
                                             <h4>Adjusted P-Value:</h4>
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <select name="x">
+                                            <select id="x" name="x">
                                                 <option value="raw">P-Value</option>
                                                 <option value="fdr">Benjamini-Hochberg adjusted P-Value</option>
                                             </select>
@@ -80,7 +70,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="j_volcano" type="text" name="j_volcano" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -88,7 +78,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="k_volcano" type="text" name="k_volcano" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -100,10 +90,12 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="volcanoupdateri" name="volcanoupdateri" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
-                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
@@ -114,19 +106,12 @@
                                     <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
+                                    <img id="volcanopng1" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -140,10 +125,13 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
                                         </div>
+                                        <div class="col-md-3">
+                                            <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
+
                                     </div>
-                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
@@ -154,18 +142,12 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
+                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
                         <div class="layui-tab-item"><!--第一部分 4 enrich-->
                             <div class="col-md-12">
-                                <form  id="enrich" class="layui-form" action="/update/updatelipenrich">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -175,7 +157,7 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <small>
-                                                <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                                <input id="j_enrich" type="text" name="j_enrich" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                                 </small>
                                             </div><br>
                                             <div class="col-md-3">
@@ -183,14 +165,16 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <small>
-                                                <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                                <input id="k_enrich" type="text" name="k_enrich" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                                 </small>
                                             </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
-                                </form>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
@@ -278,4 +262,127 @@ layui.use('upload', function(){
 
     });
 </script>
+
+<script type="text/javascript">
+    function volcanoupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+
+        var x = document.getElementById("x").value;
+        var j = $("input[name='j_volcano']").val();
+        var k = $("input[name='k_volcano']").val();
+        var m = $("input[name='m']").val();
+
+        document.getElementById("volcanoupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    if (data.sub == "T") {
+                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng2").src = data.png2;
+                        document.getElementById("volcanopng2").style.display="block";
+                    }
+                    if (data.sub == "F") {
+                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng2").style.display="none";
+
+                    }
+                    document.getElementById("volcanoupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+
+    function heatmapupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var e = $("input[name='e']").val();
+        document.getElementById("heatmapupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipHeatmap/'+path+det+e,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+    function enrichupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var t =$("input[name='t']:checked").val();
+        var j = $("input[name='j_enrich']").val();
+        var k = $("input[name='k_enrich']").val();
+        var l =$("input[name='l']:checked").val();
+        console.log("t"+t);
+        console.log("j"+j);
+        console.log("k"+k);
+        console.log('/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l);
+
+        document.getElementById("enrichupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    if (t == "target_list") {
+                        document.getElementById("target_listblock").style.display="block";
+                        document.getElementById("rankingblock").style.display="none";
+                        document.getElementById("up").src = data.pngup;
+                        document.getElementById("down").src = data.pngdown;
+
+                    }
+                    if (t == "ranking") {
+                        document.getElementById("rankingblock").style.display="block";
+                        document.getElementById("target_listblock").style.display="none";
+                        document.getElementById("rankingpng").src = data.png;
+
+                    }
+                    document.getElementById("enrichupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+//————————————————
+//版权声明：本文为CSDN博主「zlshmily」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+//原文链接：https://blog.csdn.net/zlshmily/article/details/105513800
+</script>
+
 @endsection
