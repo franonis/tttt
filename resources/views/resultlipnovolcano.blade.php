@@ -14,6 +14,7 @@
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Lipidomics</a>
         <hr>
             <div class="col-md-2">
+                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
             </div>
             <div class="col-md-10"> 
                 <div class="layui-tab">
@@ -32,7 +33,7 @@
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++DRA.zip">DRA.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div><br>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
@@ -56,15 +57,10 @@
                             <p>Only the "one vs one" mode could give the Volcano result</p>
                         </div>
                     </div>
+
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
                                 <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -78,44 +74,43 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
-                                        </div>
+                                        <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                    </div>
                                     </div>
                                 </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
                                 <div class="col-md-10" style="border:1px dashed #000;">
-                                    <a href="{{ url('download/zip/')}}/{{ $downloadpath }}MARresults++++MARresults.zip">MARresults.zip<i class="layui-icon layui-icon-download-circle"></i></a>
+                                    <a href="{{ url('download/mar/')}}/{{ $downloadpath }}MARresults++++Heatmap.zip">Heatmap.zip<i class="layui-icon layui-icon-download-circle"></i></a>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
+                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updateliphead">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
+                                <form  id="head" class="layui-form" action="/update/updateliphead">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="headupdateri" name="headupdateri" class="btn btn-success form-control" onclick="headgroupupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="headupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
                                 
@@ -133,12 +128,12 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Box plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                                <img id="headgroupcolor" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
                                                 <div class="layui-carousel" id="test1" lay-filter="test1">
                                                   <div carousel-item="">
                                                     @foreach($headpng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="headpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -148,16 +143,22 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Cumulation plot</h2>
                                             <div class="layui-colla-content">
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                                <img id="headgroupcum" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
                                                 <div class="col-md-12" title="Heatmap displaying lipid class information">
-                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details" checked=""><i class="layui-icon layui-icon-about"></i>
+                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details"><i class="layui-icon layui-icon-about"></i>
+                                                    <div class="col-md-3">
+                                                        <button type="button" id="headheatmapupdateri" name="headheatmapupdateri" class="btn btn-success form-control" onclick="headheatmapupdate()">Update</button>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p id="headheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                    </div>
                                                 </div>
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
+                                                <img id="headheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                         </div>
@@ -168,34 +169,30 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipfa">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
-                                    <input name="e" value="{{ $e }}" style="display: none;">
+                                <form  id="fa" class="layui-form" action="/update/updatelipfa">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-4" title="Lipid acyl-chain organization way 'FA_info': only consider the acyl-chain differences in each lipid; 'all_info' consider the summarized acyl-chain length number in each lipid">
+                                        <div class="col-md-3" title="Lipid acyl-chain organization way 'FA_info': only consider the acyl-chain differences in each lipid; 'all_info' consider the summarized acyl-chain length number in each lipid">
                                             <h4>Set plot type <i class="layui-icon layui-icon-about"></i>:</h4>
                                         </div>
-                                        <div class="col-md-8">
+                                        <div class="col-md-9">
                                             <small>
-                                            <select name="g">
+                                            <select name="g" id="g">
                                                 <option value="FA_info">FA_info</option>
                                                 <option value="all_info">all_info</option>
                                             </select>
                                             </small>
                                         </div>
                                         <div class="col-md-12" title="Display the chemical bond links of lipids">
-                                            <input type="checkbox" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_fa" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitright" class="layui-btn" type="submit">Update</button>
+                                            <button type="button" id="faupdateri" name="faupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="faupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -212,21 +209,28 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Grid plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
+                                                <img id="fashow" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
-                                                <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                                <div class="col-md-3" title="Set the number of top significant changed lipids to display on the heatmap">
                                                     <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-9">
                                                     <small>
-                                                    <input id="m" type="text" name="m" value="{{$m}}" style="width:50px; display:inline;" class="form-control" >
+                                                    <input id="e_fa" type="text" name="e_fa" value="{{$e}}" style="width:50px; display:inline;" class="form-control" >
                                                     </small>
+                                                
+                                                    <div class="col-md-3">
+                                                        <button type="button" id="faheatmapupdateri" name="faheatmapupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p id="faheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                                    </div>
                                                 </div>
-                                                <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
+                                                <img id="faheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -236,7 +240,7 @@
                                                   <div carousel-item="">
                                                     @foreach($fapng as $k=>$i )
                                                         <div>
-                                                            <img src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -352,11 +356,287 @@
             arrow: 'hover', //始终显示箭头
             anim: 'default', //切换动画方式
         });
-    }
-    
-    
+    }  
 //https://blog.csdn.net/qq_37768929/article/details/106684781
 
 
+    $("#t").click(function (){
+        name =$("input[name='t']:checked").val();
+        if (name == "target_list") {
+          document.getElementById("target_list").style.display="block";
+          document.getElementById("ranking").style.display="none";
+        }        
+        if (name == "ranking") {
+          document.getElementById("ranking").style.display="block";
+          document.getElementById("target_list").style.display="none";
+        }
+        console.log(name);
+   });
+
 </script>
+
+<script type="text/javascript">
+    function volcanoupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var s = "F";
+        var w = "T";
+        if ($("#s").is(":checked")) {
+            var s = "T";
+        }else{
+            var s = "F";
+        }
+        if ($("#w_vol").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+
+        var x = document.getElementById("x").value;
+        var j = $("input[name='j_volcano']").val();
+        var k = $("input[name='k_volcano']").val();
+        var m = $("input[name='m_volcano']").val();
+
+        document.getElementById("volcanoupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    if (data.sub == "T") {
+                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng2").src = data.png2;
+                        document.getElementById("volcanopng2").style.display="block";
+                    }
+                    if (data.sub == "F") {
+                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng2").style.display="none";
+
+                    }
+                    document.getElementById("volcanoupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+
+    function heatmapupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var e = $("input[name='e']").val();
+        document.getElementById("heatmapupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipHeatmap/'+path+det+e,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+    function headheatmapupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var w = "T";
+        var z = "F";
+        if ($("#w_head").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+
+        if ($("#z").is(":checked")) {
+            var z = "T";
+        }else{
+            var z = "F";
+        }
+
+        document.getElementById("headheatmapupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipheadheatmap/'+path+det+w+det+z,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    document.getElementById("headheatmappng").src = data.png;
+                    document.getElementById("headheatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+    function headgroupupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var w = "T";
+        var z = "F";
+        if ($("#w_head").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+
+        if ($("#z").is(":checked")) {
+            var z = "T";
+        }else{
+            var z = "F";
+        }
+
+        document.getElementById("headupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updateliphead/'+path+det+w+det+z,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    document.getElementById("headgroupcolor").src = data.color;
+                    document.getElementById("headgroupcum").src = data.cum;
+                    document.getElementById("headheatmappng").src = data.heatmap;
+                    for (var i = 0; i <= data.pngnum; i++) {
+                        var sr = document.getElementById("headpng"+i).src ;
+                        document.getElementById("headpng"+i).src = sr+'?t='+'+Math.random()';
+                    }
+                    document.getElementById("headupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+    function faupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var w = "T";
+        if ($("#w_fa").is(":checked")) {
+            var w = "T";
+        }else{
+            var w = "F";
+        }
+        var g = document.getElementById("g").value;
+        var e = $("input[name='e_fa']").val();
+
+        document.getElementById("faheatmapupdatebutton").style.display="block";
+        document.getElementById("faupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipfa/'+path+det+g+det+w+det+e,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    document.getElementById("fashow").src = data.show;
+                    document.getElementById("faheatmappng").src = data.heatmap;
+                    for (var i = 0; i <= data.pngnum; i++) {
+                        var sr = document.getElementById("fapng"+i).src ;
+                        document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
+                    }
+
+                    document.getElementById("faheatmapupdatebutton").style.display="none";
+                    document.getElementById("faupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+
+    function enrichupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var t =$("input[name='t']:checked").val();
+        var j = $("input[name='j_enrich']").val();
+        var k = $("input[name='k_enrich']").val();
+        var l =$("input[name='l']:checked").val();
+        console.log("t"+t);
+        console.log("j"+j);
+        console.log("k"+k);
+        console.log('/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l);
+
+        document.getElementById("enrichupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    if (t == "target_list") {
+                        document.getElementById("target_listblock").style.display="block";
+                        document.getElementById("rankingblock").style.display="none";
+                        document.getElementById("up").src = data.pngup;
+                        document.getElementById("down").src = data.pngdown;
+
+                    }
+                    if (t == "ranking") {
+                        document.getElementById("rankingblock").style.display="block";
+                        document.getElementById("target_listblock").style.display="none";
+                        document.getElementById("rankingpng").src = data.png;
+
+                    }
+                    document.getElementById("enrichupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+//————————————————
+//版权声明：本文为CSDN博主「zlshmily」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+//原文链接：https://blog.csdn.net/zlshmily/article/details/105513800
+</script>
+
 @endsection
