@@ -19,7 +19,7 @@
             <div class="col-md-10">
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
-                    <li>Different Expression</li>
+                    <li>Differential Expression</li>
                     <li  class="layui-this">Data Varability</li>
                     <li>Volcano Plot</li>
                     <li>Heatmap</li>
