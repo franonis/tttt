@@ -60,7 +60,7 @@
                                         <div class="col-md-12" title="Lipid class information will be illustrated on volcano plot">
                                             <input type="checkbox" id="s" name="s[yes]" lay-skin="primary" title="Show lipid class"><i class="layui-icon layui-icon-about"></i>
                                         </div>
-                                        <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
+                                        <div id="wwwwww" style="display: none;" class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
                                             <input type="checkbox" id="w_vol" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-4">
@@ -510,6 +510,15 @@
         }
         console.log(name);
    });
+    $("#s").click(function (){
+        if ($("#s").is(":checked")) {
+            document.getElementById("wwwwww").style.display="block";
+        }else{
+            document.getElementById("wwwwww").style.display="none";
+        }
+        console.log("names");
+   });
+
 
 </script>
 
