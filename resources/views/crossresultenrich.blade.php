@@ -40,7 +40,7 @@
             <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
 
             <div class="col-md-2">
-                <h3>Download & Update</h3>
+                <h3>Download</h3>
             </div>
             <div class="col-md-10">
                 <div class="col-md-6">
@@ -52,6 +52,17 @@
                     <br><div class="col-md-12" style="border:1px dashed #000;">
                         <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
                     </div><br>
+                </div>
+            </div>
+            <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
+            <div class="col-md-2">
+                <h3>Update</h3>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-6">
+                    <p>enrichment of lipid dont need update</p>
+                </div>
+                <div class="col-md-6">
                     <form id="regionform" class="layui-form" action="/result/enrichresultgene">
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
@@ -61,8 +72,8 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">Choose species：</label>
                                         <div class="layui-input-block" id="t">
-                                          <input type="radio" name="t" value="mmu" title="mmu" checked="">
-                                          <input type="radio" name="t" value="has" title="has">
+                                          <input type="radio" name="t" value="mmu" title="Mus musculus" checked="">
+                                          <input type="radio" name="t" value="hsa" title="Homo sapiens">
                                         </div>
                                     </div>
                                 </div>
@@ -79,9 +90,9 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">GO term：</label>
                                         <div class="layui-input-block" id="c" >
-                                          <input type="radio" name="c" style="margin-right: -10px;" value="Biological_Process" title="Biological Process" checked="">
-                                          <input type="radio" name="c" style="margin-right: -10px;" value="Cellular_Component" title="Cellular Component">
-                                          <input type="radio" name="c" style="margin-right: -10px;" value="Molecular_Function" title="Molecular Function">
+                                          <input type="radio" name="c" value="Biological_Process" title="Biological Process" checked="">
+                                          <input type="radio" name="c" value="Cellular_Component" title="Cellular Component">
+                                          <input type="radio" name="c" value="Molecular_Function" title="Molecular Function">
                                         </div>
                                     </div>
                                 </div>
@@ -100,6 +111,7 @@
                     </form>
                 </div>
             </div>
+            <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
             <div class="col-md-2">
                 <h3>Enrich results</h3>
             </div>
@@ -111,6 +123,7 @@
                     {!! $resultpng2 !!}
                 </div>
             </div>
+            <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
             <div class="col-md-2">
                 <h3>Circos results</h3>
             </div>
