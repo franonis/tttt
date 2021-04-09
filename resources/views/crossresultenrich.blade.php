@@ -12,7 +12,11 @@
         @include('partials.errors')
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Enrichment</a>
         <hr>
-            <div class="col-md-12">
+            <div class="col-md-2">
+                <h3>Name list</h3>
+            </div>
+            <div class="col-md-10">
+                <br>
                 <div class="col-md-6">
                     <div class="col-md-12 text-center">
                         <h4>{{$omics1}}</h4>
@@ -21,10 +25,7 @@
                         <a style="display: none;" name="tax" id="lipidname" value="{{ $downloadpath }}{{$lipid}}">{{ $downloadpath }}{{$lipid}}</a>
                         <table id="showlipid" lay-filter="test"></table>
                     </div>
-                    <div class="col-md-10" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$g}}.csv">Download full lipid list file</a>
-                    </div>
-                </div><br>
+                </div>
                 
                 <div class="col-md-6">
                     <div class="col-md-12 text-center">
@@ -34,18 +35,23 @@
                         <a style="display: none;" name="tax" id="genename" value="{{ $downloadpath }}{{$gene}}">{{ $downloadpath }}{{$gene}}</a>
                         <table id="showgene" lay-filter="test"></table>
                     </div>
-
-                    <div class="col-md-10" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
-                    </div>
                 </div><br>
             </div>
-            <div class="col-md-12">
+            <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
+
+            <div class="col-md-2">
+                <h3>Download & Update</h3>
+            </div>
+            <div class="col-md-10">
                 <div class="col-md-6">
-                    <h4>Enrich results</h4>
+                    <br><div class="col-md-12" style="border:1px dashed #000;">
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$g}}.csv">Download full lipid list file</a>
+                    </div><br>
                 </div>
                 <div class="col-md-6">
-                    <h4>Enrich results</h4>
+                    <br><div class="col-md-12" style="border:1px dashed #000;">
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
+                    </div><br>
                     <form id="regionform" class="layui-form" action="/result/enrichresultgene">
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
@@ -91,8 +97,25 @@
                                     <button id="submitEnrich" class="layui-btn" type="submit" >Enrich</button>
                                 </div>
                             </div>
-                        </form>
+                    </form>
                 </div>
+            </div>
+            <div class="col-md-2">
+                <h3>Enrich results</h3>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-6">
+                    {!! $resultpng !!}
+                </div>
+                <div class="col-md-6">
+                    {!! $resultpng !!}
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h3>Circos results</h3>
+            </div>
+            <div class="col-md-10">
+                    <img src="https://pic3.zhimg.com/80/v2-bbfe48f418a2f6718729584a4390edd6_hd.jpg">
             </div>
     </div>
 </div>
@@ -138,7 +161,6 @@
             }
             ,cellMinWidth: 90
             ,toolbar: '<div> just top 10 genes for show</div>'
-            ,defaultToolbar: ['filter', 'print', 'exports']
             ,url: '{{url('/nametable/f')}}'+ genename//数据接口
             ,cols: [[ //表头
             {field: 'no', title: 'No.', sort: true}
@@ -163,7 +185,6 @@
             }
             ,cellMinWidth: 90
             ,toolbar: '<div> just top 10 lipids for show</div>'
-            ,defaultToolbar: ['filter', 'print', 'exports']
             ,url: '{{url('/nametable/f')}}'+ lipidname//数据接口
             ,cols: [[ //表头
             {field: 'no', title: 'No.', sort: true}
