@@ -139,7 +139,7 @@
             ,cellMinWidth: 90
             ,toolbar: '<div> just top 10 genes for show</div>'
             ,defaultToolbar: ['filter', 'print', 'exports']
-            ,url: '{{url('/genetable/f')}}'+ genename//数据接口
+            ,url: '{{url('/nametable/f')}}'+ genename//数据接口
             ,cols: [[ //表头
             {field: 'no', title: 'No.', sort: true}
             ,{field: 'name', title: 'Name', sort: true}            ]]
@@ -164,7 +164,7 @@
             ,cellMinWidth: 90
             ,toolbar: '<div> just top 10 lipids for show</div>'
             ,defaultToolbar: ['filter', 'print', 'exports']
-            ,url: '{{url('/lipidtable/f')}}'+ lipidname//数据接口
+            ,url: '{{url('/nametable/f')}}'+ lipidname//数据接口
             ,cols: [[ //表头
             {field: 'no', title: 'No.', sort: true}
             ,{field: 'name', title: 'Name', sort: true}
