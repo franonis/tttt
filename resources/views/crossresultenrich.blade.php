@@ -12,51 +12,41 @@
         @include('partials.errors')
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Enrichment</a>
         <hr>
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-10">
-                <div class="col-md-12">
-                    <div class="col-md-2">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="col-md-12 text-center">
                         <h4>{{$omics1}}</h4>
                     </div>
-                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <br><p>list of lipids</p><br>
-                        <pre>{{ $lipid }}</pre>
+                    <div class="col-md-12">
+                        <a style="display: none;" name="tax" id="genename" value="{{ $downloadpath }}{{$lipid}}">{{ $downloadpath }}{{$lipid}}</a>
+                        <table id="showlipid" lay-filter="test"></table>
                     </div>
-                    <div class="col-md-6">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10" style="border:1px dashed #000;">
-                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$k2}}.csv">Download the lipid list file</a>
-                        </div><br><br>
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10" style="border:1px dashed #000;">
-                            <a href="{{ url('result/enrichresult/')}}/{{$k2}}--{{$downloadpath}}--{{$omics1}}" target="_blank">Enrich</a>
-                        </div><br>
+                    <div class="col-md-10" style="border:1px dashed #000;">
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$g}}.csv">Download full lipid list file</a>
                     </div>
                 </div><br>
-            <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
                 
-                <div class="col-md-12">
-                    <div class="col-md-2">
+                <div class="col-md-6">
+                    <div class="col-md-12 text-center">
                         <h4>{{$omics2}}</h4>
                     </div>
-                    <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <br><p>list of genes</p><br>
-                        <pre>{{ $gene }}</pre>
+                    <div class="col-md-12">
+                        <a style="display: none;" name="tax" id="genename" value="{{ $downloadpath }}{{$gene}}">{{ $downloadpath }}{{$gene}}</a>
+                        <table id="showgene" lay-filter="test"></table>
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10" style="border:1px dashed #000;">
-                            <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
-                        </div><br><br>
-                        <div class="col-md-2">
-                        </div>
-                        <div class="col-md-10" style="border:1px dashed #000;">
-                        <form id="regionform" class="layui-form" action="/result/enrichresultgene">
+                    <div class="col-md-10" style="border:1px dashed #000;">
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
+                    </div>
+                </div><br>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h4>Enrich results</h4>
+                </div>
+                <div class="col-md-6">
+                    <h4>Enrich results</h4>
+                    <form id="regionform" class="layui-form" action="/result/enrichresultgene">
                             <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                             <input name="omics" value="{{ $omics2 }}" style="display: none;">
                             <input name="k" value="{{ $g }}" style="display: none;">
@@ -102,11 +92,8 @@
                                 </div>
                             </div>
                         </form>
-                        </div>
-                    </div>
                 </div>
-            <hr>
-        </div>
+            </div>
     </div>
 </div>
 @endsection
@@ -136,4 +123,51 @@
 
     });
 </script>
+<script>
+    layui.use(['element', 'layer','form','table'], function(){
+        var element = layui.element;
+        var layer = layui.layer;
+        var table = layui.table;
+        var genename = document.getElementById("genename").innerHTML;
+        table.render({
+            elem: '#showgene'
+            ,autoSort: true
+            ,text: {
+                none: 'no data avalible' //默认：无数据。
+            }
+            ,cellMinWidth: 90
+            ,toolbar: '<div> just top 10 genes for show</div>'
+            ,defaultToolbar: ['filter', 'print', 'exports']
+            ,url: '{{url('/genetable/f')}}'+ genename//数据接口
+            ,cols: [[ //表头
+            {field: 'no', title: 'No.', sort: true}
+            ,{field: 'name', title: 'Name', sort: true}            ]]
+        });
+    });
+</script>
+
+<script>
+    layui.use(['element', 'layer','form','table'], function(){
+        var element = layui.element;
+        var layer = layui.layer;
+        var table = layui.table;
+        var lipidname = document.getElementById("lipidname").innerHTML;
+        table.render({
+            elem: '#showlipid'
+            ,autoSort: true
+            ,text: {
+                none: 'no data avalible' //默认：无数据。
+            }
+            ,cellMinWidth: 90
+            ,toolbar: '<div> just top 10 lipids for show</div>'
+            ,defaultToolbar: ['filter', 'print', 'exports']
+            ,url: '{{url('/lipidtable/f')}}'+ lipidname//数据接口
+            ,cols: [[ //表头
+            {field: 'no', title: 'No.', sort: true}
+            ,{field: 'name', title: 'Name', sort: true}
+            ]]
+        });
+    });
+</script>
+
 @endsection

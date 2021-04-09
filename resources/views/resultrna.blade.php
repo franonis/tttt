@@ -262,8 +262,6 @@
         var layer = layui.layer;
         var table = layui.table;
         var name = document.getElementById("name").innerHTML;
-
-
         table.render({
             elem: '#showde'
             ,autoSort: true
@@ -283,10 +281,7 @@
             ,{field: 'adjPVal', title: 'adj_P_Val', sort: true}
             ,{field: 'B', title: 'B', sort: true}
             ]]
-
         });
-
-
     });
 </script>
 <script>

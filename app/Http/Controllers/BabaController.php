@@ -71,7 +71,28 @@ class BabaController extends Controller
                 'PValue' => $t[4],
                 'adjPVal'=> $t[5],
                 'B' => $t[6],
+            ];
+            $count++;
+        }
+        $tableJson['code'] = 0;
+        $tableJson['msg'] = '';
+        $tableJson['count'] = $count;
+        return $tableJson;
+    }
 
+    public function nametable($name)
+    {   
+        $name=preg_replace('/\+\+/', "/", $name);
+        $gene_de = file_get_contents($name,0,null,0,1000);
+        $hangs = explode("\n", $gene_de);
+        
+        $count = 0;
+        $tableJson = [];
+        $loctmp = [];
+        for ($h=1; $h < 10; $h++) {
+            $tableJson['data'][] = [
+                'no' => $h,
+                'name' => $hangs[$h],
             ];
             $count++;
         }
