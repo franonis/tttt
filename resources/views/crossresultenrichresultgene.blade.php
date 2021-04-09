@@ -20,6 +20,9 @@
                         <a style="display: none;" name="tax" id="genename" value="{{ $downloadpath }}{{$gene}}">{{ $downloadpath }}{{$gene}}</a>
                         <table id="showgene" lay-filter="test"></table>
                     </div>
+                    <div class="col-md-10" style="border:1px dashed #000;">
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download full gene list file</a>
+                    </div>
             </div>
             <div class="col-md-6">
                     

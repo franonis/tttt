@@ -213,8 +213,8 @@ class TwoController extends Controller
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION_enrichment-plot.png') ){
-                $resultpng1 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/LION_enrichment-plot.png" style="height:50%;width: 60%;">';
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
+                $resultpng1 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;">';
             }else{
                 $resultpng1='<p>No genes enriched! Try check your data!</p>';
             }
@@ -232,6 +232,7 @@ class TwoController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
+        exec($command, $ooout, $flag);
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             $resultpng2 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
         }else{
@@ -240,7 +241,7 @@ class TwoController extends Controller
 
         #circos
         is_dir($opath.'circos/') or mkdir($opath.'circos/', 0777, true);
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'circos/"';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'circos/"';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
