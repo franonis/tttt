@@ -105,17 +105,17 @@
             </div>
             <div class="col-md-10">
                 <div class="col-md-6">
-                    {!! $resultpng !!}
+                    {!! $resultpng1 !!}
                 </div>
                 <div class="col-md-6">
-                    {!! $resultpng !!}
+                    {!! $resultpng2 !!}
                 </div>
             </div>
             <div class="col-md-2">
                 <h3>Circos results</h3>
             </div>
             <div class="col-md-10">
-                    <img src="https://pic3.zhimg.com/80/v2-bbfe48f418a2f6718729584a4390edd6_hd.jpg">
+                    {!! $circos !!}
             </div>
     </div>
 </div>

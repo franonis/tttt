@@ -252,7 +252,7 @@ class TwoController extends Controller
         
 
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'circos/circosPlot.png') ){
-            $circos = '<img src="http://www.lintwebomics.info/' .$opath.'circos/circosPlot.png" style="height:50%;width: 60%;">';
+            $circos = '<img src="http://www.lintwebomics.info/' .$opath.'circos/circosPlot.png" style="height:100%;width: 100%;">';
         }else{
             $circos='<p>No circosPlot! Try check your data!</p>';
         }
