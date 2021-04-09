@@ -45,7 +45,7 @@
             <div class="col-md-10">
                 <div class="col-md-6">
                     <br><div class="col-md-12" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$g}}.csv">Download full lipid list file</a>
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$j}}.csv">Download full lipid list file</a>
                     </div><br>
                 </div>
                 <div class="col-md-6">

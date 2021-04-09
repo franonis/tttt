@@ -187,16 +187,73 @@ class TwoController extends Controller
     {
         $poss=explode("--", $pos);
         $g = $poss[0]+1;#列gene
-        $k2 = $poss[1]+1;
+        $j = $poss[1]+1;#行lipid
         $enrichpath=$poss[2];#$outpath
-        $omics1=$poss[3];#$omics1
-        $omics2=$poss[4];#$omics2
+        $omics1=$poss[3];#$omics1lip
+        $omics2=$poss[4];#$omics2tran
         $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);#$enrichpath = preg_replace('/\//', "++", $outpath);
         $downloadpath = preg_replace('/\//', "++", $enrichpath);
         $gene = 'genes_'.$g.'.csv';
-        $lipid = 'lipids_'.$k2.'.csv';
+        $lipid = 'lipids_'.$j.'.csv';
+        is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
+        if ($omics1 == "Metabolomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
+                $resultpng1 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
+            }else{
+                $resultpng1='<p>Can not do metabolite set enrichment! Try use <a href="http://www.metaboanalyst.ca/home.xhtml" style="color:deepskyblue;">MetaboAnalyst</a> website.</p>';
+            }
+        }
+        if ($omics1 == "Lipidomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            exec($command, $ooout, $flag);
+            if ($flag == 1) {
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            }
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION_enrichment-plot.png') ){
+                $resultpng1 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/LION_enrichment-plot.png" style="height:50%;width: 60%;">';
+            }else{
+                $resultpng1='<p>No genes enriched! Try check your data!</p>';
+            }
+        }
 
-        return view('crossresultenrich', ['g' => $g,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50']);
+        if ($omics2 == "Transcriptomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$g.' -t "mmu" -g "SYMBOL" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        }
+        if ($omics2 == "Proteomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$g.' -t "hsa" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        }
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
+            $resultpng2 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
+        }else{
+            $resultpng2='<p>No genes enriched! Try check your data!</p>';
+        }
+
+        #circos
+        is_dir($opath.'circos/') or mkdir($opath.'circos/', 0777, true);
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'circos/"';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
+            $circos = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
+        }else{
+            $circos='<p>No genes enriched! Try check your data!</p>';
+        }
+
+        return view('crossresultenrich', ['g' => $g,'j' => $j,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
     }
 
     public function getenenrichresultPage($pos)
