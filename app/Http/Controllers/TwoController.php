@@ -185,6 +185,7 @@ class TwoController extends Controller
 
     public function getenrichPage($pos)
     {
+        exec('rm ./*qs');
         $poss=explode("--", $pos);
         $g = $poss[0]+1;#列gene
         $j = $poss[1]+1;#行lipid

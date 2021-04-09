@@ -10,6 +10,7 @@ class ResultController extends Controller
     public function getSetPage(Request $request)
     {
         #dd($request);
+        exec('rm ./*qs');
         $omics = $request->omics;
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
