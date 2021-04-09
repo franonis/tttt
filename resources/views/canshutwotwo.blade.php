@@ -61,7 +61,7 @@
                     </div>
                 <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                     <div class="col-md-3" title="Setting the number of blocks when dividing Lipidomics/Metabolomics data into blocks in the correlation matrix.">
-                        <h4>Set line number(for lipid/met) <i class="layui-icon layui-icon-about"></i></h4>
+                        <h4>Set row number(for lipid/met) <i class="layui-icon layui-icon-about"></i></h4>
                     </div>
                     <div class="col-md-9">
                         <small>
