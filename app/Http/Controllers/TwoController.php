@@ -226,7 +226,7 @@ class TwoController extends Controller
         if ($omics2 == "Proteomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$g.' -t "hsa" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
-        #dd($command);
+        dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -246,11 +246,14 @@ class TwoController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'circos/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'circos/circosPlot.png';
+        exec($command, $ooout, $flag);
+        
 
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
-            $circos = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'circos/circosPlot.png') ){
+            $circos = '<img src="http://www.lintwebomics.info/' .$opath.'circos/circosPlot.png" style="height:50%;width: 60%;">';
         }else{
-            $circos='<p>No genes enriched! Try check your data!</p>';
+            $circos='<p>No circosPlot! Try check your data!</p>';
         }
 
         return view('crossresultenrich', ['g' => $g,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
