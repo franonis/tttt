@@ -268,6 +268,8 @@ layui.use('upload', function(){
     function volcanoupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
+        var s = "F"
+        var w = "F"
 
         var x = document.getElementById("x").value;
         var j = $("input[name='j_volcano']").val();

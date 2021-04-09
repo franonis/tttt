@@ -12,17 +12,17 @@
         @include('partials.errors')
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Enrichment</a>
         <hr>
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-10">
-              <div class="col-md-12">
-                    <div class="col-md-2">
+            <div class="col-md-6">
+                    <div class="col-md-12 text-center">
                         <h4>{{$omics2}}</h4>
                     </div>
                     <div class="col-md-4" style="border:1px dashed #000; overflow-y:auto; width:200px; height:300px;">
-                        <br><p>list of genes</p><br>
-                        <pre>{{ $gene }}</pre>
+                        <a style="display: none;" name="tax" id="genename" value="{{ $downloadpath }}{{$gene}}">{{ $downloadpath }}{{$gene}}</a>
+                        <table id="showgene" lay-filter="test"></table>
                     </div>
+            </div>
+            <div class="col-md-6">
+                    
                     <div class="col-md-6">
                         <div class="col-md-2">
                         </div>
