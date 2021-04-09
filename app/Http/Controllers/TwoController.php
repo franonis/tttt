@@ -193,8 +193,8 @@ class TwoController extends Controller
         $omics2=$poss[4];#$omics2
         $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);#$enrichpath = preg_replace('/\//', "++", $outpath);
         $downloadpath = preg_replace('/\//', "++", $enrichpath);
-        $gene = file_get_contents($enrichpath . 'genes_'.$g.'.csv',0,null,0,1000);
-        $lipid = file_get_contents($enrichpath . 'lipids_'.$k2.'.csv');
+        $gene = 'genes_'.$g.'.csv';
+        $lipid = 'lipids_'.$k2.'.csv';
 
         return view('crossresultenrich', ['g' => $g,'k2' => $k2,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50']);
     }
