@@ -18,7 +18,7 @@
                         <h4>{{$omics1}}</h4>
                     </div>
                     <div class="col-md-12">
-                        <a style="display: none;" name="tax" id="genename" value="{{ $downloadpath }}{{$lipid}}">{{ $downloadpath }}{{$lipid}}</a>
+                        <a style="display: none;" name="tax" id="lipidname" value="{{ $downloadpath }}{{$lipid}}">{{ $downloadpath }}{{$lipid}}</a>
                         <table id="showlipid" lay-filter="test"></table>
                     </div>
                     <div class="col-md-10" style="border:1px dashed #000;">
@@ -129,6 +129,7 @@
         var layer = layui.layer;
         var table = layui.table;
         var genename = document.getElementById("genename").innerHTML;
+        console.log("gene"+genename);
         table.render({
             elem: '#showgene'
             ,autoSort: true
@@ -152,6 +153,8 @@
         var layer = layui.layer;
         var table = layui.table;
         var lipidname = document.getElementById("lipidname").innerHTML;
+
+        console.log("lip"+lipidname);
         table.render({
             elem: '#showlipid'
             ,autoSort: true
