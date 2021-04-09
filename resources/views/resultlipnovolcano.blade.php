@@ -209,6 +209,11 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Grid plot</h2>
                                             <div class="layui-colla-content layui-show">
+                                                @foreach($fapng as $k=>$i )
+                                                    <div class="col-md-4">
+                                                        <img id="fashow{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show{{$i}}.png" style="height:50%;width: 60%;">
+                                                    </div>
+                                                @endforeach
                                                 <img id="fashow" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
                                             </div>
                                           </div>

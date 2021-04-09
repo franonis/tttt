@@ -112,9 +112,11 @@ class ResultController extends Controller
                         if ($this->showresultlip2($outpath)) {
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$fapng,$flag); 
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls fa_show*.png | awk -F\'[_.]\' \'{print $2}\'';
+                            exec($command,$fashowpng,$flag); 
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);                                  
-                            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'headpng' => $headpng]);
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "FA_info", 'fapng' => $fapng, 'fashowpng' => $fashowpng, 'headpng' => $headpng]);
                         }
                     }
                 }
