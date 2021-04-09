@@ -510,7 +510,8 @@
         }
         console.log(name);
    });
-    function OncheckBox(index){
+    #function OncheckBox(index){
+    $("#s").click(function (){
         console.log("index");
         if ($(index).attr("checked") == "checked") {
             document.getElementById("wwwwww").style.display="block";
