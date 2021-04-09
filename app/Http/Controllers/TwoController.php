@@ -188,11 +188,10 @@ class TwoController extends Controller
         $poss=explode("--", $pos);
         $g = $poss[0]+1;#列gene
         $j = $poss[1]+1;#行lipid
-        $enrichpath=$poss[2];#$outpath
+        $downloadpath=$poss[2];#$outpath
         $omics1=$poss[3];#$omics1lip
         $omics2=$poss[4];#$omics2tran
-        $enrichpath = preg_replace('/\+\+/', "/", $enrichpath);#$enrichpath = preg_replace('/\//', "++", $outpath);
-        $downloadpath = preg_replace('/\//', "++", $enrichpath);
+        $opath = preg_replace('/\+\+/', "/", $downloadpath);#$opath = preg_replace('/\//', "++", $outpath);#末尾有/
         $gene = 'genes_'.$g.'.csv';
         $lipid = 'lipids_'.$j.'.csv';
         is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
@@ -253,7 +252,7 @@ class TwoController extends Controller
             $circos='<p>No genes enriched! Try check your data!</p>';
         }
 
-        return view('crossresultenrich', ['g' => $g,'j' => $j,'gene' => $gene,'lipid' => $lipid,'enrichpath' => $enrichpath,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
+        return view('crossresultenrich', ['g' => $g,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
     }
 
     public function getenenrichresultPage($pos)
