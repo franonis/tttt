@@ -226,11 +226,12 @@ class TwoController extends Controller
         if ($omics2 == "Proteomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$g.' -t "hsa" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
-        dd($command);
+        #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
         exec($command, $ooout, $flag);
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
