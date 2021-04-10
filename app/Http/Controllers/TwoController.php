@@ -199,11 +199,11 @@ class TwoController extends Controller
         if ($omics1 == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
-                $resultpng1 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
+            #if ($flag == 1) {
+            #    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            #}
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
+                $resultpng1 = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/ora_dpi72.png" style="height:50%;width: 60%;">';
             }else{
                 $resultpng1='<p>Can not do metabolite set enrichment! Try use <a href="http://www.metaboanalyst.ca/home.xhtml" style="color:deepskyblue;">MetaboAnalyst</a> website.</p>';
             }
