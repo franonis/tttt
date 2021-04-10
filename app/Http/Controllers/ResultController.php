@@ -125,13 +125,13 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultmet($outpath)) {
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') ){
-                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up_ora_dpi72.png') ){
+                                $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_ora_dpi72.png" style="height:50%;width: 60%;">';
                             }else{
                                 $up='<p>No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
-                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down.png') ){
-                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:50%;width: 60%;">';
+                            if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_ora_dpi72.png') ){
+                                $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:50%;width: 60%;">';
                             }else{
                                 $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
