@@ -20,7 +20,7 @@
                 <div class="layui-tab">
                   <ul class="layui-tab-title">
                     <li>Differential Expression</li>
-                    <li  class="layui-this">Data Varability</li>
+                    <li  class="layui-this">Data Variability</li>
                     <li>Volcano Plot</li>
                     <li>Heatmap</li>
                     <li>GO enrichment</li>
