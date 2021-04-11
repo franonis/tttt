@@ -85,6 +85,7 @@ class TwoController extends Controller
         $delodd = $request->delodd;
         $data_type = $request->data_type;
         $m = $request->m;#missing
+        $m = $m / 100;
         $n = $request->n;#是否70%gk
         $s = $request->s;#自己设的值
         $g = $request->g;#列
@@ -460,7 +461,7 @@ class TwoController extends Controller
             $omics_left="Metabolomics";
             $omics_right="Proteomics";
         }
-        return view('canshutwotwo', ['file_datafile_left' => $file_datafile_left,'file_descfile_left' => $file_descfile_left,'file_datafile_right' => $file_datafile_right,'file_descfile_right' => $file_descfile_right,'omics_left' => $omics_left,'omics_right' => $omics_right,'delodd' => $delodd,'data_type' => $data_type,'m' => '0.67','g' => $g,'k' => $k,'s' => $s,'c' => $c,'f' => $f,'p' => $p]);
+        return view('canshutwotwo', ['file_datafile_left' => $file_datafile_left,'file_descfile_left' => $file_descfile_left,'file_datafile_right' => $file_datafile_right,'file_descfile_right' => $file_descfile_right,'omics_left' => $omics_left,'omics_right' => $omics_right,'delodd' => $delodd,'data_type' => $data_type,'m' => '67','g' => $g,'k' => $k,'s' => $s,'c' => $c,'f' => $f,'p' => $p]);
 
     }
 
