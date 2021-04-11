@@ -42,6 +42,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-form-item" id="subgroup" style="display: none;">
+                        <div class="layui-input-block">
+                            @foreach($groupsLevels as $k=>$i )
+                                <input type="checkbox" name="subgroup[{{$i}}]" checked=""><label>{{$i}}</label><br>
+                            @endforeach
+                        </div>
+                    </div>
             </div><br>
             <HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3>
             <div class="col-md-12 text-center">
