@@ -390,7 +390,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm '.$pic_path.'*');
+        exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -473,7 +473,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm '.$pic_path.'*');
+        exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -557,7 +557,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm '.$pic_path.'*');
+        exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults';
@@ -676,7 +676,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm '.$pic_path.'*');
+        exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -734,7 +734,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm '.$pic_path.'*');
+        exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
