@@ -141,6 +141,7 @@
                     </div>
                     <div class="layui-tab-item">
                             <div class="col-md-12">
+                            <form  id="enrich" class="layui-form" action="/update/updaternaenrich">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -176,6 +177,7 @@
                                             <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
                                         </div>
                                     </div>
+                                </form>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>

@@ -159,7 +159,7 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 GO enrichment-->
                             <div class="col-md-12">
-                                <form  id="enrich" class="layui-form" action="/update/updaternaenrich">
+                                <form  id="enrich" class="layui-form">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>

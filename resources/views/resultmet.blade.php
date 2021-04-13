@@ -148,6 +148,7 @@
                     </div>
                         <div class="layui-tab-item"><!--第一部分 4 enrich-->
                             <div class="col-md-12">
+                            <form  id="enrich" class="layui-form" action="/update/updaternaenrich">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -175,6 +176,7 @@
                                             <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
+                                </form>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
