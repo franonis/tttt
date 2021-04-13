@@ -57,10 +57,10 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" id="sss" title="Lipid class information will be illustrated on volcano plot">
-                                            <input type="checkbox" onclick="OncheckBox(this)" id="s" name="s[yes]" lay-skin="primary" value="Show lipid class">Show lipid class<i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" onclick="OncheckBox(this)" id="s" name="s[yes]" lay-skin="primary" value="Show lipid class">&nbsp; Show lipid class<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div id="wwwwww" style="display: none;" class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_vol" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_vol" name="w[yes]" lay-skin="primary" checked="">&nbsp; Ignore subclass<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-4">
                                             <h4>Adjusted P-Value:</h4>
@@ -162,7 +162,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary"checked="">Ignore subclass<i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary"checked="">&nbsp; Ignore subclass<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" id="headupdateri" name="headupdateri" class="btn btn-success form-control" onclick="headgroupupdate()">Update</button>
@@ -242,7 +242,7 @@
                                             </small>
                                         </div>
                                         <div class="col-md-12" title="Display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_fa" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_fa" name="w[yes]" lay-skin="primary" checked="">Ignore subclass<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" id="faupdateri" name="faupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
