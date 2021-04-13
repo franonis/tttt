@@ -30,14 +30,14 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_reg_*.pdf ' . $pic_path . 'MARresults/volcano_reg_'.$s.$x.$j.$k.$m.$w.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_reg_*.pdf ' . $pic_path . 'MARresults/volcano_show.png';
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_regClass_*.pdf ' . $pic_path . 'MARresults/volcano_regClass_'.$s.$x.$j.$k.$m.$w.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_regClass_*.pdf ' . $pic_path . 'MARresults/volcano_show2.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        return response()->json(['code'=> 'success','png1' => $pic_path.'MARresults/volcano_reg_'.$s.$x.$j.$k.$m.$w.'.png','png2' => $pic_path.'MARresults/volcano_regClass_'.$s.$x.$j.$k.$m.$w.'.png','sub' => $s]);
+        return response()->json(['code'=> 'success','png1' => $pic_path.'MARresults/volcano_show.png','png2' => $pic_path.'MARresults/volcano_show2.png','sub' => $s]);
     }
 
     public function updatelipHeatmap($data)
