@@ -67,6 +67,8 @@ Route::group(['prefix' => '/update'], function () {
     Route::any('/updateproHeatmap/{data}', [UpdateController::class, 'updateproHeatmap']);
     Route::any('/updateproVolcano/{data}', [UpdateController::class, 'updateproVolcano']);
     Route::any('/updateproenrich/{data}', [UpdateController::class, 'updateproenrich']);
+    Route::any('/updatemutilenrich/{data}', [UpdateController::class, 'updatemutilenrich']);
+    Route::any('/updatemutilcircos/{data}', [UpdateController::class, 'updatemutilcircos']);
 });
 
 Route::group(['prefix' => '/result'], function () {

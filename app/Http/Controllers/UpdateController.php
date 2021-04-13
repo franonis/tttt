@@ -264,12 +264,17 @@ class UpdateController extends Controller
     {
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
-        $v = $datas[1];
+        $t = $datas[1];
+        $g = $datas[2];
+        $c = $datas[3];
+        $f = $datas[4];
+        $p = $datas[5];
+        $s = $datas[6];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
         exec('rm '.$pic_path.'*');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f 2.0 -p 0.05 -t "mmu" -g "SYMBOL" -s 50 -c "Biological_Process"';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f '.$f.' -p '.$p.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'"';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -282,6 +287,59 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
+        return response()->json(['code'=> 'success']);
+    }
+
+    public function updatemutilenrich($data)
+    {
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $omics = $datas[1];
+        $k = $datas[2];
+        $t = $datas[3];
+        $s = $datas[4];
+        $c = $datas[5];
+        if ($omics == "Transcriptomics") {
+            $g = $datas[6];
+        }
+        
+        $opath = preg_replace('/\+\+/', "/", $downloadpath);#$opath = preg_replace('/\//', "++", $outpath);#末尾有/
+        exec('rm '.$opath.'enrich/GOenrich*');
+        if ($omics2 == "Transcriptomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        }
+        if ($omics2 == "Proteomics") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        }
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
+        exec($command, $ooout, $flag);
+        return response()->json(['code'=> 'success']);
+    }
+
+    public function updatemutilcircos($data)
+    {
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $k = $datas[1];
+        $j = $datas[2];
+        $t = $datas[3];
+        $n = $datas[4];
+
+        $opath = preg_replace('/\+\+/', "/", $downloadpath);#$opath = preg_replace('/\//', "++", $outpath);#末尾有/
+
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -k '.$k.' -t '.$t.' -n '.$n.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
+        exec($command, $ooout, $flag);
         return response()->json(['code'=> 'success']);
     }
 

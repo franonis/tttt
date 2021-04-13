@@ -13,6 +13,8 @@
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Enrichment</a>
         <hr>
             <div class="col-md-2">
+                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
+                <input name="omics2" value="{{ $omics2 }}" style="display: none;">
                 <h3>Name list</h3>
             </div>
             <div class="col-md-10">
@@ -45,15 +47,20 @@
             <div class="col-md-10">
                 <div class="col-md-6">
                     <br><div class="col-md-12" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$j}}.csv">Download full lipid list file</a>
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}lipids_{{$j}}.csv">Download full lipid list file ↑</a>
                     </div><br>
-                </div>
+                </div><br>
                 <div class="col-md-6">
                     <br><div class="col-md-12" style="border:1px dashed #000;">
-                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file</a>
+                        <a href="{{ url('download/file/')}}/{{ $downloadpath }}genes_{{$g}}.csv">Download the gene list file ↑</a>
                     </div><br>
-                </div>
-            </div>
+                </div><br>
+                <div class="col-md-6">
+                    <br><div class="col-md-12" style="border:1px dashed #000;">
+                        <a href="{{ url('download/zip/')}}/{{ $downloadpath }}enrich++++Enrichresult.zip">Download result of enrich and circos</a>
+                    </div><br>
+                </div><br>
+            </div><br>
             <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR><br>
             <div class="col-md-2">
                 <h3>Update</h3>
@@ -63,10 +70,9 @@
                     <p>enrichment of lipid dont need update</p>
                 </div>
                 <div class="col-md-6">
-                    <form id="regionform" class="layui-form" action="/result/enrichresultgene">
-                            <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                            <input name="omics" value="{{ $omics2 }}" style="display: none;">
+                    <form id="regionform" class="layui-form">
                             <input name="k" value="{{ $g }}" style="display: none;">
+                            <input name="j" value="{{ $j }}" style="display: none;">
                             <div class="col-md-12" style="margin-left: -10px;">
                                 <div class="col-md-12">
                                     <div class="layui-form-item">
@@ -80,7 +86,7 @@
                                 <div class="col-md-12" id="genetype" style="display: none;">
                                     <div class="layui-form-item">
                                         <label class="layui-form-label">Gene Type：</label>
-                                        <div class="layui-input-block" id="t">
+                                        <div class="layui-input-block" id="g">
                                           <input type="radio" name="g" value="ENSEMBL" title="ENSEMBL">
                                           <input type="radio" name="g" value="SYMBOL" title="SYMBOL" checked="">
                                         </div>
@@ -104,10 +110,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <button id="submitEnrich" class="layui-btn" type="submit" >Enrich</button>
-                                </div>
-                            </div>
+                                        <div class="col-md-3">
+                                            <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update {{$omics2}} enrich</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>                            </div>
                     </form>
                 </div>
             </div>
@@ -128,7 +136,34 @@
                 <h3>Circos results</h3>
             </div>
             <div class="col-md-10">
+                <div class="col-md-2">
+                    <h4>Update with new parameters</h4>
+                </div>
+                <div class="col-md-10">
+                    <div class="col-md-3">
+                        <h4>Correlation threshold: </h4>
+                    </div>
+                    <div class="col-md-9">
+                        <small>
+                        <input id="t" type="text" name="t" value="{{$t}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div><br>
+                    <div class="col-md-3">
+                        <h4>Number of GO term: </h4>
+                    </div>
+                    <div class="col-md-9">
+                        <small>
+                        <input id="n" type="text" name="n" value="{{$n}}" style="width:50px; display:inline;" class="form-control" >
+                        </small>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" id="circosupdateri" name="circosupdateri" class="btn btn-success form-control" onclick="circosupdate()">Update</button>
+                    </div>
+                    <div class="col-md-9">
+                        <p id="circosupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                    </div>
                     {!! $circos !!}
+                </div>
             </div>
     </div>
 </div>
@@ -148,7 +183,7 @@
         layui.use('table', function(){
           var table = layui.table; //只有执行了这一步，部分表单元素才会自动修饰成功
         });
-        omics=$("input[name='omics']").val();
+        omics=$("input[name='omics2']").val();
         if (omics == "Proteomics") {
           document.getElementById("genetype").style.display="none";
         }
@@ -156,7 +191,6 @@
           document.getElementById("genetype").style.display="block";
         }
         console.log(omics);
-
     });
 </script>
 <script>
@@ -205,6 +239,83 @@
             ]]
         });
     });
+</script>
+
+<script type="text/javascript">
+    function circosupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var k = $("input[name='k']").val();
+        var j = $("input[name='j']").val();
+        var t = $("input[name='t']").val();
+        var n = $("input[name='n']").val();
+        console.log('/update/updatemutilcircos/'+path+det+j+det+k+det+t+det+n);
+
+        document.getElementById("circosupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatemutilcircos/'+path+det+j+det+k+det+t+det+n,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    var sr = document.getElementById("circos").src;
+                    document.getElementById("circos").src = sr+'?t='+'+Math.random()';
+                    document.getElementById("circosupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+    function enrichupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var k = $("input[name='k']").val();
+        var t =$("input[name='t']:checked").val();
+        var t = $("input[name='t']").val();
+        var s = $("input[name='s']").val();
+        var c = $("input[name='c']").val();
+        omics=$("input[name='omics2']").val();
+        if (omics == "Proteomics") {
+            var link = '/update/updatemutilenrich/'+path+det+omics+det+k+det+t+det+s+det+c;
+        }
+        if (omics == "Transcriptomics") {
+            var link = '/update/updatemutilenrich/'+path+det+omics+det+k+det+t+det+s+det+c+det+g;
+        }
+        console.log(link);
+
+        document.getElementById("enrichupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: link,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    var sr = document.getElementById("resultpng2").src;
+                    document.getElementById("resultpng2").src = sr+'?t='+'+Math.random()';
+                    document.getElementById("enrichupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };circosupdate
 </script>
 
 @endsection

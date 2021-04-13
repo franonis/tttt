@@ -406,16 +406,18 @@
     function enrichupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
-        var v = $("input[name='v']").val();
         var t =$("input[name='t']:checked").val();
         var g =$("input[name='g']:checked").val();
         var c =$("input[name='c']:checked").val();
+        var f = $("input[name='f_enrich']").val();
+        var p = $("input[name='p_enrich']").val();
+        var s = $("input[name='s']").val();
         document.getElementById("enrichupdatebutton").style.display="block";
         console.log(path);
         console.log(v);
         $.ajax({
             type: "get",
-            url: '/update/updaternaenrich/'+path+det+v,
+            url: '/update/updaternaenrich/'+path+det+t+det+g+det+c+det+f+det+p+det+s,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
