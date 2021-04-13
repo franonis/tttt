@@ -21,10 +21,15 @@
           </div>
         </div><br>
         <div class="panel panel-info regionbox" style="width: 100%">
+            <div class="panel-heading"><h4>User Manual</h4></div>
+          <div class="panel-body">
+        <p style="font-size: 110%">The user manual shows what LINT can do and the way you use it in deatils. Click <a href="{{ url('download/example').'/User_Manual_of_LINT.pdf' }}" style="color: deepskyblue">User Manual of LINT.pdf</a> to get the Manual.</p>
+          </div>
+        </div><br>
+        <div class="panel panel-info regionbox" style="width: 100%">
             <div class="panel-heading"><h4>CONTACT US</h4></div>
           <div class="panel-body">
-        <p style="font-size: 110%">This project welcomes all questions and comments regarding the lipidomic data analysis
-.</p>
+        <p style="font-size: 110%">This project welcomes all questions and comments regarding the lipidomic data analysis.</p>
         <p style="font-size: 110%">Please, send your questions, comments or suggestions to: <a href="mailto:lintwebomic_service@outlook.com" style="color: deepskyblue">lintwebomic_service@outlook.com</a>.</p>
           </div>
         </div><br>
