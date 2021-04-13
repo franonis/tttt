@@ -58,12 +58,12 @@ class ResultController extends Controller
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
-                        $up = '<img src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
+                        $up = '<img id="enrichuppng" src="http://www.lintwebomics.info/' . $outpath . 'results/up.png" style="height:50%;width: 60%;">';
                     }else{
                         $up='<p>No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                     }
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/down.png') ){
-                        $down='<img src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
+                        $down='<img id="enrichdownpng" src="http://www.lintwebomics.info/' . $outpath . 'results/down.png" style="height:50%;width: 60%;">';
                     }else{
                         $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                     }
@@ -243,7 +243,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm '.$pic_path.'*');
+        exec('rm -r '.$pic_path.'*');
 
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR

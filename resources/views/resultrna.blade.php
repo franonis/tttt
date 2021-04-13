@@ -217,7 +217,10 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
                                 </form>
@@ -390,6 +393,48 @@
                     //console.log(data.png);
                     document.getElementById("heatmappng").src = sr+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+    function enrichupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var v = $("input[name='v']").val();
+        var t =$("input[name='t']:checked").val();
+        var g =$("input[name='g']:checked").val();
+        var c =$("input[name='c']:checked").val();
+        document.getElementById("enrichupdatebutton").style.display="block";
+        console.log(path);
+        console.log(v);
+        $.ajax({
+            type: "get",
+            url: '/update/updaternaenrich/'+path+det+v,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+                "v": v,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    //location.reload()
+                    var sr = document.getElementById("enrichuppng").src;
+                    console.log(sr);
+                    //console.log(data.png);
+                    document.getElementById("enrichuppng").src = sr+'?t='+'+Math.random()';
+                    var sr = document.getElementById("enrichdownpng").src;
+                    console.log(sr);
+                    //console.log(data.png);
+                    document.getElementById("enrichdownpng").src = sr+'?t='+'+Math.random()';
+                    document.getElementById("enrichupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
                 }
