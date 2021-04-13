@@ -36,6 +36,7 @@ class DownloadController extends Controller
     {
         $files= explode("++++", $file);
         $path = preg_replace('/\+\+/', "/", $files[0]);
+        $path = $path.'/';
         $zip_file = $files[1];
         if ($zip_file == "DRA.zip") {
             $command='zip -r -o ' . $path . $zip_file . ' ' . $path . '*A_score_plot_*.pdf';
