@@ -256,7 +256,7 @@ class TwoController extends Controller
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'circos/circosPlot.png') ){
             $circos = '<img src="http://www.lintwebomics.info/' .$opath.'circos/circosPlot.png" style="height:100%;width: 100%;">';
         }else{
-            $circos='<p>No circosPlot! Try check your data!</p>';
+            $circos='<p>Please check your correlation threshold. It may be too strict to filter.</p>';
         }
 
         return view('crossresultenrich', ['g' => $g,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
@@ -410,8 +410,8 @@ class TwoController extends Controller
             $data_type = '';
             $n =  'T';
             $s =  '';
-            $g =  7;
-            $k =  6;
+            $g =  4;
+            $k =  3;
             $b =  "k_means";
             $c =  7;
             $f =  6;

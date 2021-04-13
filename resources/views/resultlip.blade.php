@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" id="sss" title="Lipid class information will be illustrated on volcano plot">
-                                            <input type="checkbox" onclick="OncheckBox(this)" id="s" name="s[yes]" lay-skin="primary" value="Show lipid class">&nbsp; Show lipid class<i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="s" name="s[yes]" lay-skin="primary" value="Show lipid class">&nbsp; Show lipid class<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div id="wwwwww" style="display: none;" class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
                                             <input type="checkbox" id="w_vol" name="w[yes]" lay-skin="primary" checked="">&nbsp; Ignore subclass<i class="layui-icon layui-icon-about"></i>
@@ -503,7 +503,6 @@
         console.log(name);
    });
     $("#sss").click(function (){
-        console.log("index");
         if ($("#s").is(":checked")) {
             document.getElementById("wwwwww").style.display="block";
         }else{
@@ -536,6 +535,7 @@
         var j = $("input[name='j_volcano']").val();
         var k = $("input[name='k_volcano']").val();
         var m = $("input[name='m_volcano']").val();
+        console.log('/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w);
 
         document.getElementById("volcanoupdatebutton").style.display="block";
         $.ajax({
@@ -575,6 +575,7 @@
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var e = $("input[name='e']").val();
+        console.log('/update/updatelipHeatmap/'+path+det+e);
         document.getElementById("heatmapupdatebutton").style.display="block";
         $.ajax({
             type: "get",
@@ -614,7 +615,7 @@
         }else{
             var z = "F";
         }
-
+        console.log('/update/updatelipheadheatmap/'+path+det+w+det+z);
         document.getElementById("headheatmapupdatebutton").style.display="block";
         $.ajax({
             type: "get",
@@ -654,7 +655,7 @@
         }else{
             var z = "F";
         }
-
+        console.log('/update/updateliphead/'+path+det+w+det+z);
         document.getElementById("headupdatebutton").style.display="block";
         $.ajax({
             type: "get",
@@ -694,7 +695,7 @@
         }
         var g = document.getElementById("g").value;
         var e = $("input[name='e_fa']").val();
-
+        console.log('/update/updatelipfa/'+path+det+g+det+w+det+e);
         document.getElementById("faheatmapupdatebutton").style.display="block";
         document.getElementById("faupdatebutton").style.display="block";
         $.ajax({
