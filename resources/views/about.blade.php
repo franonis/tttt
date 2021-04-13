@@ -57,7 +57,7 @@
 @endsection
 @section('js')
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
-<script src="{{ asset('/PDFObject-master/pdfobject.mini.js') }}" charset="utf-8"></script>
+<script src="{{ asset('/PDFObject-master/pdfobject.min.js') }}" charset="utf-8"></script>
 <script>
 PDFObject.embed("/pdf/User_Manual_of_LINT.pdf", "#pdf-viewer");
 </script>
