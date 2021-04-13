@@ -243,7 +243,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm -r '.$pic_path.'*');
+        exec('rm -rf '.$pic_path.'*');
 
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR

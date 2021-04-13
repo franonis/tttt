@@ -52,7 +52,6 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 2 Volcano-->
                             <div class="col-md-12">
-                                <form  id="Volcano" class="layui-form" action="/update/updatelipVolcano">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -105,7 +104,6 @@
                                             <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
-                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
@@ -123,7 +121,6 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -143,7 +140,6 @@
                                             <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
-                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
@@ -161,7 +157,6 @@
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="head" class="layui-form" action="/update/updateliphead">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -226,13 +221,11 @@
                                           </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
-                                <form  id="fa" class="layui-form" action="/update/updatelipfa">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -312,12 +305,10 @@
                                           </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 6 LION enrichment-->
                         <div class="col-md-12">
-                                <form  id="enrich" class="layui-form" action="/update/updatelipenrich">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -366,7 +357,6 @@
                                             <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
-                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
