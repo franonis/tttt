@@ -436,7 +436,7 @@
                 anim: 'default', //切换动画方式
             });
             re1(ins1, i)
-            carousel.on('change(carofilter)', function(obj){
+            carousel.on('change(test1)', function(obj){
                 i = obj.index
                 re1(ins1, i)
             });
@@ -456,7 +456,7 @@
                 anim: 'default', //切换动画方式
             });
             re2(ins2, j)
-            carousel.on('change(carofilter)', function(obj){
+            carousel.on('change(test2)', function(obj){
                 j = obj.index
                 re2(ins2, j)
             });
@@ -502,15 +502,6 @@
         }
         console.log(name);
    });
-    function OncheckBox(index){
-        console.log("index1");
-        if ($(index).attr("checked") == "checked") {
-            document.getElementById("wwwwww").style.display="block";
-        }else{
-            document.getElementById("wwwwww").style.display="none";
-        }
-        console.log("names1");
-    }
     $("#sss").click(function (){
         console.log("index");
         if ($("#s").is(":checked")) {
@@ -557,6 +548,7 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
+
                     if (data.sub == "T") {
                         document.getElementById("volcanopng1").src = data.png1+'?t='+'+Math.random()';
                         document.getElementById("volcanopng2").src = data.png2+'?t='+'+Math.random()';
