@@ -90,8 +90,12 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="volcanoupdateri" name="volcanoupdateri" class="btn btn-success form-control" onclick="volcanoupdate()">Update</button>
                                         </div>
+                                        <div class="col-md-3">
+                                            <p id="volcanoupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
+
                                     </div>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
@@ -122,8 +126,12 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
                                         </div>
+                                        <div class="col-md-3">
+                                            <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
+
                                     </div>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
@@ -174,7 +182,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
                                 </form>

@@ -229,12 +229,12 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_'.$f.$p.$u.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_'.$f.$p.$u.'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'volcano_show.png']);
     }
     public function updaternaHeatmap($data)
     {
@@ -257,7 +257,32 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        return response()->json(['code'=> 'success','png' => $pic_path.'heatmap_'.$v.'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'heatmap_show.png']);
+    }
+
+    public function updaternaenrich($data)
+    {
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $v = $datas[1];
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        $pic_path = '/home/zhangqb/tttt/public/' . $path;
+        exec('rm '.$pic_path.'*');
+        #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f 2.0 -p 0.05 -t "mmu" -g "SYMBOL" -s 50 -c "Biological_Process"';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'up*.pdf ' . $pic_path . 'up.png';
+        exec($command, $ooout, $flag);
+
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'down*.pdf ' . $pic_path . 'down.png';
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
+        }
+        return response()->json(['code'=> 'success']);
     }
 
     public function showresultrna2($data)
