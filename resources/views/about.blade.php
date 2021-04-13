@@ -8,7 +8,7 @@
 
 <style>
       .pdfobject-container {
-        height: 500px;
+        height: 1000px;
       }
       .pdfobject {
         /*border: 1px solid #ccc;*/
@@ -29,12 +29,6 @@
           </div>
         </div><br>
         <div class="panel panel-info regionbox" style="width: 100%">
-            <div class="panel-heading"><h4>User Manual</h4></div>
-          <div class="panel-body">
-        <p style="font-size: 110%">The user manual shows what LINT can do and the way you use it in deatils. Click <a href="{{ url('download/example').'/User_Manual_of_LINT.pdf' }}" style="color: deepskyblue">User Manual of LINT.pdf</a> to get the Manual.</p>
-          </div>
-        </div><br>
-        <div class="panel panel-info regionbox" style="width: 100%">
             <div class="panel-heading"><h4>CONTACT US</h4></div>
           <div class="panel-body">
         <p style="font-size: 110%">This project welcomes all questions and comments regarding the lipidomic data analysis.</p>
@@ -45,6 +39,13 @@
         <div class="panel-heading"><h4>Privacy</h4></div>
           <div class="panel-body">
         <p >Thank you for visiting this website. This dose not gather personal information about users. Information automatically collected in server log files, such as pages visited, will solely be used to improve the usefulness of the website, and not for any commercial purposes.</p>
+          </div>
+        </div><br>
+        <div class="panel panel-info regionbox" style="width: 100%">
+            <div class="panel-heading"><h4>User Manual</h4></div>
+          <div class="panel-body">
+        <p style="font-size: 110%">The user manual shows what LINT can do and the way you use it in deatils. Click <a href="{{ url('download/example').'/User_Manual_of_LINT.pdf' }}" style="color: deepskyblue">User Manual of LINT.pdf</a> to get the Manual.</p>
+        <p style="font-size: 110%">Preview of user manual is shown below</p>
           </div>
         </div>
         <div id="pdf-viewer"></div>
