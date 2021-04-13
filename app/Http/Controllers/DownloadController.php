@@ -25,6 +25,7 @@ class DownloadController extends Controller
     {
         $files= explode("++++", $file);
         $path = preg_replace('/\+\+/', "/", $files[0]);
+        $path = $path.'/';
         $zip_file = $files[1];
         $command='zip -r -o ' . $path . $zip_file . ' ' . $path;
         #dd($command);
@@ -57,6 +58,7 @@ class DownloadController extends Controller
     {
         $files= explode("----", $file);
         $path = preg_replace('/\+\+/', "/", $files[0]);
+        $path = $path.'/';
         $zip_file = $files[1];
         if ($zip_file == "DV.zip") {
             $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'PCA* heatmap_allgroups*';
