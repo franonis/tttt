@@ -8,7 +8,7 @@
 
 <style>
       .pdfobject-container {
-        height: 1000px;
+        height: 700px;
       }
       .pdfobject {
         /*border: 1px solid #ccc;*/
