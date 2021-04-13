@@ -6,6 +6,14 @@
 .panel-heading{padding:15px 15px;border-bottom:1px solid transparent;border-top-left-radius:3px;border-top-right-radius:3px;color:#333;background-color:#d9edf7;border-color:#ddd}
 .panel-body{padding:15px}
 
+<style>
+      .pdfobject-container {
+        height: 500px;
+      }
+      .pdfobject {
+        /*border: 1px solid #ccc;*/
+      }
+    </style>
 
 @endsection
 @section('navbar')
