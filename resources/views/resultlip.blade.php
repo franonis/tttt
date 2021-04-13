@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     <img id="volcanopng1" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: block;">
-                                    <img id="volcanopng2"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: none;">
+                                    <img id="volcanopng2"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show2.png" style="height:50%;width: 60%; display: none;">
                                 </div>
                             </div>
                     </div>
@@ -309,6 +309,7 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 6 LION enrichment-->
                         <div class="col-md-12">
+                            <form  id="enrich" class="layui-form" action="/update/updaternaenrich">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -357,6 +358,7 @@
                                             <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                         </div>
                                     </div>
+                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
@@ -556,12 +558,12 @@
             success: function (data) {
                 if(data.code == 'success'){
                     if (data.sub == "T") {
-                        document.getElementById("volcanopng1").src = data.png1;
-                        document.getElementById("volcanopng2").src = data.png2;
+                        document.getElementById("volcanopng1").src = data.png1+'?t='+'+Math.random()';
+                        document.getElementById("volcanopng2").src = data.png2+'?t='+'+Math.random()';
                         document.getElementById("volcanopng2").style.display="block";
                     }
                     if (data.sub == "F") {
-                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng1").src = data.png1+'?t='+'+Math.random()';
                         document.getElementById("volcanopng2").style.display="none";
 
                     }
@@ -592,7 +594,7 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmappng").src = data.png+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -632,7 +634,7 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("headheatmappng").src = data.png;
+                    document.getElementById("headheatmappng").src = data.png+'?t='+'+Math.random()';
                     document.getElementById("headheatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -672,9 +674,9 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("headgroupcolor").src = data.color;
-                    document.getElementById("headgroupcum").src = data.cum;
-                    document.getElementById("headheatmappng").src = data.heatmap;
+                    document.getElementById("headgroupcolor").src = data.color+'?t='+'+Math.random()';
+                    document.getElementById("headgroupcum").src = data.cum+'?t='+'+Math.random()';
+                    document.getElementById("headheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     for (var i = 0; i <= data.pngnum; i++) {
                         var sr = document.getElementById("headpng"+i).src ;
                         document.getElementById("headpng"+i).src = sr+'?t='+'+Math.random()';
@@ -714,8 +716,8 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    document.getElementById("fashow").src = data.show;
-                    document.getElementById("faheatmappng").src = data.heatmap;
+                    document.getElementById("fashow").src = data.show+'?t='+'+Math.random()';
+                    document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     for (var i = 0; i <= data.pngnum; i++) {
                         var sr = document.getElementById("fapng"+i).src ;
                         document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
@@ -761,14 +763,14 @@
                     if (t == "target_list") {
                         document.getElementById("target_listblock").style.display="block";
                         document.getElementById("rankingblock").style.display="none";
-                        document.getElementById("up").src = data.pngup;
-                        document.getElementById("down").src = data.pngdown;
+                        document.getElementById("up").src = data.pngup+'?t='+'+Math.random()';
+                        document.getElementById("down").src = data.pngdown+'?t='+'+Math.random()';
 
                     }
                     if (t == "ranking") {
                         document.getElementById("rankingblock").style.display="block";
                         document.getElementById("target_listblock").style.display="none";
-                        document.getElementById("rankingpng").src = data.png;
+                        document.getElementById("rankingpng").src = data.png+'?t='+'+Math.random()';
 
                     }
                     document.getElementById("enrichupdatebutton").style.display="none";

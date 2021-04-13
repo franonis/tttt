@@ -58,7 +58,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/heatmap_top'.$e.'*.pdf ' . $pic_path . 'MARresults/heatmap_'.$e.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/heatmap_top'.$e.'*.pdf ' . $pic_path . 'MARresults/heatmap_show.png';
         exec($command, $ooout, $flag);
         #dd($ooout);
         if ($flag == 1) {
@@ -82,14 +82,14 @@ class UpdateController extends Controller
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_'.$z.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        return response()->json(['code'=> 'success','png' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png']);
+        return response()->json(['code'=> 'success','png' => $pic_path.'headgroup/headgroupheatmap_show.png']);
     }
 
     public function updateliphead($data)
@@ -110,12 +110,12 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_color_*.pdf ' . $pic_path . 'headgroup/headgroupcolor_new.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_color_*.pdf ' . $pic_path . 'headgroup/headgroupcolor_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_cum_*.pdf ' . $pic_path . 'headgroup/headgroupcum_new.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_cum_*.pdf ' . $pic_path . 'headgroup/headgroupcum_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
@@ -125,7 +125,7 @@ class UpdateController extends Controller
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_'.$z.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
@@ -137,7 +137,7 @@ class UpdateController extends Controller
 
         exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);
 
-        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'color' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png','cum' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png','heatmap' => $pic_path.'headgroup/headgroupheatmap_'.$z.'.png']);
+        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'color' => $pic_path.'headgroup/headgroupcolor_show.png','cum' => $pic_path.'headgroup/headgroupcum_show.png','heatmap' => $pic_path.'headgroup/headgroupheatmap_show.png']);
     }
 
     public function updatelipfa($data)
@@ -159,9 +159,9 @@ class UpdateController extends Controller
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_new.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_new.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_show.png';
         exec($command, $ooout, $flag);
 
         $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
@@ -179,7 +179,7 @@ class UpdateController extends Controller
 
         exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);
 
-        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'show' => $pic_path.'FAchainVisual/fa_new.png','heatmap' => $pic_path.'FAchainVisual/faheatmap_new.png']);
+        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'show' => $pic_path.'FAchainVisual/fa_show.png','heatmap' => $pic_path.'FAchainVisual/faheatmap_show.png']);
     }
 
     public function updatelipenrich($data)
