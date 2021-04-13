@@ -162,7 +162,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary"checked="">Ignore subclass<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" id="headupdateri" name="headupdateri" class="btn btn-success form-control" onclick="headgroupupdate()">Update</button>
