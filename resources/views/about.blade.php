@@ -39,6 +39,7 @@
         <p >Thank you for visiting this website. This dose not gather personal information about users. Information automatically collected in server log files, such as pages visited, will solely be used to improve the usefulness of the website, and not for any commercial purposes.</p>
           </div>
         </div>
+        <div id="example1"></div>
 
     </div>
 </div>
@@ -49,7 +50,10 @@
 @endsection
 @section('js')
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
+<scri<script src="{{ asset('/PDFObject-master/pdfobject.js') }}" charset="utf-8"></script>
 <script>
+PDFObject.embed("/pdf/User_Manual_of_LINT.pdf", "#example1");
+</script>pt>
 layui.use(['element', 'layer'], function(){
   var element = layui.element;
   var layer = layui.layer;
