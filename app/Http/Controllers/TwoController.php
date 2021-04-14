@@ -182,7 +182,7 @@ class TwoController extends Controller
         if ($b == "k_means") {
             #$kongbai[0]=$kongbai[0]*0.2;
             $baijiange = 0;
-            $kongbai2=$size[0] - array_sum($hang) - $kongbai[0];
+            $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*8;
         }
 
         #dd($omics1);
