@@ -106,7 +106,7 @@
                                     <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img id="volcanopng1" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
+                                    <img id="volcanopng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
@@ -288,16 +288,7 @@ layui.use('upload', function(){
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    if (data.sub == "T") {
-                        document.getElementById("volcanopng1").src = data.png1;
-                        document.getElementById("volcanopng2").src = data.png2;
-                        document.getElementById("volcanopng2").style.display="block";
-                    }
-                    if (data.sub == "F") {
-                        document.getElementById("volcanopng1").src = data.png1;
-                        document.getElementById("volcanopng2").style.display="none";
-
-                    }
+                    document.getElementById("volcanopng").src = document.getElementById("volcanopng").src+'?t='+'+Math.random()';
                     document.getElementById("volcanoupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -325,7 +316,7 @@ layui.use('upload', function(){
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmappng").src = document.getElementById("heatmappng").src+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -340,19 +331,15 @@ layui.use('upload', function(){
     function enrichupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
-        var t =$("input[name='t']:checked").val();
         var j = $("input[name='j_enrich']").val();
         var k = $("input[name='k_enrich']").val();
-        var l =$("input[name='l']:checked").val();
-        console.log("t"+t);
-        console.log("j"+j);
-        console.log("k"+k);
-        console.log('/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l);
+
+        console.log('/update/updatemetenrich/'+path+det+j+det+k);
 
         document.getElementById("enrichupdatebutton").style.display="block";
         $.ajax({
             type: "get",
-            url: '/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l,
+            url: '/update/updatemetenrich/'+path+det+j+det+k,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
@@ -361,18 +348,21 @@ layui.use('upload', function(){
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    if (t == "target_list") {
-                        document.getElementById("target_listblock").style.display="block";
-                        document.getElementById("rankingblock").style.display="none";
-                        document.getElementById("up").src = data.pngup;
-                        document.getElementById("down").src = data.pngdown;
-
+                    if (data.noup == "yes") {
+                        document.getElementById("up").style.display="none";
+                        document.getElementById("noup").style.display="block";
+                    }else{
+                        document.getElementById("up").src = document.getElementById("up").src+'?t='+'+Math.random()';
+                        document.getElementById("up").style.display="block";
+                        document.getElementById("noup").style.display="none";
                     }
-                    if (t == "ranking") {
-                        document.getElementById("rankingblock").style.display="block";
-                        document.getElementById("target_listblock").style.display="none";
-                        document.getElementById("rankingpng").src = data.png;
-
+                    if (data.nodown == "yes") {
+                        document.getElementById("down").style.display="none";
+                        document.getElementById("nodown").style.display="block";
+                    }else{
+                        document.getElementById("down").src = document.getElementById("down").src+'?t='+'+Math.random()';
+                        document.getElementById("down").style.display="block";
+                        document.getElementById("nodown").style.display="none";
                     }
                     document.getElementById("enrichupdatebutton").style.display="none";
                 }else{

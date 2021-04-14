@@ -131,9 +131,9 @@ class ResultController extends Controller
                                 $up='<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_ora_dpi72.png" style="height:80%;width: 80%;display: none;"><br><p id="noup" style="display: block;" >No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_ora_dpi72.png') ){
-                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;display: block;"><br><p id="noup" style="display: none;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;display: block;"><br><p id="nodown" style="display: none;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }else{
-                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;"display: none;><br><p id="noup" style="display: block;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;"display: none;><br><p id="nodown" style="display: block;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             return view('resultmet', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'up' => $up, 'down' => $down]);
                         }
@@ -457,12 +457,6 @@ class ResultController extends Controller
         }
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metRegEnrich.R -i "' . $enrich_path . '"  -o "' . $enrich_path . '"';
         #dd($command);
-        exec($command, $ooout, $flag);
-
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'up*.pdf ' . $enrich_path . 'up.png';
-        exec($command, $ooout, $flag);
-
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
         exec($command, $ooout, $flag);
         return 1;
         #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);

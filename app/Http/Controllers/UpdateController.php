@@ -216,27 +216,34 @@ class UpdateController extends Controller
     {
         $datas= explode("----", $data);
         $path = preg_replace('/\+\+/', "/", $datas[0]);
-        $t = $datas[1];
-        $j = $datas[2];
-        $k = $datas[3];
-        $l = $datas[4];
+        $j = $datas[1];
+        $k = $datas[2];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         #dd($r_path);
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
         exec('rm '.$enrich_path.'*');
-        if ($t == "target_list") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
-        }elseif ($t == "ranking") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -l '.$l.' -p "' . $enrich_path . '"';
-        }
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metRegEnrich.R -i "' . $enrich_path . '"  -o "' . $enrich_path . '"';
+        #dd($command);
+        exec($command, $ooout, $flag);
 
-        return response()->json(['code'=> 'success','pngup' => $enrich_path.'up_LION-enrichment-plot.png','pngdown' => $enrich_path.'down_LION-enrichment-plot.png','png' => $enrich_path.'LION-enrichment-plot.png']);
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'up_ora_dpi72.png') ) {
+            $noup = "no";
+        }else{
+            $noup = "yes";
+        }
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'down_ora_dpi72.png') ) {
+            $nodown = "no";
+        }else{
+            $nodown = "yes";
+        }
+        return response()->json(['code'=> 'success','noup' => $noup,'nodown' => $nodown]);
     }
 
     public function updateproenrich($data)
