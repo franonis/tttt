@@ -174,8 +174,8 @@
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">Choose species：</label>
                                                 <div class="layui-input-block" id="t">
-                                                  <input type="radio" name="t" value="mmu" title="Mus musculus" checked="">
-                                                  <input type="radio" name="t" value="hsa" title="Homo sapiens">
+                                                  <input type="radio" name="t" value="mmu" title="Mus musculus">
+                                                  <input type="radio" name="t" value="hsa" title="Homo sapiens" checked="">
                                                 </div>
                                             </div>
                                         </div>
