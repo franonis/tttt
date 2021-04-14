@@ -169,7 +169,7 @@ class TwoController extends Controller
         $baijiange = -3;
         if ($b == "k_means") {
             $kongbai[0]=$kongbai[0]*0.2;
-            $baijiange = 1;
+            $baijiange = 0;
         }
 
 
