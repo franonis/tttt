@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="j" type="text" name="j" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="j_volcano" type="text" name="j_volcano" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <input id="k" type="text" name="k" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                            <input id="k_volcano" type="text" name="k_volcano" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
                                             </small>
                                         </div>
                                         <div class="col-md-4">
@@ -107,7 +107,7 @@
                                     <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
+                                    <img id="volcanopng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
@@ -143,7 +143,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
+                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
@@ -154,6 +154,22 @@
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
+                                        <div class="col-md-3">
+                                                <h4>Fold Change threshold: </h4>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <small>
+                                                <input id="j_enrich" type="text" name="j_enrich" value="{{$j}}" style="width:50px; display:inline;" class="form-control" >
+                                                </small>
+                                            </div><br>
+                                            <div class="col-md-3">
+                                                <h4>P-Value threshold: </h4>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <small>
+                                                <input id="k_enrich" type="text" name="k_enrich" value="{{$k}}" style="width:50px; display:inline;" class="form-control" >
+                                                </small>
+                                            </div>
                                         <div class="col-md-12">
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">Choose species：</label>
@@ -288,6 +304,7 @@ layui.use('upload', function(){
         var j = $("input[name='j_volcano']").val();
         var k = $("input[name='k_volcano']").val();
         var m = $("input[name='m']").val();
+        console.log('/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w);
 
         document.getElementById("volcanoupdatebutton").style.display="block";
         $.ajax({
@@ -300,16 +317,7 @@ layui.use('upload', function(){
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    if (data.sub == "T") {
-                        document.getElementById("volcanopng1").src = data.png1;
-                        document.getElementById("volcanopng2").src = data.png2;
-                        document.getElementById("volcanopng2").style.display="block";
-                    }
-                    if (data.sub == "F") {
-                        document.getElementById("volcanopng1").src = data.png1;
-                        document.getElementById("volcanopng2").style.display="none";
-
-                    }
+                    document.getElementById("volcanopng").src = data.png1+'?t='+'+Math.random()';
                     document.getElementById("volcanoupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -326,6 +334,7 @@ layui.use('upload', function(){
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var e = $("input[name='e']").val();
+        console.log('/update/updatelipHeatmap/'+path+det+e);
         document.getElementById("heatmapupdatebutton").style.display="block";
         $.ajax({
             type: "get",
@@ -337,7 +346,7 @@ layui.use('upload', function(){
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmappng").src = data.png+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -352,19 +361,18 @@ layui.use('upload', function(){
     function enrichupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
-        var t =$("input[name='t']:checked").val();
         var j = $("input[name='j_enrich']").val();
         var k = $("input[name='k_enrich']").val();
-        var l =$("input[name='l']:checked").val();
-        console.log("t"+t);
-        console.log("j"+j);
-        console.log("k"+k);
-        console.log('/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l);
+        var t =$("input[name='t']:checked").val();
+        var s =$("input[name='s']").val();
+        var c =$("input[name='c']:checked").val();
+
+        console.log('/update/updateproenrich/'+path+det+j+det+k+det+t+det+s+det+c);
 
         document.getElementById("enrichupdatebutton").style.display="block";
         $.ajax({
             type: "get",
-            url: '/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l,
+            url: '/update/updateproenrich/'+path+det+j+det+k+det+t+det+s+det+c,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
@@ -373,19 +381,8 @@ layui.use('upload', function(){
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    if (t == "target_list") {
-                        document.getElementById("target_listblock").style.display="block";
-                        document.getElementById("rankingblock").style.display="none";
-                        document.getElementById("up").src = data.pngup;
-                        document.getElementById("down").src = data.pngdown;
-
-                    }
-                    if (t == "ranking") {
-                        document.getElementById("rankingblock").style.display="block";
-                        document.getElementById("target_listblock").style.display="none";
-                        document.getElementById("rankingpng").src = data.png;
-
-                    }
+                    document.getElementById("up").src = data.pngup+'?t='+'+Math.random()';
+                    document.getElementById("down").src = data.pngdown+'?t='+'+Math.random()';
                     document.getElementById("enrichupdatebutton").style.display="none";
                 }else{
                     alert('register fail');

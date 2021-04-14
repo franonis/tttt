@@ -209,6 +209,66 @@ class UpdateController extends Controller
         return response()->json(['code'=> 'success','pngup' => $enrich_path.'up_LION-enrichment-plot.png','pngdown' => $enrich_path.'down_LION-enrichment-plot.png','png' => $enrich_path.'LION-enrichment-plot.png']);
     }
 
+    public function updatemetenrich($data)
+    {
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $t = $datas[1];
+        $j = $datas[2];
+        $k = $datas[3];
+        $l = $datas[4];
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        #dd($r_path);
+        $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
+
+        exec('rm '.$enrich_path.'*');
+        if ($t == "target_list") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
+        }elseif ($t == "ranking") {
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -l '.$l.' -p "' . $enrich_path . '"';
+        }
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+
+        return response()->json(['code'=> 'success','pngup' => $enrich_path.'up_LION-enrichment-plot.png','pngdown' => $enrich_path.'down_LION-enrichment-plot.png','png' => $enrich_path.'LION-enrichment-plot.png']);
+    }
+
+    public function updateproenrich($data)
+    {
+        $datas= explode("----", $data);
+        $path = preg_replace('/\+\+/', "/", $datas[0]);
+        $j = $datas[1];
+        $k = $datas[2];
+        $t = $datas[3];
+        $s = $datas[4];
+        $c = $datas[5];
+        $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
+        #dd($r_path);
+        $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
+
+        exec('rm '.$enrich_path.'*');
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
+        #dd($command);
+        exec($command, $ooout, $flag);
+        if ($flag == 1) {
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+        }
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/proteinRegEnrich.R -i "' . $enrich_path . '" -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "' . $enrich_path . '"';
+        #dd($command);
+        exec($command, $ooout, $flag);
+
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'up*.pdf ' . $enrich_path . 'up.png';
+        exec($command, $ooout, $flag);
+
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
+        exec($command, $ooout, $flag);
+
+        return response()->json(['code'=> 'success','pngup' => $enrich_path.'up.png','pngdown' => $enrich_path.'down.png']);
+    }
+
     public function updaternaVolcano($data)
     {
         #dd($data);
@@ -289,6 +349,8 @@ class UpdateController extends Controller
         }
         return response()->json(['code'=> 'success']);
     }
+
+
 
     public function updatemutilenrich($data)
     {
