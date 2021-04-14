@@ -381,8 +381,22 @@ layui.use('upload', function(){
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    document.getElementById("up").src = document.getElementById("up").src+'?t='+'+Math.random()';
-                    document.getElementById("down").src = document.getElementById("down").src+'?t='+'+Math.random()';
+                    if (data.noup == "yes") {
+                        document.getElementById("up").style.display="none";
+                        document.getElementById("noup").style.display="block";
+                    }else{
+                        document.getElementById("up").src = document.getElementById("up").src+'?t='+'+Math.random()';
+                        document.getElementById("up").style.display="block";
+                        document.getElementById("noup").style.display="none";
+                    }
+                    if (data.nodown == "yes") {
+                        document.getElementById("down").style.display="none";
+                        document.getElementById("nodown").style.display="block";
+                    }else{
+                        document.getElementById("down").src = document.getElementById("down").src+'?t='+'+Math.random()';
+                        document.getElementById("down").style.display="block";
+                        document.getElementById("nodown").style.display="none";
+                    }
                     document.getElementById("enrichupdatebutton").style.display="none";
                 }else{
                     alert('register fail');

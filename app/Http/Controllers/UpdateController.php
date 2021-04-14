@@ -269,7 +269,17 @@ class UpdateController extends Controller
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
         exec($command, $ooout, $flag);
 
-        return response()->json(['code'=> 'success','pngup' => $enrich_path.'up.png','pngdown' => $enrich_path.'down.png']);
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') ) {
+            $noup == "no";
+        }else{
+            $noup == "yes";
+        }
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down.png') ) {
+            $nodown == "no";
+        }else{
+            $nodown == "yes";
+        }
+        return response()->json(['code'=> 'success','noup' => $noup,'nodown' => $nodown]);
     }
 
     public function updaternaVolcano($data)
