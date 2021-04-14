@@ -89,7 +89,11 @@ class BabaController extends Controller
         $count = 0;
         $tableJson = [];
         $loctmp = [];
-        for ($h=1; $h < 10; $h++) {
+        $max = 10;
+        if (count($hangs) < 10) {
+            $max = count($hangs);
+        }
+        for ($h=1; $h < $max; $h++) {
             $tableJson['data'][] = [
                 'no' => $h,
                 'name' => $hangs[$h],
