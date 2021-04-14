@@ -20,7 +20,7 @@
                   <div class="layui-card-header">{{$omics1}} and {{$omics2}} Correlation analysis result, click the brick for more details</div>
                   <div class="layui-card-body">
                     <div class="row text-center" style="width: {{ $bgwidth }}px;height: {{ $bgheigh }}px; background-image: url({{ asset($image) }}); ">
-                        <img style="width: {{ $bgwidth }}px;height: {{ $kongbai[1] }}px;opacity: 88%; margin-bottom: -10px;" src="{{ asset('images/gg.png') }}" />
+                        <img style="width: {{ $bgwidth }}px;height: {{ $kongbai[1] }}px;opacity: 88%; margin-top: -10px;" src="{{ asset('images/gg.png') }}" />
                         @for ($i = 0; $i < $k2; $i++)
                             <img style="width: {{ $kongbai[0] }}px;height: {{ $lie[$i] }}px;opacity: 88%; margin-bottom: 3px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" />
                             @for ($j = 0; $j < $g; $j++)
