@@ -126,14 +126,14 @@ class ResultController extends Controller
                         #dd($downloadfilename);
                         if ($this->showresultmet($outpath)) {
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up_ora_dpi72.png') ){
-                                $up = '<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_ora_dpi72.png" style="height:50%;width: 60%;">';
+                                $up = '<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_ora_dpi72.png" style="height:80%;width: 80%;display: block;"><br><p id="noup" style="display: none;" >No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }else{
-                                $up='<p>No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $up='<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_ora_dpi72.png" style="height:80%;width: 80%;display: none;"><br><p id="noup" style="display: block;" >No UP lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_ora_dpi72.png') ){
-                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:50%;width: 60%;">';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;display: block;"><br><p id="noup" style="display: none;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }else{
-                                $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;"display: none;><br><p id="noup" style="display: block;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             return view('resultmet', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'up' => $up, 'down' => $down]);
                         }
@@ -148,14 +148,14 @@ class ResultController extends Controller
                         #dd($downloadfilename);
                         if ($this->showresultpro($outpath)) {
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') ){
-                                $up = '<img id="up" style="display: block;" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:50%;width: 60%;"><br><p id="noup" style="display: none;" >No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $up = '<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:80%;width: 80%;display: block;"><br><p id="noup" style="display: none;" >No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }else{
-                                $up='<img id="up" style="display: none;" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:50%;width: 60%;"><br><p id="noup" style="display: block;" >No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $up='<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up.png" style="height:80%;width: 80%;display: none;"><br><p id="noup" style="display: block;" >No UP genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down.png') ){
-                                $down='<img id="down" style="display: block;" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:50%;width: 60%;"><br><p  id="nodown" style="display: none;" >No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:80%;width: 80%;display: block;"><br><p  id="nodown" style="display: none;" >No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }else{
-                                $down='<img id="down" style="display: none;" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:50%;width: 60%;"><br><p id="nodown" style="display: block;" >No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down.png" style="height:80%;width: 80%;display: none;"><br><p id="nodown" style="display: block;" >No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             return view('resultpro', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "20", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'c' => "Biological_Process", 't' => "mmu", 'up' => $up, 'down' => $down]);
                         }
