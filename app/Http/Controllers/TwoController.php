@@ -166,10 +166,10 @@ class TwoController extends Controller
         $hang=explode(",", $splits[2][0]);#宽
         $lie=explode(",", $splits[3][0]);#高
         #dd($hang);
-        $baijiange = 3;
+        $baijiange = -3;
         if ($b == "k_means") {
             $kongbai[0]=$kongbai[0]*0.2;
-            $baijiange = 10;
+            $baijiange = 1;
         }
 
 
