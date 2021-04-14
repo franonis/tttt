@@ -33,7 +33,7 @@ class TwoController extends Controller
 
         $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
         if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
@@ -141,7 +141,7 @@ class TwoController extends Controller
 
         $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
         if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
@@ -234,7 +234,7 @@ class TwoController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
         exec($command, $ooout, $flag);
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             $resultpng2 = '<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
@@ -250,7 +250,7 @@ class TwoController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
         exec($command, $ooout, $flag);
         
 
@@ -329,7 +329,7 @@ class TwoController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_'.$c.'.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_'.$c.'.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             $resultpng = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
         }else{
