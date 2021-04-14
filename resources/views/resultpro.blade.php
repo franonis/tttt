@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <small>
-                                            <select name="x">
+                                            <select name="x" id="x">
                                                 <option value="raw">P-Value</option>
                                                 <option value="fdr">Benjamini-Hochberg adjusted P-Value</option>
                                             </select>
