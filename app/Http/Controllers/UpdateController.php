@@ -270,14 +270,14 @@ class UpdateController extends Controller
         exec($command, $ooout, $flag);
 
         if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'up.png') ) {
-            $noup == "no";
+            $noup = "no";
         }else{
-            $noup == "yes";
+            $noup = "yes";
         }
         if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'down.png') ) {
-            $nodown == "no";
+            $nodown = "no";
         }else{
-            $nodown == "yes";
+            $nodown = "yes";
         }
         return response()->json(['code'=> 'success','noup' => $noup,'nodown' => $nodown]);
     }
