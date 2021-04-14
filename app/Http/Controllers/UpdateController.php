@@ -269,12 +269,12 @@ class UpdateController extends Controller
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
         exec($command, $ooout, $flag);
 
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up.png') ) {
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'up.png') ) {
             $noup == "no";
         }else{
             $noup == "yes";
         }
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down.png') ) {
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'down.png') ) {
             $nodown == "no";
         }else{
             $nodown == "yes";
