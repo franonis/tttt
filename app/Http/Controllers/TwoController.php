@@ -167,10 +167,7 @@ class TwoController extends Controller
         $lie=explode(",", $splits[3][0]);#高
         #dd($hang);
         $baijiange = -3;
-        if ($b == "k_means") {
-            #$kongbai[0]=$kongbai[0]*0.2;
-            $baijiange = 0;
-        }
+        
 
 
         $image = $pic_path.'correlationPlot.png';
@@ -182,6 +179,11 @@ class TwoController extends Controller
         $k2 = $k;
         $fgwidth = floor($size[0] / $g);
         $fgheigh = floor($size[1] / $k2);
+        if ($b == "k_means") {
+            #$kongbai[0]=$kongbai[0]*0.2;
+            $baijiange = 0;
+            $kongbai2=$size[0] - array_sum($hang) - $kongbai[0];
+        }
 
         #dd($omics1);
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
