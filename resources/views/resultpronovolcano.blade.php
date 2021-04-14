@@ -14,6 +14,7 @@
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Proteinomics</a>
         <hr>
             <div class="col-md-2">
+                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
             </div>
             <div class="col-md-10">
                 <div class="layui-tab">
@@ -56,13 +57,6 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
-                                    <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
-                                    <input name="path" value="{{ $path }}" style="display: none;">
-                                    <input name="jb" value="{{ $jb }}" style="display: none;">
-                                    <input name="j" value="{{ $j }}" style="display: none;">
-                                    <input name="k" value="{{ $k }}" style="display: none;">
-                                    <input name="m" value="{{ $m }}" style="display: none;">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -76,10 +70,13 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                            <button id="submitupdateVolcano" class="layui-btn" type="submit" >Update</button>
+                                            <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
                                         </div>
+                                        <div class="col-md-3">
+                                            <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
+
                                     </div>
-                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
@@ -90,7 +87,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
+                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
                                 </div>
                             </div>
                     </div>
@@ -166,4 +163,124 @@ layui.use('upload', function(){
 
     });
 </script>
+
+<script type="text/javascript">
+    function volcanoupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var s = "F"
+        var w = "F"
+
+        var x = document.getElementById("x").value;
+        var j = $("input[name='j_volcano']").val();
+        var k = $("input[name='k_volcano']").val();
+        var m = $("input[name='m']").val();
+        console.log('/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w);
+
+        document.getElementById("volcanoupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    document.getElementById("volcanopng").src = document.getElementById("volcanopng").src+'?t='+'+Math.random()';
+                    document.getElementById("volcanoupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+
+    function heatmapupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var e = $("input[name='e']").val();
+        console.log('/update/updatelipHeatmap/'+path+det+e);
+        document.getElementById("heatmapupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updatelipHeatmap/'+path+det+e,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    document.getElementById("heatmappng").src = document.getElementById("heatmappng").src+'?t='+'+Math.random()';
+                    document.getElementById("heatmapupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+
+    function enrichupdate() {
+        var det = "----";
+        var path = $("input[name='downloadpath']").val();
+        var j = $("input[name='j_enrich']").val();
+        var k = $("input[name='k_enrich']").val();
+        var t =$("input[name='t']:checked").val();
+        var s =$("input[name='s']").val();
+        var c =$("input[name='c']:checked").val();
+
+        console.log('/update/updateproenrich/'+path+det+j+det+k+det+t+det+s+det+c);
+
+        document.getElementById("enrichupdatebutton").style.display="block";
+        $.ajax({
+            type: "get",
+            url: '/update/updateproenrich/'+path+det+j+det+k+det+t+det+s+det+c,
+            dataType: 'json',
+            header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                "path": path,
+            },
+            success: function (data) {
+                if(data.code == 'success'){
+                    console.log("keyi");
+                    if (data.noup == "yes") {
+                        document.getElementById("up").style.display="none";
+                        document.getElementById("noup").style.display="block";
+                    }else{
+                        document.getElementById("up").src = document.getElementById("up").src+'?t='+'+Math.random()';
+                        document.getElementById("up").style.display="block";
+                        document.getElementById("noup").style.display="none";
+                    }
+                    if (data.nodown == "yes") {
+                        document.getElementById("down").style.display="none";
+                        document.getElementById("nodown").style.display="block";
+                    }else{
+                        document.getElementById("down").src = document.getElementById("down").src+'?t='+'+Math.random()';
+                        document.getElementById("down").style.display="block";
+                        document.getElementById("nodown").style.display="none";
+                    }
+                    document.getElementById("enrichupdatebutton").style.display="none";
+                }else{
+                    alert('register fail');
+                }
+            },
+            error: function(request, status, error){
+                alert(error);
+            },
+        });
+    };
+//————————————————
+//版权声明：本文为CSDN博主「zlshmily」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+//原文链接：https://blog.csdn.net/zlshmily/article/details/105513800
+</script>
+
 @endsection
