@@ -57,10 +57,8 @@
                             <p>Only the "one vs one" mode could give the Volcano result</p>
                         </div>
                     </div>
-
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" >
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -74,13 +72,12 @@
                                             </small>
                                         </div>
                                         <div class="col-md-3">
-                                        <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                            <button type="button" id="heatmapupdateri" name="heatmapupdateri" class="btn btn-success form-control" onclick="heatmapupdate()">Update</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <p id="heatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
-                                    </div>
-                                    </div>
-                                </form>
                                 <div class="col-md-2">
                                     <h4>Download</h4>
                                 </div>
@@ -98,13 +95,12 @@
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="head" class="layui-form">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary"checked="">&nbsp; Ignore subclass<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" id="headupdateri" name="headupdateri" class="btn btn-success form-control" onclick="headgroupupdate()">Update</button>
@@ -163,13 +159,11 @@
                                           </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
-                                <form  id="fa" class="layui-form" >
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -186,7 +180,7 @@
                                             </small>
                                         </div>
                                         <div class="col-md-12" title="Display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_fa" name="w[yes]" lay-skin="primary" title="Ignore subclass" checked=""><i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_fa" name="w[yes]" lay-skin="primary" checked="">Ignore subclass<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" id="faupdateri" name="faupdateri" class="btn btn-success form-control" onclick="faupdate()">Update</button>
@@ -213,7 +207,7 @@
                                                   <div carousel-item="">
                                                     @foreach($fashowpng as $k=>$i )
                                                         <div>
-                                                            <img id="fashowpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show{{$i}}.png" class="img3" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fashowpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_{{$i}}.png" class="img3" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                   </div>
@@ -246,7 +240,7 @@
                                             <div class="layui-colla-content">
                                                 <div class="layui-carousel" id="test2" lay-filter="test2">
                                                   <div carousel-item="">
-                                                    @foreach($fashowpng as $k=>$i )
+                                                    @foreach($fapng as $k=>$i )
                                                         <div>
                                                             <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
@@ -257,7 +251,6 @@
                                           </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                     </div>
                     <div class="layui-tab-item">
@@ -267,6 +260,7 @@
                             <p>Only the "one vs one" mode could give the LION enrichment result</p>
                         </div>
                     </div>
+
                   </div>
                 </div>
             </div>
@@ -314,7 +308,7 @@
                 anim: 'default', //切换动画方式
             });
             re1(ins1, i)
-            carousel.on('change(carofilter)', function(obj){
+            carousel.on('change(test1)', function(obj){
                 i = obj.index
                 re1(ins1, i)
             });
@@ -334,29 +328,9 @@
                 anim: 'default', //切换动画方式
             });
             re2(ins2, j)
-            carousel.on('change(carofilter)', function(obj){
+            carousel.on('change(test2)', function(obj){
                 j = obj.index
                 re2(ins2, j)
-            });
-        });
-
-        layui.use(['carousel'], function () {
-            var carousel = layui.carousel;
-            var j = 0
-            var ins3
-            // var width = $(".img")[i].width //获取图片宽度
-            var height = $(".img3")[j].height //获取图片高度
-            ins3 = carousel.render({
-                elem: '#test3',
-                width: '100%', //设置容器宽度
-                height: height, //轮播图高度为图片高度
-                arrow: 'hover', //始终显示箭头
-                anim: 'default', //切换动画方式
-            });
-            re3(ins3, j)
-            carousel.on('change(carofilter)', function(obj){
-                j = obj.index
-                re3(ins3, j)
             });
         });
 
@@ -384,18 +358,6 @@
             arrow: 'hover', //始终显示箭头
             anim: 'default', //切换动画方式
         });
-    }
-
-    function re3(ins3, j){
-        // var width = $(".img")[i].width
-        var height = $(".img3")[j].height
-        ins3.reload({
-            elem: '#test3',
-            width: '100%', //设置轮播图宽度
-            height: height, //轮播图高度为图片高度
-            arrow: 'hover', //始终显示箭头
-            anim: 'default', //切换动画方式
-        });
     }  
 //https://blog.csdn.net/qq_37768929/article/details/106684781
 
@@ -412,6 +374,15 @@
         }
         console.log(name);
    });
+    $("#sss").click(function (){
+        if ($("#s").is(":checked")) {
+            document.getElementById("wwwwww").style.display="block";
+        }else{
+            document.getElementById("wwwwww").style.display="none";
+        }
+        console.log("names");
+    });
+
 
 </script>
 
@@ -436,6 +407,7 @@
         var j = $("input[name='j_volcano']").val();
         var k = $("input[name='k_volcano']").val();
         var m = $("input[name='m_volcano']").val();
+        console.log('/update/updatelipVolcano/'+path+det+s+det+x+det+j+det+k+det+m+det+w);
 
         document.getElementById("volcanoupdatebutton").style.display="block";
         $.ajax({
@@ -448,13 +420,14 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
+
                     if (data.sub == "T") {
-                        document.getElementById("volcanopng1").src = data.png1;
-                        document.getElementById("volcanopng2").src = data.png2;
+                        document.getElementById("volcanopng1").src = data.png1+'?t='+'+Math.random()';
+                        document.getElementById("volcanopng2").src = data.png2+'?t='+'+Math.random()';
                         document.getElementById("volcanopng2").style.display="block";
                     }
                     if (data.sub == "F") {
-                        document.getElementById("volcanopng1").src = data.png1;
+                        document.getElementById("volcanopng1").src = data.png1+'?t='+'+Math.random()';
                         document.getElementById("volcanopng2").style.display="none";
 
                     }
@@ -474,6 +447,7 @@
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var e = $("input[name='e']").val();
+        console.log('/update/updatelipHeatmap/'+path+det+e);
         document.getElementById("heatmapupdatebutton").style.display="block";
         $.ajax({
             type: "get",
@@ -485,7 +459,7 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("heatmappng").src = data.png;
+                    document.getElementById("heatmappng").src = data.png+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -513,7 +487,7 @@
         }else{
             var z = "F";
         }
-
+        console.log('/update/updatelipheadheatmap/'+path+det+w+det+z);
         document.getElementById("headheatmapupdatebutton").style.display="block";
         $.ajax({
             type: "get",
@@ -525,7 +499,7 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("headheatmappng").src = data.png;
+                    document.getElementById("headheatmappng").src = data.png+'?t='+'+Math.random()';
                     document.getElementById("headheatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -553,7 +527,7 @@
         }else{
             var z = "F";
         }
-
+        console.log('/update/updateliphead/'+path+det+w+det+z);
         document.getElementById("headupdatebutton").style.display="block";
         $.ajax({
             type: "get",
@@ -565,9 +539,9 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("headgroupcolor").src = data.color;
-                    document.getElementById("headgroupcum").src = data.cum;
-                    document.getElementById("headheatmappng").src = data.heatmap;
+                    document.getElementById("headgroupcolor").src = data.color+'?t='+'+Math.random()';
+                    document.getElementById("headgroupcum").src = data.cum+'?t='+'+Math.random()';
+                    document.getElementById("headheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     for (var i = 0; i <= data.pngnum; i++) {
                         var sr = document.getElementById("headpng"+i).src ;
                         document.getElementById("headpng"+i).src = sr+'?t='+'+Math.random()';
@@ -593,7 +567,7 @@
         }
         var g = document.getElementById("g").value;
         var e = $("input[name='e_fa']").val();
-
+        console.log('/update/updatelipfa/'+path+det+g+det+w+det+e);
         document.getElementById("faheatmapupdatebutton").style.display="block";
         document.getElementById("faupdatebutton").style.display="block";
         $.ajax({
@@ -607,8 +581,8 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    document.getElementById("fashow").src = data.show;
-                    document.getElementById("faheatmappng").src = data.heatmap;
+                    document.getElementById("fashow").src = data.show+'?t='+'+Math.random()';
+                    document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     for (var i = 0; i <= data.pngnum; i++) {
                         var sr = document.getElementById("fapng"+i).src ;
                         document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
@@ -634,9 +608,6 @@
         var j = $("input[name='j_enrich']").val();
         var k = $("input[name='k_enrich']").val();
         var l =$("input[name='l']:checked").val();
-        console.log("t"+t);
-        console.log("j"+j);
-        console.log("k"+k);
         console.log('/update/updatelipenrich/'+path+det+t+det+j+det+k+det+l);
 
         document.getElementById("enrichupdatebutton").style.display="block";
@@ -654,14 +625,14 @@
                     if (t == "target_list") {
                         document.getElementById("target_listblock").style.display="block";
                         document.getElementById("rankingblock").style.display="none";
-                        document.getElementById("up").src = data.pngup;
-                        document.getElementById("down").src = data.pngdown;
+                        document.getElementById("up").src = data.pngup+'?t='+'+Math.random()';
+                        document.getElementById("down").src = data.pngdown+'?t='+'+Math.random()';
 
                     }
                     if (t == "ranking") {
                         document.getElementById("rankingblock").style.display="block";
                         document.getElementById("target_listblock").style.display="none";
-                        document.getElementById("rankingpng").src = data.png;
+                        document.getElementById("rankingpng").src = data.png+'?t='+'+Math.random()';
 
                     }
                     document.getElementById("enrichupdatebutton").style.display="none";
