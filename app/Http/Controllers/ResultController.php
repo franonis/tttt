@@ -133,7 +133,7 @@ class ResultController extends Controller
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/down_ora_dpi72.png') ){
                                 $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;display: block;"><br><p id="nodown" style="display: none;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }else{
-                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;"display: none;><br><p id="nodown" style="display: block;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
+                                $down='<img id="down" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/down_ora_dpi72.png" style="height:80%;width: 80%;display: none;"><br><p id="nodown" style="display: block;" >No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
                             return view('resultmet', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'k' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'up' => $up, 'down' => $down]);
                         }
