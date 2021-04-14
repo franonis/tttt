@@ -60,7 +60,7 @@
 
                     <div class="layui-tab-item"><!--第一部分 3 Heatmap-->
                             <div class="col-md-12">
-                                <form  id="Heatmap" class="layui-form" action="/update/updatelipHeatmap">
+                                <form  id="Heatmap" class="layui-form" >
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -98,7 +98,7 @@
                     <div class="layui-tab-item"><!--第一部分 4 Lipid Class statistics-->
                         <div class="col-md-10">
                             <div class="col-md-12">
-                                <form  id="head" class="layui-form" action="/update/updateliphead">
+                                <form  id="head" class="layui-form">
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -169,7 +169,7 @@
                     </div>
                     <div class="layui-tab-item"><!--第一部分 5 Lipid Fatty acid statistics-->
                             <div class="col-md-12">
-                                <form  id="fa" class="layui-form" action="/update/updatelipfa">
+                                <form  id="fa" class="layui-form" >
                                     <div class="col-md-2">
                                         <h4>Update with new parameters</h4>
                                     </div>
@@ -209,12 +209,15 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Grid plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                @foreach($fapng as $k=>$i )
-                                                    <div class="col-md-4">
-                                                        <img id="fashow{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show{{$i}}.png" style="height:50%;width: 60%;">
-                                                    </div>
-                                                @endforeach
-                                                <img id="fashow" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
+                                                <div class="layui-carousel" id="test3" lay-filter="test3">
+                                                  <div carousel-item="">
+                                                    @foreach($fashowpng as $k=>$i )
+                                                        <div>
+                                                            <img id="fashowpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show{{$i}}.png" class="img3" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                        </div>
+                                                    @endforeach
+                                                  </div>
+                                                </div>
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -243,7 +246,7 @@
                                             <div class="layui-colla-content">
                                                 <div class="layui-carousel" id="test2" lay-filter="test2">
                                                   <div carousel-item="">
-                                                    @foreach($fapng as $k=>$i )
+                                                    @foreach($fashowpng as $k=>$i )
                                                         <div>
                                                             <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
@@ -337,6 +340,26 @@
             });
         });
 
+        layui.use(['carousel'], function () {
+            var carousel = layui.carousel;
+            var j = 0
+            var ins3
+            // var width = $(".img")[i].width //获取图片宽度
+            var height = $(".img3")[j].height //获取图片高度
+            ins3 = carousel.render({
+                elem: '#test3',
+                width: '100%', //设置容器宽度
+                height: height, //轮播图高度为图片高度
+                arrow: 'hover', //始终显示箭头
+                anim: 'default', //切换动画方式
+            });
+            re3(ins3, j)
+            carousel.on('change(carofilter)', function(obj){
+                j = obj.index
+                re3(ins3, j)
+            });
+        });
+
     });
 
     function re1(ins1, i){
@@ -356,6 +379,18 @@
         var height = $(".img2")[j].height
         ins2.reload({
             elem: '#test2',
+            width: '100%', //设置轮播图宽度
+            height: height, //轮播图高度为图片高度
+            arrow: 'hover', //始终显示箭头
+            anim: 'default', //切换动画方式
+        });
+    }
+
+    function re3(ins3, j){
+        // var width = $(".img")[i].width
+        var height = $(".img3")[j].height
+        ins3.reload({
+            elem: '#test3',
             width: '100%', //设置轮播图宽度
             height: height, //轮播图高度为图片高度
             arrow: 'hover', //始终显示箭头
