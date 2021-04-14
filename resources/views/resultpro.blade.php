@@ -317,7 +317,7 @@ layui.use('upload', function(){
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("volcanopng").src = data.png1+'?t='+'+Math.random()';
+                    document.getElementById("volcanopng").src = document.getElementById("volcanopng").src+'?t='+'+Math.random()';
                     document.getElementById("volcanoupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -346,7 +346,7 @@ layui.use('upload', function(){
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("heatmappng").src = data.png+'?t='+'+Math.random()';
+                    document.getElementById("heatmappng").src = document.getElementById("heatmappng").src+'?t='+'+Math.random()';
                     document.getElementById("heatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -381,8 +381,8 @@ layui.use('upload', function(){
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    document.getElementById("up").src = data.pngup+'?t='+'+Math.random()';
-                    document.getElementById("down").src = data.pngdown+'?t='+'+Math.random()';
+                    document.getElementById("up").src = document.getElementById("up").src+'?t='+'+Math.random()';
+                    document.getElementById("down").src = document.getElementById("down").src+'?t='+'+Math.random()';
                     document.getElementById("enrichupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
