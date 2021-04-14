@@ -254,13 +254,13 @@ class UpdateController extends Controller
 
         exec('rm '.$enrich_path.'*');
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
-        dd($command);
+        #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/proteinRegEnrich.R -i "' . $enrich_path . '" -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "' . $enrich_path . '"';
-        #dd($command);
+        dd($command);
         exec($command, $ooout, $flag);
 
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'up*.pdf ' . $enrich_path . 'up.png';
