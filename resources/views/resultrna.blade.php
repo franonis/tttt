@@ -348,7 +348,6 @@
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                "path": path,
             },
             success: function (data) {
                 if(data.code == 'success'){
@@ -373,16 +372,13 @@
         var path = $("input[name='downloadpath']").val();
         var v = $("input[name='v']").val();
         document.getElementById("heatmapupdatebutton").style.display="block";
-        console.log(path);
-        console.log(v);
+        console.log('/update/updaternaHeatmap/'+path+det+v);
         $.ajax({
             type: "get",
             url: '/update/updaternaHeatmap/'+path+det+v,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                "path": path,
-                "v": v,
             },
             success: function (data) {
                 if(data.code == 'success'){
@@ -413,16 +409,13 @@
         var p = $("input[name='p_enrich']").val();
         var s = $("input[name='s']").val();
         document.getElementById("enrichupdatebutton").style.display="block";
-        console.log(path);
-        console.log(v);
+        console.log('/update/updaternaenrich/'+path+det+t+det+g+det+c+det+f+det+p+det+s);
         $.ajax({
             type: "get",
             url: '/update/updaternaenrich/'+path+det+t+det+g+det+c+det+f+det+p+det+s,
             dataType: 'json',
             header: {'X-CRSF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                "path": path,
-                "v": v,
             },
             success: function (data) {
                 if(data.code == 'success'){
