@@ -342,7 +342,7 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <div  class="col-md-12" id="ranking"  style="display: block;">
+                                        <div  class="col-md-12" id="ranking"  style="display: none;">
                                             <div class="layui-form-item">
                                                 <label class="layui-form-label">Analytical statistic：</label>
                                                 <div class="layui-input-block" id="l">
