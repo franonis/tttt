@@ -334,6 +334,26 @@
             });
         });
 
+        layui.use(['carousel'], function () {
+            var carousel = layui.carousel;
+            var j = 0
+            var ins3
+            // var width = $(".img")[i].width //获取图片宽度
+            var height = $(".img3")[j].height //获取图片高度
+            ins3 = carousel.render({
+                elem: '#test3',
+                width: '100%', //设置容器宽度
+                height: height, //轮播图高度为图片高度
+                arrow: 'hover', //始终显示箭头
+                anim: 'default', //切换动画方式
+            });
+            re3(ins3, j)
+            carousel.on('change(test3)', function(obj){
+                j = obj.index
+                re3(ins3, j)
+            });
+        });
+
     });
 
     function re1(ins1, i){
@@ -353,6 +373,17 @@
         var height = $(".img2")[j].height
         ins2.reload({
             elem: '#test2',
+            width: '100%', //设置轮播图宽度
+            height: height, //轮播图高度为图片高度
+            arrow: 'hover', //始终显示箭头
+            anim: 'default', //切换动画方式
+        });
+    }  
+    function re3(ins3, j){
+        // var width = $(".img")[i].width
+        var height = $(".img3")[j].height
+        ins3.reload({
+            elem: '#test3',
             width: '100%', //设置轮播图宽度
             height: height, //轮播图高度为图片高度
             arrow: 'hover', //始终显示箭头
