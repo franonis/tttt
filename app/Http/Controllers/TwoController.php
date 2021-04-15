@@ -186,7 +186,7 @@ class TwoController extends Controller
             $shujiange = -1;
             $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*4;
             $hengjiange = 4;
-            $diyihangkongbai = '<p style="display: none;"></p>';
+            $diyihangkongbai = '<img style="display: none;width: {{ $bgwidth }}px;height: {{ $kongbai[1] }}px;opacity: 88%; margin-top: -10px;" src="{{ asset("images/gg.png") }}" />';
         }
 
         #dd($omics1);
