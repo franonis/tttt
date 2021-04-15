@@ -612,7 +612,6 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    document.getElementById("fashow").src = data.show+'?t='+'+Math.random()';
                     document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     console.log(data.pngnum);
                     for (var i = 0; i < data.pngnum; i++) {
