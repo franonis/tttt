@@ -612,12 +612,15 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
+                    document.getElementById("fashow").src = data.show+'?t='+'+Math.random()';
                     document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
-                    for (var i = 0; i <= data.pngnum; i++) {
+                    console.log(data.pngnum);
+                    for (var i = 0; i < data.pngnum; i++) {
+                        console.log(i);
                         var sr = document.getElementById("fapng"+i).src ;
                         document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
                     }
-                    for (var i = 0; i <= data.pngshownum; i++) {
+                    for (var i = 0; i < data.pngshownum; i++) {
                         var sr = document.getElementById("fashowpng"+i).src ;
                         document.getElementById("fashowpng"+i).src = sr+'?t='+'+Math.random()';
                     }
