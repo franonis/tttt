@@ -20,13 +20,13 @@
                   <div class="layui-card-header">{{$omics1}} and {{$omics2}} Correlation analysis result, click the brick for more details</div>
                   <div class="layui-card-body">
                     <div class="row text-center" style="width: {{ $bgwidth }}px;height: {{ $bgheigh }}px; background-image: url({{ asset($image) }}); ">
-                        <img style="width: {{ $bgwidth }}px;height: {{ $kongbai[1] }}px;opacity: 88%; margin-top: -10px;" src="{{ asset('images/gg.png') }}" />
+                        {!! $diyihangkongbai !!}
                         @for ($i = 0; $i < $k2; $i++)
-                            <img style="width: {{ $kongbai[0] }}px;height: {{ $lie[$i] }}px;opacity: 88%; margin-bottom: 3px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" />
+                            <img style="width: {{ $kongbai[0] }}px;height: {{ $lie[$i] }}px;opacity: 88%; margin-bottom: {{ $hengjiange }}px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" />
                             @for ($j = 0; $j < $g; $j++)
-                                <a href="{{ url('result/enrich/')}}/{{$j}}--{{$i}}--{{$enrichpath}}--{{$omics1}}--{{$omics2}}" target="_blank"><img style="width: {{ $hang[$j] }}px;height: {{ $lie[$i] }}px;opacity: 50%; margin-bottom: 3px;margin-left: {{ $baijiange }}px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
+                                <a href="{{ url('result/enrich/')}}/{{$j}}--{{$i}}--{{$enrichpath}}--{{$omics1}}--{{$omics2}}" target="_blank"><img style="width: {{ $hang[$j] }}px;height: {{ $lie[$i] }}px;opacity: 50%; margin-bottom: {{ $hengjiange }}px;margin-left: {{ $shujiange }}px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
                             @endfor
-                            <img style="width: {{ $kongbai2 }}px;height: {{ $lie[$i] }}px;opacity: 88%; margin-bottom: 3px;" src="{{ asset('images/gg.png') }}" />
+                            <img style="width: {{ $kongbai2 }}px;height: {{ $lie[$i] }}px;opacity: 88%; margin-bottom: {{ $hengjiange }}px;" src="{{ asset('images/gg.png') }}" />
                         @endfor
                     </div>
                   </div>
