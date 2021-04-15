@@ -22,7 +22,7 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'MARresults/*');
+        #exec('rm '.$pic_path.'MARresults/*');
         
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b F -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
         #dd($command);
@@ -52,7 +52,7 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'MARresults/*');
+        #exec('rm '.$pic_path.'MARresults/*');
 
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e ' . $e;
@@ -80,7 +80,7 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'headgroup/*');
+        #exec('rm '.$pic_path.'headgroup/*');
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
@@ -104,7 +104,7 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'headgroup/*');
+        #exec('rm '.$pic_path.'headgroup/*');
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w T';
         #dd($command);
@@ -153,7 +153,7 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'FAchainVisual/*');
+        #exec('rm '.$pic_path.'FAchainVisual/*');
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "'.$g.'" -w '.$w.' -e '.$e;
 
@@ -200,7 +200,7 @@ class UpdateController extends Controller
         #dd($r_path);
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
-        exec('rm '.$enrich_path.'*');
+        #exec('rm '.$enrich_path.'*');
         if ($t == "target_list") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         }elseif ($t == "ranking") {
@@ -225,7 +225,7 @@ class UpdateController extends Controller
         #dd($r_path);
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
-        exec('rm '.$enrich_path.'*');
+        #exec('rm '.$enrich_path.'*');
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
@@ -262,7 +262,7 @@ class UpdateController extends Controller
         #dd($r_path);
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
-        exec('rm '.$enrich_path.'*');
+        #exec('rm '.$enrich_path.'*');
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
@@ -304,7 +304,7 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'*');
+        #exec('rm '.$pic_path.'*');
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u;
@@ -326,7 +326,7 @@ class UpdateController extends Controller
         $v = $datas[1];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
-        exec('rm '.$pic_path.'*');
+        #exec('rm '.$pic_path.'*');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v ' . $v;
         #dd($command);
@@ -355,7 +355,7 @@ class UpdateController extends Controller
         $s = $datas[6];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
-        exec('rm '.$pic_path.'*');
+        #exec('rm '.$pic_path.'*');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f '.$f.' -p '.$p.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'"';
         exec($command, $ooout, $flag);
@@ -389,7 +389,7 @@ class UpdateController extends Controller
         }
         
         $opath = preg_replace('/\+\+/', "/", $downloadpath);#$opath = preg_replace('/\//', "++", $outpath);#末尾有/
-        exec('rm '.$opath.'enrich/GOenrich*');
+        #exec('rm '.$opath.'enrich/GOenrich*');
         if ($omics2 == "Transcriptomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }

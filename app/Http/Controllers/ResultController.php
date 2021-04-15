@@ -10,7 +10,7 @@ class ResultController extends Controller
     public function getSetPage(Request $request)
     {
         #dd($request);
-        exec('rm ./*qs');
+        #exec('rm ./*qs');
         $omics = $request->omics;
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
@@ -81,13 +81,13 @@ class ResultController extends Controller
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-            #if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $outpath . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -n ' . $n . ' -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
-            #}
+            }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($omics == "Lipidomics") {
                     if (count($subgroup) == 1) {
@@ -173,7 +173,7 @@ class ResultController extends Controller
     {
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/'; #$path是上一个处理数据程序的输出目录 $pic_path是本程序的输出目录
-        exec('rm '.$pic_path.'*');
+        #exec('rm '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/show_variability.R -r "' . $r_path . '" -o "' . $pic_path . '"';
@@ -243,7 +243,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm -rf '.$pic_path.'*');
+        #exec('rm -rf '.$pic_path.'*');
 
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
@@ -390,7 +390,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        #exec('rm -rf '.$pic_path.'*');
+        ##exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -467,7 +467,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm -rf '.$pic_path.'*');
+        #exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -551,7 +551,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm -rf '.$pic_path.'*');
+        #exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults';
@@ -670,7 +670,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm -rf '.$pic_path.'*');
+        #exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
@@ -728,7 +728,7 @@ class ResultController extends Controller
         #"MARresults","headgroup","FAchainVisual"
         $r_path = '/home/zhangqb/tttt/public/' . $path;
         $pic_path = '/home/zhangqb/tttt/public/' . $path . 'results/';
-        exec('rm -rf '.$pic_path.'*');
+        #exec('rm -rf '.$pic_path.'*');
         is_dir($pic_path) or mkdir($pic_path, 0777, true);
         #MAR
         $mar_path = $pic_path . 'MARresults/';
