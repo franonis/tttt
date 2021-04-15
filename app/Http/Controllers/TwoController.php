@@ -214,7 +214,7 @@ class TwoController extends Controller
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
-                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command.$ooout]);
                 }
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
