@@ -250,12 +250,14 @@ class TwoController extends Controller
         
         if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             exec($command, $ooout, $flag);
+            dd($command);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
             exec($command, $ooout, $flag);
+
         }
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             $resultpng2 = '<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
