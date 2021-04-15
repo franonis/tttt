@@ -618,6 +618,10 @@
                         var sr = document.getElementById("fapng"+i).src ;
                         document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
                     }
+                    for (var i = 0; i <= data.pngshownum; i++) {
+                        var sr = document.getElementById("fashowpng"+i).src ;
+                        document.getElementById("fashowpng"+i).src = sr+'?t='+'+Math.random()';
+                    }
 
                     document.getElementById("faheatmapupdatebutton").style.display="none";
                     document.getElementById("faupdatebutton").style.display="none";

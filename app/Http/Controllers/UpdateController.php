@@ -175,14 +175,17 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$fapng,$flag);
-        $command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
-        exec($command,$headpng,$flag);
+        #$command='cd /home/zhangqb/tttt/public/'.$path.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
+        #exec($command,$fapng,$flag);
+        #$command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls fa_show*.png | awk -F\'[_.]\' \'{print $2}\'';
+        #exec($command,$fashowpng,$flag); 
+        #$command='cd /home/zhangqb/tttt/public/'.$path.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
+        #exec($command,$headpng,$flag);
 
-        exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);
+        exec('ls '.$pic_path.'/FAchainVisual/others*pdf|wc -l', $pngnum, $flag);
+        exec('ls '.$pic_path.'/FAchainVisual/fa_show*.png|wc -l', $pngshownum, $flag);
 
-        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'show' => $pic_path.'FAchainVisual/fa_show.png','heatmap' => $pic_path.'FAchainVisual/faheatmap_show.png']);
+        return response()->json(['code'=> 'success','pngnum'=> $pngnum,'pngshownum'=> $pngshownum,'show' => $pic_path.'FAchainVisual/fa_show.png','heatmap' => $pic_path.'FAchainVisual/faheatmap_show.png']);
     }
 
     public function updatelipenrich($data)
