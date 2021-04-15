@@ -250,7 +250,7 @@ class TwoController extends Controller
         
         if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             exec($command, $ooout, $flag);
-            dd($command);
+            #dd($command);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
