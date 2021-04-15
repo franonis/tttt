@@ -211,11 +211,12 @@ class TwoController extends Controller
         if ($omics1 == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
-            #if ($flag == 1) {
-            #    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            #}
+            
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 exec($command, $ooout, $flag);
+                if ($flag == 1) {
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                #}
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/ora_dpi72.png" style="height:50%;width: 60%;">';
@@ -267,12 +268,10 @@ class TwoController extends Controller
         #输出文件也在enrich下
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         
-        
-
         if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
             exec($command, $ooout, $flag);
             if ($flag == 1) {
-                #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
             exec($command, $ooout, $flag);
