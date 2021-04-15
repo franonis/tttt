@@ -13,7 +13,7 @@
         <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Enrichment</a>
         <hr>
             <div class="col-md-2">
-                <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
+                <input name="downloadpath" value="{{ $downloadpath }}{{$g}}{{$j}}" style="display: none;">
                 <input name="omics2" value="{{ $omics2 }}" style="display: none;">
                 <h3>Name list</h3>
             </div>
