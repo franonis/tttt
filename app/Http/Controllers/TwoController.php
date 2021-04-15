@@ -129,7 +129,6 @@ class TwoController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
         $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -o "' . $outpath . '" -b "'.$b.'"'. $keycanshu;
-        dd($command);
 
         
         
@@ -259,7 +258,7 @@ class TwoController extends Controller
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
         exec($command, $ooout, $flag);
