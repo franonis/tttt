@@ -226,7 +226,7 @@ class TwoController extends Controller
         if ($omics1 == "Lipidomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
+            if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -247,7 +247,7 @@ class TwoController extends Controller
         }
         #dd($command);
         
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
+        if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -269,7 +269,7 @@ class TwoController extends Controller
         
         
 
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
+        if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
