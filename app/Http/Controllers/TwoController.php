@@ -186,7 +186,7 @@ class TwoController extends Controller
             $shujiange = -2;
             $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*4;
             $hengjiange = 4;
-            $diyihangkongbai = '<img style="display: none;width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 88%; margin-top: -10px;" src="http://www.lintwebomics.info/images/gg.png" />';
+            $diyihangkongbai = '<div style="display: none;width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 88%; margin-top: -10px;" ><p>.</p></div>';
         }
 
         #dd($omics1);
