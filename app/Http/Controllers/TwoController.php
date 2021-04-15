@@ -211,7 +211,6 @@ class TwoController extends Controller
         if ($omics1 == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
-            
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
@@ -266,7 +265,7 @@ class TwoController extends Controller
         #circos
         #is_dir($opath.'circos/') or mkdir($opath.'circos/', 0777, true);
         #输出文件也在enrich下
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         
         if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
             exec($command, $ooout, $flag);
