@@ -216,7 +216,7 @@ class TwoController extends Controller
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-                #}
+                }
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/ora_dpi72.png" style="height:50%;width: 60%;">';
