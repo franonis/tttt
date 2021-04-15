@@ -214,13 +214,13 @@ class TwoController extends Controller
             #if ($flag == 1) {
             #    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             #}
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
+            if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 exec($command, $ooout, $flag);
-                if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
-                    $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/ora_dpi72.png" style="height:50%;width: 60%;">';
-                }else{
-                    $resultpng1='<p>Can not do metabolite set enrichment! Try use <a href="http://www.metaboanalyst.ca/home.xhtml" style="color:deepskyblue;">MetaboAnalyst</a> website.</p>';
-                }
+            }
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
+                $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/ora_dpi72.png" style="height:50%;width: 60%;">';
+            }else{
+                $resultpng1='<p>Can not do metabolite set enrichment! Try use <a href="http://www.metaboanalyst.ca/home.xhtml" style="color:deepskyblue;">MetaboAnalyst</a> website.</p>';
             }
         }
         if ($omics1 == "Lipidomics") {
@@ -229,13 +229,13 @@ class TwoController extends Controller
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
-                    #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
-                if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
-                    $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;">';
-                }else{
-                    $resultpng1='<p>No genes enriched! Try check your data!</p>';
-                }
+            }
+            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
+                $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+            }else{
+                $resultpng1='<p>No genes enriched! Try check your data!</p>';
             }
         }
 
@@ -255,30 +255,32 @@ class TwoController extends Controller
             exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
             exec($command, $ooout, $flag);
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
-                $resultpng2 = '<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
-            }else{
-                $resultpng2='<p>No genes enriched! Try check your data!</p>';
-            }
+        }
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
+            $resultpng2 = '<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
+        }else{
+            $resultpng2='<p>No genes enriched! Try check your data!</p>';
         }
 
         #circos
         #is_dir($opath.'circos/') or mkdir($opath.'circos/', 0777, true);
         #输出文件也在enrich下
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         
+        
+
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
             exec($command, $ooout, $flag);
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
-                $circos = '<img id="circos" src="http://www.lintwebomics.info/' .$opath.'enrich/circosPlot.png" style="height:100%;width: 100%;">';
-            }else{
-                $circos='<p>Please check your correlation threshold. It may be too strict to filter.</p>';
-            }
+        }
+        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
+            $circos = '<img id="circos" src="http://www.lintwebomics.info/' .$opath.'enrich/circosPlot.png" style="height:100%;width: 100%;">';
+        }else{
+            $circos='<p>Please check your correlation threshold. It may be too strict to filter.</p>';
         }
 
         return view('crossresultenrich', ['g' => $g,'t' => 0.6,'n' => 20,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
