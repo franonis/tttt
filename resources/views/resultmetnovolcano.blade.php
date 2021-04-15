@@ -168,6 +168,7 @@ layui.use('upload', function(){
         var path = $("input[name='downloadpath']").val();
         var e = $("input[name='e']").val();
         document.getElementById("heatmapupdatebutton").style.display="block";
+        console.log('/update/updatelipHeatmap/'+path+det+e);
         $.ajax({
             type: "get",
             url: '/update/updatelipHeatmap/'+path+det+e,
