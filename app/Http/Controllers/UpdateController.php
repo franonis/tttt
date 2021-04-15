@@ -355,7 +355,7 @@ class UpdateController extends Controller
         $s = $datas[6];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
-        #exec('rm '.$pic_path.'*');
+        exec('rm '.$pic_path.'*GOenrich*pdf');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f '.$f.' -p '.$p.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'"';
         exec($command, $ooout, $flag);
