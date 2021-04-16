@@ -196,7 +196,7 @@ class TwoController extends Controller
 
     public function getenrichPage($pos)
     {
-        exec('rm ./*qs');
+        #exec('rm ./*qs');
         $poss=explode("--", $pos);
         $g = $poss[0]+1;#列gene
         $j = $poss[1]+1;#行lipid
@@ -209,7 +209,7 @@ class TwoController extends Controller
         $opath = $opath.$g.$j;
         is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
         if ($omics1 == "Metabolomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/" >o.txt';
+            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 exec($command, $ooout, $flag);
