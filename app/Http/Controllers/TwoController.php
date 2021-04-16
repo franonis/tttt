@@ -230,7 +230,7 @@ class TwoController extends Controller
             if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
-                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                    #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
             }
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
@@ -252,7 +252,7 @@ class TwoController extends Controller
             exec($command, $ooout, $flag);
             #dd($command);
             if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
