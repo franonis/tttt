@@ -326,7 +326,7 @@ class UpdateController extends Controller
         $v = $datas[1];
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
-        #exec('rm '.$pic_path.'*');
+        exec('rm '.$pic_path.'heatmap_top*.pdf');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v ' . $v;
         #dd($command);
