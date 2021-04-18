@@ -86,7 +86,7 @@ class UploadController extends Controller
                 preg_match_all("/\"(.*?)\"/U", $firstline, $firstlines);
                 array_shift($firstlines[1]); #去掉第一行
                 $firstlines = $firstlines[1];
-                return view('canshu', ['title' => '设置参数', 'data_type' => $data_type, 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc, 'firstlines' => $firstlines, 'delodd' => $delodd]);
+                return view('canshu', ['title' => '设置参数', 'data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc, 'firstlines' => $firstlines, 'delodd' => $delodd]);
             }
         } else {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
@@ -100,7 +100,7 @@ class UploadController extends Controller
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
-                return view('canshurna', ['title' => '设置参数', 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc]);
+                return view('canshurna', ['title' => '设置参数', 'data_type' => $data_type, 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data, 'file_desc' => $file_desc]);
             }
         }
     }
