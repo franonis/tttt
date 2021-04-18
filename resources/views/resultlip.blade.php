@@ -40,13 +40,13 @@
                                     <h4>PCA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/PCA_show.png" style="width: 60%;">
                                 </div>
                                 <div class="col-md-2">
                                     <h4>OPLS-DA score plot:</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="height:50%;width: 60%;">
+                                    <img src="http://www.lintwebomics.info/{{ $path }}results/MARresults/OPLSDA_show.png" style="width: 60%;">
                                 </div>
                             </div>
                     </div>
@@ -114,8 +114,8 @@
                                     <h4>Volcano result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img id="volcanopng1" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="height:50%;width: 60%; display: block;">
-                                    <img id="volcanopng2"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show2.png" style="height:50%;width: 60%; display: none;">
+                                    <img id="volcanopng1" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show.png" style="width: 60%; display: block;">
+                                    <img id="volcanopng2"  src="http://www.lintwebomics.info/{{ $path }}results/MARresults/volcano_show2.png" style="width: 60%; display: none;">
                                 </div>
                             </div>
                     </div>
@@ -150,7 +150,7 @@
                                     <h4>Heatmap result</h4>
                                 </div>
                                 <div class="col-md-10">
-                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="height:50%;width: 60%;">
+                                    <img id="heatmappng" src="http://www.lintwebomics.info/{{ $path }}results/MARresults/heatmap_show.png" style="width: 60%;">
                                 </div>
                             </div>
                     </div>
@@ -186,7 +186,7 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Box plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <img id="headgroupcolor" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
+                                                <img id="headgroupcolor" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="width: 60%;">
                                                 <div class="layui-carousel" id="test1" lay-filter="test1">
                                                   <div carousel-item="">
                                                     @foreach($headpng as $k=>$i )
@@ -201,7 +201,7 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Cumulation plot</h2>
                                             <div class="layui-colla-content">
-                                                <img id="headgroupcum" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="height:50%;width: 60%;">
+                                                <img id="headgroupcum" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcum_show.png" style="width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -216,7 +216,7 @@
                                                         <p id="headheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                                     </div>
                                                 </div>
-                                                <img id="headheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="height:50%;width: 60%;">
+                                                <img id="headheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupheatmap_show.png" style="width: 60%;">
                                             </div>
                                           </div>
                                         </div>
@@ -265,7 +265,7 @@
                                           <div class="layui-colla-item">
                                             <h2 class="layui-colla-title">Grid plot</h2>
                                             <div class="layui-colla-content layui-show">
-                                                <img id="fashow" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="height:50%;width: 60%;">
+                                                <img id="fashow" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show.png" style="width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
@@ -286,7 +286,7 @@
                                                         <p id="faheatmapupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                                                     </div>
                                                 </div>
-                                                <img id="faheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="height:50%;width: 60%;">
+                                                <img id="faheatmappng" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/faheatmap_show.png" style="width: 60%;">
                                             </div>
                                           </div>
                                           <div class="layui-colla-item">
