@@ -390,10 +390,10 @@ class UpdateController extends Controller
         
         #$opath = $path;#$opath = preg_replace('/\//', "++", $outpath);
         exec('rm '.$opath.'enrich/GOenrich*');
-        if ($omics2 == "Transcriptomics") {
+        if ($omics == "Transcriptomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
-        if ($omics2 == "Proteomics") {
+        if ($omics == "Proteomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
         #dd($command);
