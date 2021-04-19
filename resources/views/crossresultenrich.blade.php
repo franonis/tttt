@@ -57,7 +57,7 @@
                 </div><br>
                 <div class="col-md-6">
                     <br><div class="col-md-12" style="border:1px dashed #000;">
-                        <a href="{{ url('download/zip/')}}/{{ $downloadpath }}enrich++++Enrichresult.zip">Download result of enrich and circos</a>
+                        <a href="{{ url('download/zip/')}}/{{ $downloadpath }}{{$g}}{{$j}}enrich++++Enrichresult.zip">Download result of enrich and circos</a>
                     </div><br>
                 </div><br>
             </div><br>
@@ -162,11 +162,13 @@
                     <div class="col-md-9">
                         <p id="circosupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                     </div>
-                    <div class="col-md-3">
-                        <h4>Circos plot result: </h4>
-                    </div>
-                    <div class="col-md-9">
-                        {!! $circos !!}
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <h4>Circos plot result: </h4>
+                        </div>
+                        <div class="col-md-9">
+                            {!! $circos !!}
+                        </div>
                     </div>
                 </div>
             </div>
