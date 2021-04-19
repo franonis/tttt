@@ -110,12 +110,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                        <div class="col-md-3">
-                                            <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update {{$omics2}} enrich</button>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
-                                        </div>                            </div>
+                                <div class="col-md-3">
+                                    <button type="button" id="enrichupdateri" name="enrichupdateri" class="btn btn-success form-control" onclick="enrichupdate()">Update {{$omics2}} enrich</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <p id="enrichupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
+                                </div>                            
+                            </div>
                     </form>
                 </div>
             </div>

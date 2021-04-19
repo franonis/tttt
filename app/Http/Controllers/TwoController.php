@@ -141,7 +141,7 @@ class TwoController extends Controller
 
         $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -background white -flatten -quality 100 ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
         if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
