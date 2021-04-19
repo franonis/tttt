@@ -162,14 +162,12 @@
                     <div class="col-md-9">
                         <p id="circosupdatebutton" style="display: none; margin-top: 4%; ">updating<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i></p>
                     </div>
-                    <div class="col-md-12">
-                        <div class="col-md-3">
-                            <h4>Circos plot result: </h4>
-                        </div>
-                        <div class="col-md-9">
-                            {!! $circos !!}
-                        </div>
-                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h4>Circos plot result: </h4>
+                </div>
+                <div class="col-md-10">
+                    {!! $circos !!}
                 </div>
             </div>
     </div>
