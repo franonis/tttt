@@ -10,7 +10,7 @@
 <div class="container content">
     <div class="row">
         @include('partials.errors')
-        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Enrichment</a>
+        <p>Upload your data / Set Parameters / Show the correlation results /<a style="font-size: 200%;"> Show the enrich results</a></p><a style="font-size: 180%;display: block;text-align:right;" >Enrichment</a>
         <hr>
             <div class="col-md-2">
                 <input name="downloadpath" value="{{ $downloadpath }}{{$g}}{{$j}}" style="display: none;">

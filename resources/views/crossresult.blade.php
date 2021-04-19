@@ -10,7 +10,7 @@
 <div class="container content">
     <div class="row">
         @include('partials.errors')
-        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the statistical results</a></p>
+        <p>Upload your data / Set Parameters / <a style="font-size: 200%;">Show the correlation results</a> / Show the enrich results</p>
         <hr>
         <div style="padding: 20px; background-color: #F2F2F2;">
             <div class="layui-row layui-col-space15">

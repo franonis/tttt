@@ -9,7 +9,7 @@
 @section('content')
 <div class="container content">
     <div class="row">
-        <p>Upload your data /<a style="font-size: 200%;"> Set Parameters</a> / Show the statistical results</p>
+        <p>Upload your data /<a style="font-size: 200%;"> Set Parameters</a> / Show the correlation results / Show the enrich results</p>
         <hr>
         @include('partials.errors')
 
