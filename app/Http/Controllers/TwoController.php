@@ -438,11 +438,11 @@ class TwoController extends Controller
             $data_type = '';
             $n =  'T';
             $s =  '';
-            $g =  4;
-            $k =  3;
+            $g =  7;
+            $k =  6;
             $b =  "k_means";
-            $c =  7;
-            $f =  6;
+            $c =  4;
+            $f =  3;
             $p =  0.55;
             $omics_left="Lipidomics";
             $omics_right="Transcriptomics";
