@@ -24,31 +24,31 @@ class TwoController extends Controller
         $k = $request->k;#行
         $omics1=$request->omics1;#
         $omics2=$request->omics2;#$outpath = 'mutil/example1'.md5("filename").'/';
-        if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
+        #if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-        }
+        #}
 
         $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
 
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
-        if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
+        #if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-        }
+        #}
         
         #图片切割
         $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -o "' . $pic_path . '"';
-        if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
+        #if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-        }
+        #}
         $split = file_get_contents($pic_path . 'splitWinArgs.csv');
         #dd($split);
         preg_match_all("/^(.*?)\r\n(.*?)\r\n(.*?)\r\n/U", $split, $splits);
@@ -132,32 +132,32 @@ class TwoController extends Controller
 
         
         
-        if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
+        #if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-        }
+        #}
 
         $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
 
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -background white -flatten -quality 100 ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
-        if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
+        #if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-        }
+        #}
         
         #图片切割
         
-        $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -o "' . $pic_path . '"';
-        if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
+        $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -i "' . $pic_path . '" -o "' . $pic_path . '"';
+        #if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-        }
+        #}
         $split = file_get_contents($pic_path . 'splitWinArgs.csv');
         #dd($split);
         preg_match_all("/^(.*?)\r\n(.*?)\r\n(.*?)\r\n/U", $split, $splits);
@@ -211,13 +211,13 @@ class TwoController extends Controller
         if ($omics1 == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
-            if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
-                exec($command, $ooout, $flag);
+            #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
+            exec($command, $ooout, $flag);
                 #if ($flag == 1) {
                 #    dd($ooout);
                 #    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command.$flag]);
                 #}
-            }
+            #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/ora_dpi72.png" style="height:50%;width: 60%;">';
             }else{
@@ -227,12 +227,12 @@ class TwoController extends Controller
         if ($omics1 == "Lipidomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
-            if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
+            #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
                     #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
-            }
+            #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
                 $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;">';
             }else{
@@ -248,7 +248,7 @@ class TwoController extends Controller
         }
         #dd($command);
         
-        if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
+        #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             exec($command, $ooout, $flag);
             #dd($command);
             if ($flag == 1) {
@@ -258,7 +258,7 @@ class TwoController extends Controller
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
             exec($command, $ooout, $flag);
 
-        }
+        #}
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
             $resultpng2 = '<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
         }else{
@@ -270,14 +270,14 @@ class TwoController extends Controller
         #输出文件也在enrich下
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         
-        if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
+        #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
             exec($command, $ooout, $flag);
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
             exec($command, $ooout, $flag);
-        }
+        #}
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
             $circos = '<img id="circos" src="http://www.lintwebomics.info/' .$opath.'enrich/circosPlot.png" style="height:100%;width: 100%;">';
         }else{

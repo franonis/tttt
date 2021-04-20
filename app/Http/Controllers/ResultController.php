@@ -48,13 +48,13 @@ class ResultController extends Controller
             is_dir($outpath) or mkdir($outpath, 0777, true);
             $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing_RNA.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -t '.$data_type.' -p "/home/zhangqb/tttt/public/' . $outpath . '"';
-            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+            #if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 exec($command, $ooout, $flag);
                 #dd($ooout);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
-            }
+            #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($this->showresultrna($outpath)) {
                     if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/up.png') ){
@@ -81,13 +81,13 @@ class ResultController extends Controller
             if ($flag == 1) {
                 return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
-            if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
+            #if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing.R  -i "/home/zhangqb/tttt/public/' . $outpath . '" -t "' . $data_type . '" -c "' . $control . '" -e "' . $naperent . '" -l "' . $delodd . '" -n ' . $n . ' -o "/home/zhangqb/tttt/public/' . $outpath . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
                     return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
-            }
+            #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'data.RData')) {
                 if ($omics == "Lipidomics") {
                     if (count($subgroup) == 1) {
