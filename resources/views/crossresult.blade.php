@@ -21,9 +21,9 @@
                   <div class="layui-card-body">
                     <div class="row text-center" style="width: {{ $bgwidth }}px;height: {{ $bgheigh }}px; background-image: url({{ asset($image) }}); ">
                         {!! $diyihangkongbai !!}
-                        @for ($i = 0; $i < $k2; $i++)
+                        @for ($i = 0; $i < $row; $i++)
                             <img style="width: {{ $kongbai[0] }}px;height: {{ $lie[$i] }}px;opacity: 0%; margin-bottom: {{ $hengjiange }}px;margin-left: -3px;" src="{{ asset('images/gg.png') }}" />
-                            @for ($j = 0; $j < $g; $j++)
+                            @for ($j = 0; $j < $col; $j++)
                                 <a href="{{ url('result/enrich/')}}/{{$j}}--{{$i}}--{{$enrichpath}}--{{$omics1}}--{{$omics2}}" target="_blank"><img style="width: {{ $hang[$j] }}px;height: {{ $lie[$i] }}px;opacity: 50%; margin-bottom: {{ $hengjiange }}px;margin-left: {{ $shujiange }}px;" src="{{ asset('images/gg.png') }}" onmousemove="toumingImg(this)" onmouseout="normalImg(this)" /></a>
                             @endfor
                             <img style="width: {{ $kongbai2 }}px;height: {{ $lie[$i] }}px;opacity: 0%; margin-bottom: {{ $hengjiange }}px;" src="{{ asset('images/gg.png') }}" />

@@ -88,23 +88,18 @@ class TwoController extends Controller
         $m = $m / 100;
         $n = $request->n;#是否70%gk
         $s = $request->s;#自己设的值
-        $g = $request->g;#列
-        $k = $request->k;#行
+        $g = $request->g;#列col
+        $k = $request->k;#行row
         $b = $request->b;
         $c = $request->c;
         $f = $request->f;
         $p = $request->p;
-
 
         #t和u的设置
         $t = ['Lipidomics' => 'Lipids', 'Metabolomics' => 'Metabolites', 'Transcriptomics' => 'RNAseq', 'Proteomics' => 'Proteins'];
         if ($data_type == "microarray") {
             $t['Transcriptomics'] = 'MiAr';
         }
-        #输出文件位置
-
-        #执行程序 
-        #$command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANLipidMediator_imm_forcor.CSV" -d "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList_lipmid.csv" -t "Metabolites" -l F -m 0.67 -j "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANgene_tidy.CSV" -e "/home/zhangqb/tttt/public/program/branch/benchmark/input/HANsampleList.CSV" -u "RNAseq" -g 6 -k 4 -n F -s 0.4 -o "' . $outpath . '"';
         #ns的组合
         if ($n) {
             $ns=' -n F -s '.$s;
@@ -115,10 +110,15 @@ class TwoController extends Controller
         if ($b == "hierarchical" || $b == "k_means") {
             $keycanshudir=$m . $n . $s . $g . $k . '/';
             $keycanshu= ' -m '. $m . $ns . ' -g ' . $g . ' -k ' . $k;
+            $col = $g;
+            $row = $k;
         }
         if ($b == "DBSCAN") {
             $keycanshudir=$m . $n . $s . $c . $f . '/';
             $keycanshu= ' -m '. $m . $ns . ' -c ' . $c . ' -f ' . $f;
+            $col = $c;
+            $row = $f;
+
         }
         if ($b == "MCL") {
             $keycanshudir=$m . $n . $s . $p . '/';
@@ -168,9 +168,12 @@ class TwoController extends Controller
         #dd($hang);
         $shujiange = -3;
         $hengjiange = 3;
+
+        if ($b == "MCL") {
+            $col = count($hang);
+            $row = count($lie);
+        }
         
-
-
         $image = $pic_path.'correlationPlot.png';
         $size = getimagesize($image);
         $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*2;
@@ -178,8 +181,8 @@ class TwoController extends Controller
         $bgheigh = $size[1];
         $g = $g;#列
         $k2 = $k;
-        $fgwidth = floor($size[0] / $g);
-        $fgheigh = floor($size[1] / $k2);
+        $fgwidth = floor($size[0] / $col);
+        $fgheigh = floor($size[1] / $row);
         $diyihangkongbai = '<img style="width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 0%;" src="http://www.lintwebomics.info/images/gg.png" />';
         if ($b == "k_means" or $b == "DBSCAN" or $b == "MCL") {
             $kongbai[0]=$kongbai[0]*0.95;
@@ -189,9 +192,9 @@ class TwoController extends Controller
             $diyihangkongbai = '<div style="width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 88%;" ><p>.</p></div>';
         }
 
-        #dd($omics1);
+        #dd($omics1); 
         $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
-        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'g' => $g, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'shujiange' => $shujiange, 'hengjiange' => $hengjiange,'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2, 'diyihangkongbai' => $diyihangkongbai]);
+        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'col' => $col, 'row' => $row, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'shujiange' => $shujiange, 'hengjiange' => $hengjiange,'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2, 'diyihangkongbai' => $diyihangkongbai]);
     }
 
     public function getenrichPage($pos)
