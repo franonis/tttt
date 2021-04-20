@@ -42,7 +42,7 @@ class TwoController extends Controller
         }
         
         #图片切割
-        $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -k ' . $k . ' -g ' . $g . ' -o "' . $pic_path . '"';
+        $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -o "' . $pic_path . '"';
         if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
@@ -151,7 +151,7 @@ class TwoController extends Controller
         
         #图片切割
         
-        $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -k ' . $k . ' -g ' . $g . ' -o "' . $pic_path . '"';
+        $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -o "' . $pic_path . '"';
         if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
             exec($command, $ooout, $flag);
             if ($flag == 1) {
