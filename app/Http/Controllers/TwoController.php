@@ -186,8 +186,8 @@ class TwoController extends Controller
         $diyihangkongbai = '<img style="width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 0%;" src="http://www.lintwebomics.info/images/gg.png" />';
         if ($b == "k_means" or $b == "DBSCAN" or $b == "MCL") {
             $kongbai[0]=$kongbai[0]*0.95;
-            $shujiange = 2;
-            $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*4;
+            $shujiange = 1;
+            $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*6;
             $hengjiange = 4;
             $diyihangkongbai = '<div style="width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 88%;" ><p>.</p></div>';
         }
