@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-md-9">
                         <small>
-                        <input id="t" type="text" name="t" value="{{$t}}" style="width:50px; display:inline;" class="form-control" >
+                        <input id="t_circos" type="text" name="t_circos" value="{{$t}}" style="width:50px; display:inline;" class="form-control" >
                         </small>
                     </div><br>
                     <div class="col-md-3">
@@ -267,7 +267,7 @@
         var path = $("input[name='downloadpath']").val();
         var k = $("input[name='k']").val();
         var j = $("input[name='j']").val();
-        var t = $("input[name='t']").val();
+        var t = $("input[name='t_circos']").val();
         var n = $("input[name='n']").val();
         console.log('/update/updatemutilcircos/'+path+det+j+det+k+det+t+det+n);
 
