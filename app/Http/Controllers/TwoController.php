@@ -233,7 +233,7 @@ class TwoController extends Controller
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
                 exec($command, $ooout, $flag);
                 if ($flag == 1) {
-                    #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                    return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
                 }
             #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
@@ -255,7 +255,7 @@ class TwoController extends Controller
             exec($command, $ooout, $flag);
             #dd($command);
             if ($flag == 1) {
-                #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
@@ -290,83 +290,8 @@ class TwoController extends Controller
         return view('crossresultenrich', ['g' => $g,'t' => 0.6,'n' => 20,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
     }
 
-    public function getenenrichresultPage($pos)
-    {
-        $poss=explode("--", $pos);
-        $k2 = $poss[0];#行列数gene
-        $downloadpath=$poss[1];#$outpath,可下载
-        $omics=$poss[2];#$omics
-        $opath = preg_replace('/\+\+/', "/", $downloadpath);
-        $lipid = file_get_contents($opath . 'lipids_'.$k2.'.csv');
-        is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
-        $command="";
-        if ($omics == "Metabolomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k2.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
-            exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
-                $resultpng = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
-            }else{
-                $resultpng='<p>Can not do metabolite set enrichment! Try use <a href="http://www.metaboanalyst.ca/home.xhtml" style="color:deepskyblue;">MetaboAnalyst</a> website.</p>';
-            }
-            $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $opath.'enrich/');
-            return view('crossresultenrichresultmet', ['k2' => $k2,'lipid' => $lipid,'opath' => $opath,'downloadpath' => $downloadpath, 'omics' => $omics1, 'downloadfilename' => $downloadfilename, 'resultpng' => $resultpng]);
-        }
-        if ($omics == "Lipidomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -j '.$k2.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
-            exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-            if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION_enrichment-plot.png') ){
-                $resultpng = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/LION_enrichment-plot.png" style="height:50%;width: 60%;">';
-            }else{
-                $resultpng='<p>No genes enriched! Try check your data!</p>';
-            }
-            $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $opath.'enrich/');
-            return view('crossresultenrichresultlip', ['k2' => $k2,'lipid' => $lipid,'opath' => $opath,'downloadpath' => $downloadpath, 'omics' => $omics1, 'downloadfilename' => $downloadfilename, 'resultpng' => $resultpng]);
-        }
-    }
 
-    public function getenenrichresultgenePage(Request $request)
-    {
-        #dd($request);
-        $downloadpath=$request->downloadpath;#$outpath,可下载
-        $omics=$request->omics;
-        $k=$request->k;#行列数gene
-        $t=$request->t;
-        $g=$request->g;
-        $s=$request->s;
-        $c=$request->c;
-
-        $opath = preg_replace('/\+\+/', "/", $downloadpath);#末尾有/
-        $gene = file_get_contents($opath . 'genes_'.$k.'.csv',0,null,0,1000);
-        is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
-        $command="";
-        if ($omics == "Transcriptomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t '.$t.' -g '.$g.' -s '.$s.' -c '.$c.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
-        }
-        if ($omics == "Proteomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'" -k '.$k.' -t '.$t.' -s '.$s.' -c '.$c.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
-        }
-        #dd($command);
-        exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-        }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_'.$c.'.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
-        if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
-            $resultpng = '<img src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
-        }else{
-            $resultpng='<p>No genes enriched! Try check your data!</p>';
-        }
-        
-        $downloadfilename = $this->getrnadownloadfilename('/home/zhangqb/tttt/public/' . $opath.'enrich/');
-
-        return view('crossresultenrichresultgene', ['g' => $k,'gene' => $gene,'opath' => $opath,'downloadpath' => $downloadpath, 'omics2' => $omics, 's' => '50', 'downloadfilename' => $downloadfilename, 'resultpng' => $resultpng]);
-    }
+    
     #设置参数
     public function canshu(Request $request)
     {
