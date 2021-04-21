@@ -166,7 +166,7 @@ class TwoController extends Controller
         $hang=explode(",", $splits[2][0]);#宽
         $lie=explode(",", $splits[3][0]);#高
         #dd($hang);
-        $shujiange = -3;
+        $shujiange = -2;
         $hengjiange = 3;
 
         if ($b == "MCL") {
@@ -186,7 +186,7 @@ class TwoController extends Controller
         $diyihangkongbai = '<img style="width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 0%;" src="http://www.lintwebomics.info/images/gg.png" />';
         if ($b == "k_means" or $b == "DBSCAN" or $b == "MCL") {
             $kongbai[0]=$kongbai[0]*0.95;
-            $shujiange = -2;
+            $shujiange = 2;
             $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*4;
             $hengjiange = 4;
             $diyihangkongbai = '<div style="width:'. $bgwidth.'px;height:'. $kongbai[1].'px;opacity: 88%;" ><p>.</p></div>';
