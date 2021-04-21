@@ -287,7 +287,7 @@ class TwoController extends Controller
             $circos='<p>Please check your correlation threshold. It may be too strict to filter.</p>';
         }
 
-        return view('crossresultenrich', ['g' => $g,'t' => 0.6,'n' => 20,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
+        return view('crossresultenrich', ['g' => $g,'t' => 0.8,'n' => 25,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
     }
 
 
