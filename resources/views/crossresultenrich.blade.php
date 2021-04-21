@@ -198,6 +198,20 @@
         }
         console.log(omics);
     });
+
+    $("#c").click(function (){
+        name =$("input[name='c']:checked").val();
+        console.log(name);
+   });
+
+    $("#g").click(function (){
+        name =$("input[name='g']:checked").val();
+        console.log(name);
+   });
+    $("#t").click(function (){
+        name =$("input[name='t']:checked").val();
+        console.log(name);
+   });
 </script>
 <script>
     layui.use(['element', 'layer','form','table'], function(){
