@@ -146,7 +146,7 @@
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
                                                 <div class="col-md-12" title="Heatmap displaying lipid class information">
-                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" title="Show details"><i class="layui-icon layui-icon-about"></i>
+                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" >Show details<i class="layui-icon layui-icon-about"></i>
                                                     <div class="col-md-3">
                                                         <button type="button" id="headheatmapupdateri" name="headheatmapupdateri" class="btn btn-success form-control" onclick="headheatmapupdate()">Update</button>
                                                     </div>
