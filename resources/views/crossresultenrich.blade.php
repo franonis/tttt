@@ -300,9 +300,9 @@
         var path = $("input[name='downloadpath']").val();
         var k = $("input[name='k']").val();
         var g =$("input[name='g']:checked").val();
-        var t = $("input[name='t']").val();
+        var t = $("input[name='t']:checked").val();
         var s = $("input[name='s']").val();
-        var c = $("input[name='c']").val();
+        var c = $("input[name='c']:checked").val();
         omics=$("input[name='omics2']").val();
         if (omics == "Proteomics") {
             var link = '/update/updatemutilenrich/'+path+det+omics+det+k+det+t+det+s+det+c;
