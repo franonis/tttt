@@ -176,7 +176,7 @@ class TwoController extends Controller
         
         $image = $pic_path.'correlationPlot.png';
         $size = getimagesize($image);
-        $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*2;
+        $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*2-1;
         $bgwidth = $size[0];
         $bgheigh = $size[1];
         $g = $g;#列
@@ -218,7 +218,7 @@ class TwoController extends Controller
             exec($command, $ooout, $flag);
                 if ($flag == 1) {
                 #    dd($ooout);
-                    #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command.$flag]);
+                    ##return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command.$flag]);
                 }
             #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
@@ -255,7 +255,7 @@ class TwoController extends Controller
             exec($command, $ooout, $flag);
             #dd($command);
             if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                ##return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_Biological_Process.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
@@ -276,7 +276,7 @@ class TwoController extends Controller
         #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
             exec($command, $ooout, $flag);
             if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+                ##return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
             }
             $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
             exec($command, $ooout, $flag);
