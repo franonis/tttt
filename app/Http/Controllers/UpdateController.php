@@ -422,7 +422,7 @@ class UpdateController extends Controller
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$k.' -t '.$t.' -n '.$n.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
         exec($command, $ooout, $flag);
