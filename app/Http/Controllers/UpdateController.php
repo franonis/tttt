@@ -411,8 +411,8 @@ class UpdateController extends Controller
     {
         $datas= explode("----", $data);
         $opath = preg_replace('/\+\+/', "/", $datas[0]);#末尾有gj
-        $k = $datas[1];
-        $j = $datas[2];
+        $j = $datas[1];
+        $k = $datas[2];
         $t = $datas[3];
         $n = $datas[4];
 
@@ -421,7 +421,7 @@ class UpdateController extends Controller
         exec('rm '.$opath.'enrich/circosPlot.pdf');
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$k.' -t '.$t.' -n '.$n.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
-        dd($command);
+        #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
