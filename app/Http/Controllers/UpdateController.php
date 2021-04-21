@@ -418,6 +418,7 @@ class UpdateController extends Controller
 
         #$opath = $path;#$opath = preg_replace('/\//', "++", $outpath);#末尾有/
 
+        exec('rm '.$opath.'enrich/circosPlot.pdf');
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$k.' -t '.$t.' -n '.$n.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
