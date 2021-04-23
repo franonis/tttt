@@ -97,6 +97,7 @@ class ResultController extends Controller
                             exec($command,$fapng,$flag);
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
+                            $num_fapng  =count($fapng);
                             if ($this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png') ){
                                 $up = '<img id="up" src="http://www.lintwebomics.info/' . $outpath . 'results/enrich/up_LION-enrichment-plot.png" style="height:90%;width: 90%;">';
                             }else{
@@ -107,7 +108,7 @@ class ResultController extends Controller
                             }else{
                                 $down='<p>No DOWN lipids enriched! Please try again with other parameters or check your uploaded data.</p>';
                             }
-                            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "all_info", 'fapng' => $fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
+                            return view('resultlip', ['title' => '上传数据', 'jb' => "yes", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "all_info", 'fapng' => $fapng, 'num_fapng' => $num_fapng, 'headpng' => $headpng, 'up' => $up, 'down' => $down]);
                         }
                     }else{
                         if ($this->showresultlip2($outpath)) {
@@ -117,7 +118,8 @@ class ResultController extends Controller
                             exec($command,$fashowpng,$flag); 
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);                                  
-                            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "all_info", 'fapng' => $fapng, 'fashowpng' => $fashowpng, 'headpng' => $headpng]);
+                            $num_fapng  =count($fapng);
+                            return view('resultlipnovolcano', ['title' => '上传数据', 'jb' => "no", 'path' => $outpath, 'omics' => $omics, 'downloadpath' => $downloadpath, 's' => "F", 'x' => "raw", 'j' => 2, 'kk' => 0.1, 'm' => 10, 'w' => "T", 'e' => 75, 'g' => "all_info", 'fapng' => $fapng, 'num_fapng' => $num_fapng, 'fashowpng' => $fashowpng, 'headpng' => $headpng]);
                         }
                     }
                 }
