@@ -217,7 +217,7 @@ class TwoController extends Controller
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
             #exec($command, $ooout, $flag);
             exec('echo '.$command.' >cmd.txt', $ooout, $flag);
-            dd("hei");
+            #dd("hei");
             #exec('php test.php ', $ooout, $flag);
             exec('php test.php >f 2>&1', $ooout, $flag);
                 if ($flag == 1) {
