@@ -215,7 +215,8 @@ class TwoController extends Controller
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
-            exec($command, $ooout, $flag);
+            #exec($command, $ooout, $flag);
+            exec('php test.php', $ooout, $flag);
                 if ($flag == 1) {
                 #    dd($ooout);
                     $comma_separated = implode(",", $ooout);
