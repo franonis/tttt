@@ -218,7 +218,7 @@ class TwoController extends Controller
             #exec($command, $ooout, $flag);
             exec('echo '.$command.' >cmd.txt', $ooout, $flag);
             #exec('php test.php ', $ooout, $flag);
-            shell_exec('sh cmd.txt');
+            exec('php test.php >f', $ooout, $flag);
                 if ($flag == 1) {
                 #    dd($ooout);
                     $comma_separated = implode(",", $ooout);
