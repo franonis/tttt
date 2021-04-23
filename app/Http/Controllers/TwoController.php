@@ -217,7 +217,8 @@ class TwoController extends Controller
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
             #exec($command, $ooout, $flag);
             exec('echo '.$command.' >cmd.txt', $ooout, $flag);
-            exec('php test.php ', $ooout, $flag);
+            #exec('php test.php ', $ooout, $flag);
+            exec('sh cmd.txt', $ooout, $flag);
                 if ($flag == 1) {
                 #    dd($ooout);
                     $comma_separated = implode(",", $ooout);
