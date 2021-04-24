@@ -344,7 +344,8 @@ class ResultController extends Controller
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/others_*.pdf ' . $pic_path . 'headgroup/others.png';
+        #$command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
         exec($command, $ooout, $flag);
         #dd($command);
         if ($flag == 1) {
