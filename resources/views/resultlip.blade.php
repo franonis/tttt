@@ -296,12 +296,12 @@
                                                   <div carousel-item="">
                                                     @foreach($fapng as $k=>$i )
                                                         <div>
-                                                            <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others-{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                     @for ($p = $num_fapng; $p < $num_fapng*2; $p++)
                                                         <div>
-                                                            <img id="fapng{{$p}}" src="" class="img2" style="width: 100%;height: auto;display: none;" data-holder-rendered="true">
+                                                            <img id="fapng{{$p}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others-{{$i}}.png" class="img2" style="width: 100%;height: auto;display: none;" data-holder-rendered="true">
                                                         </div>
                                                     @endfor
                                                   </div>
