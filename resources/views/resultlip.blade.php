@@ -15,6 +15,7 @@
         <hr>
             <div class="col-md-2">
                 <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
+                <input name="num_fapng" value="{{ $num_fapng }}" style="display: none;">
             </div>
             <div class="col-md-10"> 
                 <div class="layui-tab">
@@ -295,12 +296,12 @@
                                                 <div class="layui-carousel" id="test2" lay-filter="test2">
                                                   <div carousel-item="">
                                                     @foreach($fapng as $k=>$i )
-                                                        <div>
+                                                        <div id="divfapng{{$k}}" style="display: block;">
                                                             <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others-{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endforeach
                                                     @for ($p = $num_fapng; $p < $num_fapng*2; $p++)
-                                                        <div>
+                                                        <div id="divfapng{{$p}}" style="display: none;">
                                                             <img id="fapng{{$p}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others-{{$i}}.png" class="img2" style="width: 100%;height: auto;display: none;" data-holder-rendered="true">
                                                         </div>
                                                     @endfor
@@ -749,10 +750,29 @@
                     console.log("keyi");
                     document.getElementById("fashow").src = data.show+'?t='+'+Math.random()';
                     document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
-                    for (var i = 0; i <= data.pngnum; i++) {
-                        var sr = document.getElementById("fapng"+i).src ;
-                        document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
+                    var num_fapng = $("input[name='num_fapng']").val();
+                    if (data.pngnum <= num_fapng) {
+                        for (var i = 0; i < data.pngnum; i++) {
+                            var sr = document.getElementById("fapng"+i).src ;
+                            document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
+                        }
+                        for (var i = data.pngnum; i <= num_fapng; i++) {
+                            document.getElementById("divfapng"+i).style.display="none";
+                        }
+
+                    }else{
+                        for (var i = 0; i < num_fapng; i++) {
+                            var sr = document.getElementById("fapng"+i).src ;
+                            document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
+                        }
+                        for (var i = num_fapng; i <= data.pngnum; i++) {
+                            var sr = document.getElementById("fapng"+i).src ;
+                            document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
+                            document.getElementById("divfapng"+i).style.display="block";
+                            document.getElementById("fapng"+i).style.display="block";
+                        }
                     }
+                    $("input[name='num_fapng']").val()=data.pngnum
 
                     document.getElementById("faheatmapupdatebutton").style.display="none";
                     document.getElementById("faupdatebutton").style.display="none";
