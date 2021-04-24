@@ -104,7 +104,8 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'headgroup/headgroup*pdf');
+        exec('rm '.$pic_path.'headgroup/headgroup*');
+        exec('rm '.$pic_path.'headgroup/others*');
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w T';
         #dd($command);
@@ -135,7 +136,8 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/others_*.pdf ' . $pic_path . 'FAchainVisual/others.png';
+        #$command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
         exec($command, $ooout, $flag);
 
         exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);

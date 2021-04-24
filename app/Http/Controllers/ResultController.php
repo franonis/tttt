@@ -93,7 +93,7 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultlip($outpath)) {
-                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[-.]\' \'{print $2}\'';
                             exec($command,$fapng,$flag);
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$headpng,$flag);
@@ -112,7 +112,7 @@ class ResultController extends Controller
                         }
                     }else{
                         if ($this->showresultlip2($outpath)) {
-                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[_.]\' \'{print $2}\'';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[-.]\' \'{print $2}\'';
                             exec($command,$fapng,$flag); 
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls fa_show*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$fashowpng,$flag); 
@@ -353,7 +353,7 @@ class ResultController extends Controller
         }
         #FAchain
         #for file in *.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.*}.png; done
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "all_info" -w T -e 75';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "FA_info" -w T -e 75';
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
@@ -644,7 +644,7 @@ class ResultController extends Controller
         }
         #FAchain
         #for file in *.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.*}.png; done
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "all_info" -w T';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "FA_info" -w T';
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
@@ -652,7 +652,8 @@ class ResultController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         #$command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
-        $command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/others_*.pdf ' . $pic_path . 'FAchainVisual/others.png';
+        #$command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
         exec($command, $ooout, $flag);
         #dd($command);
         if ($flag == 1) {
