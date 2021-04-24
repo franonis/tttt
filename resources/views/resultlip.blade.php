@@ -772,7 +772,7 @@
                             document.getElementById("fapng"+i).style.display="block";
                         }
                     }
-                    $("input[name='num_fapng']").val()=data.pngnum
+                    $("input[name='num_fapng']").val()=data.pngnum;
 
                     document.getElementById("faheatmapupdatebutton").style.display="none";
                     document.getElementById("faupdatebutton").style.display="none";
