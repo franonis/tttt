@@ -15,6 +15,8 @@
         <hr>
             <div class="col-md-2">
                 <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
+                <input name="num_fapng" value="{{ $num_fapng }}" style="display: none;">
+                <input name="num_headpng" value="{{ $num_headpng }}" style="display: none;">
             </div>
             <div class="col-md-10"> 
                 <div class="layui-tab">
@@ -127,11 +129,11 @@
                                                 <img id="headgroupcolor" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/headgroupcolor_show.png" style="height:50%;width: 60%;">
                                                 <div class="layui-carousel" id="test1" lay-filter="test1">
                                                   <div carousel-item="">
-                                                    @foreach($headpng as $k=>$i )
+                                                    @for ($i = 0; $i < $num_headpng; $i++)
                                                         <div>
-                                                            <img id="headpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others_{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="headpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others-{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
-                                                    @endforeach
+                                                    @endfor
                                                   </div>
                                                 </div>
                                             </div>
@@ -240,11 +242,11 @@
                                             <div class="layui-colla-content">
                                                 <div class="layui-carousel" id="test2" lay-filter="test2">
                                                   <div carousel-item="">
-                                                    @foreach($fapng as $k=>$i )
+                                                    @for ($i = 0; $i < $num_fapng; $i++)
                                                         <div>
-                                                            <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others_{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others-{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
-                                                    @endforeach
+                                                    @endfor
                                                   </div>
                                                 </div>
                                             </div>
@@ -545,6 +547,7 @@
     function headgroupupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
+        var num_headpng = $("input[name='num_headpng']").val();
         var w = "T";
         var z = "F";
         if ($("#w_head").is(":checked")) {
@@ -573,7 +576,7 @@
                     document.getElementById("headgroupcolor").src = data.color+'?t='+'+Math.random()';
                     document.getElementById("headgroupcum").src = data.cum+'?t='+'+Math.random()';
                     document.getElementById("headheatmappng").src = data.heatmap+'?t='+'+Math.random()';
-                    for (var i = 0; i <= data.pngnum; i++) {
+                    for (var i = 0; i <= num_headpng; i++) {
                         var sr = document.getElementById("headpng"+i).src ;
                         document.getElementById("headpng"+i).src = sr+'?t='+'+Math.random()';
                     }
@@ -590,6 +593,7 @@
     function faupdate() {
         var det = "----";
         var path = $("input[name='downloadpath']").val();
+        var num_fapng = $("input[name='num_fapng']").val();
         var w = "T";
         if ($("#w_fa").is(":checked")) {
             var w = "T";
@@ -614,16 +618,10 @@
                     console.log("keyi");
                     document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     console.log(data.pngnum);
-                    for (var i = 0; i < data.pngnum; i++) {
-                        console.log(i);
+                    for (var i = 0; i < num_fapng; i++) {
                         var sr = document.getElementById("fapng"+i).src ;
                         document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
                     }
-                    for (var i = 0; i < data.pngshownum; i++) {
-                        var sr = document.getElementById("fashowpng"+i).src ;
-                        document.getElementById("fashowpng"+i).src = sr+'?t='+'+Math.random()';
-                    }
-
                     document.getElementById("faheatmapupdatebutton").style.display="none";
                     document.getElementById("faupdatebutton").style.display="none";
                 }else{

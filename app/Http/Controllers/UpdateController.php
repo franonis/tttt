@@ -156,6 +156,7 @@ class UpdateController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
         exec('rm '.$pic_path.'FAchainVisual/*pdf');
+        exec('rm '.$pic_path.'FAchainVisual/others*');
 
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "'.$g.'" -w '.$w.' -e '.$e;
 
