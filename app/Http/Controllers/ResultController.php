@@ -93,9 +93,9 @@ class ResultController extends Controller
                     if (count($subgroup) == 1) {
                         #dd($downloadfilename);
                         if ($this->showresultlip($outpath)) {
-                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[-.]\' \'{print $2}\'';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png';
                             exec($command,$fapng,$flag);
-                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[-.]\' \'{print $2}\'';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png';
                             exec($command,$headpng,$flag);
                             $num_fapng  =count($fapng);
                             $num_headpng  =count($headpng);
@@ -113,11 +113,11 @@ class ResultController extends Controller
                         }
                     }else{
                         if ($this->showresultlip2($outpath)) {
-                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png | awk -F\'[-.]\' \'{print $2}\'';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls other*.png';
                             exec($command,$fapng,$flag); 
                             $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/FAchainVisual/ && ls fa_show*.png | awk -F\'[_.]\' \'{print $2}\'';
                             exec($command,$fashowpng,$flag); 
-                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png | awk -F\'[-.]\' \'{print $2}\'';
+                            $command='cd /home/zhangqb/tttt/public/'.$outpath.'results/headgroup/ && ls other*.png';
                             exec($command,$headpng,$flag);                                  
                             $num_fapng  =count($fapng);
                             $num_headpng  =count($headpng);
