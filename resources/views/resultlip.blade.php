@@ -164,7 +164,7 @@
                                     </div>
                                     <div class="col-md-10">
                                         <div class="col-md-12" title="Applied along with “Show lipid class” option to display the chemical bond links of lipids">
-                                            <input type="checkbox" id="w_head" id="w_head" name="w[yes]" lay-skin="primary"checked="">&nbsp; Ignore subclass<i class="layui-icon layui-icon-about"></i>
+                                            <input type="checkbox" id="w_head" name="w[yes]" lay-skin="primary"checked="">&nbsp; Ignore subclass<i class="layui-icon layui-icon-about"></i>
                                         </div>
                                         <div class="col-md-3">
                                             <button type="button" id="headupdateri" name="headupdateri" class="btn btn-success form-control" onclick="headgroupupdate()">Update</button>
@@ -210,7 +210,7 @@
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
                                                 <div class="col-md-12" title="Heatmap displaying lipid class information">
-                                                    <input type="checkbox" name="z[yes]" lay-skin="primary">Show details<i class="layui-icon layui-icon-about"></i>
+                                                    <input type="checkbox" id="z" name="z[yes]" lay-skin="primary">Show details<i class="layui-icon layui-icon-about"></i>
                                                     <div class="col-md-3">
                                                         <button type="button" id="headheatmapupdateri" name="headheatmapupdateri" class="btn btn-success form-control" onclick="headheatmapupdate()">Update</button>
                                                     </div>
@@ -647,8 +647,10 @@
 
         if ($("#z").is(":checked")) {
             var z = "T";
+            console.log(z);
         }else{
             var z = "F";
+            console.log(z);
         }
         console.log('/update/updatelipheadheatmap/'+path+det+w+det+z);
         document.getElementById("headheatmapupdatebutton").style.display="block";

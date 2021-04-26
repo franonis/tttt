@@ -148,7 +148,7 @@
                                             <h2 class="layui-colla-title">Heatmap</h2>
                                             <div class="layui-colla-content">
                                                 <div class="col-md-12" title="Heatmap displaying lipid class information">
-                                                    <input type="checkbox" name="z[yes]" lay-skin="primary" >Show details<i class="layui-icon layui-icon-about"></i>
+                                                    <input type="checkbox" id="z" name="z[yes]" lay-skin="primary" >Show details<i class="layui-icon layui-icon-about"></i>
                                                     <div class="col-md-3">
                                                         <button type="button" id="headheatmapupdateri" name="headheatmapupdateri" class="btn btn-success form-control" onclick="headheatmapupdate()">Update</button>
                                                     </div>
@@ -532,7 +532,8 @@
             },
             success: function (data) {
                 if(data.code == 'success'){
-                    document.getElementById("headheatmappng").src = data.png+'?t='+'+Math.random()';
+                    var sr = document.getElementById("headheatmappng").src;
+                    document.getElementById("headheatmappng").src = sr+'?t='+'+Math.random()';
                     document.getElementById("headheatmapupdatebutton").style.display="none";
                 }else{
                     alert('register fail');
@@ -616,7 +617,9 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
+                    var sr = document.getElementById("faheatmappng").src;
+                    getElementById("faheatmappng").src = sr+'?t='+'+Math.random()';
+                    //document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     console.log(data.pngnum);
                     for (var i = 0; i < num_fapng; i++) {
                         var sr = document.getElementById("fapng"+i).src ;
