@@ -746,7 +746,8 @@
             success: function (data) {
                 if(data.code == 'success'){
                     console.log("keyi");
-                    document.getElementById("fashow").src = data.show+'?t='+'+Math.random()';
+                    var sr = document.getElementById("fashow").src;
+                    getElementById("fashow").src = sr+'?t='+'+Math.random()';
                     document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     
                     for (var i = 0; i < num_fapng; i++) {
