@@ -193,7 +193,7 @@
                                                   <div carousel-item="">
                                                     @for ($i = 0; $i < $num_headpng; $i++)
                                                         <div>
-                                                            <img id="headpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others-{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="headpng{{$i}}" src="http://www.lintwebomics.info/{{ $path }}results/headgroup/others-{{$i}}.png" class="img1" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endfor
                                                   </div>
@@ -298,7 +298,7 @@
                                                   <div carousel-item="">
                                                     @for ($i = 0; $i < $num_fapng; $i++)
                                                         <div>
-                                                            <img id="fapng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others-{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fapng{{$i}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/others-{{$i}}.png" class="img2" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endfor
                                                   </div>
