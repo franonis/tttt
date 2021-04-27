@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-set_time_limit(0)
+set_time_limit(0);
 use App\Http\Controllers\TwoController;
 use Illuminate\Http\Request;
 
