@@ -17,6 +17,7 @@
                 <input name="downloadpath" value="{{ $downloadpath }}" style="display: none;">
                 <input name="num_fapng" value="{{ $num_fapng }}" style="display: none;">
                 <input name="num_headpng" value="{{ $num_headpng }}" style="display: none;">
+                <input name="num_fashowpng" value="{{ $num_fashowpng }}" style="display: none;">
             </div>
             <div class="col-md-10"> 
                 <div class="layui-tab">
@@ -207,11 +208,11 @@
                                             <div class="layui-colla-content layui-show">
                                                 <div class="layui-carousel" id="test3" lay-filter="test3">
                                                   <div carousel-item="">
-                                                    @foreach($fashowpng as $k=>$i )
+                                                    @for ($i = 0; $i < $num_fashowpng; $i++)
                                                         <div>
-                                                            <img id="fashowpng{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_{{$i}}.png" class="img3" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fa_show-{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show-{{$i}}.png" class="img3" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
-                                                    @endforeach
+                                                    @endfor
                                                   </div>
                                                 </div>
                                             </div>
@@ -595,6 +596,7 @@
         var det = "----";
         var path = $("input[name='downloadpath']").val();
         var num_fapng = $("input[name='num_fapng']").val();
+        var num_fashowpng = $("input[name='num_fashowpng']").val();
         var w = "T";
         if ($("#w_fa").is(":checked")) {
             var w = "T";
@@ -625,6 +627,11 @@
                         var sr = document.getElementById("fapng"+i).src ;
                         document.getElementById("fapng"+i).src = sr+'?t='+'+Math.random()';
                     }
+                    for (var i = 0; i < num_fashowpng; i++) {
+                        var sr = document.getElementById("fa_show-"+i).src ;
+                        document.getElementById("fa_show-"+i).src = sr+'?t='+'+Math.random()';
+                    }
+
                     document.getElementById("faheatmapupdatebutton").style.display="none";
                     document.getElementById("faupdatebutton").style.display="none";
                 }else{
