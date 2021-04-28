@@ -578,7 +578,7 @@
                     document.getElementById("headgroupcolor").src = data.color+'?t='+'+Math.random()';
                     document.getElementById("headgroupcum").src = data.cum+'?t='+'+Math.random()';
                     document.getElementById("headheatmappng").src = data.heatmap+'?t='+'+Math.random()';
-                    for (var i = 0; i <= num_headpng; i++) {
+                    for (var i = 0; i < num_headpng; i++) {
                         var sr = document.getElementById("headpng"+i).src ;
                         document.getElementById("headpng"+i).src = sr+'?t='+'+Math.random()';
                     }
