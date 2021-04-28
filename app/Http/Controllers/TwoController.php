@@ -85,7 +85,7 @@ class TwoController extends Controller
         $delodd = $request->delodd;
         $data_type = $request->data_type;
         $m = $request->m;#missing
-        $m = $m / 100;
+        #$m = $m / 100;
         $n = $request->n;#是否70%gk
         $s = $request->s;#自己设的值
         $g = $request->g;#列col
@@ -313,11 +313,12 @@ class TwoController extends Controller
         $omics_left  = $request->omics_left;
         $omics_right = $request->omics_right;
         
-        if ($request->delodd) {
-            $delodd = "T";
-        }else{
+        $delodd = $request->delodd;
+        
+        if ($omics_left == "Metabolomics") {
             $delodd = "F";
         }
+
         $data_type = $request->data_type;
 
         #改成路径+文件名
