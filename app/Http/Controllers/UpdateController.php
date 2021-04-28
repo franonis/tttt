@@ -107,7 +107,7 @@ class UpdateController extends Controller
         exec('rm '.$pic_path.'headgroup/headgroup*');
         exec('rm '.$pic_path.'headgroup/others*');
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w T';
+        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w;
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
