@@ -623,7 +623,7 @@
                 if(data.code == 'success'){
                     console.log("keyi");
                     var sr = document.getElementById("faheatmappng").src;
-                    getElementById("faheatmappng").src = sr+'?t='+'+Math.random()';
+                    document.getElementById("faheatmappng").src = sr+'?t='+'+Math.random()';
                     //document.getElementById("faheatmappng").src = data.heatmap+'?t='+'+Math.random()';
                     console.log(data.pngnum);
                     for (var i = 0; i < num_fapng; i++) {
