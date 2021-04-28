@@ -210,7 +210,7 @@
                                                   <div carousel-item="">
                                                     @for ($i = 0; $i < $num_fashowpng; $i++)
                                                         <div>
-                                                            <img id="fa_show-{{$k}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show-{{$i}}.png" class="img3" style="width: 100%;height: auto" data-holder-rendered="true">
+                                                            <img id="fa_show-{{$i}}" src="http://www.lintwebomics.info/{{ $path }}results/FAchainVisual/fa_show-{{$i}}.png" class="img3" style="width: 100%;height: auto" data-holder-rendered="true">
                                                         </div>
                                                     @endfor
                                                   </div>
