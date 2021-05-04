@@ -16,6 +16,9 @@
             <div class="layui-row layui-col-space15">
 
               <div class="layui-col-md12">
+                <p>Download this <a href="{{ url('download/file/')}}/{{ $downloadpath }}correlationPlot.pdf" style="color: deepskyblue;">correlationPlot.pdf</a></p>
+              </div>
+              <div class="layui-col-md12">
                 <div class="layui-card">
                   <div class="layui-card-header">{{$omics1}} and {{$omics2}} Correlation analysis result, click the brick for more details</div>
                   <div class="layui-card-body">
