@@ -16,7 +16,7 @@
             <div class="layui-row layui-col-space15">
 
               <div class="layui-col-md12">
-                <p>Download this <a href="{{ url('download/file/')}}/{{ $downloadpath }}correlationPlot.pdf" style="color: deepskyblue;">correlationPlot.pdf</a></p>
+                <p>Download this <a href="{{ url('download/file/')}}/{{ $enrichpath }}correlationPlot.pdf" style="color: deepskyblue;">correlationPlot.pdf</a></p>
               </div>
               <div class="layui-col-md12">
                 <div class="layui-card">
