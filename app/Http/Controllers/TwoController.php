@@ -212,6 +212,7 @@ class TwoController extends Controller
         $lipid = 'lipids_'.$j.'.csv';
         $opath = $opath.$g.$j;
         is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
+        exec('cp /home/zhangqb/tttt/public/'.$opath.'enrich/../correlation_'.$j.'_'.$g.'.csv /home/zhangqb/tttt/public/'.$opath.'enrich/')
         if ($omics1 == "Metabolomics") {
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
