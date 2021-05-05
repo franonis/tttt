@@ -315,6 +315,7 @@ class TwoController extends Controller
         $omics_right = $request->omics_right;
         
         $delodd = $request->delodd;
+        dd($delodd);
         
         if ($omics_left == "Metabolomics") {
             $delodd = "F";
