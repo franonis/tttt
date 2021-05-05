@@ -72,7 +72,13 @@ class ResultController extends Controller
                 }
             }
         } else {
-            $delodd = $request->delodd;
+            #$delodd = $request->delodd;
+            if ($request->delodd) {
+                $delodd = "T";
+            }else{
+                $delodd = "F";
+            }
+
             $n = $request->n;
 
             $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/subgroupsSel.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -s "/home/zhangqb/tttt/public/' . $tmpout . '" -p "/home/zhangqb/tttt/public/' . $outpath . '"';
