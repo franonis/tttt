@@ -80,8 +80,8 @@ Route::group(['prefix' => '/result'], function () {
     Route::get('/enrichresultgene', [TwoController::class, 'getenenrichresultgenePage']);
 });
 #单组学
-#Route::get('/upload', [UploadController::class, 'getUploadPage']);
-Route::post('/upload', [TwoController::class, 'getTwoPage']);
+Route::get('/upload', [UploadController::class, 'getUploadPage']);
+#Route::post('/upload', [TwoController::class, 'getTwoPage']);
 Route::get('/canshu', [UploadController::class, 'canshu']);
 Route::get('/examplecanshu', [UploadController::class, 'examplecanshu']);
 #多组学
