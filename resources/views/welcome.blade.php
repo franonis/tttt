@@ -26,7 +26,7 @@
           <div class="layui-card">
             <div class="layui-card-header">Single Omic Dataset Analysis</div>
             <div class="layui-card-body">
-              <p>Single Omic Dataset Analysis mostly processes the common statistical analyses on lipidomic dataset including lipid differential analysis, multivariate comparison, dimensionality reduction, lipid class summarization, lipid ontology analysis... We also integrate basic statistical analyses for metabolomic, transcriptomic, and proteomic datasets.</p>
+              <p><strong>Single Omic Dataset Analysis</strong> mostly processes the common statistical analyses on lipidomic dataset including lipid differential analysis, multivariate comparison, dimensionality reduction, lipid class summarization, lipid ontology analysis... We also integrate basic statistical analyses for metabolomic, transcriptomic, and proteomic datasets.</p>
               <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
             </div>
           </div>
@@ -35,7 +35,7 @@
           <div class="layui-card">
             <div class="layui-card-header">Intra-omic Dataset Analysis</div>
             <div class="layui-card-body">
-              <p>Intra-omic Dataset Analysis (also named Multiomic Dataset Analysis) mostly connect two omic datasets to create correlation network. The data mining of such intra-omic correlation network would provide users a broader ontological view of lipidomic results.</p><br>
+              <p><strong>Intra-omic Dataset Analysis</strong> (also named Multiomic Dataset Analysis) mostly connect two omic datasets to create correlation network. The data mining of such intra-omic correlation network would provide users a broader ontological view of lipidomic results.</p><br>
               <a href="/intra" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
             </div>
           </div>
