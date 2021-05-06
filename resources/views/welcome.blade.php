@@ -20,13 +20,13 @@
 </div>
 <div class="col-md-10">
   <div class="col-md-12">
-    <div style="padding: 20px; background-color: #F2F2F2; height: 150px;" >
+    <div style="padding: 20px; background-color: #F2F2F2; height: 250px;" >
       <div class="layui-row layui-col-space15">
         <div class="layui-col-md6"  style="height: 100px;">
           <div class="layui-card">
             <div class="layui-card-header">Single Omic Dataset Analysis</div>
             <div class="layui-card-body">
-              <p>Single Omic Dataset Analysis mostly processes the common statistical analyses on lipidomic dataset including lipid differential analysis, multivariate comparison, dimensionality reduction, lipid class summarization, lipid ontology analysis... We also integrate basic statistical analyses for metabolomic, transcriptomic, and proteomic datasets.</p><br>
+              <p>Single Omic Dataset Analysis mostly processes the common statistical analyses on lipidomic dataset including lipid differential analysis, multivariate comparison, dimensionality reduction, lipid class summarization, lipid ontology analysis... We also integrate basic statistical analyses for metabolomic, transcriptomic, and proteomic datasets.</p>
               <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
             </div>
           </div>
