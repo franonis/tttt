@@ -26,7 +26,6 @@
           <div class="layui-card">
             <div class="layui-card-header">Single Omic Dataset Analysis</div>
             <div class="layui-card-body">
-              Something introducing Single Omic Dataset Analysis<br>
               <a href="/single" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
             </div>
           </div>
@@ -35,7 +34,6 @@
           <div class="layui-card">
             <div class="layui-card-header">Intra-omic Dataset Analysis</div>
             <div class="layui-card-body">
-              Something introducing Intra-omic Dataset Analysis<br>
               <a href="/intra" style="color: deepskyblue;font-size: 180%;">>>>click here to start<<<</a>
             </div>
           </div>
