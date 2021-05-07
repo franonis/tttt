@@ -12,6 +12,7 @@ class TwoController extends Controller
     {
         return view('uploadtwo', ['title' => 'upload']);
     }
+    #$command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript
 
     public function getreaultPage(Request $request)
     {
@@ -128,7 +129,7 @@ class TwoController extends Controller
         $outpath = 'mutil/'. $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $b  . $keycanshudir;
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
-        $command='/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -o "' . $outpath . '" -b "'.$b.'"'. $keycanshu;
+        $command='cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -o "' . $outpath . '" -b "'.$b.'"'. $keycanshu;
         #dd($command);
 
         
@@ -214,7 +215,7 @@ class TwoController extends Controller
         is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
         exec('cp /home/zhangqb/tttt/public/'.$opath.'enrich/../correlation_'.$j.'_'.$g.'.csv /home/zhangqb/tttt/public/'.$opath.'enrich/');
         if ($omics1 == "Metabolomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
             #exec($command, $ooout, $flag);
@@ -235,7 +236,7 @@ class TwoController extends Controller
             }
         }
         if ($omics1 == "Lipidomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
             
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
                 exec($command, $ooout, $flag);
@@ -251,10 +252,10 @@ class TwoController extends Controller
         }
 
         if ($omics2 == "Transcriptomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$g.' -t "mmu" -g "SYMBOL" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$g.' -t "mmu" -g "SYMBOL" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
         if ($omics2 == "Proteomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$g.' -t "hsa" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$g.' -t "hsa" -s 50 -c "Biological_Process" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
         #dd($command);
         
@@ -278,7 +279,7 @@ class TwoController extends Controller
         #circos
         #is_dir($opath.'circos/') or mkdir($opath.'circos/', 0777, true);
         #输出文件也在enrich下
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$g.' -t 0.8 -n 25 -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         
         #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
             exec($command, $ooout, $flag);

@@ -55,7 +55,7 @@ class UpdateController extends Controller
         exec('rm '.$pic_path.'MARresults/heatmap_top*.pdf');
 
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e ' . $e;
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipHeatmapPlot.R -r "' . $r_path . '" -y "' . $pic_path . '" -e ' . $e;
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
@@ -82,7 +82,7 @@ class UpdateController extends Controller
 
         exec('rm '.$pic_path.'headgroup/heatmap_lipClassSummary_*.pdf');
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
         exec($command, $ooout, $flag);
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
@@ -107,7 +107,7 @@ class UpdateController extends Controller
         exec('rm '.$pic_path.'headgroup/headgroup*');
         exec('rm '.$pic_path.'headgroup/others*');
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w;
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/headgroupStat.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w;
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
@@ -126,7 +126,7 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
         exec($command, $ooout, $flag);
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
@@ -158,7 +158,7 @@ class UpdateController extends Controller
         exec('rm '.$pic_path.'FAchainVisual/*pdf');
         exec('rm '.$pic_path.'FAchainVisual/others*');
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "'.$g.'" -w '.$w.' -e '.$e;
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/FAchainStat.R -r "' . $r_path . '" -v "' . $pic_path . '" -g "'.$g.'" -w '.$w.' -e '.$e;
 
         exec($command, $ooout, $flag);
         if ($flag == 1) {
@@ -206,9 +206,9 @@ class UpdateController extends Controller
 
         #exec('rm '.$enrich_path.'*');
         if ($t == "target_list") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
+            $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         }elseif ($t == "ranking") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -l '.$l.' -p "' . $enrich_path . '"';
+            $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/lipRegEnrich.R -r "' . $r_path . '"  -t "' . $t . '" -l '.$l.' -p "' . $enrich_path . '"';
         }
         #dd($command);
         exec($command, $ooout, $flag);
@@ -230,13 +230,13 @@ class UpdateController extends Controller
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
         #exec('rm '.$enrich_path.'*');
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metRegEnrich.R -i "' . $enrich_path . '"  -o "' . $enrich_path . '"';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metRegEnrich.R -i "' . $enrich_path . '"  -o "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
 
@@ -267,13 +267,13 @@ class UpdateController extends Controller
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
         exec('rm '.$enrich_path.'*pdf');
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/proteinRegEnrich.R -i "' . $enrich_path . '" -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "' . $enrich_path . '"';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/proteinRegEnrich.R -i "' . $enrich_path . '" -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "' . $enrich_path . '"';
         #dd($command);
         exec($command, $ooout, $flag);
 
@@ -311,7 +311,7 @@ class UpdateController extends Controller
         exec('rm '.$pic_path.'volcano_*.pdf');
 
         #火山图Rscript rnaVolcanoPlot.R -r "~/temp/" -s "~/temp/results2/" -f 2.0 -p 0.1 -u 20
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u;
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaVolcanoPlot.R -r "' . $r_path . '" -s "' . $pic_path . '" -f ' . $f . ' -p ' . $p . ' -u ' . $u;
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
@@ -332,7 +332,7 @@ class UpdateController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
         exec('rm '.$pic_path.'heatmap_top*.pdf');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v ' . $v;
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/rnaHeatmapPlot.R -r "' . $r_path . '" -w "' . $pic_path . '" -v ' . $v;
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
@@ -361,7 +361,7 @@ class UpdateController extends Controller
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
         exec('rm '.$pic_path.'*GOenrich*pdf');
         #热图Rscript rnaHeatmapPlot.R -r "~/temp/" -w "~/temp/results2/" -v 75
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f '.$f.' -p '.$p.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'"';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneRegEnrich.R -r "' . $r_path . '" -o "' . $pic_path . '" -f '.$f.' -p '.$p.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'"';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
@@ -395,10 +395,10 @@ class UpdateController extends Controller
         #$opath = $path;#$opath = preg_replace('/\//', "++", $outpath);
         exec('rm '.$opath.'enrich/GOenrich*');
         if ($omics == "Transcriptomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$k.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$k.' -t "'.$t.'" -g "'.$g.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
         if ($omics == "Proteomics") {
-            $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$k.' -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+            $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/geneCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -k '.$k.' -t "'.$t.'" -s '.$s.' -c "'.$c.'" -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         }
         #dd($command);
         exec($command, $ooout, $flag);
@@ -424,7 +424,7 @@ class UpdateController extends Controller
 
         exec('rm '.$opath.'enrich/circosPlot.pdf');
 
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$k.' -t '.$t.' -n '.$n.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
+        $command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/circos_plot.R -r "/home/zhangqb/tttt/public/'.$opath.'enrich/" -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -k '.$k.' -t '.$t.' -n '.$n.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/"';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
