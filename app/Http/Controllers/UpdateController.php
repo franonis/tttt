@@ -24,16 +24,16 @@ class UpdateController extends Controller
 
         exec('rm '.$pic_path.'MARresults/volcano_reg_*.pdf');
         
-        $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b F -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b F -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_reg_*.pdf ' . $pic_path . 'MARresults/volcano_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'MARresults/volcano_reg_*.pdf ' . $pic_path . 'MARresults/volcano_show.png';
         exec($command, $ooout, $flag);
         if ($s == "T") {
-            $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/volcano_regClass_*.pdf ' . $pic_path . 'MARresults/volcano_show2.png';
+            $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'MARresults/volcano_regClass_*.pdf ' . $pic_path . 'MARresults/volcano_show2.png';
             exec($command, $ooout, $flag);
         }
         
@@ -61,7 +61,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'MARresults/heatmap_top*.pdf ' . $pic_path . 'MARresults/heatmap_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'MARresults/heatmap_top*.pdf ' . $pic_path . 'MARresults/heatmap_show.png';
         exec($command, $ooout, $flag);
         #dd($ooout);
         if ($flag == 1) {
@@ -85,7 +85,7 @@ class UpdateController extends Controller
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
@@ -114,12 +114,12 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_color_*.pdf ' . $pic_path . 'headgroup/headgroupcolor_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'headgroup/headgroup_color_*.pdf ' . $pic_path . 'headgroup/headgroupcolor_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/headgroup_cum_*.pdf ' . $pic_path . 'headgroup/headgroupcum_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'headgroup/headgroup_cum_*.pdf ' . $pic_path . 'headgroup/headgroupcum_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
@@ -129,15 +129,15 @@ class UpdateController extends Controller
         $command = '/home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipSumClassHeatmapPlot.R -r "' . $r_path . '" -u "' . $pic_path . '" -w '.$w.' -z ' . $z;
         #dd($command);
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'headgroup/heatmap_lipClassSummary_*.pdf ' . $pic_path . 'headgroup/headgroupheatmap_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'headgroup/others_*.pdf ' . $pic_path . 'headgroup/others.png';
-        #$command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'headgroup/others_*.pdf ' . $pic_path . 'headgroup/others.png';
+        #$command = 'for file in ' . $pic_path . 'headgroup/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 $file ${file%%.pdf*}.png; done';
         exec($command, $ooout, $flag);
 
         exec('ls '.$pic_path.'/headgroup/others*pdf|wc -l', $pngnum, $flag);
@@ -165,13 +165,13 @@ class UpdateController extends Controller
             #dd($ooout);
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'FAchainVisual/tilePlot_*.pdf ' . $pic_path . 'FAchainVisual/fa_show.png';
         exec($command, $ooout, $flag);
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'FAchainVisual/heatmap_lipsubClass_*.pdf ' . $pic_path . 'FAchainVisual/faheatmap_show.png';
         exec($command, $ooout, $flag);
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'FAchainVisual/others_*.pdf ' . $pic_path . 'FAchainVisual/others.png';
-        #$command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim $file ${file%%.pdf*}.png; done';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'FAchainVisual/others_*.pdf ' . $pic_path . 'FAchainVisual/others.png';
+        #$command = 'for file in ' . $pic_path . 'FAchainVisual/*.pdf; do /home/zhangqb/software/ImageMagick/bin/convert -quality 100 $file ${file%%.pdf*}.png; done';
         exec($command, $ooout, $flag);
         #dd($command);
         if ($flag == 1) {
@@ -277,10 +277,10 @@ class UpdateController extends Controller
         #dd($command);
         exec($command, $ooout, $flag);
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'up*.pdf ' . $enrich_path . 'up.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $enrich_path . 'up*.pdf ' . $enrich_path . 'up.png';
         exec($command, $ooout, $flag);
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $enrich_path . 'down*.pdf ' . $enrich_path . 'down.png';
         exec($command, $ooout, $flag);
 
         if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'up.png') ) {
@@ -316,7 +316,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_show.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'volcano_*.pdf ' . $pic_path . 'volcano_show.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
@@ -338,8 +338,8 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_show.png';
-        #$command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'heatmap_top'.$v.'*.pdf ' . $pic_path . 'heatmap_'.$v.'.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'heatmap_top*.pdf ' . $pic_path . 'heatmap_show.png';
+        #$command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'heatmap_top'.$v.'*.pdf ' . $pic_path . 'heatmap_'.$v.'.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
@@ -366,10 +366,10 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'up*.pdf ' . $pic_path . 'up.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'up*.pdf ' . $pic_path . 'up.png';
         exec($command, $ooout, $flag);
 
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim ' . $pic_path . 'down*.pdf ' . $pic_path . 'down.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'down*.pdf ' . $pic_path . 'down.png';
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
@@ -406,7 +406,7 @@ class UpdateController extends Controller
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
         exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 -trim /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_'.$c.'.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
+        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_'.$c.'.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
         exec($command, $ooout, $flag);
         return response()->json(['code'=> 'success']);
     }
