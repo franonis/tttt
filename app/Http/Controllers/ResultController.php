@@ -78,6 +78,9 @@ class ResultController extends Controller
             }else{
                 $delodd = "F";
             }
+            if ($omics != "Lipidomics") {
+                $delodd = "F";
+            }
 
             $n = $request->n;
 
