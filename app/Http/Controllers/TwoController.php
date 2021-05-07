@@ -129,7 +129,7 @@ class TwoController extends Controller
         $outpath = 'mutil/'. $omics1 . $omics2 . md5($file_descfile_left . $file_descfile_right) . '/' . $b  . $keycanshudir;
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
-        $command='cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -o "' . $outpath . '" -b "'.$b.'"'. $keycanshu;
+        $command='cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -o "/home/zhangqb/tttt/public/' . $outpath . '" -b "'.$b.'"'. $keycanshu;
         #dd($command);
 
         
