@@ -17,7 +17,7 @@ class TwoController extends Controller
     #非例子数据的多组学数据，得到切割图片页面
     public function gettwotwoPage(Request $request)
     {
-        dd($request);
+        #dd($request);
         $file_datafile_left = $request->file_datafile_left;
         $file_descfile_left = $request->file_descfile_left;
         $file_datafile_right = $request->file_datafile_right;
@@ -28,7 +28,7 @@ class TwoController extends Controller
         $data_type = $request->data_type;
         $m = $request->m;#missing
         #$m = $m / 100;
-        $n = $request->n;#是否70%gk
+        $n = $request->quantile;#是否70%gk
         $s = $request->s;#自己设的值
         $g = $request->g;#列col
         $k = $request->k;#行row
@@ -43,7 +43,7 @@ class TwoController extends Controller
             $t['Transcriptomics'] = 'MiAr';
         }
         #ns的组合
-        if ($n) {
+        if ($n == "own") {
             $ns=' -n F -s '.$s;
         }else{
             $ns=' -n T';
