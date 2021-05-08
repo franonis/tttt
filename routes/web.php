@@ -73,7 +73,7 @@ Route::group(['prefix' => '/update'], function () {
 
 Route::group(['prefix' => '/result'], function () {
     Route::get('/set', [ResultController::class, 'getsetPage']);
-    Route::get('/two', [TwoController::class, 'getreaultPage']);
+    #Route::get('/two', [TwoController::class, 'getreaultPage']);
     Route::get('/twotwo', [TwoController::class, 'gettwotwoPage']);
     Route::get('/enrich/{pos}', [TwoController::class, 'getenrichPage']);
     Route::get('/enrichresult/{pos}', [TwoController::class, 'getenenrichresultPage']);

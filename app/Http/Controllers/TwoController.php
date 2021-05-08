@@ -14,69 +14,10 @@ class TwoController extends Controller
     }
     #$command = 'cd ' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript
 
-    public function getreaultPage(Request $request)
-    {
-        $command = $request->command;
-        $outpath = $request->outpath;
-        $m = $request->m;#missing
-        $n = $request->n;#是否70%gk
-        $s = $request->s;#自己设的值
-        $g = $request->g;#列
-        $k = $request->k;#行
-        $omics1=$request->omics1;#
-        $omics2=$request->omics2;#$outpath = 'mutil/example1'.md5("filename").'/';
-        #if (!$this->isRunOver('/home/zhangqb/tttt/public/' . $outpath . 'correlationPlot.png')) {
-            exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-        #}
-
-        $pic_path =  '/home/zhangqb/tttt/public/'.$outpath;
-
-        $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'correlationPlot.pdf ' . $pic_path . 'correlationPlot.png';
-        #if (!$this->isRunOver($pic_path.'correlationPlot.png')) {
-            exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-        #}
-        
-        #图片切割
-        $command = 'python3 /home/zhangqb/tttt/public/program/dev/correlation/getSplitWindowArgs.py -p "' . $pic_path . '" -o "' . $pic_path . '"';
-        #if (!$this->isRunOver($pic_path.'splitWinArgs.csv')) {
-            exec($command, $ooout, $flag);
-            if ($flag == 1) {
-                return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
-            }
-        #}
-        $split = file_get_contents($pic_path . 'splitWinArgs.csv');
-        #dd($split);
-        preg_match_all("/^(.*?)\r\n(.*?)\r\n(.*?)\r\n/U", $split, $splits);
-        $kongbai=explode(",", $splits[1][0]);
-        $hang=explode(",", $splits[2][0]);#宽
-        $lie=explode(",", $splits[3][0]);#高
-        #dd($hang);
-
-
-
-        $image = $pic_path.'correlationPlot.png';
-        $size = getimagesize($image);
-        $kongbai2=$size[0] - array_sum($hang) - $kongbai[0]-count($hang)*2;
-        $bgwidth = $size[0];
-        $bgheigh = $size[1];
-        $g = $g;#列
-        $k2 = $k;
-        $fgwidth = floor($size[0] / $g);
-        $fgheigh = floor($size[1] / $k2);
-
-        #dd($omics1);
-        $enrichpath = preg_replace('/\//', "++", $outpath);#下载的时候用
-        return view('crossresult', ['image' => $image, 'enrichpath' => $enrichpath, 'bgwidth' => $bgwidth, 'bgheigh' => $bgheigh, 'fgwidth' => $fgwidth, 'fgheigh' => $fgheigh, 'g' => $g, 'k2' => $k2, 'kongbai' => $kongbai, 'kongbai2' => $kongbai2, 'hang' => $hang, 'lie' => $lie, 'omics1' => $omics1, 'omics2' => $omics2]);
-    }
     #非例子数据的多组学数据，得到切割图片页面
     public function gettwotwoPage(Request $request)
     {
+        dd($request);
         $file_datafile_left = $request->file_datafile_left;
         $file_descfile_left = $request->file_descfile_left;
         $file_datafile_right = $request->file_datafile_right;
