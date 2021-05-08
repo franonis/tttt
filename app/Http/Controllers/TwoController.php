@@ -28,7 +28,7 @@ class TwoController extends Controller
         $data_type = $request->data_type;
         $m = $request->m;#missing
         #$m = $m / 100;
-        $n = $request->quantile;#是否70%gk
+        $n = $request->filtering;#是否70%gk
         $s = $request->s;#自己设的值
         $g = $request->g;#列col
         $k = $request->k;#行row
