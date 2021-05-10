@@ -160,16 +160,16 @@ class TwoController extends Controller
             $command = 'cd /home/zhangqb/tttt/public/' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/" >f 2>&1';
             
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
-            exec($command, $ooout, $flag);
+            shell_exec($command);
+            #exec($command, $ooout, $flag);
             #exec('echo '.$command.' >cmd.txt', $ooout, $flag);
             #dd("hei");
             #exec('php test.php ', $ooout, $flag);
             #exec('php test.php >f 2>&1', $ooout, $flag);
-            if ($flag == 1) {
-            #    dd($ooout);
-                $comma_separated = implode(",", $ooout);
+            ##if ($flag == 1) {
+                ##$comma_separated = implode(",", $ooout);
                 #return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command.$flag.$comma_separated]);
-            }
+            ##}
             #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
                 $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/ora_dpi72.png" style="height:50%;width: 60%;">';
