@@ -406,7 +406,7 @@ class UpdateController extends Controller
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        exec('cp data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
+        exec('cp /home/zhangqb/tttt/public/' . $opath.'enrich/../data_circos.RData '.'/home/zhangqb/tttt/public/'.$opath.'enrich/');
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich_'.$c.'.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/GOenrich.png';
         exec($command, $ooout, $flag);
         return response()->json(['code'=> 'success']);
