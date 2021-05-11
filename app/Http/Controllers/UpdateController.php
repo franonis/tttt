@@ -238,8 +238,8 @@ class UpdateController extends Controller
         }
         $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metRegEnrich.R -i "' . $enrich_path . '"  -o "' . $enrich_path . '" >error 2>&1';
         #dd($command);
-        #system($command);#($command, $ooout, $flag);
-        system("sh a");#($command, $ooout, $flag);
+        system($command);#($command, $ooout, $flag);
+        #system("sh a");#($command, $ooout, $flag);
 
         if ($this->isRunOver('/home/zhangqb/tttt/public/' . $enrich_path . 'up_ora_dpi72.png') ) {
             $noup = "no";
