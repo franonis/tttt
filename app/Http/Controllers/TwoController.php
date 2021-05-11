@@ -157,7 +157,7 @@ class TwoController extends Controller
         is_dir($opath.'enrich/') or mkdir($opath.'enrich/', 0777, true);
         exec('cp /home/zhangqb/tttt/public/'.$opath.'enrich/../correlation_'.$j.'_'.$g.'.csv /home/zhangqb/tttt/public/'.$opath.'enrich/');
         if ($omics1 == "Metabolomics") {
-            $command = 'cd /home/zhangqb/tttt/public/' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/" >f 2>&1';
+            $command = 'cd /home/zhangqb/tttt/public/' . $opath.'enrich/../ && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metCorEnrich.R -i "/home/zhangqb/tttt/public/'.$opath.'enrich/../" -j '.$j.' -o "/home/zhangqb/tttt/public/'.$opath.'enrich/" >error 2>&1';
             
             #if (!$this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/ora_dpi72.png') ){
             shell_exec($command);

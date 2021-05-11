@@ -230,13 +230,13 @@ class UpdateController extends Controller
         $enrich_path = '/home/zhangqb/tttt/public/' . $path.'enrich/';
 
         #exec('rm '.$enrich_path.'*');
-        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '"';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/met_preEnrich.R -r "' . $r_path . '"  -j '.$j.' -k '.$k.' -p "' . $enrich_path . '" >error 2>&1';
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
             return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
         }
-        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metRegEnrich.R -i "' . $enrich_path . '"  -o "' . $enrich_path . '"';
+        $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/enrich/metRegEnrich.R -i "' . $enrich_path . '"  -o "' . $enrich_path . '" >error 2>&1';
         #dd($command);
         exec($command, $ooout, $flag);
 
