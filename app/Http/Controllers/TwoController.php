@@ -187,9 +187,9 @@ class TwoController extends Controller
                 }
             #}
             if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/LION-enrichment-plot.png') ){
-                $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;">';
+                $resultpng1 = '<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;display: block;"><br><p id="noresultpng1" style="display: none;">No genes enriched! Try check your data!</p>';
             }else{
-                $resultpng1='<p>No genes enriched! Try check your data!</p>';
+                $resultpng1='<img id="resultpng1" src="http://www.lintwebomics.info/' .$opath.'enrich/LION-enrichment-plot.png" style="height:50%;width: 60%;display: none;"><br><p id="noresultpng1" style="display: block;">No genes enriched! Try check your data!</p>';
             }
         }
 
@@ -213,9 +213,9 @@ class TwoController extends Controller
 
         #}
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/GOenrich.png') ){
-            $resultpng2 = '<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;">';
+            $resultpng2 = '<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;display: block;"><br><p id="noresultpng2" style="display: none;">No genes enriched! Try check your data!</p>';
         }else{
-            $resultpng2='<p>No genes enriched! Try check your data!</p>';
+            $resultpng2='<img id="resultpng2" src="http://www.lintwebomics.info/' .$opath.'enrich/GOenrich.png" style="height:50%;width: 60%;display: none;"><br><p id="noresultpng2" style="display: block;">No genes enriched! Try check your data!</p>';
         }
 
         #circos
@@ -232,9 +232,9 @@ class TwoController extends Controller
             exec($command, $ooout, $flag);
         #}
         if ($this->isRunOver('/home/zhangqb/tttt/public/' .$opath.'enrich/circosPlot.png') ){
-            $circos = '<img id="circos" src="http://www.lintwebomics.info/' .$opath.'enrich/circosPlot.png" style="height:100%;width: 100%;">';
+            $circos = '<img id="circos" src="http://www.lintwebomics.info/' .$opath.'enrich/circosPlot.png" style="height:100%;width: 100%;display: block;"><br><p id="nocircos" style="display: none;">Please check your correlation threshold. It may be too strict to filter.</p>';
         }else{
-            $circos='<p>Please check your correlation threshold. It may be too strict to filter.</p>';
+            $circos='<img id="circos" src="http://www.lintwebomics.info/' .$opath.'enrich/circosPlot.png" style="height:100%;width: 100%;display: none;"><br><p id="nocircos" style="display: block;">Please check your correlation threshold. It may be too strict to filter.</p>';
         }
 
         return view('crossresultenrich', ['g' => $g,'t' => 0.8,'n' => 25,'j' => $j,'gene' => $gene,'lipid' => $lipid,'downloadpath' => $downloadpath, 'omics1' => $omics1, 'omics2' => $omics2, 's' => '50', 'resultpng1' => $resultpng1, 'resultpng2' => $resultpng2, 'circos' => $circos]);
