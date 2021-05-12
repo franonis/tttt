@@ -429,7 +429,7 @@ class UpdateController extends Controller
         #dd($command);
         exec($command, $ooout, $flag);
         if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => $command]);
+            return response()->json(['code'=> 'fail']);
         }
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.pdf /home/zhangqb/tttt/public/'.$opath.'enrich/circosPlot.png';
         exec($command, $ooout, $flag);

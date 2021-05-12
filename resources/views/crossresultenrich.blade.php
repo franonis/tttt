@@ -287,7 +287,7 @@
                     document.getElementById("circos").src = sr+'?t='+'+Math.random()';
                     document.getElementById("circosupdatebutton").style.display="none";
                 }else{
-                    alert('register fail');
+                    alert('change the parameters');
                 }
             },
             error: function(request, status, error){
