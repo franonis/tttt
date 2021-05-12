@@ -291,7 +291,7 @@
                 }
             },
             error: function(request, status, error){
-                alert(error);
+                alert("change the parameters");
             },
         });
     };
