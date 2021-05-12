@@ -328,7 +328,7 @@
                     document.getElementById("resultpng2").src = sr+'?t='+'+Math.random()';
                     document.getElementById("enrichupdatebutton").style.display="none";
                 }else{
-                    alert('register fail');
+                    alert('change the parameters');
                 }
             },
             error: function(request, status, error){
