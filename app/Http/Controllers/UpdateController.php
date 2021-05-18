@@ -372,9 +372,7 @@ class UpdateController extends Controller
 
         $command = '/home/zhangqb/software/ImageMagick/bin/convert -quality 100 ' . $pic_path . 'down*.pdf ' . $pic_path . 'down.png';
         exec($command, $ooout, $flag);
-        if ($flag == 1) {
-            return view('errors.200', ['title' => 'RUN ERROR', 'msg' => 'RUN ERROR' . $command]);
-        }
+        
         return response()->json(['code'=> 'success']);
     }
 
