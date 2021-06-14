@@ -133,7 +133,7 @@ class UploadController extends Controller
             $omics = "Transcriptomics";
         }
         
-        $outpath = 'uploads/' . $omics . $file_data[$exam_omics] . $file_desc[$exam_omics] . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
+        $outpath = 'uploads/example' . $omics . $file_data[$exam_omics] . $file_desc[$exam_omics] . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $path_datafile = 'uploads/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
         $path_descfile = 'uploads/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
