@@ -64,7 +64,7 @@ class UploadController extends Controller
         $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
 
         #输出文件位置
-        $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';
+        $outpath = 'uploads/' . $omics . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
         if ($omics != "Transcriptomics") {
