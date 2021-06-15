@@ -15,7 +15,7 @@ class ResultController extends Controller
         $file_data = $request->file_data;
         $file_desc = $request->file_desc;
         $naperent = $request->naperent;
-        $tmpout = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/';#该样本的主要输出路径
+        $tmpout = 'uploads/' . md5($file_data . $file_desc) . '/';#该样本的主要输出路径
         is_dir($tmpout) or mkdir($tmpout, 0777, true);
         $subgroupfile = fopen("/home/zhangqb/tttt/public/$tmpout"."subgroup.txt", "w");
 
@@ -44,7 +44,7 @@ class ResultController extends Controller
         $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
         if ($omics == "Transcriptomics") {
             $experiment = $request->experimental;
-            $outpath = 'uploads/' . $omics . $file_data . $file_desc . md5($file_data . $file_desc) . '/' . $experiment . $control . '/';
+            $outpath = 'uploads/' . md5($file_data . $file_desc) . '/' . $experiment . $control . '/';
             is_dir($outpath) or mkdir($outpath, 0777, true);
             $downloadpath = preg_replace('/\//', "++", $outpath.'results/');
             $command = 'cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/processing_RNA.R -a "' . $experiment . '" -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -c "' . $control . '" -o "/home/zhangqb/tttt/public/' . $outpath . '" -t '.$data_type.' -p "/home/zhangqb/tttt/public/' . $outpath . '"';
