@@ -64,7 +64,7 @@ class UploadController extends Controller
         $path_descfile = 'uploads/' . md5($file_desc) . '/' . $file_desc;
 
         #输出文件位置
-        $outpath = 'uploads/' . $omics . md5($file_data . $file_desc) . '/';
+        $outpath = 'uploads/' . md5($file_data . $file_desc) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
         if ($omics != "Transcriptomics") {
@@ -133,7 +133,7 @@ class UploadController extends Controller
             $omics = "Transcriptomics";
         }
         
-        $outpath = 'uploads/example' . $omics . $file_data[$exam_omics] . $file_desc[$exam_omics] . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
+        $outpath = 'uploads/' . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $path_datafile = 'uploads/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
         $path_descfile = 'uploads/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
