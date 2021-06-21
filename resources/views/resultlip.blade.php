@@ -538,7 +538,7 @@
         console.log(name);
    });
     $("#sss").click(function (){
-        if ($("#s").is(":checked")) {
+        if ($("#ss").is(":checked")) {
             document.getElementById("wwwwww").style.display="block";
         }else{
             document.getElementById("wwwwww").style.display="none";
