@@ -585,12 +585,15 @@
                 if(data.code == 'success'){
 
                     if (data.sub == "T") {
-                        document.getElementById("volcanopng1").src = data.png1+'?t='+'+Math.random()';
-                        document.getElementById("volcanopng2").src = data.png2+'?t='+'+Math.random()';
+                        var sr = document.getElementById("volcanopng1").src;
+                        document.getElementById("volcanopng1").src = sr+'?t='+'+Math.random()';
+                        var sr = document.getElementById("volcanopng2").src;
+                        document.getElementById("volcanopng2").src = sr+'?t='+'+Math.random()';
                         document.getElementById("volcanopng2").style.display="block";
                     }
                     if (data.sub == "F") {
-                        document.getElementById("volcanopng1").src = data.png1+'?t='+'+Math.random()';
+                        var sr = document.getElementById("volcanopng1").src;
+                        document.getElementById("volcanopng1").src = sr+'?t='+'+Math.random()';
                         document.getElementById("volcanopng2").style.display="none";
 
                     }
