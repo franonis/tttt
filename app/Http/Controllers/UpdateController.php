@@ -22,7 +22,7 @@ class UpdateController extends Controller
         $r_path = '/home/zhangqb/tttt/public/' . $path . '../';
         $pic_path = '/home/zhangqb/tttt/public/' . $path;
 
-        exec('rm '.$pic_path.'MARresults/volcano_reg_*.pdf');
+        exec('rm '.$pic_path.'MARresults/volcano*');
         
         $command = 'cd ' . $r_path . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/main_split/lipVolcanoPlot.R -r "' . $r_path . '" -s ' . $s . ' -p "' . $pic_path . '" -b F -x "' . $x . '" -j ' . $j . ' -k ' . $k . ' -m ' . $m . ' -w ' . $w . ' ';
         #dd($command);
