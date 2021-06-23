@@ -40,13 +40,13 @@ class DownloadController extends Controller
         $path = $path.'/';
         $zip_file = $files[1];
         if ($zip_file == "DRA.zip") {
-            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . '*A_score_plot_*.pdf';
+            $command='cd ' . $path . ' && zip -r -o ' . $zip_file . ' ./' . '*A_score_plot_*.pdf';
         }
         if ($zip_file == "Volcano.zip") {
-            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'volcano*';
+            $command='cd ' . $path . ' && zip -r -o ' . $zip_file . ' ./' . 'volcano*';
         }
         if ($zip_file == "Heatmap.zip") {
-            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'heatmap*';
+            $command='cd ' . $path . ' && zip -r -o ' . $zip_file . ' ./' . 'heatmap*';
         }
         #$command='zip -r -o ' . $path . $zip_file . ' ' . $path;
         #dd($command);
@@ -61,16 +61,16 @@ class DownloadController extends Controller
         $path = $path.'/';
         $zip_file = $files[1];
         if ($zip_file == "DV.zip") {
-            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'PCA* heatmap_allgroups*';
+            $command='cd ' . $path . ' && zip -r -o ' . $zip_file . ' ./' . 'PCA* heatmap_allgroups*';
         }
         if ($zip_file == "Volcano.zip") {
-            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'volcano*';
+            $command='cd ' . $path . ' && zip -r -o ' . $zip_file . ' ./' . 'volcano*';
         }
         if ($zip_file == "Heatmap.zip") {
-            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'heatmap_top*';
+            $command='cd ' . $path . ' && zip -r -o ' . $zip_file . ' ./' . 'heatmap_top*';
         }
         if ($zip_file == "GOenrichment.zip") {
-            $command='zip -r -o ' . $path . $zip_file . ' ' . $path . 'up* down*';
+            $command='cd ' . $path . ' && zip -r -o ' . $zip_file . ' ./' . 'up* down*';
         }
         #$command='zip -r -o ' . $path . $zip_file . ' ' . $path;
         #dd($command);
