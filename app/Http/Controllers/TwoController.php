@@ -36,6 +36,7 @@ class TwoController extends Controller
         $c = $request->c;
         $f = $request->f;
         $p = $request->p;
+        $a = $request->a;
 
         #t和u的设置
         $t = ['Lipidomics' => 'Lipids', 'Metabolomics' => 'Metabolites', 'Transcriptomics' => 'RNAseq', 'Proteomics' => 'Proteins'];
@@ -71,7 +72,7 @@ class TwoController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
 
         #dd($outpath);
-        $command='cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -o "/home/zhangqb/tttt/public/' . $outpath . '" -b "'.$b.'"'. $keycanshu;
+        $command='cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/correlation/correlation_main.R -i "/home/zhangqb/tttt/public/'.$file_datafile_left.'" -d "/home/zhangqb/tttt/public/'.$file_descfile_left.'" -t "'.$t[$omics1].'" -l '.$delodd.' -j "/home/zhangqb/tttt/public/'.$file_datafile_right.'" -e "/home/zhangqb/tttt/public/'.$file_descfile_right.'" -u "'.$t[$omics2].'" -o "/home/zhangqb/tttt/public/' . $outpath . '" -b "'.$b.'"'. $keycanshu . '" -a "'.$a;
         #dd($command);
 
         
