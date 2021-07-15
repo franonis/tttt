@@ -34,7 +34,7 @@
                         <div class="col-md-12" id="dataType" style="display: none;" title="Indicating your transcriptomic data type">
                             <label class="layui-form-label"><a>Data Type <i class="layui-icon layui-icon-about"></i>:</a></label>
                                 <div class="layui-input-block">
-                                  <input  type="radio" value="rna" name="data_type" title="RNA-seq"checked> 
+                                  <input  type="radio" value="RNAseq" name="data_type" title="RNA-seq"checked> 
                                   <input  type="radio" value="microarray" name="data_type" title="Microarray"> 
                                 </div>
                         </div>
