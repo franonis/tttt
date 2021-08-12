@@ -116,7 +116,7 @@
                                         <h4>Update with new parameters</h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <div class="col-md-4" title="Set the number of top significant changed lipids to display on the heatmap">
+                                        <div class="col-md-4" title="Set the number of top significant changed metabolites to display on the heatmap">
                                             <h4>Show TOP hits <i class="layui-icon layui-icon-about"></i> :</h4>
                                         </div>
                                         <div class="col-md-8">
@@ -186,13 +186,13 @@
                                 </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                                 <div class="col-md-2">
-                                    <h4>Up-regulated lipids: </h4>
+                                    <h4>Up-regulated metabolites: </h4>
                                 </div>
                                 <div class="col-md-10">
                                     {!! $up !!}
                                 </div><br>
                                 <div class="col-md-2">
-                                    <h4>Down-regulated lipids: </h4>
+                                    <h4>Down-regulated metabolites: </h4>
                                 </div>
                                 <div class="col-md-10">
                                     {!! $down !!}
