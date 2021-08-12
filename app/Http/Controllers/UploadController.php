@@ -135,8 +135,8 @@ class UploadController extends Controller
         
         $outpath = 'uploads/' . md5($file_data[$exam_omics] . $file_desc[$exam_omics]) . '/';
         is_dir($outpath) or mkdir($outpath, 0777, true);
-        $path_datafile = 'example/' . $omics . $file_data[$exam_omics] . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
-        $path_descfile = 'example/' . $omics . $file_desc[$exam_omics] . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
+        $path_datafile = 'example/' . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
+        $path_descfile = 'example/' . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
         $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Transcriptomicshan' => 'RNAseq', 'Transcriptomics' => 'MiAr', 'Proteomics' => 'Proteins'];
         if ($omics != "Transcriptomics") {
             $command = 'cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
