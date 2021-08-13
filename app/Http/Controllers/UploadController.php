@@ -165,7 +165,7 @@ class UploadController extends Controller
                 preg_match_all("/\"(.*?)\"/U", $groupsLevel, $groupsLevels);
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
-                return view('canshurna', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics]]);
+                return view('canshurna', ['data_type' => $t[$exam_omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics]]);
             }
         }
 
