@@ -54,7 +54,9 @@ class BabaController extends Controller
             $t=[];
             $lie=explode(",", $hangs[$h]);
             for ($i=1; $i < 7; $i++) { 
-                if (strstr($lie[$i],'e')) {
+                if ($lie[$i] == "NA") {
+                    $t[$i]="NA"
+                }elseif (strstr($lie[$i],'e')) {
                     $temp = explode("e", $lie[$i]);
                     $tmp = explode('.', $temp[0]);
                     $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2) . 'e' . $temp[1];

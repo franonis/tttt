@@ -32,7 +32,7 @@
                                 <h4>Download</h4>
                             </div>
                             <div class="col-md-10" style="border:1px dashed #000;">
-                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}DEgeneStatistics_{{$DEname}}.csv">DEgeneStatistics_{{$DEname}}.csv<i class="layui-icon layui-icon-download-circle"></i></a>
+                                <a href="{{ url('download/file/')}}/{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv">DEgeneStatistics_{{$DEname}}.csv<i class="layui-icon layui-icon-download-circle"></i></a>
                             </div>
                     <br><HR style="FILTER:alpha(opacity=100,finishopacity=0,style=3)" width="90%"color=#987cb9 SIZE=3></HR>
                             <div class="col-md-2">
