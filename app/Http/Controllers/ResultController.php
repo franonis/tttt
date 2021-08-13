@@ -68,7 +68,7 @@ class ResultController extends Controller
                         $down='<p>No DOWN genes enriched! Please try again with other parameters or check your uploaded data.</p>';
                     }
                     
-                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'up' => $up, 'down' => $down, 'omics' => $omics, 'downloadpath' => $downloadpath, 'DEname' => $experiment .'_vs_'. $control, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]); 
+                    return view('resultrna', ['title' => '上传数据', 'path' => $outpath, 'up' => $up, 'down' => $down, 'omics' => $omics, 'data_type' => $data_type, 'downloadpath' => $downloadpath, 'DEname' => $experiment .'_vs_'. $control, 'f' => 2.0, 'p' => 0.1, 'u' => 20, 'v' => 75,'t' => "mmu",'g' => "SYMBOL",'s' => 50,'c' => "Biological_Process",]); 
                 }
             }
         } else {

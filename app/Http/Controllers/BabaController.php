@@ -41,8 +41,11 @@ class BabaController extends Controller
         return $tableJson;
     }
 
-    public function detable($name)
+    public function detable($both)
     {   
+        $boths = explode(",", $both);
+        $name = $boths[0];
+        $type = $boths[1];
         $name=preg_replace('/\+\+/', "/", $name);
         $gene_de = file_get_contents($name,0,null,0,3000);
         $hangs = explode("\n", $gene_de);
@@ -53,27 +56,55 @@ class BabaController extends Controller
         for ($h=1; $h < 20; $h++) {
             $t=[];
             $lie=explode(",", $hangs[$h]);
-            for ($i=1; $i < 7; $i++) { 
-                if ($lie[$i] == "NA") {
-                    $t[$i]="NA";
-                }elseif (strstr($lie[$i],'e')) {
-                    $temp = explode("e", $lie[$i]);
-                    $tmp = explode('.', $temp[0]);
-                    $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2) . 'e' . $temp[1];
-                }else{
-                    $tmp = explode('.', $lie[$i]);
-                    $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2);
+            if ($type == "MiAr") {
+                
+                for ($i=1; $i < 7; $i++) { 
+                    if ($lie[$i] == "NA") {
+                        $t[$i]="NA";
+                    }elseif (strstr($lie[$i],'e')) {
+                        $temp = explode("e", $lie[$i]);
+                        $tmp = explode('.', $temp[0]);
+                        $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2) . 'e' . $temp[1];
+                    }else{
+                        $tmp = explode('.', $lie[$i]);
+                        $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2);
+                    }
                 }
+                $tableJson['data'][] = [
+                    'gene' => $lie[0],
+                    'logFC' => $t[1],
+                    'AveExpr' => $t[2],
+                    't' => $t[3], 
+                    'PValue' => $t[4],
+                    'adjPVal'=> $t[5],
+                    'B' => $t[6],
+                ];
+                // code...
             }
-            $tableJson['data'][] = [
-                'gene' => $lie[0],
-                'logFC' => $t[1],
-                'AveExpr' => $t[2],
-                't' => $t[3], 
-                'PValue' => $t[4],
-                'adjPVal'=> $t[5],
-                'B' => $t[6],
-            ];
+            if ($type == "RNAseq") {
+                for ($i=1; $i < 6; $i++) { 
+                    if ($lie[$i] == "NA") {
+                        $t[$i]="NA";
+                    }elseif (strstr($lie[$i],'e')) {
+                        $temp = explode("e", $lie[$i]);
+                        $tmp = explode('.', $temp[0]);
+                        $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2) . 'e' . $temp[1];
+                    }else{
+                        $tmp = explode('.', $lie[$i]);
+                        $t[$i] = $tmp[0] . '.' . substr($tmp[1],0,2);
+                    }
+                }
+                $tableJson['data'][] = [
+                    'gene' => $lie[0],
+                    'baseMean' => $t[1],
+                    'logFC' => $t[2],
+                    'lfcSE' => $t[3], 
+                    'PValue' => $t[4],
+                    'adjPVal'=> $t[5],
+                ];
+                // code...
+            }
+
             $count++;
         }
         $tableJson['code'] = 0;

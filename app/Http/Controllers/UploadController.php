@@ -137,9 +137,9 @@ class UploadController extends Controller
         is_dir($outpath) or mkdir($outpath, 0777, true);
         $path_datafile = 'example/' . md5($file_data[$exam_omics]) . '/' . $file_data[$exam_omics];
         $path_descfile = 'example/' . md5($file_desc[$exam_omics]) . '/' . $file_desc[$exam_omics];
-        $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Transcriptomicshan' => 'RNAseq', 'Transcriptomics' => 'MiAr', 'Proteomics' => 'Proteins'];
+        $t = ['Lipidomics' => 'LipidSearch', 'Lipidomicscos' => 'LipidSearch', 'Metabolomics' => 'Metabolites', 'Transcriptomicshan' => 'MiAr', 'Transcriptomics' => 'RNAseq', 'Proteomics' => 'Proteins'];
         if ($omics != "Transcriptomics") {
-            $command = 'cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
+            $command = 'cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/inputFileOpts.R -i "/home/zhangqb/tttt/public/' . $path_datafile . '" -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -t "' . $t[$exam_omics] . '" -l F -n "" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';
 
             exec($command, $ooout, $flag);
             if ($flag == 1) {
@@ -151,7 +151,7 @@ class UploadController extends Controller
                 array_shift($groupsLevels[1]); #去掉第一行
                 $groupsLevels = $groupsLevels[1];
                 #dd($groupsLevels[1]);
-                return view('canshu', ['data_type' => $t[$omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'delodd' => "F"]);
+                return view('canshu', ['data_type' => $t[$exam_omics], 'groupsLevels' => $groupsLevels, 'omics' => $omics, 'file_data' => $file_data[$exam_omics], 'file_desc' => $file_desc[$exam_omics], 'delodd' => "F"]);
             }
         } else {
             $command = 'cd /home/zhangqb/tttt/public/' . $outpath . ' && /home/new/R-3.6.3/bin/Rscript /home/zhangqb/tttt/public/program/dev/options/inputFileOpts_RNA.R -d "/home/zhangqb/tttt/public/' . $path_descfile . '" -p "/home/zhangqb/tttt/public/' . $outpath . '" ';

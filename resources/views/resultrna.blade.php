@@ -38,9 +38,13 @@
                             <div class="col-md-2">
                                 <h4>Gene differential expression result: </h4>
                             </div>
-                            <div class="col-md-10">
-                                <a style="display: none;" name="tax" id="name" value="{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv">{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv</a>
-                                <table id="showde" lay-filter="test"></table>
+                            <a style="display: none;" name="tax" id="name" value="{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv">{{ $downloadpath }}..++DEgeneStatistics_{{$DEname}}.csv</a>
+                            <a style="display: none;" name="tx" id="data_type" value="{{ $data_type }}">{{ $data_type }}</a>
+                            <div class="col-md-10" id="DERNA" style="display:none;">
+                                <table id="showde1" lay-filter="test"></table>
+                            </div>
+                            <div class="col-md-10" id="DEMiAr" style="display:none;">
+                                <table id="showde2" lay-filter="test"></table>
                             </div>
                         </div>
                     </div>
@@ -260,13 +264,27 @@
 @section('js')
 <script src="{{ asset('/layui/dist/layui.js') }}" charset="utf-8"></script>
 <script>
+    $(document).ready(function(){
+        var type = document.getElementById("data_type").innerHTML;
+        if (type == "RNAseq") {
+            document.getElementById("DERNA").style.display="block";
+        }
+        if (type == "MiAr") {
+            document.getElementById("DEMiAr").style.display="block";
+        }
+          
+          
+    });
+</script>
+<script>
     layui.use(['element', 'layer','form','table'], function(){
         var element = layui.element;
         var layer = layui.layer;
         var table = layui.table;
+        var type = document.getElementById("data_type").innerHTML;
         var name = document.getElementById("name").innerHTML;
         table.render({
-            elem: '#showde'
+            elem: '#showde1'
             ,autoSort: true
             ,text: {
                 none: 'no data avalible' //默认：无数据。
@@ -274,7 +292,27 @@
             ,cellMinWidth: 90
             ,toolbar: '<div> just top 20 for show</div>'
             ,defaultToolbar: ['filter', 'print', 'exports']
-            ,url: '{{url('/detable/f')}}'+ name//数据接口
+            ,url: '{{url('/detable/f')}}'+ name+","+type//数据接口
+            ,cols: [[ //表头
+            {field: 'gene', title: 'gene', sort: true}
+            ,{field: 'baseMean', title: 'baseMean', sort: true}
+            ,{field: 'logFC', title: 'logFC', sort: true}
+            ,{field: 'lfcSE', title: 'lfcSE', sort: true}
+            ,{field: 'PValue', title: 'P_Value', sort: true}
+            ,{field: 'adjPVal', title: 'adj_P_Val', sort: true}
+            ]]
+        });
+
+        table.render({
+            elem: '#showde2'
+            ,autoSort: true
+            ,text: {
+                none: 'no data avalible' //默认：无数据。
+            }
+            ,cellMinWidth: 90
+            ,toolbar: '<div> just top 20 for show</div>'
+            ,defaultToolbar: ['filter', 'print', 'exports']
+            ,url: '{{url('/detable/f')}}'+ name+","+type//数据接口
             ,cols: [[ //表头
             {field: 'gene', title: 'gene', sort: true}
             ,{field: 'logFC', title: 'logFC', sort: true}
